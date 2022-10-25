@@ -1,0 +1,125 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Tutorial 3 FODs optimization: Water molecule &#8212; NRLMOL  0 documentation</title>
+    <link rel="stylesheet" href="../../_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../_static/language_data.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Plotting density of states using NRLMOL" href="../ddos/density_of_states.html" />
+    <link rel="prev" title="Tutorial 2: Understanding electronic structure of molecules using NRLMOL" href="tutorial2.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../ddos/density_of_states.html" title="Plotting density of states using NRLMOL"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="tutorial2.html" title="Tutorial 2: Understanding electronic structure of molecules using NRLMOL"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../nrlmoldoc_main.html">NRLMOL  0 documentation</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="tutorial-3-fods-optimization-water-molecule">
+<h1>Tutorial 3  FODs optimization: Water molecule<a class="headerlink" href="#tutorial-3-fods-optimization-water-molecule" title="Permalink to this headline">¶</a></h1>
+<p>This tutorial explains how to do a FODs optimization taking the example of the water molecule. It is not recommended to do both, molecular and FOD optimization at the same time because the FOD forces are very sensitive to the FOD positions relative to the nuclei. Even if one is not optimizing the structure, it is recommended to run a normal DFT calculation first to get the wavefunction. To do this, we start from the usual CLUSTER file:</p>
+<p>In the NRLMOL_INPUT.DAT file we change CALCTYPEV from ‘LBFGS’ to ‘SCF-ONLY’ to switch off the molecular optimization. We also turn on the unrestricted calculation setting SPNPOLV = ‘Y’. Then we run NRLMOL in a new directory with only CLUSTER and NRLMOL_INPUT.DAT files:</p>
+<blockquote>
+<div><p>$ <strong>./nrlmol_exe &gt; print.DFT</strong></p>
+</div></blockquote>
+<p>All the normal NRLMOL outputs are generated. If the calculation finished correctly, we should have the following RUNS file</p>
+<p>The second number in the first line may be different if a molecular optimization was carried out. It is important to check that we have a couple of fours in the second line. This tells NRLMOL to use the wavefunction stored in WFOUT for the next calculation.</p>
+<p>Now, we have to include the FOD positions. Here, we can use the Monte Cartlo FOD generator <strong>fodMC</strong>. For that, we copy XMOL.xyz into a file named <strong>system</strong> and edit the second and last lines as shown</p>
+<p>It might have an empty line at the end. The fodMC code and documentation can be found <a class="reference external" href="https://github.com/pyflosic/fodMC">here</a>. When fodMC is executed 3 files are generated: <strong>CLUSTER</strong>, <strong>FRMORB</strong> and <strong>Nuc_FOD.xyz</strong>. Thus, it will overwrite our <strong>CLUSTER</strong> file if executed in the same directory. In our case, it does not matter because whenever the <strong>SYMBOL</strong> file is present <strong>CLUSTER</strong> is ignored. <strong>FRMORB</strong> contains the FODs in Bohrs for the unrestricted calculation (first the up, then the down). You should get something like this:</p>
+<p>If you do not have fodMC, you can copy-paste the previous <strong>FRMORB</strong>. It is important to always check how the FODs are distributed. For that, you can visualize <strong>Nuc_FOD.xyz</strong> with the software of your choice. The spin up FODs have the label X and the down He, so be careful if the He atom is included in your system. On the other hand, <strong>FRMORB</strong> is a deprecated way to give the FODs. It is recommended to rename it <strong>FRMIDT</strong> and include the <strong>FRMGRP</strong> with the group symmetry transformation matrices of the FODs. Here, we just copy the identity matrix in <strong>GRPMAT</strong> into <strong>FRMGRP</strong> and run NRLMOL.</p>
+<blockquote>
+<div><p>$ <strong>mv FRMORB FRMIDT</strong>
+$ <strong>cp GRPMAT FRMGRP</strong>
+$ <strong>./nrlmol_exe &gt; print.001</strong></p>
+</div></blockquote>
+<p>If everything goes well, we get now all the FLOSIC output files. Check the <strong>SUMMARY</strong> file. It should look like this:</p>
+<p>The first block is for the normal DFT calculation with the second and fifth column exactly the same (no SIC). The second block is for the FLOSIC run. In <strong>print.001</strong> search for the word ITERATION</p>
+<p>There it states that the wave function is read from WFOUT and gives the occupied and total number of orbitals. After giving the occupancies, it calculates the Lowdin overlap eigenvalues</p>
+<p>It is good when these values remain close to one. When one or more of these eigenvalues are smaller than 1E-08, the calculation stops with a message of bad FOD positions. At the end of the SCF cycle we get the following summary of energy contributions. Some of them are in the <strong>SUMMARY</strong> file too.</p>
+<p>Once the total energy is converged, the FOD forces are calculated and FOD positions are updated in <strong>FRMIDT</strong> (and/or in <strong>FRMORB</strong>) using the chosen optimization method. Default is scaled LBFGS, but it sometimes gets stuck or fails to obtain the next step. In those cases, we may switch off this variable in <strong>NRLMOL_INPUT.DAT</strong> SCALEDLBFGSV = ‘N’ to use the conjuged gradient for the FOD optimization. As the FODs are already updated and we also have the wavefunciton and the <strong>RUNS</strong> file, we just run again NRLMOL in the same directory to do the SCF cycle with the new FODs.</p>
+<blockquote>
+<div><p>$ <strong>./nrlmol_exe &gt; print.002</strong></p>
+</div></blockquote>
+<p>We can sucessively do this or use a script similar to that in the previous tutorial. After doing 5 steps of FOD optimization we can see in <strong>fande.out</strong> how the energy is decreasing and converging and the forces diminishing (not at every step).</p>
+<p>All the used FODs and obtained forces and corrected total energy can be seen in <strong>records</strong> file.</p>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="tutorial2.html"
+                        title="previous chapter">Tutorial 2: Understanding electronic structure of molecules using NRLMOL</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="../ddos/density_of_states.html"
+                        title="next chapter">Plotting density of states using NRLMOL</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../../_sources/tutorials/dtutorials/T3-FOD_opt.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../ddos/density_of_states.html" title="Plotting density of states using NRLMOL"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="tutorial2.html" title="Tutorial 2: Understanding electronic structure of molecules using NRLMOL"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../nrlmoldoc_main.html">NRLMOL  0 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2013,   NRLMOL users .
+    </div>
+  </body>
+</html>

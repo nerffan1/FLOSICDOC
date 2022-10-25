@@ -1,0 +1,155 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>NRLMOL files: INPUTS and OUTPUTS &#8212; NRLMOL  0 documentation</title>
+    <link rel="stylesheet" href="../_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/language_data.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="ISYMGEN - Basis sets" href="isymgen.html" />
+    <link rel="prev" title="NRLMOL Mesh" href="mesh.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="isymgen.html" title="ISYMGEN - Basis sets"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="mesh.html" title="NRLMOL Mesh"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../nrlmoldoc_main.html">NRLMOL  0 documentation</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="nrlmol-files-inputs-and-outputs">
+<span id="nrlmolfiles"></span><h1>NRLMOL files: INPUTS and OUTPUTS<a class="headerlink" href="#nrlmol-files-inputs-and-outputs" title="Permalink to this headline">¶</a></h1>
+<p>The main required input file for NRLMOL is called <strong>CLUSTER</strong>.
+Using the minimal structural information one can set up NRLMOL calculation using default values for the most of the paramters. An auxillary input file is called <strong>NRLMOL_INPUT.DAT</strong>.
+Besides these a number of INPUT files can be used as input files if provided by users to control the job calculations. In practically
+most cases you will be with <strong>CLUSTER</strong> and <strong>NRLMOL_INPUT.DAT</strong> files. Following is the list of files that NRLMOL will generate
+when executed. They contain variours information about the calculations.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>LIST of FILES</p></li>
+</ul>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>ATOMSPHNN: Charge and spin charge in each inequivalent atom integrated over a sphere of
+specified  radius.</p></li>
+<li><p>CLUSTER  : Main input file.</p></li>
+<li><p>CLUSTER.MOLDEN  : This contains the geometry and converged molecular orbtials in the molden format.
+The file can be visualized using <em>MOLDEN</em> or <em>JMOL</em> moleclar viewers. The visualization of XMOL.xyz, CLUSTER.MOLDEN,     and WFHOMO* files is <em>highly</em> recommended.</p></li>
+<li><p>DIPOLE  : Contains x, y, z components of dipole moments in the atomic units.</p></li>
+<li><p>DOSOCU, DOSVIRT, DOSJNT  : Contain density of states information for the occupied, virtual and total states.</p></li>
+<li><p>EVALUES : The eigenvalues, their spin, symmetry representation, degeneracy and occupancy,
+Fermi energy for the current SCF cycle.  It can also be used as an
+input file to specify fixed occupation numbers.</p></li>
+<li><dl class="simple">
+<dt>EVALNNN<span class="classifier">The eigenvalues, their spin, symmetry representation, degeneracy and occupancy,</span></dt><dd><p>Fermi energy for each iteration number NNN.</p>
+</dd>
+</dl>
+</li>
+<li><p>FRCOUT   : Total energy, forces on each atom, dipole moment, applied electric field . Written at every optimization step.</p></li>
+<li><p>GEOCNVRG : Convergence criteria, Total energy , largest force, information about geometry
+optimization.  Is written after every complete SCF cycle.</p></li>
+<li><p>HISTORY:   Contains history of the geometry optimization. To see the energy as function of optimization step
+do ‘grep -i TR HISTORY’ in the directory.</p></li>
+<li><p>JNTOUT  : Joint density of states and absoprtion spectra.</p></li>
+<li><p>MAJNNN  : Majority spin density of states for the atom number NNN.</p></li>
+<li><p>MINNNN  : Minority spin density of states for the atom number NNN.</p></li>
+<li><p>RHOTOT  : Total density on a specified grid. Is written in Gaussian cubic format.</p></li>
+<li><p>RHOSPN  : Spin density on a specified grid. Is written in Gaussian cubic format.</p></li>
+<li><p>RUNS    :  Control restart of calculation. Caculations can be restarted from Hamiltonian (<strong>HAMOLD</strong>), wavefunctions (<strong>WFOUT</strong>), or potential (<strong>COUPOT</strong>).</p></li>
+<li><dl class="simple">
+<dt>SPNRES:  Gamma matrices, anisotropy energy, energy eigenvalue with spin-orbit coupling</dt><dd><p>(more description later).</p>
+</dd>
+</dl>
+</li>
+<li><p>SUMMARY : Total energy, electronic charge, kinetic energy and trace of hamiltonian for each
+iteration.</p></li>
+<li><p>VIBINP:   VIBINP is of the input files for the vibrational calculations. It contains, the last geometry (optimized), forces, electric field, dipole moment etc.</p></li>
+<li><dl class="simple">
+<dt>WFHOMONN: Orbital density on a specified grid. Is written in Gaussian cubic format. NN is</dt><dd><p>00 for HOMO and is positive for states above HOMO. NN is negative for states below HOMO.</p>
+</dd>
+</dl>
+</li>
+<li><p>XMOL.DAT : Goemetry in the xyz format. The first column contains atomic numbers. The atomic coordinates are in Angstrom.</p></li>
+<li><p>XMOL.xyz : Goemetry in the xyz format. The first column contains atomic labels. The atomic coordinates are in Angstrom. Use <strong>JMOL</strong> to visuliaze this.</p></li>
+</ol>
+</div></blockquote>
+</div></blockquote>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="mesh.html"
+                        title="previous chapter">NRLMOL Mesh</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="isymgen.html"
+                        title="next chapter">ISYMGEN - Basis sets</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/docs/files.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="isymgen.html" title="ISYMGEN - Basis sets"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="mesh.html" title="NRLMOL Mesh"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../nrlmoldoc_main.html">NRLMOL  0 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2013,   NRLMOL users .
+    </div>
+  </body>
+</html>

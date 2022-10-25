@@ -1,0 +1,159 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>ISYMGEN - Basis sets &#8212; NRLMOL  0 documentation</title>
+    <link rel="stylesheet" href="../_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/language_data.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="nav-item nav-item-0"><a href="../nrlmoldoc_main.html">NRLMOL  0 documentation</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="isymgen-basis-sets">
+<span id="usymgen"></span><h1>ISYMGEN - Basis sets<a class="headerlink" href="#isymgen-basis-sets" title="Permalink to this headline">¶</a></h1>
+<p>The basis set information is in the ISYMGEN file which is created when you run NRLMOL.
+This file contains the basis set for each identity atom. For each orbital of a given atom, same set of primitive Gaussians is used. For example, the default basis set for carbon is written as below :</p>
+<p>The following is the Pederson-Porezag (NRLMOL default) basis in the  <strong>ISYMGEN</strong> .  The newer
+version allows use of few other basis sets such as : 6-31G*, 6-311G**, STO-3G, TZVP, DGDZVP etc.
+The Pederson-Porezag (NRLMOL default) is specially optimized for the PBE functional.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>   <span class="mi">6</span>   <span class="mi">6</span>                       <span class="n">ELECTRONIC</span> <span class="n">AND</span> <span class="n">NUCLEAR</span> <span class="n">CHARGE</span>        
+<span class="n">ALL</span>                            <span class="n">ALL</span><span class="o">-</span><span class="n">ELECTRON</span> <span class="n">ATOM</span> <span class="n">TYPE</span>  
+   <span class="mi">3</span>                           <span class="n">NUMBER</span> <span class="n">OF</span> <span class="n">ATOMS</span> <span class="n">OF</span> <span class="n">TYPE</span> <span class="n">CAR</span>  
+<span class="n">ALL</span><span class="o">-</span><span class="n">CAR001</span>    
+<span class="n">ALL</span><span class="o">-</span><span class="n">CAR002</span>    
+<span class="n">ALL</span><span class="o">-</span><span class="n">CAR003</span>    
+<span class="n">EXTRABASIS</span>         <span class="n">CONTROLS</span> <span class="n">USAGE</span> <span class="n">OF</span> <span class="n">SUPPLEMENTARY</span> <span class="n">BASIS</span> <span class="n">FUNCTIONS</span>   
+ <span class="mi">12</span>                <span class="n">NUMBER</span> <span class="n">OF</span> <span class="n">BARE</span> <span class="n">GAUSSIANS</span>   
+   <span class="mi">5</span>   <span class="mi">4</span>   <span class="mi">3</span>       <span class="n">NUMBER</span> <span class="n">OF</span> <span class="n">S</span><span class="p">,</span><span class="n">P</span><span class="p">,</span><span class="n">D</span> <span class="n">FUNCTIONS</span>   
+   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">1</span>       <span class="n">SUPPLEMENTARY</span> <span class="n">S</span><span class="p">,</span><span class="n">P</span><span class="p">,</span><span class="n">D</span> <span class="n">FUNCTIONS</span>  
+
+       <span class="mf">0.22213361</span><span class="n">D</span><span class="o">+</span><span class="mi">05</span>       <span class="mf">0.33317370</span><span class="n">D</span><span class="o">+</span><span class="mi">04</span>       <span class="mf">0.75790135</span><span class="n">D</span><span class="o">+</span><span class="mi">03</span>  
+       <span class="mf">0.21454372</span><span class="n">D</span><span class="o">+</span><span class="mi">03</span>       <span class="mf">0.69924889</span><span class="n">D</span><span class="o">+</span><span class="mi">02</span>       <span class="mf">0.25086135</span><span class="n">D</span><span class="o">+</span><span class="mi">02</span>  
+       <span class="mf">0.95910418</span><span class="n">D</span><span class="o">+</span><span class="mi">01</span>       <span class="mf">0.38024557</span><span class="n">D</span><span class="o">+</span><span class="mi">01</span>       <span class="mf">0.14891854</span><span class="n">D</span><span class="o">+</span><span class="mi">01</span>  
+       <span class="mf">0.57487653</span><span class="n">D</span><span class="o">+</span><span class="mi">00</span>       <span class="mf">0.21494732</span><span class="n">D</span><span class="o">+</span><span class="mi">00</span>       <span class="mf">0.77209650</span><span class="n">D</span><span class="o">-</span><span class="mi">01</span>  
+  
+       <span class="mf">0.19792249</span><span class="n">D</span><span class="o">+</span><span class="mi">00</span>       <span class="mf">0.36998977</span><span class="n">D</span><span class="o">+</span><span class="mi">00</span>       <span class="mf">0.63644615</span><span class="n">D</span><span class="o">+</span><span class="mi">00</span>  
+       <span class="mf">0.10124931</span><span class="n">D</span><span class="o">+</span><span class="mi">01</span>       <span class="mf">0.14480787</span><span class="n">D</span><span class="o">+</span><span class="mi">01</span>       <span class="mf">0.17173689</span><span class="n">D</span><span class="o">+</span><span class="mi">01</span>  
+       <span class="mf">0.14931932</span><span class="n">D</span><span class="o">+</span><span class="mi">01</span>       <span class="mf">0.68987161</span><span class="n">D</span><span class="o">+</span><span class="mi">00</span>       <span class="mf">0.86072247</span><span class="n">D</span><span class="o">-</span><span class="mi">01</span>  
+      <span class="o">-</span><span class="mf">0.16566695</span><span class="n">D</span><span class="o">-</span><span class="mi">02</span>       <span class="mf">0.37766033</span><span class="n">D</span><span class="o">-</span><span class="mi">03</span>      <span class="o">-</span><span class="mf">0.47105343</span><span class="n">D</span><span class="o">-</span><span class="mi">04</span>  
+ 
+      <span class="o">-</span><span class="mf">0.45005260</span><span class="n">D</span><span class="o">-</span><span class="mi">01</span>      <span class="o">-</span><span class="mf">0.84621052</span><span class="n">D</span><span class="o">-</span><span class="mi">01</span>      <span class="o">-</span><span class="mf">0.14496564</span><span class="n">D</span><span class="o">+</span><span class="mi">00</span>  
+      <span class="o">-</span><span class="mf">0.23535601</span><span class="n">D</span><span class="o">+</span><span class="mi">00</span>      <span class="o">-</span><span class="mf">0.34215368</span><span class="n">D</span><span class="o">+</span><span class="mi">00</span>      <span class="o">-</span><span class="mf">0.44595124</span><span class="n">D</span><span class="o">+</span><span class="mi">00</span>  
+      <span class="o">-</span><span class="mf">0.45263971</span><span class="n">D</span><span class="o">+</span><span class="mi">00</span>      <span class="o">-</span><span class="mf">0.32216414</span><span class="n">D</span><span class="o">+</span><span class="mi">00</span>      <span class="o">-</span><span class="mf">0.12988420</span><span class="n">D</span><span class="o">-</span><span class="mi">01</span>  
+       <span class="mf">0.20135471</span><span class="n">D</span><span class="o">+</span><span class="mi">00</span>       <span class="mf">0.12769913</span><span class="n">D</span><span class="o">+</span><span class="mi">00</span>       <span class="mf">0.14135467</span><span class="n">D</span><span class="o">-</span><span class="mi">01</span>  
+
+       <span class="mf">0.00000000</span><span class="n">D</span><span class="o">+</span><span class="mi">00</span>       <span class="mf">0.00000000</span><span class="n">D</span><span class="o">+</span><span class="mi">00</span>       <span class="mf">0.00000000</span><span class="n">D</span><span class="o">+</span><span class="mi">00</span>  
+       <span class="mf">0.00000000</span><span class="n">D</span><span class="o">+</span><span class="mi">00</span>       <span class="mf">0.00000000</span><span class="n">D</span><span class="o">+</span><span class="mi">00</span>       <span class="mf">0.00000000</span><span class="n">D</span><span class="o">+</span><span class="mi">00</span>  
+       <span class="mf">0.00000000</span><span class="n">D</span><span class="o">+</span><span class="mi">00</span>       <span class="mf">0.00000000</span><span class="n">D</span><span class="o">+</span><span class="mi">00</span>       <span class="mf">0.00000000</span><span class="n">D</span><span class="o">+</span><span class="mi">00</span>  
+       <span class="mf">0.10000000</span><span class="n">D</span><span class="o">+</span><span class="mi">01</span>       <span class="mf">0.00000000</span><span class="n">D</span><span class="o">+</span><span class="mi">00</span>       <span class="mf">0.00000000</span><span class="n">D</span><span class="o">+</span><span class="mi">00</span>  
+
+       <span class="mf">0.00000000</span><span class="n">D</span><span class="o">+</span><span class="mi">00</span>       <span class="mf">0.00000000</span><span class="n">D</span><span class="o">+</span><span class="mi">00</span>       <span class="mf">0.00000000</span><span class="n">D</span><span class="o">+</span><span class="mi">00</span>  
+       <span class="mf">0.00000000</span><span class="n">D</span><span class="o">+</span><span class="mi">00</span>       <span class="mf">0.00000000</span><span class="n">D</span><span class="o">+</span><span class="mi">00</span>       <span class="mf">0.00000000</span><span class="n">D</span><span class="o">+</span><span class="mi">00</span>  
+       <span class="mf">0.00000000</span><span class="n">D</span><span class="o">+</span><span class="mi">00</span>       <span class="mf">0.00000000</span><span class="n">D</span><span class="o">+</span><span class="mi">00</span>       <span class="mf">0.00000000</span><span class="n">D</span><span class="o">+</span><span class="mi">00</span>  
+       <span class="mf">0.00000000</span><span class="n">D</span><span class="o">+</span><span class="mi">00</span>       <span class="mf">0.10000000</span><span class="n">D</span><span class="o">+</span><span class="mi">01</span>       <span class="mf">0.00000000</span><span class="n">D</span><span class="o">+</span><span class="mi">00</span>  
+
+       <span class="mf">0.00000000</span><span class="n">D</span><span class="o">+</span><span class="mi">00</span>       <span class="mf">0.00000000</span><span class="n">D</span><span class="o">+</span><span class="mi">00</span>       <span class="mf">0.00000000</span><span class="n">D</span><span class="o">+</span><span class="mi">00</span>  
+       <span class="mf">0.00000000</span><span class="n">D</span><span class="o">+</span><span class="mi">00</span>       <span class="mf">0.00000000</span><span class="n">D</span><span class="o">+</span><span class="mi">00</span>       <span class="mf">0.00000000</span><span class="n">D</span><span class="o">+</span><span class="mi">00</span>  
+       <span class="mf">0.00000000</span><span class="n">D</span><span class="o">+</span><span class="mi">00</span>       <span class="mf">0.00000000</span><span class="n">D</span><span class="o">+</span><span class="mi">00</span>       <span class="mf">0.00000000</span><span class="n">D</span><span class="o">+</span><span class="mi">00</span>  
+       <span class="mf">0.00000000</span><span class="n">D</span><span class="o">+</span><span class="mi">00</span>       <span class="mf">0.00000000</span><span class="n">D</span><span class="o">+</span><span class="mi">00</span>       <span class="mf">0.10000000</span><span class="n">D</span><span class="o">+</span><span class="mi">01</span>  
+
+       <span class="mf">0.23138630</span><span class="n">D</span><span class="o">-</span><span class="mi">01</span>       <span class="mf">0.42649133</span><span class="n">D</span><span class="o">-</span><span class="mi">01</span>       <span class="mf">0.74658851</span><span class="n">D</span><span class="o">-</span><span class="mi">01</span>  
+       <span class="mf">0.12024115</span><span class="n">D</span><span class="o">+</span><span class="mi">00</span>       <span class="mf">0.18351176</span><span class="n">D</span><span class="o">+</span><span class="mi">00</span>       <span class="mf">0.24706804</span><span class="n">D</span><span class="o">+</span><span class="mi">00</span>  
+       <span class="mf">0.30714219</span><span class="n">D</span><span class="o">+</span><span class="mi">00</span>       <span class="mf">0.31372706</span><span class="n">D</span><span class="o">+</span><span class="mi">00</span>       <span class="mf">0.26726340</span><span class="n">D</span><span class="o">+</span><span class="mi">00</span>  
+       <span class="mf">0.14756585</span><span class="n">D</span><span class="o">+</span><span class="mi">00</span>       <span class="mf">0.47585576</span><span class="n">D</span><span class="o">-</span><span class="mi">01</span>       <span class="mf">0.72796459</span><span class="n">D</span><span class="o">-</span><span class="mi">02</span>  
+
+       <span class="mf">0.00000000</span><span class="n">D</span><span class="o">+</span><span class="mi">00</span>       <span class="mf">0.00000000</span><span class="n">D</span><span class="o">+</span><span class="mi">00</span>       <span class="mf">0.00000000</span><span class="n">D</span><span class="o">+</span><span class="mi">00</span>  
+       <span class="mf">0.00000000</span><span class="n">D</span><span class="o">+</span><span class="mi">00</span>       <span class="mf">0.00000000</span><span class="n">D</span><span class="o">+</span><span class="mi">00</span>       <span class="mf">0.00000000</span><span class="n">D</span><span class="o">+</span><span class="mi">00</span>  
+       <span class="mf">0.00000000</span><span class="n">D</span><span class="o">+</span><span class="mi">00</span>       <span class="mf">0.00000000</span><span class="n">D</span><span class="o">+</span><span class="mi">00</span>       <span class="mf">0.00000000</span><span class="n">D</span><span class="o">+</span><span class="mi">00</span>  
+       <span class="mf">0.10000000</span><span class="n">D</span><span class="o">+</span><span class="mi">01</span>       <span class="mf">0.00000000</span><span class="n">D</span><span class="o">+</span><span class="mi">00</span>       <span class="mf">0.00000000</span><span class="n">D</span><span class="o">+</span><span class="mi">00</span>  
+
+
+       <span class="o">......</span>   
+       <span class="o">......</span>   
+       <span class="o">......</span>
+</pre></div>
+</div>
+<p>Here, the first line specifies the nuclear and electronic charges in the atom. The nuclear and electronic charges specifies the actual atom (e.g. Nuc charge = 6 for carbon) but the electronic charge depends on whether all electron or pseudo potential calculations are used (e.g. for carbon it would be 6 for all electron and 4 for a pseudopotential calculation)</p>
+<p>The second line specifies the type of calculation :</p>
+<p>ALL for all-electron BHS for BHS pseudopotential TAB for tabulated user-supplied pseudopotential</p>
+<p>The third and fourth lines specify the number of total such atoms in the geometry
+and their symbols in the SYMBOL file. EXTRABASIS =1 in SYMBOL file will signal
+the program to use the supplementary basis functions. Then comes the number of
+primitive Gaussians followed by the number of the s, p and d -type contracted
+Gaussians. The number of supplementary functions of s, p and d type are written next.
+These informations are followed by some blocks of numbers. The first block lists the
+exponents of the primitive Gaussians. This is then followed by Ns blocks where Ns
+is the number of contracted s-type Gaussians. The first block is the coefficients
+multiplying the primitive Gaussians for the 1s contracted Gaussian, the second block
+is for 2s Gaussian and so on. After the Ns number of such blocks, comes the Np blocks
+corresponding to the p-type contracted Gaussians followed by similar Nd number of d-type Gaussians. In the example for carbon atom above, the 1s and 2s contracted Gaussian is a linear combination of the all the primitive Gaussians whereas the higher unoccupied s orbitals are taken as single long-range Gaussians. Similarly for p orbitals where only the 2p orbital is occupied. These are then followed by similar blocks corresponding to the supplementary functions. The supplementary functions are used only when</p>
+<p>EXTRABASIS     =      1
+in the SYMBOL file. These are generally polarization functions and are usually only used for the calculation of IR and Raman intensities and possibly for dipole moments and polarizabilities.</p>
+<p>The carbon atom basis set in the example might be called a “12-1211+++G(3d)” basis in Pople/Gaussian parlance if we consider the last s,p,d orbitals as diffuse functions. This means 12 primitive gaussians contracted to the core 1s orbital, then a triple-zeta valence set (three sets of s and three sets of p orbitals) represented by 12, 1 and 1 primitive gaussians, three sets of d polarization functions and three sets of diffuse functions (s,p,d) each represented by a single primitive gaussian. This is an example of a “generally contracted” basis in which the same set of primitives contributes to all the orbitals. If the diffuse functions are considered as valence, then this basis has a quadruple-zeta functions.</p>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/old_docs/isymgen.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="nav-item nav-item-0"><a href="../nrlmoldoc_main.html">NRLMOL  0 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2013,   NRLMOL users .
+    </div>
+  </body>
+</html>

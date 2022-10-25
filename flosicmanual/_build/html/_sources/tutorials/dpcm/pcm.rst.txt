@@ -1,0 +1,84 @@
+Running calculations with the PCM driver
+========================================
+
+Introduction
+++++++++++++
+
+PCM stands for the **Polarizable Continuum Model**, a method for modeling the polarization effect of a solute in the presence of a solvent. The driver incorporated into the code was developed by R. Di Remigio, L. Frediani and K. Mozgawa, with contributions from R. Bast (CMake framework),U. Ekstroem (automatic differentiation library) and J. Juselius (input parsing library and CMake framework), it is distributed under the terms of the GNU Lesser General Public License. The version currently incorporated into the code is 1.1.1.
+
+The theory comes from:*"Quantum Mechanical Continuum Solvation Models"*, J. Tomasi, B. Mennucci and R. Cammi, Chem. Rev., 105 (2005) 2999
+
+Further documentation for the PCMsolver driver can be found here: http://pcmsolver.readthedocs.io/en/latest/
+
+Installation
+++++++++++++
+
+The cmake system must be installed in the system.
+
+Get the newest version from the nrlmol.git repository: There should be a directory called **PCM**, in here the library must be compiled first.
+
+In the PCM directory there should be a file called **setup.py**, this is a python script to set up the variables en environment needed to run cmake. You can probably just run it by itself and it will try to figure out the correct options for your system.
+
+If this does not work, the you need to provice the following options:
+
+1. A C++ compiler
+2. A C compiler
+3. A Fortran compiler
+4. An option to only create the static library
+
+You can manually speficy this options with:
+
+$ ./setup.py ``--``\ cxx=<c++ compiler> ``--``\ cc=<c compiler> ``--``\ fc=<fortran compiler> ``--``\ static
+
+in a typical gnu system this options are:
+
+$ ./setup.py ``--``\cxx=g++ ``--``\cc=gcc ``--``\fc=gfortran ``--``\static
+
+but this options change for remote clusters that use different default compilers.
+
+Once this operation finishes, you will be instructed to change to a newly created directory called *build*. Once you change to it, you should run *make*, which will create the library file **libpcm.a** so that your code can now link against it.
+
+We have found that in some remote clusters the *make* command does create the entire PCMsolver and ingores the option to just create the library (and takes a very long time to finish), you can either stopit once the library file is created (at around 35% progress) or wait until it finishes.
+
+It should also be mentioned that if you modify the code in the library, you must erase the *build* directory and rerun the *setup.py* script to rebuild the library.
+
+Usage
++++++
+
+Once the library is built, you can now compile and link the code. However, there are some options that must be setup before you compile the code. These are setup in the interface from the code to the library, they are set at compile time and cannot be modified during code execution, we will cover these in the next section.
+
+Copy the **NRLMOL_INPUT.DAT** file from the source code and put it in the directory where you will run your simulation.
+
+Modify the value of the variable **PCMV** to **Y** to run the PCM driver during code execution.
+
+The PCM driver reads the geometry of the solute from the **XMOL.DAT** file. Normally this is no problem when you start from the **CLUSTER** file, as the XMOL.DAT file will automatically be generated. However, when starting from the **SYMBOL** file (as it is the case when running excited state calculations), make shure that you have the **XMOL.DAT** file present in directory before you run the calculation.
+
+Run your code normally.
+
+There should now be a PCM polarization energy contribution in the energy section at the end of each iteration of your oputput log file.
+
+Interfacing the library
++++++++++++++++++++++++
+
+As previously stated, the options that are passed to the library are set at compile time and cannot be modified at run time.
+
+These are set in a file in the source code called **Fortran_host-modules.f90**. 
+
+For example, to set what solvent to use, in the previous file look for the line that starts with:
+
+``character(kind=c_char, len=17) :: pcmmod_solvent =`` 
+
+A full list of the available solvents can be found here:
+
+https://pcmsolver.readthedocs.io/en/latest/users/input.html#available-solvents
+
+If using water, then the line would look like this:
+
+``character(kind=c_char, len=17) :: pcmmod_solvent = 'water'//c_null_char``
+
+or this:
+
+``character(kind=c_char, len=17) :: pcmmod_solvent = 'h2o'//c_null_char``
+
+The ending part *//c_null_char* is needed so ensure compatibility with the C language (which the PCM solver is written in).
+

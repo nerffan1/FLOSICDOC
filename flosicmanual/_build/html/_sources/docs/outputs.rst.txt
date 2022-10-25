@@ -1,0 +1,47 @@
+.. _nrlmolfiles:
+
+==================================
+OUTPUTS
+==================================
+
+When NRLMOL is executed the main output is printed on the screen but it is a good practice to redirect it to a file. The standard output file contains information about the code, parameters used in the calculations and the results are appended as the run progresses. It is most important to check the output file if a calculation terminates since most of the error messages are printed there.
+
+Following is the list of the most important files that NRLMOL generates when executed. They contain different information about the calculation.
+
+ * **GENERAL OUTPUTS**
+ 
+  #. **DIPOLE:** Contains x, y, z components of dipole moments in the atomic units.
+
+  #. **EVALUES:** The eigenvalues, their spin, symmetry representation, degeneracy and occupancy, Fermi energy for the current SCF cycle.  It can also be used as an input file to specify fixed occupation numbers.
+
+  #. **EVALNNN:** The eigenvalues, their spin, symmetry representation, degeneracy and occupancy, Fermi energy for each iteration number NNN.
+
+  #. **FRCOUT:** Total energy, forces on each atom, dipole moment, applied electric field. Written at every optimization step.
+
+  #. **GEOCNVRG:** Convergence criteria, total energy , largest force, information about geometry optimization.  It is written after every complete SCF cycle.
+
+  #. **HISTORY:** Contains history of the geometry optimization. To see the energy as function of optimization step. 
+     
+  #. **RUNS:**  Controls restart of calculation. Caculations can be restarted from Hamiltonian (**HAMOLD**), wavefunctions (**WFOUT**), or potential (**POTOLD**).
+
+  #. **SUMMARY:** Hamiltonian trace, total DFT energy, kinetic plus the non-local energy, electronic charge and SIC-DFT (corrected) energy for each iteration within the SCF. If you run another calculation in the same directory, for example in an optimization, the results will append here. 
+
+  #. **VIBINP:** Input file for vibrational calculation. It contains, the last geometry (optimized), forces, electric field, dipole moment etc.
+
+  #. **XMOL.DAT:** Geometry in the xyz format. The first column contains atomic numbers. The atomic coordinates are in Angstrom.
+
+  #. **XMOL.xyz:** Geometry in the xyz format. The first column contains atomic labels. The atomic coordinates are in Angstrom. Use **JMOL** to visuliaze this.
+
+When a FLOSIC calculation is carried out, additional output files are generated.
+
+ * **FLOSIC OUTPUTS**
+
+  #. **fande.dat:** Total corrected energy, root sum of the squared FOD forces and largest FOD force. Consecutive runs in the same directory are appended in **fande.out**.
+
+  #. **fforce.dat:** Calculated force for each FOD.
+
+  #. **XMOL_FRM.UP/DN:** Coordinates and norm in Bohrs of the up/down FODs. They are in xyz format with an H as atomic symbol, so that they can be opened with **JMOL**.
+
+  #. **movie.up/dn** Here the **XMOL_FRM.UP/DN** files are appended for each FLOSIC calculation in the directory. 
+
+  #. **records** It has the SIC-DFT total energy, the FOD positions and the FOD forces or each FLOSIC calculation in the directory.

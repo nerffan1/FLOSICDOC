@@ -1,0 +1,12 @@
+ 1      : Number of excited states to be calculated. For starter keep it 1.
+ -76.387242322234A     : Ground state SCF energy
+1 5                    : Spin and state indices for the hole
+2 6                    : SPin and state indices for the particle
+5                      : Number of GS occupied orbitals of spin 1
+1 1 1 1 1              : GS occupancy of the states of spin 1
+5                      : Number of GS occupied orbitals of spin 2
+1 1 1 1 1              : GS occupancy of the states of spin 2
+5                      : Number of excited occupied orbitals of spin 1
+1 1 1 1 0              : occupancy of the orbitals of spin 1 in excited state
+6                      : Number of excited occupied orbitals of spin 2
+1 1 1 1 1 1            : occupancy of the orbitals of spin 2 in excited state

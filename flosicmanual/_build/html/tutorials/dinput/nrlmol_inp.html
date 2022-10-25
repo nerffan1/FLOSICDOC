@@ -1,0 +1,449 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Usage of the CLUSTER.INP file &#8212; NRLMOL  0 documentation</title>
+    <link rel="stylesheet" href="../../_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../_static/language_data.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Tutorial 1 Understanding atomic structure using NRLMOL" href="../dtutorials/tutorial1.html" />
+    <link rel="prev" title="ISYMGEN - Basis sets" href="../../docs/isymgen.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../dtutorials/tutorial1.html" title="Tutorial 1 Understanding atomic structure using NRLMOL"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="../../docs/isymgen.html" title="ISYMGEN - Basis sets"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../nrlmoldoc_main.html">NRLMOL  0 documentation</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="usage-of-the-cluster-inp-file">
+<h1>Usage of the CLUSTER.INP file<a class="headerlink" href="#usage-of-the-cluster-inp-file" title="Permalink to this headline">¶</a></h1>
+<p>The description of the keywords is listed. If none of the options is specified in the input file, the underlined one is used by default. The boldface printed part (first five letters) of the keywords and options are mandatory for the correct input interpretation by NRLMOL. Therefore, OPTIMIZATION, OPTIMIZE, and OPTIM are all allowed input forms for the keyword OPTIMIZATION.</p>
+<div class="section" id="keyword-geometry">
+<h2>Keyword GEOMETRY<a class="headerlink" href="#keyword-geometry" title="Permalink to this headline">¶</a></h2>
+<p>This keyword is mandatory! It specifies the molecular geometry.
+Options:</p>
+<p>CARTESIAN / ZMATRIX</p>
+<p>CARTESIAN</p>
+<p>The molecular structure is given in Cartesian coordinates.</p>
+<p>ZMATRIX</p>
+<p>The molecular structure is defined by a Z-matrix. The form
+Z-MATRIX is equivalent to ZMATRIX.
+ANGSTROM / BOHR</p>
+<p>ANGSTROM</p>
+<p>Coordinates or bond distances are given in Ångströms.</p>
+<p>BOHR</p>
+<p>Coordinates or bond distances are given in atomic units.
+Description:
+The geometry is read in the keyword body of GEOMETRY in free format, one line for each atom. In the case of a CARTESIAN input the atomic symbol (e.g. H), which may carry an identification number (e.g. H1), and the x, y and z coordinates of each atom of the system must be specified. As an example, the geometry of H2O may be specified as:</p>
+<p>GEOMETRY CARTESIAN ANGSTROM</p>
+<p>O  0.00  0.00  0.00</p>
+<p>H  0.76  0.00  0.52</p>
+<p>H -0.76  0.00  0.52</p>
+<p>The Cartesian coordinates of an individual atom, defined by the atomic symbol (e.g. H2), or an atom group, defined by the element symbol (e.g. H), can be frozen during the geometry optimization in redundant coordinates. To keep all three degrees of freedom of an atom fixed the corresponding atomic symbol or element symbol has to be specified with the string XYZ in the keyword body of CONSTANTS. The string X will freeze only the x coordinate of the corresponding atom, the string XY fixes the x and y coordinates, etc. In the following example, the oxygen atom is kept frozen and the movements of all hydrogen atoms are restricted to the xz-plane (y coordinate frozen) during the optimization.</p>
+<p>GEOMETRY CARTESIAN ANGSTROM</p>
+<p>O  0.00  0.00  0.00</p>
+<p>H  0.76  0.00  0.52</p>
+<p>H -0.76  0.00  0.52</p>
+<p>#</p>
+<p>CONSTANTS</p>
+<p>O XYZ</p>
+<p>H Y</p>
+<p>The comment line (#) is given only for clarity. The following input for a water-like system consists of a frozen oxygen atom, a hydrogen atom, H1, fixed in the xz-plane.</p>
+<p>GEOMETRY CARTESIAN ANGSTROM</p>
+<p>O   0.00  0.00  0.00</p>
+<p>H1  0.76  0.00  0.52</p>
+<p>H2 -0.76  0.00  0.52</p>
+<p>#</p>
+<p>CONSTANTS</p>
+<p>O  XYZ</p>
+<p>H1 Y</p>
+<p>If the geometry of the system is given by a Z-matrix, using the option ZMATRIX, each line in the keyword body of GEOMETRY describes the connectivity of the atom, which again is defined by its atomic symbol. The first atom of the Z-matrix defines the origin of the input (see Figure 1) and therefore has no connectivity information.</p>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="../../_images/fig1.png"><img alt="../../_images/fig1.png" src="../../_images/fig1.png" style="width: 215.4px; height: 281.4px;" /></a>
+</div>
+<p>Figure 1: Orientation of the first three atoms defined in the Z-matrix.</p>
+<p>The second atom lies on the z-axis of the input coordinate system and is connected to the first atom at a distance RAB. The third atom lies in the xz-plane and connects to the two previously defined atoms at a distance RBC and an angle TABC. Each of the following atoms is defined by an input line in free format containing the information:
+LABEL NB RAB NC TABC ND PABCD
+Here LABEL is the atomic label of atom A. NB, NC, and ND are the Z-matrix line numbers or the atomic labels of the atoms B, C and D which respect to which atom A is defined by a length (RAB), angle (TABC), and dihedral angle (PABCD). These are the so-called internal coordinates of the system. Their values are given by RAB (in Ångström or Bohr), TABC, and PABCD (in degrees), respectively. The maximum length of these numbers in the Z-matrix is limited to ten characters. The dihedral angle is defined by the angle between the planes spanned by the atoms {A, B, C} and {B, C, D}, respectively. The sign of the dihedral angle is defined according to the Newman projection shown in Figure 2. If the projection angle is oriented clockwise then the dihedral angle is positive.</p>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="../../_images/fig2.png"><img alt="../../_images/fig2.png" src="../../_images/fig2.png" style="width: 316.2px; height: 297.0px;" /></a>
+</div>
+<p>Figure 2: Definition of positive (top) and negative (bottom) dihedral angles in deMon.</p>
+<p>Instead of giving the values for RAB, TABC, and PABCD directly in the Z-matrix, they may also be represented by symbolic strings with no more than eight characters each. These strings must be assigned to CONSTANT or VARIABLE values (see corresponding KEYWORDS) in the input, as the following example</p>
+<p>GEOMETRY ZMATRIX ANGSTROM</p>
+<p>C1</p>
+<p>C2  C1  rCC</p>
+<p>H1  C1  rCH  C2  aCCH</p>
+<p>H2  C1  rCH  C2  aCCH  H1  dHCCH</p>
+<p>H3  C2  rCH  C1  aCCH  H2  dHCCH</p>
+<p>H4  C2  rCH  C1  aCCH  H1  dHCCH</p>
+<p>#</p>
+<p>VARIABLES</p>
+<p>rCC   1.3390</p>
+<p>rCH   1.0850</p>
+<p>aCCH  121.09</p>
+<p>#</p>
+<p>CONSTANT</p>
+<p>dHCCH 180.0</p>
+<p>The internal coordinates listed under VARIABLES are changed during geometry optimization, whereas the coordinates listed under CONSTANTS are kept frozen. The RAB, TABC, and PABCD values that are directly defined in the Z-matrix always are interpreted as constants.
+If one uses internal coordinates, dummy atoms often are useful. The atomic symbol X has been reserved for them. The following example shows the use of a dummy atom in the definition of HCN.</p>
+<p>GEOMETRY ZMATRIX ANGSTROM</p>
+<p>H</p>
+<p>C  1  R1</p>
+<p>X  2  1.0  1  90.0</p>
+<p>N  2  R2   3  A1    1  180.0</p>
+<p>#</p>
+<p>VARIABLES</p>
+<p>R1  1.089</p>
+<p>R3  1.166</p>
+<p>A1  90.00</p>
+<p>Here the dummy atom is used to avoid a 180o angle which might cause problems in a geometry optimization. Please note that the structure parameters which are defined inside the Z-matrix are kept constant during structure optimization.</p>
+</div>
+<div class="section" id="keyword-constants">
+<h2>Keyword CONSTANTS<a class="headerlink" href="#keyword-constants" title="Permalink to this headline">¶</a></h2>
+<p>This keyword assigns constant Cartesian and internal structure parameters.
+Options: None</p>
+<p>Description:</p>
+<p>The body of CONSTANTS lists all atoms and internal coordinates which are kept frozen during the geometry optimization. The atomic or element symbol with the string XYZ is used to freeze the atom or group of atoms in redundant coordinates. The string X will only freeze the x coordinate of the atom, the string XY the x and y coordinates, etc.
+For internal coordinate inputs, freezing of a particular degree of freedom is done by giving the symbolic coordinate string of the Z-matrix and its assigned (frozen) value (real number). The maximum length of the value string is 15 characters. Please note that structure parameters that are explicitly defined inside the Z-matrix always are treated as CONSTANTS in optimizations.</p>
+<p>Constants</p>
+<p>H    XYZ</p>
+<p>A  120.0</p>
+</div>
+<div class="section" id="keyword-variables">
+<h2>Keyword VARIABLES<a class="headerlink" href="#keyword-variables" title="Permalink to this headline">¶</a></h2>
+<p>This keyword assigns variable internal coordinates.</p>
+<p>Options: None</p>
+<p>Description:</p>
+<p>The body of VARIABLES collects all symbolic coordinate strings of the Z-matrix, along with their initial values, which are to be optimized. The maximum length for the variable value assigned under VARIABLES is 15 characters. The maximum length for symbolic strings in the Z-matrix that denote variables or constants is 8 characters.</p>
+</div>
+<div class="section" id="keyword-netspin">
+<h2>Keyword NETSPIN<a class="headerlink" href="#keyword-netspin" title="Permalink to this headline">¶</a></h2>
+<p>This keyword specifies the netspin of the system, i.e. number of unpaired electrons.
+Options: FIXED</p>
+<p>&lt;Real&gt;</p>
+<p>Netspin</p>
+<p>FIXED</p>
+<p>The netspin is fixed and not optimized automatically.</p>
+<p>Description:</p>
+<p>The default netspin are 0 for closed and 1 for open shell systems. The program will check automatically if the specified multiplicity is allowed for the given molecular system and its charge.</p>
+</div>
+<div class="section" id="keyword-charge">
+<h2>Keyword CHARGE<a class="headerlink" href="#keyword-charge" title="Permalink to this headline">¶</a></h2>
+<p>This keyword specifies the net charge of the system.</p>
+<p>Options:</p>
+<p>&lt;Real&gt;</p>
+<p>Charge of the system.</p>
+<p>Description:</p>
+<p>The default net charge is 0. Beware that net negative charges (anions) can lead to unphysical behavior with simple approximate density functionals.[1]</p>
+</div>
+<div class="section" id="keyword-optimization">
+<h2>Keyword OPTIMIZATION<a class="headerlink" href="#keyword-optimization" title="Permalink to this headline">¶</a></h2>
+<p>This keyword controls the local geometry optimization.
+Options:</p>
+<p>REDUNDANT / CARTESIAN</p>
+<p>REDUNDANT</p>
+<p>The optimization is performed in delocalized redundant internal coordinates. This is the default.</p>
+<p>CARTESIAN</p>
+<p>The optimization is performed in Cartesian coordinates.</p>
+<p>TOL=&lt;Real&gt;</p>
+<p>Optimization convergence criterion for MAX gradient. Default is 1 x 10-3 atomic units.</p>
+<p>STEP=&lt;Real&gt;</p>
+<p>Maximum step size in optimization. Default is 0.3 atomic units.</p>
+<p>Description:</p>
+<p>By default, deMon2k uses delocalized internal redundant coordinates for the geometry optimization or transition state search [2,3]. For full geometry optimizations, this is also the recommended method. Because of the possible linear dependencies of the internal coordinates defined in the Z-matrix, optimization in these coordinates may become problematic for larger systems (&gt; 30 atoms). With the REDUNDANT option and a Cartesian input, NRLMOL constructs a Z-matrix from the Cartesian input and a set of linear combinations of internal coordinates (delocalized coordinates) which avoids linear dependencies. This option should be used if an optimization gets stuck and has to be restarted. With the REDUNDANT option and an internal Z-matrix input, the optimization also is performed in delocalized internal redundant coordinates. However, now the user-defined internal coordinates of the Z-matrix are included in the delocalized internal redundant coordinates. At each optimization step these delocalized internal redundant coordinates are transformed back to the coordinates of the Z-matrix input. Table 1 shows the relationships between the types of input and types of optimization options. Each cell in that Table contains two values. The upper value shows the coordinate system used for an optimization step, while the lower value shows the coordinate system.</p>
+<p>Table 1: Relationship between different options for the keywords GEOMETRY and OPTIMIZATION.</p>
+<p>With the TOL option the optimization convergence criterion can be specified. Convergence of the optimization is based on the remaining maximum forces. The TOL option specifies the maximum force convergence criterion. The maximum step length (in atomic units) used in the optimization can be specified with the STEP option.
+The (P)-RFO steps [4,5] can be chosen by selecting the RFO STEPTYPE (see KEYWORD). Both methods guarantee that the (right) Hessian structure (no negative eigenvalues) is preserved.</p>
+</div>
+<div class="section" id="keyword-hessian">
+<h2>Keyword HESSIAN<a class="headerlink" href="#keyword-hessian" title="Permalink to this headline">¶</a></h2>
+<p>This keyword specifies the choice of the starting Hessian for geometry optimization or transition state search.
+Options:
+BAKER / FISHER / UNITY / INTERNAL / LINDH / RESTART</p>
+<p>BAKER</p>
+<p>Starting Hessian constructed from Baker force weights. This is the default for the internal optimization.</p>
+<p>FISHER</p>
+<p>Starting Hessian constructed from Fisher force weights. This is the default for the redundant optimization.</p>
+<p>UNITY</p>
+<p>The unit matrix is used as starting Hessian. This is the default for the Cartesian optimization.</p>
+<p>INTERNAL</p>
+<p>Starting Hessian from the unit matrix of an internal Hessian constructed from an auxiliary Z-Matrix.</p>
+<p>LINDH</p>
+<p>Starting Hessian constructed from Lindh force weights.</p>
+<p>RESTART</p>
+<p>Starting Hessian is read from the restart file xxxxx.</p>
+<p>Description:</p>
+<p>With the options BAKER, FISHER, and LINDH, a starting Hessian in primitive redundant coordinates is generated, then transformed into the coordinate system used for the optimization. For the BAKER option, the diagonal elements for the primitive bonds, bends, and dihedral angles are set to 0.5, 0.2 and 0.1, respectively [2]. For the FISHER option, the diagonal elements are calculated according to the empirical rules of Fisher et al. [7]. This is the default for the starting Hessian of the default redundant optimization. With the option LINDH, the diagonal elements are calculated according to the empirical rules of Lindh et al. [8]. For a Cartesian optimization, a unit Cartesian starting Hessian is the default option. If other options are chosen for Cartesian optimizations, an auxiliary Z-Matrix is constructed from the Cartesian input, and either a unit (option INTERNAL) or an empirical (options BAKER, FISHER, or LINDH) internal Hessian matrix (options BAKER, FISHER, or LINDH) is calculated. Then, this internal Hessian is transformed into the Cartesian starting Hessian.</p>
+<p>A unit matrix starting Hessian in the space of the primitive redundant coordinates (for redundant optimizations), in the space of the internal Z-matrix coordinates (for internal optimizations), or in the space of the Cartesian coordinates is specified with the option UNITY. With the optios RESTART the starting Hessian is read from the restart file. The (updated) Hessian matrix is written to the restart file at the end of each optimization step. With the RESTART option, that Hessian can be recovered.</p>
+</div>
+<div class="section" id="keyword-update">
+<h2>Keyword UPDATE<a class="headerlink" href="#keyword-update" title="Permalink to this headline">¶</a></h2>
+<p>This keyword controls the Hessian update method during geometry optimization.</p>
+<p>Options:</p>
+<p>BFGS / POWELL / BERNY / DFP / MSP / SR1</p>
+<p>BFGS</p>
+<p>Broyden, Fletcher, Goldfarb, Shanno (BFGS) update [9-12]. This is the default for the geometry optimization.</p>
+<p>POWELL</p>
+<p>Powell update [6].</p>
+<p>BERNY</p>
+<p>Berny update from H.B. Schlegel [13].</p>
+<p>DFP</p>
+<p>Davidon, Fletcher, Powell update [14-15].</p>
+<p>MSP</p>
+<p>Murtagh-Sargent-Powell update [16].</p>
+<p>SR1</p>
+<p>Symmetric rank-one update [17].</p>
+<p>Description:</p>
+<p>For the optimization in redundant coordinates, the BFGS update is recommended. For optimization in internal coordinates, the BERNY update may be preferred.</p>
+</div>
+<div class="section" id="keyword-steptype">
+<h2>Keyword STEPTYPE<a class="headerlink" href="#keyword-steptype" title="Permalink to this headline">¶</a></h2>
+<p>With this keyword the geometry optimization step is selected.</p>
+<p>Options:</p>
+<p>LEVENBERG / RFO / WALK / DESCENT</p>
+<p>RFO</p>
+<p>Rational function optimization.</p>
+<p>WALK</p>
+<p>Potential energy surface walking.</p>
+<p>DESCENT</p>
+<p>Steepest descent.</p>
+<p>LEVENBERG</p>
+<p>Levenberg-Marquardt.</p>
+<p>Description:</p>
+<p>By default NRLMOL uses Levenberg-Marquardt steps [18,19] with robust root finding [20] in the structure optimization by the uphill trust region method [16,21]. Alternatively, RFO [22] and WALK [23] steps are available for restricted step method minimizations [24].</p>
+</div>
+<div class="section" id="keyword-population">
+<h2>Keyword POPULATION<a class="headerlink" href="#keyword-population" title="Permalink to this headline">¶</a></h2>
+<p>This keyword selects a population analysis.
+Options:
+NBO</p>
+<p>NBO</p>
+<p>Create input file for an NBO analysis.</p>
+<p>Description:</p>
+<p>NRLMOL generates the input file for the NBO orbital-based population analysis for use with the NBO program [25].</p>
+</div>
+<div class="section" id="keyword-visualization">
+<h2>Keyword VISUALIZATION<a class="headerlink" href="#keyword-visualization" title="Permalink to this headline">¶</a></h2>
+<p>This keyword activates the interface to the visualization programs JMOL [26], MOLDEN [27] and MOLEKEL [28].
+Options:
+JMOL / MOLDEN    EGMIN=0.5   EGMAX=0.5</p>
+<p>JMOL</p>
+<p>The JMOL interface is activated. The JMOL input is written to the CLUSTER.mol file. This is the default.</p>
+<p>MOLDEN</p>
+<p>The MOLDEN interface is activated. The MOLDEN input is written to the CLUSTER.mol file. This is also a valid input file for MOLEKEL.
+FULL / OPT</p>
+<p>FULL</p>
+<p>A full JMOL or MOLDEN input is written. This is the default if the option JMOL is set.</p>
+<p>OPT</p>
+<p>The molecular structures as well as the forces and step sizes of each optimization step are written to the CLUSTER.mol file. This option is only valid for the MOLDEN interface.</p>
+<p>EGMIN</p>
+<p>Minimum gap for printing MO orbitals.  Default = 0.5 hartrees
+Orbitals within the EFERMIN – EGMIN range of energies will be written into the JMOL or MOLDEN files.</p>
+<p>EGMAX</p>
+<p>Maxium gap for printing MO orbitals. Default = 0.5 hartrees
+Orbitals within the EFERMIN + EGMAX range of energies will be written into the JMOL or MOLDEN files</p>
+<p>Description:
+The options JMOL and MOLDEN are mutually exclusive. They activate the writing of the interface file CLUSTER.mol. With the options FULL and OPT the output data are selected.  Note that for large systems, the FULL option of the VISUALIZATION keyword produces very large interface files.</p>
+</div>
+<div class="section" id="keyword-print">
+<h2>Keyword PRINT<a class="headerlink" href="#keyword-print" title="Permalink to this headline">¶</a></h2>
+<p>Optional printing can be activated with this keyword.
+Options:</p>
+<p>OPT</p>
+<p>Generate full optimization output.</p>
+<p>PRI</p>
+<p>Print primitive internal coordinates.</p>
+<p>MOS</p>
+<p>Print molecular orbital energies, occupations and coefficients.</p>
+<p>PMAT</p>
+<p>Print density matrix.</p>
+<p>SMAT</p>
+<p>Print overlap matrix.</p>
+<p>Description:</p>
+<p>All matrices that are changing during the SCF (e.g. PMAT, MOS, etc.) can be printed for each cycle. The following example activates the printing of the density matrix:
+PRINT PMAT</p>
+<p>In general, several print options will produce large outputs.  By default only the MO’s within the ranges defined by the EGMIN=0.5   EGMAX=0.5 will be printed. These thresholds may be changed via the VISUALIZATION keyword.</p>
+</div>
+<div class="section" id="references">
+<h2>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li><ol class="upperalpha simple" start="14">
+<li><p>Rösch, S.B. Trickey, J. Chem. Phys. 106, 8940 (1997).</p></li>
+</ol>
+</li>
+<li><ol class="upperalpha simple" start="10">
+<li><p>Baker, A. Kessi, B. Delley, J. Chem. Phys. 105, 192 (1996).</p></li>
+</ol>
+</li>
+<li><p>J.U. Reveles, Geometry Optimization in LCGTO-DFT Methods with Auxiliary Functions, Ph.D. Thesis, Cinvestav, Mexico-City (2004).</p></li>
+<li><ol class="upperalpha simple">
+<li><p>Banerjee, N. Adams, J. Simons, R. Shepard, J. Phys. Chem. 89, 52 (1985).</p></li>
+</ol>
+</li>
+<li><ol class="upperalpha simple" start="10">
+<li><p>Baker, J. Comput. Chem. 7, 385 (1986).</p></li>
+</ol>
+</li>
+<li><p>M.J.D. Powell, Math. Prog. 1, 26 (1971).</p></li>
+<li><p>T.H. Fisher, J. Almlöf, J. Phys. Chem. 96, 9768 (1992).</p></li>
+<li><ol class="upperalpha simple" start="18">
+<li><p>Lindh, A. Bernhardsson, G. Karlström, P. Malmqvist, Chem. Phys. Lett. 241, 423 (1995).</p></li>
+</ol>
+</li>
+<li><p>C.G. Broyden, J. Inst. Maths. Applns. 6, 76 (1970); ibid. 6, 222 (1970).</p></li>
+<li><ol class="upperalpha simple" start="18">
+<li><p>Fletcher, Computer J. 13, 317 (1970).</p></li>
+</ol>
+</li>
+<li><ol class="upperalpha simple" start="4">
+<li><p>Goldfarb, Maths. Comp. 24, 23 (1970).</p></li>
+</ol>
+</li>
+<li><p>D.F. Shanno, Maths. Comp. 24, 647 (1970).</p></li>
+<li><p>H.B. Schlegel, J. Comput. Chem. 3, 214 (1982).</p></li>
+<li><p>W.C. Davidon, AEC Res. &amp; Dev. Report ANL-5990 (1959).</p></li>
+<li><ol class="upperalpha simple" start="18">
+<li><p>Fletcher, M.J.D. Powell, Computer J. 6, 163 (1963).</p></li>
+</ol>
+</li>
+<li><p>J.M. Bofill, J. Comput. Chem. 15, 1 (1994).</p></li>
+<li><ol class="upperalpha simple" start="10">
+<li><p>Nocedal, S.J. Wright, Numerical Optimization (Springer, New York, 1999).</p></li>
+</ol>
+</li>
+<li><ol class="upperalpha simple" start="11">
+<li><p>Levenberg, Quart. Appl. Math. 2, 164 (1944).</p></li>
+</ol>
+</li>
+<li><p>D.W. Marquardt, SIAM J. 11, 431 (1963).</p></li>
+<li><p>J.M. del Campo, A.M. Köster, Croatica Chemica Acta 82, A029 (2009).</p></li>
+<li><ol class="upperalpha simple" start="16">
+<li><p>Culot, G. Dive, V.H. Nguyen, J.M. Ghuysen, Theor. Chim. Acta 82, 189 (1992).</p></li>
+</ol>
+</li>
+<li><ol class="upperalpha simple">
+<li><p>Banerjee, N. Adams, J. Simons, R. Shepard, J. Phys. Chem. 89, 52 (1985).</p></li>
+</ol>
+</li>
+<li><ol class="upperalpha simple" start="10">
+<li><p>Nichols, H. Taylor, P. Schmidt. J. Simons, J. Chem. Phys. 92, 340 (1990).</p></li>
+</ol>
+</li>
+<li><ol class="upperalpha simple" start="18">
+<li><p>Fletcher, Practical Methods of Optimization, Second Edition (Wiley, New York, 1987).</p></li>
+</ol>
+</li>
+<li><p>E.D. Glendening, J.K. Badenhoop, A.E. Reed, J.E. Carpenter, J.A. Bohmann, C.M. Morales, F. Weinhold, NBO 5.G. <a class="reference external" href="http://www.chem.wisc.edu/~nbo5">http://www.chem.wisc.edu/~nbo5</a>.</p></li>
+<li><p>Jmol: an open-source Java viewer for chemical structures in 3D. <a class="reference external" href="http://www.jmol.org/">http://www.jmol.org/</a></p></li>
+<li><ol class="upperalpha simple" start="7">
+<li><p>Schaftenaar, Molden3.2, CAOS/CAMM Center, University of Nijmegen (1997).</p></li>
+</ol>
+</li>
+<li><ol class="upperalpha simple" start="19">
+<li><p>Portmann, P.F. Fluekiger, CSCS/ETHZ and CSCS/UNI Geneva (2002).</p></li>
+</ol>
+</li>
+</ol>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../../nrlmoldoc_main.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Usage of the CLUSTER.INP file</a><ul>
+<li><a class="reference internal" href="#keyword-geometry">Keyword GEOMETRY</a></li>
+<li><a class="reference internal" href="#keyword-constants">Keyword CONSTANTS</a></li>
+<li><a class="reference internal" href="#keyword-variables">Keyword VARIABLES</a></li>
+<li><a class="reference internal" href="#keyword-netspin">Keyword NETSPIN</a></li>
+<li><a class="reference internal" href="#keyword-charge">Keyword CHARGE</a></li>
+<li><a class="reference internal" href="#keyword-optimization">Keyword OPTIMIZATION</a></li>
+<li><a class="reference internal" href="#keyword-hessian">Keyword HESSIAN</a></li>
+<li><a class="reference internal" href="#keyword-update">Keyword UPDATE</a></li>
+<li><a class="reference internal" href="#keyword-steptype">Keyword STEPTYPE</a></li>
+<li><a class="reference internal" href="#keyword-population">Keyword POPULATION</a></li>
+<li><a class="reference internal" href="#keyword-visualization">Keyword VISUALIZATION</a></li>
+<li><a class="reference internal" href="#keyword-print">Keyword PRINT</a></li>
+<li><a class="reference internal" href="#references">References</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="../../docs/isymgen.html"
+                        title="previous chapter">ISYMGEN - Basis sets</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="../dtutorials/tutorial1.html"
+                        title="next chapter">Tutorial 1    Understanding atomic structure using NRLMOL</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../../_sources/tutorials/dinput/nrlmol_inp.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../dtutorials/tutorial1.html" title="Tutorial 1 Understanding atomic structure using NRLMOL"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="../../docs/isymgen.html" title="ISYMGEN - Basis sets"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../nrlmoldoc_main.html">NRLMOL  0 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2013,   NRLMOL users .
+    </div>
+  </body>
+</html>

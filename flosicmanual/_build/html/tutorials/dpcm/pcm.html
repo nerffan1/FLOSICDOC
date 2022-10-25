@@ -1,0 +1,161 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Running calculations with the PCM driver &#8212; NRLMOL  0 documentation</title>
+    <link rel="stylesheet" href="../../_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../_static/language_data.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="FREQUENTLY ASKED QUESTIONS ABOUT NRLMOL" href="../../docs/nrlmolfaq.html" />
+    <link rel="prev" title="Running NRLMOL excited state calculations" href="../dexcited/nrlmol_exc_full.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../docs/nrlmolfaq.html" title="FREQUENTLY ASKED QUESTIONS ABOUT NRLMOL"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="../dexcited/nrlmol_exc_full.html" title="Running NRLMOL excited state calculations"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../nrlmoldoc_main.html">NRLMOL  0 documentation</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="running-calculations-with-the-pcm-driver">
+<h1>Running calculations with the PCM driver<a class="headerlink" href="#running-calculations-with-the-pcm-driver" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<p>PCM stands for the <strong>Polarizable Continuum Model</strong>, a method for modeling the polarization effect of a solute in the presence of a solvent. The driver incorporated into the code was developed by R. Di Remigio, L. Frediani and K. Mozgawa, with contributions from R. Bast (CMake framework),U. Ekstroem (automatic differentiation library) and J. Juselius (input parsing library and CMake framework), it is distributed under the terms of the GNU Lesser General Public License. The version currently incorporated into the code is 1.1.1.</p>
+<p>The theory comes from:<em>”Quantum Mechanical Continuum Solvation Models”</em>, J. Tomasi, B. Mennucci and R. Cammi, Chem. Rev., 105 (2005) 2999</p>
+<p>Further documentation for the PCMsolver driver can be found here: <a class="reference external" href="http://pcmsolver.readthedocs.io/en/latest/">http://pcmsolver.readthedocs.io/en/latest/</a></p>
+</div>
+<div class="section" id="installation">
+<h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
+<p>The cmake system must be installed in the system.</p>
+<p>Get the newest version from the nrlmol.git repository: There should be a directory called <strong>PCM</strong>, in here the library must be compiled first.</p>
+<p>In the PCM directory there should be a file called <strong>setup.py</strong>, this is a python script to set up the variables en environment needed to run cmake. You can probably just run it by itself and it will try to figure out the correct options for your system.</p>
+<p>If this does not work, the you need to provice the following options:</p>
+<ol class="arabic simple">
+<li><p>A C++ compiler</p></li>
+<li><p>A C compiler</p></li>
+<li><p>A Fortran compiler</p></li>
+<li><p>An option to only create the static library</p></li>
+</ol>
+<p>You can manually speficy this options with:</p>
+<p>$ ./setup.py <code class="docutils literal notranslate"><span class="pre">--</span></code>cxx=&lt;c++ compiler&gt; <code class="docutils literal notranslate"><span class="pre">--</span></code>cc=&lt;c compiler&gt; <code class="docutils literal notranslate"><span class="pre">--</span></code>fc=&lt;fortran compiler&gt; <code class="docutils literal notranslate"><span class="pre">--</span></code>static</p>
+<p>in a typical gnu system this options are:</p>
+<p>$ ./setup.py <code class="docutils literal notranslate"><span class="pre">--</span></code>cxx=g++ <code class="docutils literal notranslate"><span class="pre">--</span></code>cc=gcc <code class="docutils literal notranslate"><span class="pre">--</span></code>fc=gfortran <code class="docutils literal notranslate"><span class="pre">--</span></code>static</p>
+<p>but this options change for remote clusters that use different default compilers.</p>
+<p>Once this operation finishes, you will be instructed to change to a newly created directory called <em>build</em>. Once you change to it, you should run <em>make</em>, which will create the library file <strong>libpcm.a</strong> so that your code can now link against it.</p>
+<p>We have found that in some remote clusters the <em>make</em> command does create the entire PCMsolver and ingores the option to just create the library (and takes a very long time to finish), you can either stopit once the library file is created (at around 35% progress) or wait until it finishes.</p>
+<p>It should also be mentioned that if you modify the code in the library, you must erase the <em>build</em> directory and rerun the <em>setup.py</em> script to rebuild the library.</p>
+</div>
+<div class="section" id="usage">
+<h2>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h2>
+<p>Once the library is built, you can now compile and link the code. However, there are some options that must be setup before you compile the code. These are setup in the interface from the code to the library, they are set at compile time and cannot be modified during code execution, we will cover these in the next section.</p>
+<p>Copy the <strong>NRLMOL_INPUT.DAT</strong> file from the source code and put it in the directory where you will run your simulation.</p>
+<p>Modify the value of the variable <strong>PCMV</strong> to <strong>Y</strong> to run the PCM driver during code execution.</p>
+<p>The PCM driver reads the geometry of the solute from the <strong>XMOL.DAT</strong> file. Normally this is no problem when you start from the <strong>CLUSTER</strong> file, as the XMOL.DAT file will automatically be generated. However, when starting from the <strong>SYMBOL</strong> file (as it is the case when running excited state calculations), make shure that you have the <strong>XMOL.DAT</strong> file present in directory before you run the calculation.</p>
+<p>Run your code normally.</p>
+<p>There should now be a PCM polarization energy contribution in the energy section at the end of each iteration of your oputput log file.</p>
+</div>
+<div class="section" id="interfacing-the-library">
+<h2>Interfacing the library<a class="headerlink" href="#interfacing-the-library" title="Permalink to this headline">¶</a></h2>
+<p>As previously stated, the options that are passed to the library are set at compile time and cannot be modified at run time.</p>
+<p>These are set in a file in the source code called <strong>Fortran_host-modules.f90</strong>.</p>
+<p>For example, to set what solvent to use, in the previous file look for the line that starts with:</p>
+<p><code class="docutils literal notranslate"><span class="pre">character(kind=c_char,</span> <span class="pre">len=17)</span> <span class="pre">::</span> <span class="pre">pcmmod_solvent</span> <span class="pre">=</span></code></p>
+<p>A full list of the available solvents can be found here:</p>
+<p><a class="reference external" href="https://pcmsolver.readthedocs.io/en/latest/users/input.html#available-solvents">https://pcmsolver.readthedocs.io/en/latest/users/input.html#available-solvents</a></p>
+<p>If using water, then the line would look like this:</p>
+<p><code class="docutils literal notranslate"><span class="pre">character(kind=c_char,</span> <span class="pre">len=17)</span> <span class="pre">::</span> <span class="pre">pcmmod_solvent</span> <span class="pre">=</span> <span class="pre">'water'//c_null_char</span></code></p>
+<p>or this:</p>
+<p><code class="docutils literal notranslate"><span class="pre">character(kind=c_char,</span> <span class="pre">len=17)</span> <span class="pre">::</span> <span class="pre">pcmmod_solvent</span> <span class="pre">=</span> <span class="pre">'h2o'//c_null_char</span></code></p>
+<p>The ending part <em>//c_null_char</em> is needed so ensure compatibility with the C language (which the PCM solver is written in).</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../../nrlmoldoc_main.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Running calculations with the PCM driver</a><ul>
+<li><a class="reference internal" href="#introduction">Introduction</a></li>
+<li><a class="reference internal" href="#installation">Installation</a></li>
+<li><a class="reference internal" href="#usage">Usage</a></li>
+<li><a class="reference internal" href="#interfacing-the-library">Interfacing the library</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="../dexcited/nrlmol_exc_full.html"
+                        title="previous chapter">Running NRLMOL excited state calculations</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="../../docs/nrlmolfaq.html"
+                        title="next chapter">FREQUENTLY ASKED QUESTIONS ABOUT NRLMOL</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../../_sources/tutorials/dpcm/pcm.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../docs/nrlmolfaq.html" title="FREQUENTLY ASKED QUESTIONS ABOUT NRLMOL"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="../dexcited/nrlmol_exc_full.html" title="Running NRLMOL excited state calculations"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../nrlmoldoc_main.html">NRLMOL  0 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2013,   NRLMOL users .
+    </div>
+  </body>
+</html>

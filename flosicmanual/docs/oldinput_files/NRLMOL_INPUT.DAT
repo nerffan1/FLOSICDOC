@@ -1,0 +1,19 @@
+ # Put Y,N or number next to the equal sign to determiner execution
+ # Don't forget thew quotation marks for the letters
+ # All variables in this list end with v
+
+ &input_data
+ ATOMSPHV      = 'N'
+ CALCTYPEV     = 'LBFGS'
+ DIAG1V        = 0   ! diagonalization to use on regular arrays (diagge.f90)
+ DIAG2V        = 0   ! diagonalization to use on packed arrays (diag_dspgv.f90)
+ DOSOCCUV      = 'N' ! Controls wether to calculate density of states
+ EXCITEDV      = 'N' ! Determines if this is an excited state calculation
+ FORMFAKV      = 'N' ! this controls if FORMFAK is executed
+ JNTDOSV       = 'N' ! this controls whether excite is executed
+ MATDIPOLEV    = 'N'
+ NONSCFV       = 'N' ! Set to Y to do a non SCF calculation
+ DFTD3V        = 'N' ! Set to Y to do include Grimmes DFT-D3 dispersion
+ NONSCFFORCESV = 'N' ! Set to Y to calculate forces in a non SCF calculation
+ WFGRIDV       = 'N'
+ &end

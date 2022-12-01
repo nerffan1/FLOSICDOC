@@ -1,0 +1,147 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Input and Output Files &#8212; NRLMOL  2020 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/classic.css" />
+    
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Basis sets: the ISYMGEN file" href="isymgen.html" />
+    <link rel="prev" title="FLOSIC Mesh" href="mesh.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="isymgen.html" title="Basis sets: the ISYMGEN file"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="mesh.html" title="FLOSIC Mesh"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../main.html">NRLMOL  2020 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Input and Output Files</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="input-and-output-files">
+<span id="nrlmolfiles"></span><h1>Input and Output Files<a class="headerlink" href="#input-and-output-files" title="Permalink to this headline">¶</a></h1>
+<p>As mentioned above, the minimal set of input files required for a FLOSIC calculation includes CLUSTER and FRMORB.
+Once the code is run, a number of additional files are generated. Some of these, like NRLMOL_INPUT.DAT (described earlier) can be edited to control how subsequent calculations run. The following is a list of important input/output files and a brief description of their contents:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>LIST of FILES</p></li>
+</ul>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>ATOMSPHNN: Charge and spin charge in each inequivalent atom integrated over a sphere of
+specified  radius.</p></li>
+<li><p>CLUSTER  : Main input file.</p></li>
+<li><p>DIPOLE  : Contains x, y, z components of dipole moments in the atomic units.</p></li>
+<li><p>EVALUES : The canonical eigenvalues for the current step in an SCF calculation.
+If symmetry is used in the calculation, the eigenvalues are sorted by symmetry, and also by spin, if the calculation is spin-polarized.
+A list of eigenvalues and the occupation of the corresponding orbital is given at the end of the file.</p></li>
+<li><p>EVALNNN : The eigenvalues, their spin, symmetry representation, degeneracy and occupancy,
+Fermi energy for each iteration number NNN.</p></li>
+<li><p>FRCOUT   : Total energy, forces on each atom, dipole moment, applied electric field.</p></li>
+<li><p>FRMORB : number of up spin FODs and down spin FODs, followed by the up spin FOD positions, then down spin FOD positions.</p></li>
+<li><p>fande.out : Iteration, total energy, square root of the sum of the squares of FOD forces, max FOD force.</p></li>
+<li><p>GEOCNVRG : Convergence criteria, Total energy , largest atomic force, information about atomic geometry
+optimization.  Is written after every complete SCF cycle.</p></li>
+<li><p>HISTORY:   Contains history of the geometry optimization. To see the energy as function of optimization step
+do ‘grep -i TR HISTORY’ in the directory.</p></li>
+<li><p>ISYMGEN: Information about the basis set. (For an in depth description, see chapter 8.)</p></li>
+<li><p>records  : copy of the FRMORB file used during each iteration, followed by the FOD forces on those FODs.</p></li>
+<li><p>RHOTOT  : Total density on a specified grid. Is written in Gaussian cubic format.</p></li>
+<li><p>RHOSPN  : Spin density on a specified grid. Is written in Gaussian cubic format.</p></li>
+<li><p>RUNS    :  Control restart of calculation. Calculations can be restarted from Hamiltonian (<strong>HAMOLD</strong>), wavefunctions (<strong>WFOUT</strong>), or potential (<strong>COUPOT</strong>).</p></li>
+<li><p>SUMMARY : Total energy, electronic charge, kinetic energy and trace of hamiltonian for each
+iteration.</p></li>
+<li><p>SYMBOL : The exchange-correlation functional is specified on the first line. Atomic coordinates and bias potentials for each atom are stored for each
+iteration of an atomic geometry optimization. The last line allows the use of a more extensive default basis set (to use, set EXTRABASIS=1).
+SYMBOL includes essentially the same information as the CLUSTER file. If the SYMBOL file exists, CLUSTER is not read.</p></li>
+<li><p>XMOL.DAT : Geometry in the xyz format. The first column contains atomic numbers. The atomic coordinates are in Angstrom.</p></li>
+<li><p>XMOL.xyz : Geometry in the xyz format. The first column contains atomic labels. The atomic coordinates are in Angstrom. Use <strong>JMOL</strong> to visualize this.</p></li>
+</ol>
+</div></blockquote>
+</div></blockquote>
+<p>Disclaimer: Only the primary input and output files are explained here. For more information about additional files, please contact a FLOSIC team member or post a question to the FLOSIC listserv (See Ch. 13).</p>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="mesh.html"
+                          title="previous chapter">FLOSIC Mesh</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="isymgen.html"
+                          title="next chapter">Basis sets: the ISYMGEN file</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/docs/files.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="isymgen.html" title="Basis sets: the ISYMGEN file"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="mesh.html" title="FLOSIC Mesh"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../main.html">NRLMOL  2020 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Input and Output Files</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2022,   NRLMOL users .
+    </div>
+  </body>
+</html>

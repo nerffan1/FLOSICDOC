@@ -1,0 +1,68 @@
+
+
+Tutorial 3    Electronic structure of the C60 molecule
+======================================================
+
+
+This tutorial will explain use of NRLMOL to study the electronic structure of C60 molecule.
+The C60 molecule is spherical carbon molecule - also called bucky ball. It was found in the laboratory 
+at Rice university in 1985 by Harold Kroto, James R. Heath, Sean O'Brien, Robert Curl, and Richard Smalley.
+The 1996 nobel prize was awarded to Kroto, Curl and Smalley for the discovery of C60 and related molecules.
+This molecule posses very high symmetry- icosahedral symmetry. 
+
+.. figure:: input_data/c60.png
+   :scale: 30%
+   :align: right
+
+
+
+We will make use of this symmetry in 
+our calculations. All carbon atoms in C60 are equivalent to each other, that is, once the position of one 
+carbon atom is specified  the position of remaining carbon atoms can be obtained using the point group 
+operations of the icosahedral group. This tutorial will explain how to accomplish this and make 
+use of symmetry to simplify the calculations.
+ 
+We assume that the code us compiled with appropriate set of parameters needed for arrays. The following set of 
+parameters will work.
+
+.. literalinclude:: input_data/PARAMS_C60
+
+
+
+As you know by now, CLUSTER file is the main input file of NRLMOL. For C60 the 
+CLUSTER file is 
+
+.. literalinclude:: input_data/CLUSTER.C60
+
+
+Note that we have only one atom listed and the point group is listed to be **Ih**.  If you 
+are using point group symmetry then only positions of inequivalent atoms need to be listed. 
+The NRLMOL will generate full geometry of the system using the point group operations.
+It is *strongly* recommended that you visualize the geometry generated - XMOL.DAT or XMOL.xyz files
+using molecular viewer such as JMOL or MOLEKEL or any other of your choice.
+
+Now run the calculation.
+    $ **rm -f GEOCNVRG SYMBOL**
+
+    $ **./cluster > print.SCF**
+
+Open the **GEOCNVRG** file and write down the energy.  It should be 
+
+
+.. literalinclude:: input_data/GEOCNVRG.C60
+
+
+and the forces are 
+
+.. literalinclude:: input_data/FRCOUT.C60
+
+Note that forces on only one atom (inequivalent) are listed.
+
+The eigenvalues are stored in file called "EVALUES". Please inspect it. Look at the degeneracy 
+of the eigenvalues. Identify HOMO, LUMO etc. The file is also displayed below for your convenience.
+
+.. literalinclude:: input_data/EVALUES.C60 
+   :emphasize-lines: 12,15-18
+
+
+To be added: Discussion of orbital degeneracies- plot of wave functions

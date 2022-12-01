@@ -1,0 +1,115 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Exchange correlation functionals &#8212; NRLMOL  0 documentation</title>
+    <link rel="stylesheet" href="../_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/language_data.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="nav-item nav-item-0"><a href="../nrlmoldoc_main.html">NRLMOL  0 documentation</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="exchange-correlation-functionals">
+<span id="functionals"></span><h1>Exchange correlation functionals<a class="headerlink" href="#exchange-correlation-functionals" title="Permalink to this headline">¶</a></h1>
+<p>The available LDA exchange-correlation functionals are:</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt>LDA functionals</dt><dd><ol class="arabic simple">
+<li><p>VWN</p></li>
+<li><p>Ceperly-Adler</p></li>
+<li><p>Perdew-Zunger 81</p></li>
+<li><p>RPA</p></li>
+<li><p>Wigner Interpolation Functional</p></li>
+<li><p>Kohn-Sham exchange only (Xalpha with alpha =2/3)</p></li>
+<li><p>Gunnarsson-Lundquist</p></li>
+</ol>
+</dd>
+</dl>
+</li>
+</ul>
+<p>The first GGA functional (PW91) was implemented in 1991.  THe following GGA functionals are currently
+available.</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt>GGA functionals</dt><dd><ol class="arabic simple">
+<li><p>Becke 1988 exchange functional (B88)</p></li>
+<li><p>Perdew-Wang 91 functional     (PW91)</p></li>
+<li><p>Perdew-Burke-Ernzerhof  96 functional  (PBE)</p></li>
+<li><p>Revised Perdew-Burke-Ernzerhof  96 functional  (PBE)</p></li>
+<li><p>RPBE</p></li>
+</ol>
+</dd>
+</dl>
+</li>
+</ul>
+<p>The PBE functional is the default functional.  In the above lines, the words in the  bracket are the keywords that you can
+use to select the exchange and correlation functional of your choice. THis is specified in the file  called( CLUSTER) file.
+For example, to specify use the “BPW91” functional you will use <strong>GGA-B88*GGA-PW91</strong> in the first line in the CLUSTER file.</p>
+<p>Work on implementation of Minnesota functionals is in progress.</p>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/old_docs/functionals.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="nav-item nav-item-0"><a href="../nrlmoldoc_main.html">NRLMOL  0 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2013,   NRLMOL users .
+    </div>
+  </body>
+</html>

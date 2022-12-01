@@ -1,0 +1,22 @@
+\select@language {english}
+\contentsline {chapter}{\numberline {1}Introduction and Overview}{1}{chapter.1}
+\contentsline {chapter}{\numberline {2}Accessing and compiling the code}{3}{chapter.2}
+\contentsline {chapter}{\numberline {3}Quick start guide to running a FLOSIC calculation}{5}{chapter.3}
+\contentsline {chapter}{\numberline {4}Exchange correlation functionals}{7}{chapter.4}
+\contentsline {chapter}{\numberline {5}Controlling a calculation: the NRLMOL\_INPUT.DAT file}{8}{chapter.5}
+\contentsline {chapter}{\numberline {6}FLOSIC Mesh}{10}{chapter.6}
+\contentsline {chapter}{\numberline {7}Input and Output Files}{12}{chapter.7}
+\contentsline {chapter}{\numberline {8}Basis sets: the ISYMGEN file}{14}{chapter.8}
+\contentsline {chapter}{\numberline {9}Tutorials}{17}{chapter.9}
+\contentsline {section}{\numberline {9.1}Tutorial 1: Molecular geometry optimization at the DFT level}{17}{section.9.1}
+\contentsline {section}{\numberline {9.2}Tutorial 2: a FLOSIC calculation for H2}{18}{section.9.2}
+\contentsline {section}{\numberline {9.3}Tutorial 3: FOD optimization of a water molecule}{19}{section.9.3}
+\contentsline {section}{\numberline {9.4}Plotting density of states using NRLMOL}{23}{section.9.4}
+\contentsline {subsection}{\numberline {9.4.1}Introduction}{23}{subsection.9.4.1}
+\contentsline {subsection}{\numberline {9.4.2}Setup}{23}{subsection.9.4.2}
+\contentsline {subsection}{\numberline {9.4.3}Results}{24}{subsection.9.4.3}
+\contentsline {subsection}{\numberline {9.4.4}Membership files}{25}{subsection.9.4.4}
+\contentsline {subsection}{\numberline {9.4.5}Plotting}{29}{subsection.9.4.5}
+\contentsline {subsection}{\numberline {9.4.6}Gnuplot usage}{30}{subsection.9.4.6}
+\contentsline {subsection}{\numberline {9.4.7}Bibliography}{33}{subsection.9.4.7}
+\contentsline {chapter}{\numberline {10}Getting more information about FLOSIC}{34}{chapter.10}

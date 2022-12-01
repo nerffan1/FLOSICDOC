@@ -1,0 +1,175 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>NRLMOL_INPUTS &#8212; NRLMOL  0 documentation</title>
+    <link rel="stylesheet" href="../_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/language_data.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="nav-item nav-item-0"><a href="../nrlmoldoc_main.html">NRLMOL  0 documentation</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="nrlmol-inputs">
+<span id="nrlmolinput"></span><h1>NRLMOL_INPUTS<a class="headerlink" href="#nrlmol-inputs" title="Permalink to this headline">¶</a></h1>
+<p>The <strong>NRLMOL_INPUT.DAT</strong> is an auxiliary input file that allows setting of parameters for calculation.  If it does not exist then the it will be
+created during the run using default values.</p>
+<p>The NRLMOL_INPUT.DAT with default values of parameters as of today (December 09, 2013) is given below. They are described in detail.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span> # Put Y,N or number next to the equal sign to determiner execution
+ # Don&#39;t forget thew quotation marks for the letters
+ # All variables in this list end with v
+
+ &amp;input_data
+ ATOMSPHV      = &#39;N&#39;
+ CALCTYPEV     = &#39;LBFGS&#39;
+ DIAG1V        = 0   ! diagonalization to use on regular arrays (diagge.f90)
+ DIAG2V        = 0   ! diagonalization to use on packed arrays (diag_dspgv.f90)
+ DOSOCCUV      = &#39;N&#39; ! Controls wether to calculate density of states
+ EXCITEDV      = &#39;N&#39; ! Determines if this is an excited state calculation
+ FORMFAKV      = &#39;N&#39; ! this controls if FORMFAK is executed
+ JNTDOSV       = &#39;N&#39; ! this controls whether excite is executed
+ MATDIPOLEV    = &#39;N&#39;
+ NONSCFV       = &#39;N&#39; ! Set to Y to do a non SCF calculation
+ DFTD3V        = &#39;N&#39; ! Set to Y to do include Grimmes DFT-D3 dispersion
+ NONSCFFORCESV = &#39;N&#39; ! Set to Y to calculate forces in a non SCF calculation
+ WFGRIDV       = &#39;N&#39;
+ &amp;end
+</pre></div>
+</div>
+<p>Here <strong>N</strong> means <em>NO</em>. If <strong>Y</strong> then the calculation of a given property is requested. Note that certain calculations such
+as, for example, the calculation of joint density of states is often useful only at the final converged geometry.</p>
+<blockquote>
+<div><ol class="arabic">
+<li><p>ATOMSPHV :  Default is <strong>N</strong>.
+THis will place an atomic sphere around each nucleus and integrates electron density within the sphere.
+THis is a sort of population analysis and can be used to obtain local magnetic moment.</p></li>
+<li><p>CALCTYPEV:   Default is ‘LBFGS’. Available choices:  <strong>SCF-ONLY</strong>, <strong>CONJUGATE-GRADIENT</strong>, <strong>INTERNAL</strong>, <strong>POLARIZABILITY</strong></p>
+<blockquote>
+<div><ul class="simple">
+<li><p><strong>SCF-ONLY</strong> for the SCF calculations, t</p></li>
+<li><p><strong>Polarizability</strong> for the Polarizability by finite-field using energies.</p></li>
+<li><p><strong>CONJUGATE-GRADIENT</strong> : Geometry optimization by conjugate-gradient.</p></li>
+<li><p><strong>INTERNAL</strong> : Geometry optimization by internal-coordinates.</p></li>
+<li><p><strong>VERLET</strong>   : Geometry optimization by VERLET.</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><dl class="simple">
+<dt>DIAG1V        = 0   ! diagonalization to use on regular arrays (diagge.f90)</dt><dd><dl class="simple">
+<dt>The diagonalization of matrices.</dt><dd><ol class="arabic simple" start="0">
+<li><p>DSGVX (LAPACKL: computes selected eigenvalues, and optionally eigenvectors). This is default and only a few eigenvectors are obtained.</p></li>
+<li><p>DSGVD (Default if matrix size is below 100).  Uses a divide and conquer algorithm to compute eigenvectors.</p></li>
+<li><p>DSGV   (This is slowest of the available) option.</p></li>
+</ol>
+</dd>
+</dl>
+</dd>
+</dl>
+</li>
+<li><p>DIAG2V        = 0
+Diagonalization of Hamiltonian (using packed storage for memory savings). Set using <strong>idiag2</strong> variable in the code.
+Note that the old Dirk’s singular value decomposition routine for the diagonalization has been removed. It is very very slow compared
+to any of the following.</p>
+<blockquote>
+<div><p>Available:</p>
+<blockquote>
+<div><ol class="arabic simple" start="0">
+<li><p>DSPGVX (LAPACK: computes selected eigenvalues, and optionally eigenvectors). This is default and only a few eigenvectors are obtained.</p></li>
+<li><p>DSPGVD (Default if matrix size is below 100).  Uses a divide and conquer algorithm to compute eigenvectors.</p></li>
+<li><p>DSPGV   (QR- factorization. This is slowest of the available) option.</p></li>
+</ol>
+</div></blockquote>
+<p>The option 1 (DSPGVD) is the fastest if all eigenvectors are required otherwise use the default 0.
+* Note that the <strong>SCALAPACK</strong> is also available but you will have to build the executable by enabling <strong>SCALAPACK</strong>.</p>
+</div></blockquote>
+</li>
+<li><p>DOSOCCUV      = ‘N’ ! Controls whether to calculate density of states</p></li>
+<li><p>EXCITEDV      = ‘N’ ! Determines if this is an excited state calculation</p></li>
+<li><p>FORMFAKV      = ‘N’ ! this controls if FORMFAK is executed</p></li>
+<li><p>JNTDOSV       = ‘N’ ! this controls whether excite is executed (Calculation of joint density of states).</p></li>
+<li><p>MATDIPOLEV    = ‘N’ !
+Set this to true during the site-specific polarizability. This will compute contributio to the
+dipole moment from individual atom. This is particularly useful in computation of site-specific
+polarizabilities.
+It will by itself not provide site-specific polarizability.</p></li>
+<li><p>NONSCFV       = ‘N’ ! Set to Y to do a non SCF calculation</p></li>
+<li><p>DFTD3V        = ‘N’ ! Set to Y to do include Grimmes DFT-D3 dispersion
+This will include Stefan Grimme’s empirical dispersion correction. The parameters set used
+for the dispersion  in the NRLMOL is  set for the PBE functional. Also, the
+zero damping scheme is used by default. Use these for optimization of non-bonded systems.
+For details, please refer to
+S. Grimme, J. Antony, S. Ehrlich, and H. Krieg, J. Chem. Phys. 132, 154104 (2010); DOI:10.1063/1.3382344.</p></li>
+<li><p>NONSCFFORCESV = ‘N’ ! Set to <strong>Y</strong> to calculate forces in a non SCF calculation
+This will do a non SCF calculation. Not very useful. Sometimes you already have converged wavefunctions
+and you want to calculate the JOINT DOS or any post convergence property. Then it is recommended that you
+perform at least one SCF iteration and compute the properties of interest.</p></li>
+<li><p>WFGRIDV       = ‘N’  !
+When set to <strong>Y</strong>, it will generate CUBE file for 5 molecular orbitals densities around the HOMO and LUMO.</p></li>
+</ol>
+</div></blockquote>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/old_docs/nrlmolinputdat.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="nav-item nav-item-0"><a href="../nrlmoldoc_main.html">NRLMOL  0 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2013,   NRLMOL users .
+    </div>
+  </body>
+</html>

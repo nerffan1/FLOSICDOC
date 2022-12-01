@@ -1,0 +1,142 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Quick start guide to running a FLOSIC calculation &#8212; NRLMOL  2020 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/classic.css" />
+    
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Exchange correlation functionals" href="functionals.html" />
+    <link rel="prev" title="Accessing and compiling the code" href="setupcode.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="functionals.html" title="Exchange correlation functionals"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="setupcode.html" title="Accessing and compiling the code"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../main.html">NRLMOL  2020 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Quick start guide to running a FLOSIC calculation</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="quick-start-guide-to-running-a-flosic-calculation">
+<span id="setup"></span><h1>Quick start guide to running a FLOSIC calculation<a class="headerlink" href="#quick-start-guide-to-running-a-flosic-calculation" title="Permalink to this headline">¶</a></h1>
+<p>Basic input files for FLOSIC are called “CLUSTER” and “FRMORB”.
+The files require minimal input from the user and most parameters required for the calculations are set with
+default values. You can specify some parameters that control the calculations in the file called “NRLMOL_INPUT.DAT”.
+A version of this file with default values is created in the run directory if it otherwise does not exist. We will
+discuss the details of the parameters in the <strong>NRLMOL_INPUT.DAT</strong> in a later section.</p>
+<p>For now let’s work on setting up of the <strong>CLUSTER</strong> file. It is the minimal input needed to run the FLOSIC code.</p>
+<p>An example CLUSTER file is shown below for the LiH molecule. The format is described in more detail in tutorial 1.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">GGA</span><span class="o">-</span><span class="n">PBE</span><span class="o">*</span><span class="n">GGA</span><span class="o">-</span><span class="n">PBE</span>          <span class="p">(</span><span class="n">DF</span> <span class="n">TYPE</span> <span class="n">EXCHANGE</span><span class="o">*</span><span class="n">CORRELATION</span><span class="p">)</span>
+<span class="n">NONE</span>                     <span class="p">(</span><span class="n">TD</span><span class="p">,</span> <span class="n">OH</span><span class="p">,</span> <span class="n">IH</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">XY</span><span class="p">,</span> <span class="o">...</span> <span class="n">OR</span> <span class="n">GRP</span><span class="p">)</span>
+<span class="mi">2</span>                        <span class="p">(</span><span class="n">NUMBER</span> <span class="n">OF</span> <span class="n">INEQUIV</span><span class="o">.</span> <span class="n">ATOMS</span> <span class="n">IN</span> <span class="n">CH4</span><span class="p">)</span>
+<span class="mf">0.0000</span>  <span class="mf">0.0000</span>  <span class="mf">0.0000</span> <span class="mi">3</span> <span class="n">ALL</span>
+<span class="mf">0.0000</span>  <span class="mf">0.0000</span>  <span class="mf">3.0139</span> <span class="mi">1</span> <span class="n">ALL</span>
+<span class="mf">0.0</span> <span class="mf">0.0</span>                  <span class="p">(</span><span class="n">NET</span> <span class="n">CHARGE</span> <span class="n">AND</span> <span class="n">NET</span> <span class="n">SPIN</span><span class="p">)</span>
+ <span class="o">--------------</span><span class="n">OR</span><span class="o">-------------------</span>
+<span class="nd">@XMOL</span><span class="o">.</span><span class="n">DAT</span>
+ <span class="n">IF</span> <span class="n">YOU</span> <span class="n">WISH</span> <span class="n">TO</span> <span class="n">START</span> <span class="n">FROM</span> <span class="n">AN</span> <span class="n">XYZ</span> <span class="n">XMOL</span> <span class="n">FILE</span>
+</pre></div>
+</div>
+<p>To run a FLOSIC calculation, a FRMORB file is required, which contains positions for FODs. An example FRMORB file is shown below for the LiH molecule defined in the CLUSTER file above.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span> <span class="mi">2</span> <span class="mi">2</span>
+<span class="mf">0.000</span> <span class="mf">0.000</span> <span class="mf">0.000</span>
+<span class="mf">0.000</span> <span class="mf">0.000</span> <span class="mf">2.500</span>
+<span class="mf">0.000</span> <span class="mf">0.000</span> <span class="mf">0.000</span>
+<span class="mf">0.000</span> <span class="mf">0.000</span> <span class="mf">2.500</span>
+</pre></div>
+</div>
+<p>The first line states how many up spin FODs, and how many down spin FODs are used in the calculation. There are 2 up FODs, so the next 2 lines (lines 2-3)
+contain x, y, &amp; z coordinates for up spin FODs. There are also 2 down FODs, so the last 2 coordinates are for down spin FODs (lines 4-5).</p>
+<p>To create starting FOD positions, you can simply place them by hand or use an FOD generator such as the fodMC code to create them.
+You can obtain a copy of the fodMC and documentation <a class="reference external" href="https://github.com/pyflosic/fodMC">here</a>.</p>
+<p>Before starting a FLOSIC calculation, make sure that the CALCTYPEV option in the NRLMOL_INPUT.DAT file is set to ‘SCF-ONLY’ instead of ‘LBFGS’.
+This ensures that atomic geometries will not be updated after each self-consisten energy evaluation. This is recommended practice when FOD positions are being optimized.</p>
+<p>Try running the code using the example CLUSTER and FRMORB files given above. The final energy (EDFT+SIC) in the SUMMARY file after a completed self-consistent calculation should be <strong>-8.052832898</strong> Hartree.</p>
+<p>You’ll notice the FOD positions in FRMORB have been moved, as they are being optimized, similar to an atomic geometry optimization at the DFT level.
+Previous FOD geometries are contained in the records file, along with FOD forces.</p>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="setupcode.html"
+                          title="previous chapter">Accessing and compiling the code</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="functionals.html"
+                          title="next chapter">Exchange correlation functionals</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/docs/setupcal.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="functionals.html" title="Exchange correlation functionals"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="setupcode.html" title="Accessing and compiling the code"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../main.html">NRLMOL  2020 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Quick start guide to running a FLOSIC calculation</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2022,   NRLMOL users .
+    </div>
+  </body>
+</html>

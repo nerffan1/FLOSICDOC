@@ -1,0 +1,127 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Tutorial 1 Molecular geometry optimization at the DFT level &#8212; NRLMOL  0 documentation</title>
+    <link rel="stylesheet" href="../_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/language_data.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="nav-item nav-item-0"><a href="../nrlmoldoc_main.html">NRLMOL  0 documentation</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="tutorial-1-molecular-geometry-optimization-at-the-dft-level">
+<span id="formatting-text"></span><h1>Tutorial 1    Molecular geometry optimization at the DFT level<a class="headerlink" href="#tutorial-1-molecular-geometry-optimization-at-the-dft-level" title="Permalink to this headline">¶</a></h1>
+<p>Very simple  tutorial  to get aquainted with advanced electronic structure calculations using FLOSIC. This tutorial will explain how to run FLOSIC for molecular
+geometry optimizations using DFT.</p>
+<p>The CLUSTER file is the main input file of FLOSIC. It contains the minimal information to set up a calculation. For this tutorial, we will use a CH4 molecule, which
+uses a <strong>CLUSTER</strong> file like the one shown below:</p>
+<p>GGA-PBE*GGA-PBE          (DF TYPE EXCHANGE*CORRELATION)
+NONE                     (TD, OH, IH, X, Y, XY, … OR GRP)
+5                        (NUMBER OF INEQUIV. ATOMS IN CH4)</p>
+<blockquote>
+<div><p>0.0000  0.0000  0.0000 6 ALL
+1.1860  1.1860  1.1860 1 ALL
+1.1860 -1.1860 -1.1860 1 ALL</p>
+</div></blockquote>
+<p>-1.1860  1.1860 -1.1860 1 ALL
+-1.1860 -1.1860  1.1860 1 ALL
+0.0 0.0                  (NET CHARGE AND NET SPIN)</p>
+<blockquote>
+<div><p>————–OR——————-</p>
+</div></blockquote>
+<dl class="simple">
+<dt>&#64;XMOL.DAT</dt><dd><p>IF YOU WISH TO START FROM AN XYZ XMOL FILE</p>
+</dd>
+</dl>
+<p>We will now describe the input structure of this file.</p>
+<p>The first line is <strong>GGA-PBE*GGA-PBE</strong>.
+It means that the exchange-correlation interactions in the systems are modeled within the generalized gradient approximation (GGA)
+using the Perdew-Burke-Ernzerhof (PBE) parametrization. This is the default functional used in NRLMOL. A few other functionals are
+also available.</p>
+<p>The second line is <strong>NONE</strong> .
+It refers to point group symmetry. For the purposes of the tutorial, we will not enforce symmetry. If you would like to use symmetry from a GRPMAT file, replace <strong>NONE</strong> with <strong>GRP</strong>.
+The GRP means the symmetry point group operations will be read from the GRPMAT file. It is not necessary to create a GRPMAT file. It will be created automatically.</p>
+<p>The third line contains <strong>5</strong>.
+It specifies the number of inequivalent atoms in the calculation. We’re running a CH4 calculation. So the number of atoms is 5 (1 C and 4 H).</p>
+<p>The line following third line contains the cartesian position in atomic units of the Carbon atom. Following the xyz coordinates is the atomic charge. The example listed is for Carbon whose atomic number is 6. The string ALL means include all
+(that is 6 in this case) electrons into the calculation.
+The next 4 lines are the hydrogen atoms, which follow the same format.</p>
+<p>The ninth line in the example file has two fields, charge and moment. The first field is <strong>0.0</strong> which means to perform the calculation for the neutral molecule.
+If it is <strong>1</strong> then the calculations will be performed for a cation of CH4. The next field which is also <strong>0.0</strong>
+in this example corresponds to the number of unpaired electrons in the system. CH4 is a closed shell system, so it has no unpaired electrons.
+Lines after the Charge and Moment line are ignored.</p>
+<p>Now, create an empty directory and execute the code inside of it. Multiple files should be created, including a CLUSTER file. Copy the input from this example into the file called CLUSTER, replacing the default text.
+Change the CALCTYPE option in the NRLMOL_INPUT.DAT file to “LBFGS” and run the calculation for CH4. It is recommended that you run each NRLMOL calculation in a separate directory.</p>
+<blockquote>
+<div><p>$ /PATH/nrlmol_exe</p>
+</div></blockquote>
+<p>Open the <strong>GEOCNVRG</strong> file and write down the energy. If you have done everything correctly then it should be <strong>-40.466969</strong> Hartree.</p>
+<p>A new atomic geometry will be given in the <strong>SYMBOL</strong> file. The file <strong>FRCOUT.G0</strong> contains the atomic forces for the previous atomic geometry. Running the code again will repeat the process to minimize the energy of the system.
+Continue running the code until the maximum force is optimized to your criteria, which can be set in GEOCNVRG.</p>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/new docs/tutorial1.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="nav-item nav-item-0"><a href="../nrlmoldoc_main.html">NRLMOL  0 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2013,   NRLMOL users .
+    </div>
+  </body>
+</html>

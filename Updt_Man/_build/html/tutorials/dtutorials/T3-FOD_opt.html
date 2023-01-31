@@ -1,125 +1,261 @@
-
 <!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
-<html xmlns="http://www.w3.org/1999/xhtml">
-  <head>
-    <meta charset="utf-8" />
-    <title>Tutorial 3 FODs optimization: Water molecule &#8212; NRLMOL  0 documentation</title>
-    <link rel="stylesheet" href="../../_static/classic.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-    
-    <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
-    <script type="text/javascript" src="../../_static/jquery.js"></script>
-    <script type="text/javascript" src="../../_static/underscore.js"></script>
-    <script type="text/javascript" src="../../_static/doctools.js"></script>
-    <script type="text/javascript" src="../../_static/language_data.js"></script>
-    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tutorial 3: FOD optimization of a water molecule &mdash; NRLMOL  2020 documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+    <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Plotting density of states using NRLMOL" href="../ddos/density_of_states.html" />
-    <link rel="prev" title="Tutorial 2: Understanding electronic structure of molecules using NRLMOL" href="tutorial2.html" /> 
-  </head><body>
-    <div class="related" role="navigation" aria-label="related navigation">
-      <h3>Navigation</h3>
-      <ul>
-        <li class="right" style="margin-right: 10px">
-          <a href="../../genindex.html" title="General Index"
-             accesskey="I">index</a></li>
-        <li class="right" >
-          <a href="../ddos/density_of_states.html" title="Plotting density of states using NRLMOL"
-             accesskey="N">next</a> |</li>
-        <li class="right" >
-          <a href="tutorial2.html" title="Tutorial 2: Understanding electronic structure of molecules using NRLMOL"
-             accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../../nrlmoldoc_main.html">NRLMOL  0 documentation</a> &#187;</li> 
-      </ul>
-    </div>  
+    <link rel="prev" title="Tutorial 2: a FLOSIC calculation for H2" href="tutorial2.html" /> 
+</head>
 
-    <div class="document">
-      <div class="documentwrapper">
-        <div class="bodywrapper">
-          <div class="body" role="main">
-            
-  <div class="section" id="tutorial-3-fods-optimization-water-molecule">
-<h1>Tutorial 3  FODs optimization: Water molecule<a class="headerlink" href="#tutorial-3-fods-optimization-water-molecule" title="Permalink to this headline">¶</a></h1>
-<p>This tutorial explains how to do a FODs optimization taking the example of the water molecule. It is not recommended to do both, molecular and FOD optimization at the same time because the FOD forces are very sensitive to the FOD positions relative to the nuclei. Even if one is not optimizing the structure, it is recommended to run a normal DFT calculation first to get the wavefunction. To do this, we start from the usual CLUSTER file:</p>
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../main.html" class="icon icon-home"> NRLMOL 
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../index.html">Introduction and Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/install/toc.html">Installing FLOSIC</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../docs/install/Prerequisites.html">Prerequisites</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../docs/install/Build.html">Accessing and compiling the code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../docs/install/Support.html">Support</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/Reference/toc.html">Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../docs/Reference/files.html">Input and Output Files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../docs/Reference/functionals.html">Exchange correlation functionals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../docs/Reference/isymgen.html">Basis sets: the ISYMGEN file</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../docs/Reference/mesh.html">FLOSIC Mesh</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../docs/Reference/nrlmolinputdat.html">Controlling a calculation: the NRLMOL_INPUT.DAT file</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/setupcal.html">Quick start guide to running a FLOSIC calculation</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../tuttoc.html">Tutorials</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="tutorial1.html">Tutorial 1: Molecular geometry optimization at the DFT level</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial2.html">Tutorial 2: a FLOSIC calculation for H2</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Tutorial 3:  FOD optimization of a water molecule</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ddos/density_of_states.html">Plotting density of states using NRLMOL</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../ddos/density_of_states.html#introduction">Introduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../ddos/density_of_states.html#setup">Setup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../ddos/density_of_states.html#results">Results</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../ddos/density_of_states.html#membership-files">Membership files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../ddos/density_of_states.html#plotting">Plotting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../ddos/density_of_states.html#gnuplot-usage">Gnuplot usage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../ddos/density_of_states.html#bibliography">Bibliography</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/nrlmolfaq.html">Getting more information about FLOSIC</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../main.html">NRLMOL </a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../main.html" class="icon icon-home"></a></li>
+          <li class="breadcrumb-item"><a href="../tuttoc.html">Tutorials</a></li>
+      <li class="breadcrumb-item active">Tutorial 3:  FOD optimization of a water molecule</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/tutorials/dtutorials/T3-FOD_opt.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="tutorial-3-fod-optimization-of-a-water-molecule">
+<h1>Tutorial 3:  FOD optimization of a water molecule<a class="headerlink" href="#tutorial-3-fod-optimization-of-a-water-molecule" title="Permalink to this heading"></a></h1>
+<p>This tutorial explains how to do a FODs optimization taking the example of the water molecule. It is recommended to run a DFT calculation first to get the DFT optimized density. To do this, we start from the usual CLUSTER file:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">GGA</span><span class="o">-</span><span class="n">PBE</span><span class="o">*</span><span class="n">GGA</span><span class="o">-</span><span class="n">PBE</span>      <span class="p">(</span><span class="n">DF</span> <span class="n">TYPE</span> <span class="n">EXCHANGE</span><span class="o">*</span><span class="n">CORRELATION</span><span class="p">)</span>
+<span class="n">NONE</span>                 <span class="p">(</span><span class="n">TD</span><span class="p">,</span> <span class="n">OH</span><span class="p">,</span> <span class="n">IH</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">XY</span><span class="p">,</span> <span class="o">...</span> <span class="n">OR</span> <span class="n">GRP</span><span class="p">)</span>
+<span class="mi">3</span>                    <span class="p">(</span><span class="n">NUMBER</span> <span class="n">OF</span> <span class="n">ATOMS</span><span class="p">)</span>
+  <span class="mf">0.000</span>   <span class="mf">0.000</span>   <span class="mf">0.0</span>   <span class="mi">8</span>  <span class="n">ALL</span>  <span class="p">(</span><span class="n">R</span><span class="p">,</span> <span class="n">Z</span><span class="p">,</span> <span class="n">ALL</span><span class="o">-</span><span class="n">ELECTRON</span><span class="p">)</span>
+  <span class="mf">1.443</span>   <span class="mf">1.128</span>   <span class="mf">0.0</span>   <span class="mi">1</span>  <span class="n">ALL</span>  <span class="p">(</span><span class="n">R</span><span class="p">,</span> <span class="n">Z</span><span class="p">,</span> <span class="n">ALL</span><span class="o">-</span><span class="n">ELECTRON</span><span class="p">)</span>
+ <span class="o">-</span><span class="mf">1.443</span>   <span class="mf">1.128</span>   <span class="mf">0.0</span>   <span class="mi">1</span>  <span class="n">ALL</span>  <span class="p">(</span><span class="n">R</span><span class="p">,</span> <span class="n">Z</span><span class="p">,</span> <span class="n">ALL</span><span class="o">-</span><span class="n">ELECTRON</span><span class="p">)</span>
+ <span class="mf">0.000</span>   <span class="mf">0.000</span>                  <span class="p">(</span><span class="n">NET</span> <span class="n">CHARGE</span> <span class="n">AND</span> <span class="n">NET</span> <span class="n">SPIN</span><span class="p">)</span>
+</pre></div>
+</div>
 <p>In the NRLMOL_INPUT.DAT file we change CALCTYPEV from ‘LBFGS’ to ‘SCF-ONLY’ to switch off the molecular optimization. We also turn on the unrestricted calculation setting SPNPOLV = ‘Y’. Then we run NRLMOL in a new directory with only CLUSTER and NRLMOL_INPUT.DAT files:</p>
 <blockquote>
-<div><p>$ <strong>./nrlmol_exe &gt; print.DFT</strong></p>
+<div><p>$ <strong>PATH_TO_FLOSIC/nrlmol_exe &gt; print.DFT</strong></p>
 </div></blockquote>
 <p>All the normal NRLMOL outputs are generated. If the calculation finished correctly, we should have the following RUNS file</p>
-<p>The second number in the first line may be different if a molecular optimization was carried out. It is important to check that we have a couple of fours in the second line. This tells NRLMOL to use the wavefunction stored in WFOUT for the next calculation.</p>
-<p>Now, we have to include the FOD positions. Here, we can use the Monte Cartlo FOD generator <strong>fodMC</strong>. For that, we copy XMOL.xyz into a file named <strong>system</strong> and edit the second and last lines as shown</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>     <span class="mi">0</span>     <span class="mi">1</span>            <span class="n">ITBEG</span><span class="p">,</span> <span class="n">NCALC</span>
+     <span class="mi">4</span>     <span class="mi">4</span>            <span class="n">START</span><span class="p">:</span> <span class="mi">0</span><span class="o">=</span><span class="n">SCR</span><span class="o">.</span><span class="n">NUC</span><span class="p">,</span> <span class="mi">1</span><span class="o">=</span><span class="n">HAM</span><span class="p">,</span> <span class="mi">2</span><span class="o">=</span><span class="n">POT</span><span class="p">,</span> <span class="mi">3</span><span class="o">=</span><span class="n">LSF</span><span class="p">,</span> <span class="mi">4</span><span class="o">=</span><span class="n">WFUNC</span><span class="p">,</span> <span class="mi">5</span><span class="o">=</span><span class="n">WFUNC_FRAG</span>
+     <span class="mi">0</span>                  <span class="n">START</span> <span class="n">HAMILTONIAN</span> <span class="n">IS</span> <span class="n">INTERPOLATED</span><span class="p">:</span> <span class="mi">0</span><span class="o">=</span><span class="n">NO</span><span class="p">,</span> <span class="mi">1</span><span class="o">=</span><span class="n">YES</span>
+</pre></div>
+</div>
+<p>The second number in the first line may be different if a molecular optimization was carried out. It is important to check that we have 4 4 in the second line. This tells FLOSIC to use the wave function stored in WFOUT to start the next calculation.</p>
+<p>Now, we have to include the FOD positions. Here, we can use the Monte Cartlo FOD generator <strong>fodMC</strong>. For that, we copy XMOL.xyz into a file named <strong>system</strong> and edit the second and last lines as shown:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="mi">3</span>
+<span class="n">angstrom</span>  <span class="n">fix1s</span>
+ <span class="n">O</span>     <span class="mf">0.00000</span>    <span class="mf">0.00000</span>    <span class="mf">0.00000</span>
+ <span class="n">H</span>     <span class="mf">0.76360</span>    <span class="mf">0.59691</span>    <span class="mf">0.00000</span>
+ <span class="n">H</span>    <span class="o">-</span><span class="mf">0.76360</span>    <span class="mf">0.59691</span>    <span class="mf">0.00000</span>
+<span class="n">con_mat</span>
+
+</pre></div>
+</div>
 <p>It might have an empty line at the end. The fodMC code and documentation can be found <a class="reference external" href="https://github.com/pyflosic/fodMC">here</a>. When fodMC is executed 3 files are generated: <strong>CLUSTER</strong>, <strong>FRMORB</strong> and <strong>Nuc_FOD.xyz</strong>. Thus, it will overwrite our <strong>CLUSTER</strong> file if executed in the same directory. In our case, it does not matter because whenever the <strong>SYMBOL</strong> file is present <strong>CLUSTER</strong> is ignored. <strong>FRMORB</strong> contains the FODs in Bohrs for the unrestricted calculation (first the up, then the down). You should get something like this:</p>
-<p>If you do not have fodMC, you can copy-paste the previous <strong>FRMORB</strong>. It is important to always check how the FODs are distributed. For that, you can visualize <strong>Nuc_FOD.xyz</strong> with the software of your choice. The spin up FODs have the label X and the down He, so be careful if the He atom is included in your system. On the other hand, <strong>FRMORB</strong> is a deprecated way to give the FODs. It is recommended to rename it <strong>FRMIDT</strong> and include the <strong>FRMGRP</strong> with the group symmetry transformation matrices of the FODs. Here, we just copy the identity matrix in <strong>GRPMAT</strong> into <strong>FRMGRP</strong> and run NRLMOL.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>  <span class="mi">5</span>       <span class="mi">5</span>
+   <span class="mf">0.0000000000000000</span>        <span class="mf">0.0000000000000000</span>        <span class="mf">0.0000000000000000</span>     
+   <span class="mf">1.2265460953713494</span>       <span class="mf">0.95879731507086485</span>        <span class="mf">0.0000000000000000</span>     
+  <span class="o">-</span><span class="mf">1.2265460953713494</span>       <span class="mf">0.95879731507086485</span>        <span class="mf">0.0000000000000000</span>     
+   <span class="mf">9.8690853618931581E-005</span> <span class="o">-</span><span class="mf">0.84709659045951247</span>       <span class="o">-</span><span class="mf">1.0165159441533127</span>     
+  <span class="o">-</span><span class="mf">1.5276582823942571E-005</span> <span class="o">-</span><span class="mf">0.84709659045951247</span>        <span class="mf">1.0165159488293354</span>     
+   <span class="mf">0.0000000000000000</span>        <span class="mf">0.0000000000000000</span>        <span class="mf">0.0000000000000000</span>     
+   <span class="mf">9.8690853618931581E-005</span> <span class="o">-</span><span class="mf">0.84709659045951247</span>       <span class="o">-</span><span class="mf">1.0165159441533127</span>     
+  <span class="o">-</span><span class="mf">1.5276582823942571E-005</span> <span class="o">-</span><span class="mf">0.84709659045951247</span>        <span class="mf">1.0165159488293354</span>     
+   <span class="mf">1.2265461383759642</span>       <span class="mf">0.95879734868779065</span>        <span class="mf">0.0000000000000000</span>     
+  <span class="o">-</span><span class="mf">1.2265461383759642</span>       <span class="mf">0.95879734868779065</span>        <span class="mf">0.0000000000000000</span>     
+</pre></div>
+</div>
+<p>If you do not have fodMC, you can copy-paste the previous <strong>FRMORB</strong>. It is important to always check how the FODs are distributed. For that, you can visualize <strong>Nuc_FOD.xyz</strong> with the software of your choice. The spin up FODs have the label X and the down FODs have the symbol He by default, so be careful if the He atom is included in your system.</p>
+<p>Running the FLOSIC code again in this directory will now cause a FLO-SIC-PBE calculation to be run.  (The existence of FRMORB is the flag for running a FLO-SIC calculation).</p>
 <blockquote>
-<div><p>$ <strong>mv FRMORB FRMIDT</strong>
-$ <strong>cp GRPMAT FRMGRP</strong>
-$ <strong>./nrlmol_exe &gt; print.001</strong></p>
+<div><p>$ <strong>PATH_TO_FLOSIC/nrlmol_exe &gt; print.001</strong></p>
 </div></blockquote>
-<p>If everything goes well, we get now all the FLOSIC output files. Check the <strong>SUMMARY</strong> file. It should look like this:</p>
-<p>The first block is for the normal DFT calculation with the second and fifth column exactly the same (no SIC). The second block is for the FLOSIC run. In <strong>print.001</strong> search for the word ITERATION</p>
-<p>There it states that the wave function is read from WFOUT and gives the occupied and total number of orbitals. After giving the occupancies, it calculates the Lowdin overlap eigenvalues</p>
-<p>It is good when these values remain close to one. When one or more of these eigenvalues are smaller than 1E-08, the calculation stops with a message of bad FOD positions. At the end of the SCF cycle we get the following summary of energy contributions. Some of them are in the <strong>SUMMARY</strong> file too.</p>
-<p>Once the total energy is converged, the FOD forces are calculated and FOD positions are updated in <strong>FRMIDT</strong> (and/or in <strong>FRMORB</strong>) using the chosen optimization method. Default is scaled LBFGS, but it sometimes gets stuck or fails to obtain the next step. In those cases, we may switch off this variable in <strong>NRLMOL_INPUT.DAT</strong> SCALEDLBFGSV = ‘N’ to use the conjuged gradient for the FOD optimization. As the FODs are already updated and we also have the wavefunciton and the <strong>RUNS</strong> file, we just run again NRLMOL in the same directory to do the SCF cycle with the new FODs.</p>
+<p>If everything goes well, we get now all the FLOSIC output files. Check the <strong>SUMMARY</strong> file. It should look like this (note that some columns of this file do not fit on the page):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>  <span class="n">IT</span>          <span class="n">TRACE</span>                <span class="n">ETOT</span>                 <span class="n">EKIN</span><span class="o">+</span><span class="n">ENONLOC</span>          <span class="n">CHARGE</span>              <span class="n">EDFT</span><span class="o">+</span><span class="n">SIC</span>              <span class="n">LOWEST</span>
+   <span class="mi">1</span>        <span class="o">-</span><span class="mf">42.416153386</span>        <span class="o">-</span><span class="mf">76.326968147</span>         <span class="mf">76.469793374</span>          <span class="mf">9.999999301</span>        <span class="o">-</span><span class="mf">76.326968147</span>          <span class="mf">0.000000000</span>
+   <span class="mi">2</span>        <span class="o">-</span><span class="mf">40.529422883</span>        <span class="o">-</span><span class="mf">76.287479323</span>         <span class="mf">74.155137275</span>          <span class="mf">9.999999484</span>        <span class="o">-</span><span class="mf">76.287479323</span>        <span class="o">-</span><span class="mf">76.326968147</span>
+   <span class="mi">3</span>        <span class="o">-</span><span class="mf">41.037801666</span>        <span class="o">-</span><span class="mf">76.360861763</span>         <span class="mf">75.120435771</span>          <span class="mf">9.999999577</span>        <span class="o">-</span><span class="mf">76.360861763</span>        <span class="o">-</span><span class="mf">76.287479323</span>
+   <span class="mi">4</span>        <span class="o">-</span><span class="mf">41.547677518</span>        <span class="o">-</span><span class="mf">76.386605548</span>         <span class="mf">76.071092878</span>          <span class="mf">9.999999652</span>        <span class="o">-</span><span class="mf">76.386605548</span>        <span class="o">-</span><span class="mf">76.360861763</span>
+   <span class="mi">5</span>        <span class="o">-</span><span class="mf">41.579433885</span>        <span class="o">-</span><span class="mf">76.387012272</span>         <span class="mf">76.156784862</span>          <span class="mf">9.999999660</span>        <span class="o">-</span><span class="mf">76.387012272</span>        <span class="o">-</span><span class="mf">76.386605548</span>
+   <span class="mi">6</span>        <span class="o">-</span><span class="mf">41.537373241</span>        <span class="o">-</span><span class="mf">76.387091483</span>         <span class="mf">76.105263133</span>          <span class="mf">9.999999659</span>        <span class="o">-</span><span class="mf">76.387091483</span>        <span class="o">-</span><span class="mf">76.387012272</span>
+   <span class="mi">7</span>        <span class="o">-</span><span class="mf">41.535132409</span>        <span class="o">-</span><span class="mf">76.387091342</span>         <span class="mf">76.101118384</span>          <span class="mf">9.999999659</span>        <span class="o">-</span><span class="mf">76.387091342</span>        <span class="o">-</span><span class="mf">76.387091483</span>
+   <span class="mi">8</span>        <span class="o">-</span><span class="mf">41.541270575</span>        <span class="o">-</span><span class="mf">76.387093972</span>         <span class="mf">76.111112778</span>          <span class="mf">9.999999661</span>        <span class="o">-</span><span class="mf">76.387093972</span>        <span class="o">-</span><span class="mf">76.387091342</span>
+  <span class="n">IT</span>          <span class="n">TRACE</span>                <span class="n">ETOT</span>                 <span class="n">EKIN</span><span class="o">+</span><span class="n">ENONLOC</span>          <span class="n">CHARGE</span>              <span class="n">EDFT</span><span class="o">+</span><span class="n">SIC</span>              <span class="n">LOWEST</span>
+   <span class="mi">1</span>          <span class="mf">0.000000000</span>        <span class="o">-</span><span class="mf">76.387093972</span>         <span class="mf">76.111112778</span>          <span class="mf">9.999999661</span>        <span class="o">-</span><span class="mf">76.325884480</span>          <span class="mf">0.000000000</span>
+   <span class="mi">2</span>        <span class="o">-</span><span class="mf">47.383872787</span>        <span class="o">-</span><span class="mf">76.377766430</span>         <span class="mf">75.943917202</span>          <span class="mf">9.999999707</span>        <span class="o">-</span><span class="mf">76.336806819</span>        <span class="o">-</span><span class="mf">76.325884480</span>
+   <span class="mi">3</span>        <span class="o">-</span><span class="mf">47.434397301</span>        <span class="o">-</span><span class="mf">76.376079958</span>         <span class="mf">76.027004027</span>          <span class="mf">9.999999708</span>        <span class="o">-</span><span class="mf">76.337098863</span>        <span class="o">-</span><span class="mf">76.336806819</span>
+   <span class="mi">4</span>        <span class="o">-</span><span class="mf">47.441559320</span>        <span class="o">-</span><span class="mf">76.375691097</span>         <span class="mf">76.055957777</span>          <span class="mf">9.999999706</span>        <span class="o">-</span><span class="mf">76.337109578</span>        <span class="o">-</span><span class="mf">76.337098863</span>
+   <span class="mi">5</span>        <span class="o">-</span><span class="mf">47.324136604</span>        <span class="o">-</span><span class="mf">76.375845538</span>         <span class="mf">75.998150088</span>          <span class="mf">9.999999702</span>        <span class="o">-</span><span class="mf">76.337049496</span>        <span class="o">-</span><span class="mf">76.337109578</span>
+   <span class="mi">6</span>        <span class="o">-</span><span class="mf">47.312036177</span>        <span class="o">-</span><span class="mf">76.376132863</span>         <span class="mf">76.000962346</span>          <span class="mf">9.999999700</span>        <span class="o">-</span><span class="mf">76.337038707</span>        <span class="o">-</span><span class="mf">76.337049496</span>
+   <span class="mi">7</span>        <span class="o">-</span><span class="mf">47.315234163</span>        <span class="o">-</span><span class="mf">76.376185290</span>         <span class="mf">76.002987681</span>          <span class="mf">9.999999700</span>        <span class="o">-</span><span class="mf">76.337041096</span>        <span class="o">-</span><span class="mf">76.337038707</span>
+   <span class="mi">8</span>        <span class="o">-</span><span class="mf">47.332770384</span>        <span class="o">-</span><span class="mf">76.376285169</span>         <span class="mf">76.024925697</span>          <span class="mf">9.999999700</span>        <span class="o">-</span><span class="mf">76.337087551</span>        <span class="o">-</span><span class="mf">76.337041096</span>
+   <span class="mi">9</span>        <span class="o">-</span><span class="mf">47.303951079</span>        <span class="o">-</span><span class="mf">76.376194186</span>         <span class="mf">75.999998287</span>          <span class="mf">9.999999700</span>        <span class="o">-</span><span class="mf">76.337026990</span>        <span class="o">-</span><span class="mf">76.337087551</span>
+  <span class="mi">10</span>        <span class="o">-</span><span class="mf">47.374868090</span>        <span class="o">-</span><span class="mf">76.376350868</span>         <span class="mf">76.064567671</span>          <span class="mf">9.999999702</span>        <span class="o">-</span><span class="mf">76.337132117</span>        <span class="o">-</span><span class="mf">76.337026990</span>
+  <span class="mi">11</span>        <span class="o">-</span><span class="mf">47.381393225</span>        <span class="o">-</span><span class="mf">76.376294921</span>         <span class="mf">76.083303549</span>          <span class="mf">9.999999703</span>        <span class="o">-</span><span class="mf">76.337128855</span>        <span class="o">-</span><span class="mf">76.337132117</span>
+  <span class="mi">12</span>        <span class="o">-</span><span class="mf">47.365402178</span>        <span class="o">-</span><span class="mf">76.376255647</span>         <span class="mf">76.070377576</span>          <span class="mf">9.999999703</span>        <span class="o">-</span><span class="mf">76.337133358</span>        <span class="o">-</span><span class="mf">76.337128855</span>
+  <span class="mi">13</span>        <span class="o">-</span><span class="mf">47.358580387</span>        <span class="o">-</span><span class="mf">76.376246217</span>         <span class="mf">76.060102340</span>          <span class="mf">9.999999702</span>        <span class="o">-</span><span class="mf">76.337132539</span>        <span class="o">-</span><span class="mf">76.337133358</span>
+  <span class="mi">14</span>        <span class="o">-</span><span class="mf">47.369783782</span>        <span class="o">-</span><span class="mf">76.376261648</span>         <span class="mf">76.069168121</span>          <span class="mf">9.999999702</span>        <span class="o">-</span><span class="mf">76.337133952</span>        <span class="o">-</span><span class="mf">76.337132539</span>
+</pre></div>
+</div>
+<p>The first block is for the normal DFT calculation with the 3rd and 6th column exactly the same (no SIC). The second block is for the FLOSIC run. In the standard output file – renamed print.001 in this example (see the execution line above) – search for the word ITERATION.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ITERATION</span>   <span class="mi">1</span>
+<span class="o">=============</span>
+<span class="n">READING</span> <span class="n">OLD</span> <span class="n">WAVEFUNCTIONS</span> <span class="n">FROM</span> <span class="n">FILE</span> <span class="n">WFOUT</span>
+ <span class="n">MREP</span> <span class="o">=</span>           <span class="mi">1</span>
+ <span class="n">N_OCC</span><span class="p">,</span> <span class="n">NBASF</span> <span class="o">=</span>           <span class="mi">5</span>          <span class="mi">73</span>          <span class="mi">73</span>
+ <span class="n">N_OCC</span><span class="p">,</span> <span class="n">NBASF</span> <span class="o">=</span>           <span class="mi">5</span>          <span class="mi">73</span>          <span class="mi">73</span>
+</pre></div>
+</div>
+<p>There it states that the wave function is read from WFOUT and gives the occupied and total number of orbitals. After giving the occupancies, it calculates the Lowdin overlap eigenvalues.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">LOWDEN</span> <span class="n">OVERLAP</span> <span class="n">EIGENVALUES</span><span class="p">:</span>
+    <span class="mf">0.751388</span>       <span class="mf">0.791811</span>        <span class="mf">1.06742</span>        <span class="mf">1.07216</span>        <span class="mf">1.31722</span>
+<span class="n">BACK</span> <span class="n">FROM</span> <span class="n">LOWSIC</span>
+<span class="n">CALLING</span> <span class="n">DIAGGE</span><span class="p">:</span>        <span class="mi">1000</span>           <span class="mi">5</span>
+<span class="n">LOWDEN</span> <span class="n">OVERLAP</span> <span class="n">EIGENVALUES</span><span class="p">:</span>
+    <span class="mf">0.751388</span>       <span class="mf">0.791811</span>        <span class="mf">1.06742</span>        <span class="mf">1.07216</span>        <span class="mf">1.31722</span>
+</pre></div>
+</div>
+<p>These values correspond to the eigenvalues of the overlap matrix formed from the Fermi orbitals.  This is diagonalized in the Lowdin process.  When one or more of these eigenvalues are smaller than 1E-08, it means that two or more of the Fermi orbitals are identical and the calculation stops with a message of bad FOD positions. At the end of the SCF cycle we get the following summary of energy contributions. Some of them are in the <strong>SUMMARY</strong> file too.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SUMMARY</span> <span class="n">OF</span> <span class="n">ENERGY</span> <span class="n">CONTRIBUTIONS</span><span class="p">:</span>
+<span class="o">================================</span>
+<span class="n">TOTAL</span> <span class="n">ENERGY</span><span class="p">:</span>                         <span class="o">-</span><span class="mf">76.337134</span>
+<span class="n">NUCLEAR</span> <span class="n">REPULSION</span><span class="p">:</span>                      <span class="mf">9.082196</span>
+<span class="n">LOCAL</span> <span class="n">POTENTIAL</span><span class="p">:</span>                     <span class="o">-</span><span class="mf">198.922706</span>
+<span class="n">MEAN</span><span class="o">-</span><span class="n">FIELD</span> <span class="n">COULOMB</span><span class="p">:</span>                    <span class="mf">46.647189</span>
+<span class="n">NONLOCAL</span> <span class="n">POTENTIAL</span><span class="p">:</span>                     <span class="mf">0.000000</span>
+<span class="n">KINETIC</span><span class="p">:</span>                               <span class="mf">76.069168</span>
+<span class="n">LOCAL</span> <span class="n">EXCHANGE</span><span class="p">:</span>                        <span class="o">-</span><span class="mf">8.108217</span>
+<span class="n">LOCAL</span> <span class="n">CORRELATION</span><span class="p">:</span>                     <span class="o">-</span><span class="mf">0.660695</span>
+<span class="n">NONLOCAL</span> <span class="n">EXCHANGE</span><span class="p">:</span>                     <span class="o">-</span><span class="mf">0.816267</span>
+<span class="n">NONLOCAL</span> <span class="n">CORRELATION</span><span class="p">:</span>                   <span class="mf">0.333071</span>
+<span class="n">EXTERNAL</span> <span class="n">ELECTRIC</span> <span class="n">FIELD</span><span class="p">:</span>                <span class="mf">0.000000</span>
+</pre></div>
+</div>
+<p>Once self-consistency is reached, the FOD forces are calculated and FOD positions are updated in <strong>FRMIDT</strong> (and/or in <strong>FRMORB</strong>) using the chosen optimization method. The default is scaled LBFGS, but it sometimes gets stuck or fails to obtain the next step. In those cases, we may switch off this variable in <strong>NRLMOL_INPUT.DAT</strong> SCALEDLBFGSV = ‘N’ to use the conjuged gradient for the FOD optimization. As the FODs are already updated and we also have the wave function and the <strong>RUNS</strong> file, we just run FLOSIC in the same directory to do the SCF cycle with the new FODs.</p>
 <blockquote>
-<div><p>$ <strong>./nrlmol_exe &gt; print.002</strong></p>
+<div><p>$ <strong>PATH_TO_FLOSIC/nrlmol_exe &gt; print.002</strong></p>
 </div></blockquote>
 <p>We can sucessively do this or use a script similar to that in the previous tutorial. After doing 5 steps of FOD optimization we can see in <strong>fande.out</strong> how the energy is decreasing and converging and the forces diminishing (not at every step).</p>
-<p>All the used FODs and obtained forces and corrected total energy can be seen in <strong>records</strong> file.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="mi">1</span>    <span class="o">-</span><span class="mf">76.337133952182</span>  <span class="mf">0.533401361320E-02</span>  <span class="mf">0.376016287388E-02</span>
+    <span class="mi">2</span>    <span class="o">-</span><span class="mf">76.336140893884</span>  <span class="mf">0.316012354712E-01</span>  <span class="mf">0.222645230322E-01</span>
+    <span class="mi">3</span>    <span class="o">-</span><span class="mf">76.337242375732</span>  <span class="mf">0.165238505484E-02</span>  <span class="mf">0.109072276621E-02</span>
+    <span class="mi">4</span>    <span class="o">-</span><span class="mf">76.337256822409</span>  <span class="mf">0.184877969533E-02</span>  <span class="mf">0.129662662282E-02</span>
+    <span class="mi">5</span>    <span class="o">-</span><span class="mf">76.337254671865</span>  <span class="mf">0.203173772471E-03</span>  <span class="mf">0.997893243061E-04</span>
+</pre></div>
 </div>
+<p>All the used FODs, obtained forces, and corrected total energies can be seen in the <strong>records</strong> file.</p>
+</section>
 
 
+           </div>
           </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="tutorial2.html" class="btn btn-neutral float-left" title="Tutorial 2: a FLOSIC calculation for H2" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../ddos/density_of_states.html" class="btn btn-neutral float-right" title="Plotting density of states using NRLMOL" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022,   NRLMOL users .
+      <span class="lastupdated">Last updated on Jan 31, 2023.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
         </div>
       </div>
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
-        <div class="sphinxsidebarwrapper">
-  <h4>Previous topic</h4>
-  <p class="topless"><a href="tutorial2.html"
-                        title="previous chapter">Tutorial 2: Understanding electronic structure of molecules using NRLMOL</a></p>
-  <h4>Next topic</h4>
-  <p class="topless"><a href="../ddos/density_of_states.html"
-                        title="next chapter">Plotting density of states using NRLMOL</a></p>
-  <div role="note" aria-label="source link">
-    <h3>This Page</h3>
-    <ul class="this-page-menu">
-      <li><a href="../../_sources/tutorials/dtutorials/T3-FOD_opt.rst.txt"
-            rel="nofollow">Show Source</a></li>
-    </ul>
-   </div>
-<div id="searchbox" style="display: none" role="search">
-  <h3 id="searchlabel">Quick search</h3>
-    <div class="searchformwrapper">
-    <form class="search" action="../../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" />
-      <input type="submit" value="Go" />
-    </form>
-    </div>
-</div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
-        </div>
-      </div>
-      <div class="clearer"></div>
-    </div>
-    <div class="related" role="navigation" aria-label="related navigation">
-      <h3>Navigation</h3>
-      <ul>
-        <li class="right" style="margin-right: 10px">
-          <a href="../../genindex.html" title="General Index"
-             >index</a></li>
-        <li class="right" >
-          <a href="../ddos/density_of_states.html" title="Plotting density of states using NRLMOL"
-             >next</a> |</li>
-        <li class="right" >
-          <a href="tutorial2.html" title="Tutorial 2: Understanding electronic structure of molecules using NRLMOL"
-             >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../../nrlmoldoc_main.html">NRLMOL  0 documentation</a> &#187;</li> 
-      </ul>
-    </div>
-    <div class="footer" role="contentinfo">
-        &#169; Copyright 2013,   NRLMOL users .
-    </div>
-  </body>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
 </html>

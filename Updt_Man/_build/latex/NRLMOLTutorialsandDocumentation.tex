@@ -10,6 +10,9 @@
 %% let collapsible pdf bookmarks panel have high depth per default
 \PassOptionsToPackage{bookmarksdepth=5}{hyperref}
 
+\PassOptionsToPackage{booktabs}{sphinx}
+\PassOptionsToPackage{colorrows}{sphinx}
+
 \PassOptionsToPackage{warn}{textcomp}
 \usepackage[utf8]{inputenc}
 \ifdefined\DeclareUnicodeCharacter
@@ -55,26 +58,33 @@
 
 
 \usepackage{sphinxmessages}
-\setcounter{tocdepth}{0}
+\setcounter{tocdepth}{1}
 
 
 
 \title{FLOSIC Documentation and Tutorials }
-\date{Oct 21, 2022}
-\release{0}
+\date{Jan 31, 2023}
+\release{2020}
 \author{  FLOSIC developers group }
-\newcommand{\sphinxlogo}{\vbox{}}
+\newcommand{\sphinxlogo}{\sphinxincludegraphics{log.jpeg}\par}
 \renewcommand{\releasename}{Release}
 \makeindex
 \begin{document}
+
+\ifdefined\shorthandoff
+  \ifnum\catcode`\=\string=\active\shorthandoff{=}\fi
+  \ifnum\catcode`\"=\active\shorthandoff{"}\fi
+\fi
 
 \pagestyle{empty}
 \sphinxmaketitle
 \pagestyle{plain}
 \sphinxtableofcontents
 \pagestyle{normal}
-\phantomsection\label{\detokenize{nrlmoldoc_main::doc}}
+\phantomsection\label{\detokenize{main::doc}}
 
+
+\sphinxstepscope
 
 
 \chapter{Introduction and Overview}
@@ -135,6 +145,7 @@ Orbitals in .cube format
 
 \sphinxAtStartPar
 Physically interesting properties that have been evaluated recently with the FLOSIC code include:{[}9\sphinxhyphen{}14{]}
+\begin{quote}
 \begin{itemize}
 \item {} 
 \sphinxAtStartPar
@@ -161,6 +172,10 @@ Dipole moments
 Magnetic exchange couplings
 
 \end{itemize}
+
+\sphinxAtStartPar
+\$alpha\$
+\end{quote}
 
 \sphinxAtStartPar
 The following are references to the NRLMOL code:
@@ -219,41 +234,61 @@ Applications of FLO\sphinxhyphen{}SIC are described in these references:
 {[}14{]} K. Trepte, S. Schwalbe, T. Hahn, J. Kortus, D.\sphinxhyphen{}y. Kao, et al., \sphinxstyleemphasis{J. Comput. Chem.}, \sphinxstylestrong{40}, 820\sphinxhyphen{}825, 2019.
 \end{quote}
 
+\sphinxstepscope
 
-\chapter{Accessing and compiling the code}
-\label{\detokenize{docs/setupcode:accessing-and-compiling-the-code}}\label{\detokenize{docs/setupcode::doc}}
-\sphinxAtStartPar
-The code is accessible from a git repository hosted at the University of Texas at El Paso (UTEP).
-To download the latest version, use a git command as follows:
 
-\sphinxAtStartPar
-git clone \sphinxhref{mailto:sicuser@quantum.utep.edu}{sicuser@quantum.utep.edu}:pr.git
+\chapter{Installing FLOSIC}
+\label{\detokenize{docs/install/toc:installing-flosic}}\label{\detokenize{docs/install/toc::doc}}
+\sphinxstepscope
 
+
+\section{Prerequisites}
+\label{\detokenize{docs/install/Prerequisites:prerequisites}}\label{\detokenize{docs/install/Prerequisites::doc}}\begin{description}
+\sphinxlineitem{Hello this is my name}\begin{itemize}
+\item {} 
 \sphinxAtStartPar
-where the password for this repository is available by communicating with the repository administrator.
-(Currently, you can contact Prof. Rajendra R. Zope, rzope(at)utep.edu.)
+tEST!
+
+\item {} 
+\sphinxAtStartPar
+tEST@@@
+
+\end{itemize}
+
+\end{description}
+
+\sphinxstepscope
+
+
+\section{Accessing and compiling the code}
+\label{\detokenize{docs/install/Build:accessing-and-compiling-the-code}}\label{\detokenize{docs/install/Build::doc}}
+\sphinxAtStartPar
+The code is accessible from a GitHub repository. To download the latest version, use a git command as follows:
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+git\PYG{+w}{ }clone\PYG{+w}{ }https://github.com/FLOSIC/PublicRelease\PYGZus{}2020.git
+\end{sphinxVerbatim}
 
 \sphinxAtStartPar
 Once you have obtained the code from the repository, go to the directory containing the source files.  You will
 need to edit three blocks of lines in the makefile to suit your needs.
 
+\begin{sphinxadmonition}{note}{Note:}
+\sphinxAtStartPar
+If you have not modified a Makefile before \sphinxhyphen{} no worries!
+You only have to switch a few variables.
+\end{sphinxadmonition}
+
 \sphinxAtStartPar
 \sphinxstylestrong{First block: parallel or serial}
 
-\sphinxAtStartPar
-\# set Y or N
-
-\sphinxAtStartPar
-\# Parallel compilation
-
-\sphinxAtStartPar
-MPI=Y
-
-\sphinxAtStartPar
-\# Group calculation
-
-\sphinxAtStartPar
-GROUP=N
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{c+c1}{\PYGZsh{} set Y or N}
+\PYG{c+c1}{\PYGZsh{} Parallel compilation}
+\PYG{n+nv}{MPI}\PYG{o}{=}Y
+\PYG{c+c1}{\PYGZsh{} Group calculation}
+\PYG{n+nv}{GROUP}\PYG{o}{=}N
+\end{sphinxVerbatim}
 
 \sphinxAtStartPar
 In this block, the user specifies whether the compilation will be for a parallel (MPI=Y) or serial (MPI=N) version of the code.
@@ -262,38 +297,22 @@ This parallelizes over the orbitals in calculating SIC potentials, and also over
 This option can deliver a greater speed up than the single\sphinxhyphen{}level parallel scheme, but it is not recommended for new users.
 
 \sphinxAtStartPar
-Note:
-
-\sphinxAtStartPar
 When GROUP=Y, the user should edit the “igroup” file in the run directory.  This file should contain an integer that is
 an even divisor of the number of orbitals. For example, for 100 orbitals, igroup might be 10 or 20, but not 15.
 
 \sphinxAtStartPar
 \sphinxstylestrong{Second block: compiler choices}
 
-\sphinxAtStartPar
-\# COMPILERS
-
-\sphinxAtStartPar
-CC = gcc
-
-\sphinxAtStartPar
-FC = mpif90
-
-\sphinxAtStartPar
-FFF = mpif90
-
-\sphinxAtStartPar
-\# COMPILER FLAGS
-
-\sphinxAtStartPar
-CFLAGS = \sphinxhyphen{}O3 \sphinxhyphen{}mcmodel=medium
-
-\sphinxAtStartPar
-FFLAGS = \sphinxhyphen{}O3 \sphinxhyphen{}mcmodel=medium
-
-\sphinxAtStartPar
-LFLAGS = \sphinxhyphen{}O3 \sphinxhyphen{}mcmodel=medium
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{c+c1}{\PYGZsh{} COMPILERS}
+\PYG{n+nv}{CC}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }gcc
+\PYG{n+nv}{FC}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }mpif90
+\PYG{n+nv}{FFF}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }mpif90
+\PYG{c+c1}{\PYGZsh{} COMPILER FLAGS}
+\PYG{n+nv}{CFLAGS}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYGZhy{}O3\PYG{+w}{ }\PYGZhy{}mcmodel\PYG{o}{=}medium
+\PYG{n+nv}{FFLAGS}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYGZhy{}O3\PYG{+w}{ }\PYGZhy{}mcmodel\PYG{o}{=}medium
+\PYG{n+nv}{LFLAGS}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYGZhy{}O3\PYG{+w}{ }\PYGZhy{}mcmodel\PYG{o}{=}medium
+\end{sphinxVerbatim}
 
 \sphinxAtStartPar
 The second block is to specify the compilers and their flags used during the compilation. A number of routines require static allocation of arrays. The code needs to be compiled for appropriate array sizes for the system under study and these static parameters are listed in the file called PARAMA2 (\sphinxstyleemphasis{vide infra})
@@ -301,14 +320,11 @@ The second block is to specify the compilers and their flags used during the com
 \sphinxAtStartPar
 An example of the compilers used for NERSC is below.
 
-\sphinxAtStartPar
-CC = cc
-
-\sphinxAtStartPar
-FC = ftn
-
-\sphinxAtStartPar
-FFF = ftn
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n+nv}{CC}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }cc
+\PYG{n+nv}{FC}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }ftn
+\PYG{n+nv}{FFF}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }ftn
+\end{sphinxVerbatim}
 
 \sphinxAtStartPar
 \sphinxstylestrong{Third block: linking options}
@@ -316,8 +332,9 @@ FFF = ftn
 \sphinxAtStartPar
 \# Linking options
 
-\sphinxAtStartPar
-\$(FFF) \$(LFLAGS) \$(OBJ) \sphinxhyphen{}o \$(BIN) \sphinxhyphen{}llapack \sphinxhyphen{}lblas \$(LIBS)
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{k}{\PYGZdl{}(}FFF\PYG{k}{)}\PYG{+w}{ }\PYG{k}{\PYGZdl{}(}LFLAGS\PYG{k}{)}\PYG{+w}{ }\PYG{k}{\PYGZdl{}(}OBJ\PYG{k}{)}\PYG{+w}{ }\PYGZhy{}o\PYG{+w}{ }\PYG{k}{\PYGZdl{}(}BIN\PYG{k}{)}\PYG{+w}{ }\PYGZhy{}llapack\PYG{+w}{ }\PYGZhy{}lblas\PYG{+w}{ }\PYG{k}{\PYGZdl{}(}LIBS\PYG{k}{)}
+\end{sphinxVerbatim}
 
 \sphinxAtStartPar
 This block specifies the libraries used for linking, where it is recommended to use optimized BLAS and LPACK libraries if they are available on your platform to achieve the best performance.
@@ -327,9 +344,10 @@ Edit PARAMA2 for static parameters :
 
 
 \begin{savenotes}\sphinxattablestart
+\sphinxthistablewithglobalstyle
 \centering
-\begin{tabulary}{\linewidth}[t]{|T|T|}
-\hline
+\begin{tabulary}{\linewidth}[t]{TT}
+\sphinxtoprule
 \sphinxstyletheadfamily 
 \sphinxAtStartPar
 parameter
@@ -337,58 +355,59 @@ parameter
 \sphinxAtStartPar
 brief  explanation
 \\
-\hline
+\sphinxmidrule
+\sphinxtableatstartofbodyhook
 \sphinxAtStartPar
 \sphinxstyleemphasis{MAX\_PTS}
 &
 \sphinxAtStartPar
 maximum size of integration grid
 \\
-\hline
+\sphinxhline
 \sphinxAtStartPar
 \sphinxstyleemphasis{MX\_SPH}
 &
 \sphinxAtStartPar
 needed to generate the integration mesh
 \\
-\hline
+\sphinxhline
 \sphinxAtStartPar
 \sphinxstyleemphasis{MAXUNSYM}
 &
 \sphinxAtStartPar
 maximum number of orbitals for an atomic basis
 \\
-\hline
+\sphinxhline
 \sphinxAtStartPar
 \sphinxstyleemphasis{NDH}
 &
 \sphinxAtStartPar
 maximum total basis set size
 \\
-\hline
+\sphinxhline
 \sphinxAtStartPar
 \sphinxstyleemphasis{NDH\_TOT}
 &
 \sphinxAtStartPar
 maximum number of Hamiltonian matrix elements
 \\
-\hline
+\sphinxhline
 \sphinxAtStartPar
 \sphinxstyleemphasis{MAX\_OCC}
 &
 \sphinxAtStartPar
 maximum number of occupied states
 \\
-\hline
+\sphinxhline
 \sphinxAtStartPar
 \sphinxstyleemphasis{MX\_GRP}
 &
 \sphinxAtStartPar
 maximum size of symmetry group
 \\
-\hline
+\sphinxbottomrule
 \end{tabulary}
-\par
+\sphinxtableafterendhook\par
 \sphinxattableend\end{savenotes}
 
 \sphinxAtStartPar
@@ -406,362 +425,47 @@ GROUP=N
 \sphinxAtStartPar
 \sphinxstylestrong{Second block:} use gcc and gfortran compilers
 
-\sphinxAtStartPar
-\#COMPILERS
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{c+c1}{\PYGZsh{}COMPILERS}
+\PYG{n+nv}{CC}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }gcc
+\PYG{n+nv}{FC}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }gfortran
+\PYG{n+nv}{FFF}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }gfortran
 
-\sphinxAtStartPar
-CC = gcc
-
-\sphinxAtStartPar
-FC = gfortran
-
-\sphinxAtStartPar
-FFF = gfortran
-
-\sphinxAtStartPar
-\#COMPILER FLAGS
-
-\sphinxAtStartPar
-CFLAGS = \sphinxhyphen{}O3
-
-\sphinxAtStartPar
-FFLAGS = \sphinxhyphen{}O3
-
-\sphinxAtStartPar
-LFLAGS = \sphinxhyphen{}O3
+\PYG{c+c1}{\PYGZsh{}COMPILER FLAGS}
+\PYG{n+nv}{CFLAGS}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYGZhy{}O3
+\PYG{n+nv}{FFLAGS}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYGZhy{}O3
+\PYG{n+nv}{LFLAGS}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYGZhy{}O3
+\end{sphinxVerbatim}
 
 \sphinxAtStartPar
 \sphinxstylestrong{Third block:} Use the linking options under Fedora (Quantum/Luis local)
 
-\sphinxAtStartPar
-\$(FFF) \$(LFLAGS) \$(OBJ) \sphinxhyphen{}o \$(BIN) \$(PCM\_LIBS) \$(EFP\_LIB) \sphinxhyphen{}llapack \sphinxhyphen{}lblas \$(LIBS)
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{k}{\PYGZdl{}(}FFF\PYG{k}{)}\PYG{+w}{ }\PYG{k}{\PYGZdl{}(}LFLAGS\PYG{k}{)}\PYG{+w}{ }\PYG{k}{\PYGZdl{}(}OBJ\PYG{k}{)}\PYG{+w}{ }\PYGZhy{}o\PYG{+w}{ }\PYG{k}{\PYGZdl{}(}BIN\PYG{k}{)}\PYG{+w}{ }\PYG{k}{\PYGZdl{}(}PCM\PYGZus{}LIBS\PYG{k}{)}\PYG{+w}{ }\PYG{k}{\PYGZdl{}(}EFP\PYGZus{}LIB\PYG{k}{)}\PYG{+w}{ }\PYGZhy{}llapack\PYG{+w}{ }\PYGZhy{}lblas\PYG{+w}{ }\PYG{k}{\PYGZdl{}(}LIBS\PYG{k}{)}
+\end{sphinxVerbatim}
 
 \sphinxAtStartPar
 Use the \sphinxstyleemphasis{make} command on the command line to compile FLOSIC. If the compilation was successful, an executable file titled \sphinxstylestrong{nrlmol\_exe} will be created.
 
+\sphinxstepscope
 
-\chapter{Quick start guide to running a FLOSIC calculation}
-\label{\detokenize{docs/setupcal:quick-start-guide-to-running-a-flosic-calculation}}\label{\detokenize{docs/setupcal:setup}}\label{\detokenize{docs/setupcal::doc}}
+
+\section{Support}
+\label{\detokenize{docs/install/Support:support}}\label{\detokenize{docs/install/Support::doc}}
 \sphinxAtStartPar
-Basic input files for FLOSIC are called “CLUSTER” and “FRMORB”.
-The files require minimal input from the user and most parameters required for the calculations are set with
-default values. You can specify some parameters that control the calculations in the file called “NRLMOL\_INPUT.DAT”.
-A version of this file with default values is created in the run directory if it otherwise does not exist. We will
-discuss the details of the parameters in the \sphinxstylestrong{NRLMOL\_INPUT.DAT} in a later section.
+Please visit our repository at \sphinxurl{https://github.com/FLOSIC/PublicRelease\_2020} to access
+our \sphinxhref{https://github.com/FLOSIC/PublicRelease\_2020/discussions}{Discussions} forum and to report any issues with the software.
 
-\sphinxAtStartPar
-For now let’s work on setting up of the \sphinxstylestrong{CLUSTER} file. It is the minimal input needed to run the FLOSIC code.
+\sphinxstepscope
 
-\sphinxAtStartPar
-An example CLUSTER file is shown below for the LiH molecule. The format is described in more detail in tutorial 1.
 
-\begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{n}{GGA}\PYG{o}{\PYGZhy{}}\PYG{n}{PBE}\PYG{o}{*}\PYG{n}{GGA}\PYG{o}{\PYGZhy{}}\PYG{n}{PBE}          \PYG{p}{(}\PYG{n}{DF} \PYG{n}{TYPE} \PYG{n}{EXCHANGE}\PYG{o}{*}\PYG{n}{CORRELATION}\PYG{p}{)}
-\PYG{n}{NONE}                     \PYG{p}{(}\PYG{n}{TD}\PYG{p}{,} \PYG{n}{OH}\PYG{p}{,} \PYG{n}{IH}\PYG{p}{,} \PYG{n}{X}\PYG{p}{,} \PYG{n}{Y}\PYG{p}{,} \PYG{n}{XY}\PYG{p}{,} \PYG{o}{.}\PYG{o}{.}\PYG{o}{.} \PYG{n}{OR} \PYG{n}{GRP}\PYG{p}{)}
-\PYG{l+m+mi}{2}                        \PYG{p}{(}\PYG{n}{NUMBER} \PYG{n}{OF} \PYG{n}{INEQUIV}\PYG{o}{.} \PYG{n}{ATOMS} \PYG{n}{IN} \PYG{n}{CH4}\PYG{p}{)}
-\PYG{l+m+mf}{0.0000}  \PYG{l+m+mf}{0.0000}  \PYG{l+m+mf}{0.0000} \PYG{l+m+mi}{3} \PYG{n}{ALL}
-\PYG{l+m+mf}{0.0000}  \PYG{l+m+mf}{0.0000}  \PYG{l+m+mf}{3.0139} \PYG{l+m+mi}{1} \PYG{n}{ALL}
-\PYG{l+m+mf}{0.0} \PYG{l+m+mf}{0.0}                  \PYG{p}{(}\PYG{n}{NET} \PYG{n}{CHARGE} \PYG{n}{AND} \PYG{n}{NET} \PYG{n}{SPIN}\PYG{p}{)}
- \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{n}{OR}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}
-\PYG{n+nd}{@XMOL}\PYG{o}{.}\PYG{n}{DAT}
- \PYG{n}{IF} \PYG{n}{YOU} \PYG{n}{WISH} \PYG{n}{TO} \PYG{n}{START} \PYG{n}{FROM} \PYG{n}{AN} \PYG{n}{XYZ} \PYG{n}{XMOL} \PYG{n}{FILE}
-\end{sphinxVerbatim}
+\chapter{Reference}
+\label{\detokenize{docs/Reference/toc:reference}}\label{\detokenize{docs/Reference/toc::doc}}
+\sphinxstepscope
 
-\sphinxAtStartPar
-To run a FLOSIC calculation, a FRMORB file is required, which contains positions for FODs. An example FRMORB file is shown below for the LiH molecule defined in the CLUSTER file above.
 
-\begin{sphinxVerbatim}[commandchars=\\\{\}]
- \PYG{l+m+mi}{2} \PYG{l+m+mi}{2}
-\PYG{l+m+mf}{0.000} \PYG{l+m+mf}{0.000} \PYG{l+m+mf}{0.000}
-\PYG{l+m+mf}{0.000} \PYG{l+m+mf}{0.000} \PYG{l+m+mf}{2.500}
-\PYG{l+m+mf}{0.000} \PYG{l+m+mf}{0.000} \PYG{l+m+mf}{0.000}
-\PYG{l+m+mf}{0.000} \PYG{l+m+mf}{0.000} \PYG{l+m+mf}{2.500}
-\end{sphinxVerbatim}
-
-\sphinxAtStartPar
-The first line states how many up spin FODs, and how many down spin FODs are used in the calculation. There are 2 up FODs, so the next 2 lines (lines 2\sphinxhyphen{}3)
-contain x, y, \& z coordinates for up spin FODs. There are also 2 down FODs, so the last 2 coordinates are for down spin FODs (lines 4\sphinxhyphen{}5).
-
-\sphinxAtStartPar
-To create starting FOD positions, you can simply place them by hand or use an FOD generator such as the fodMC code to create them.
-You can obtain a copy of the fodMC and documentation \sphinxhref{https://github.com/pyflosic/fodMC}{here}.
-
-\sphinxAtStartPar
-Before starting a FLOSIC calculation, make sure that the CALCTYPEV option in the NRLMOL\_INPUT.DAT file is set to ‘SCF\sphinxhyphen{}ONLY’ instead of ‘LBFGS’.
-This ensures that atomic geometries will not be updated after each self\sphinxhyphen{}consisten energy evaluation. This is recommended practice when FOD positions are being optimized.
-
-\sphinxAtStartPar
-Try running the code using the example CLUSTER and FRMORB files given above. The final energy (EDFT+SIC) in the SUMMARY file after a completed self\sphinxhyphen{}consistent calculation should be \sphinxstylestrong{\sphinxhyphen{}8.052832898} Hartree.
-
-\sphinxAtStartPar
-You’ll notice the FOD positions in FRMORB have been moved, as they are being optimized, similar to an atomic geometry optimization at the DFT level.
-Previous FOD geometries are contained in the records file, along with FOD forces.
-
-
-\chapter{Exchange correlation functionals}
-\label{\detokenize{docs/functionals:exchange-correlation-functionals}}\label{\detokenize{docs/functionals::doc}}
-\sphinxAtStartPar
-The exchange\sphinxhyphen{}correlation functional is specified in the CLUSTER and/or SYMBOL files. The user can currently choose to use LDA (PW92 version) or PBE functionals. The functional string needed to run them is as follows:
-
-\sphinxAtStartPar
-LDA\sphinxhyphen{}PW91*LDA\sphinxhyphen{}PW91
-
-\sphinxAtStartPar
-GGA\sphinxhyphen{}PBE*GGA\sphinxhyphen{}PBE
-
-\sphinxAtStartPar
-If the user wants to run GGA\sphinxhyphen{}PBE exchange\sphinxhyphen{}only, for example, the string will be :
-
-\sphinxAtStartPar
-GGA\sphinxhyphen{}PBE*GGA\sphinxhyphen{}NONE
-
-
-\chapter{Controlling a calculation: the NRLMOL\_INPUT.DAT file}
-\label{\detokenize{docs/nrlmolinputdat:controlling-a-calculation-the-nrlmol-input-dat-file}}\label{\detokenize{docs/nrlmolinputdat:nrlmolinput}}\label{\detokenize{docs/nrlmolinputdat::doc}}
-\sphinxAtStartPar
-The \sphinxstylestrong{NRLMOL\_INPUT.DAT} is an auxiliary input file that allows setting of control parameters for calculation.  If it does not exist, then it will be
-created by the FLOSIC executable using default values.
-
-\sphinxAtStartPar
-The NRLMOL\_INPUT.DAT with default values of parameters as of today (August 15, 2019) is given below.
-
-\begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYGZsh{} Put Y,N or number next to the equal sign to determine execution
-\PYGZsh{} Don\PYGZsq{}t forget the quotation marks for the letters
-\PYGZsh{} All variables in this list end with V
-
-\PYGZam{}input\PYGZus{}data
-ATOMSPHV      = \PYGZsq{}N\PYGZsq{}
-BASISV        = \PYGZsq{}DEFAULT\PYGZsq{} ! Specify basis for calculation(basis.txt)
-CALCTYPEV     = \PYGZsq{}LBFGS\PYGZsq{}
-DFTD3V        = \PYGZsq{}N\PYGZsq{} ! Set to Y to do include Grimmes DFT\PYGZhy{}D3 dispersion
-DIAG1V        =  1  ! diagonalization to use on regular arrays (diagge.f90)
-DIAG2V        =  1  ! diagonalization to use on packed arrays (diag\PYGZus{}dspgv.f90)
-DIAG3V        =  0  ! diagonalization to use on parallel (sdiagge\PYGZus{}n.f90)
-DMATV         = \PYGZsq{}N\PYGZsq{} ! Create/use/mix density matrix
-DOSOCCUV      = \PYGZsq{}N\PYGZsq{} ! Controls wether to calculate density of states (only in DFA)
-FIXMV         = \PYGZsq{}N\PYGZsq{} ! Fix spin moment
-JNTDOSV       = \PYGZsq{}N\PYGZsq{} ! This calculates jonit density of states (only in DFA)
-MAXSCFV       = 100 ! Maximum SCF iterations
-MIXINGV       = \PYGZsq{}P\PYGZsq{} ! (H)amiltonian (P)otential (D)ensity matrix mixing
-NONSCFV       = \PYGZsq{}N\PYGZsq{} ! Set to Y to do a non SCF calculation
-NONSCFFORCESV = \PYGZsq{}N\PYGZsq{} ! Set to Y to calculate forces in a non SCF calculation
-NWFOUTV       = 10  ! Write WFOUT file for every N\PYGZhy{}th iteration
-POPULATIONV   = \PYGZsq{}N\PYGZsq{} ! Population analysis
-RHOGRIDV      = \PYGZsq{}N\PYGZsq{} ! Set to Y to execute RHOGRID
-SCALEDLBFGSV  = \PYGZsq{}Y\PYGZsq{} ! Set to Y to scaled LBFGS (only in SIC)
-SCFTOLV       = 1.0D\PYGZhy{}6 ! SCF tolerance
-SPNPOLV       = \PYGZsq{}N\PYGZsq{} ! Run spin polarized calculation from CLUSTER
-VERYFINEMESHV = \PYGZsq{}N\PYGZsq{} ! Set to Y to use very fine mesh
-SYMMETRYV     = \PYGZsq{}N\PYGZsq{} ! Set to Y to detect symmetry
-WFGRIDV       = \PYGZsq{}N\PYGZsq{} ! set to Y to write orbitals in cube format (only in DFA)
-WFFRMV        = \PYGZsq{}N\PYGZsq{} ! set to Y to write Fermi orbitals in cube format (only in SIC)
-\PYGZam{}end
-
-\end{sphinxVerbatim}
-
-\sphinxAtStartPar
-A large number of entries related to calculation of certain properties are given as yes or no. Here \sphinxstylestrong{N} means \sphinxstyleemphasis{NO}. If \sphinxstylestrong{Y} then the calculation of a given property is requested. Note that certain calculations such as, for example, the calculation of joint density of states is often useful only at the final converged geometry.
-
-\sphinxAtStartPar
-Most of the variables are already explained briefly in the NRLMOL\_INPUT.DAT file. Below we add some comments on a few of them.
-\begin{enumerate}
-\sphinxsetlistlabels{\arabic}{enumi}{enumii}{}{.}%
-\item {} 
-\sphinxAtStartPar
-ATOMSPHV: Set to \sphinxstylestrong{Y} to calculate charge and spin charge in each inequivalent atom integrated over a sphere of specified  radius.
-
-\item {} 
-\sphinxAtStartPar
-BASISV: Default value is \sphinxstylestrong{DEFAULT} which refers to the NRLMOL basis optimized for the PBE functional.
-This variable specifies which basis set is to be used. Users interested in using standard sets from the literature should look up basis.txt in the basis
-subdirectory of the directory containing the source files. This file lists all the basis sets available. The user
-needs to specify only the first string before the “.” from the entries in basis.txt. For example, if the user
-wants to use 6\sphinxhyphen{}31G basis then he should replace DEFAULT with 6\sphinxhyphen{}31G.
-
-\item {} 
-\sphinxAtStartPar
-CALCTYPEV:   Default is \sphinxstylestrong{LBFGS}.
-Available choices:  \sphinxstylestrong{SCF\sphinxhyphen{}ONLY}, \sphinxstylestrong{CONJUGATE\sphinxhyphen{}GRADIENT}.
-\begin{itemize}
-\item {} 
-\sphinxAtStartPar
-\sphinxstylestrong{SCF\sphinxhyphen{}ONLY} This choice is used when the user is not interested in an atomic geometry optimization. Atomic forces are not computed with this setting.
-
-\item {} 
-\sphinxAtStartPar
-\sphinxstylestrong{CONJUGATE\sphinxhyphen{}GRADIENT} : Atomic geometry optimization is done using the conjugate\sphinxhyphen{}gradient algorithm.
-
-\end{itemize}
-
-\item {} 
-\sphinxAtStartPar
-DIAG1V        =   Default is \sphinxstylestrong{1}
-This variable allows different diagonalization algorithms to use for  diagonalization of the Hamiltonian.
-\begin{quote}
-\begin{description}
-\item[{The options for this variable are:}] \leavevmode\begin{enumerate}
-\sphinxsetlistlabels{\arabic}{enumii}{enumiii}{}{)}%
-\setcounter{enumii}{-1}
-\item {} 
-\sphinxAtStartPar
-DSGVX (LAPACKL: computes selected eigenvalues, and optionally eigenvectors).
-
-\item {} 
-\sphinxAtStartPar
-DSGVD (Default if matrix size is below 100).  Uses a divide and conquer algorithm to compute eigenvectors.
-
-\item {} 
-\sphinxAtStartPar
-DSGV   (This is the slowest of the available) option.
-
-\end{enumerate}
-
-\end{description}
-\end{quote}
-
-\item {} 
-\sphinxAtStartPar
-DIAG2V        =    Default is \sphinxstylestrong{1}
-This variable allows diagonalization of the Hamiltonian using packed storage format for memory savings. This is useful for large system sizes.
-\begin{quote}
-
-\sphinxAtStartPar
-Available options are:
-\begin{enumerate}
-\sphinxsetlistlabels{\arabic}{enumii}{enumiii}{}{)}%
-\setcounter{enumii}{-1}
-\item {} 
-\sphinxAtStartPar
-DSPGVX (LAPACK: computes selected eigenvalues, and optionally eigenvectors).
-
-\item {} 
-\sphinxAtStartPar
-DSPGVD (Default if matrix size is below 100).  Uses a divide and conquer algorithm to compute eigenvectors.
-
-\item {} 
-\sphinxAtStartPar
-DSPGV (QR\sphinxhyphen{} factorization. This is the slowest of the available) option.
-
-\end{enumerate}
-
-\sphinxAtStartPar
-The option 1 (DSPGVD) is the fastest if all eigenvectors are required otherwise use the default 0.
-Note that FLOSIC doesn’t use \sphinxstylestrong{SCALAPACK}
-\end{quote}
-
-\item {} 
-\sphinxAtStartPar
-POPULATIONV   = Default is \sphinxstylestrong{N}
-When it is set to Y, Mulliken and Lowdin Population analysis calculations are run. Note that this is available only for spin polarized calculations.
-
-\item {} 
-\sphinxAtStartPar
-RHOGRIDV  = Default is \sphinxstylestrong{N}
-When set to Y,  it will generate a CUBE file for visulaization of total and spin density (spin up \sphinxhyphen{} spin down).
-
-\item {} 
-\sphinxAtStartPar
-SCALEDLBFGSV  = Default is \sphinxstylestrong{Y}
-This indicates the FOD optimization algorithm. Here scaled LBFGS is set as the default FOD optimization routine. Conjugate Gradient is used when this option is set to ‘N’.
-
-\end{enumerate}
-
-
-\chapter{FLOSIC Mesh}
-\label{\detokenize{docs/mesh:flosic-mesh}}\label{\detokenize{docs/mesh:mesh}}\label{\detokenize{docs/mesh::doc}}
-\sphinxAtStartPar
-In FLOSIC, the mesh is generated by specifying the accuracy of various integrals. The mesh is refined until the specified accuracy of
-the integrals is accomplished. In this sense, the mesh is variational. For further details about how the mesh is generated please refer to the paper by Pederson and Jackson(Phys. Rev. B 41, 7453).
-There are two types of meshes used in the calculation. One is the radial mesh used for calculations within the
-atomic spheres and the other is the interstitial mesh (mesh between atomic spheres). The defaults for these are 1.E\sphinxhyphen{}06.
-The mesh parameters are stored in the MESHDAT file. The default MESHDAT file for a DFT level calculation will look like the one below.
-It is possible to change the default mesh.
-The parameters used in creating the mesh are listed in the MESHDAT file. The default MESHDAT file for a DFA calculation is as follows:
-
-\begin{sphinxVerbatim}[commandchars=\\\{\}]
-   \PYG{n}{F}                                                                     \PYG{n}{line} \PYG{l+m+mi}{1}
-  \PYG{l+m+mf}{0.10000E\PYGZhy{}06}   \PYG{l+m+mf}{1.2000}                                                     \PYG{n}{line} \PYG{l+m+mi}{2}
-   \PYG{l+m+mi}{6}                                                                       \PYG{n}{line} \PYG{l+m+mi}{3}
-  \PYG{l+m+mf}{0.20000}      \PYG{l+m+mf}{0.40000}      \PYG{l+m+mf}{0.60000}       \PYG{l+m+mf}{1.0000}       \PYG{l+m+mf}{1.6000}              \PYG{n}{line} \PYG{l+m+mi}{4}
-   \PYG{l+m+mi}{4}                                                                       \PYG{n}{line} \PYG{l+m+mi}{5}
-   \PYG{l+m+mf}{2.1000}       \PYG{l+m+mf}{10.100}       \PYG{l+m+mf}{18.100}                                        \PYG{n}{line} \PYG{l+m+mi}{6}
-   \PYG{l+m+mi}{2}   \PYG{l+m+mi}{1}   \PYG{l+m+mi}{3}   \PYG{l+m+mi}{5}   \PYG{l+m+mi}{5}   \PYG{l+m+mi}{7}   \PYG{l+m+mi}{9}  \PYG{l+m+mi}{11}  \PYG{l+m+mi}{19}  \PYG{l+m+mi}{21}                                   \PYG{n}{line} \PYG{l+m+mi}{7}
-   \PYG{l+m+mi}{4}   \PYG{l+m+mi}{1}   \PYG{l+m+mi}{3}   \PYG{l+m+mi}{5}   \PYG{l+m+mi}{5}   \PYG{l+m+mi}{7}   \PYG{l+m+mi}{9}  \PYG{l+m+mi}{11}  \PYG{l+m+mi}{19}  \PYG{l+m+mi}{21}                                   \PYG{n}{line} \PYG{l+m+mi}{8}
-   \PYG{l+m+mi}{4}   \PYG{l+m+mi}{1}   \PYG{l+m+mi}{3}   \PYG{l+m+mi}{6}   \PYG{l+m+mi}{5}   \PYG{l+m+mi}{7}   \PYG{l+m+mi}{9}  \PYG{l+m+mi}{11}  \PYG{l+m+mi}{19}  \PYG{l+m+mi}{21}                                   \PYG{n}{line} \PYG{l+m+mi}{9}
-   \PYG{l+m+mi}{6}   \PYG{l+m+mi}{1}   \PYG{l+m+mi}{3}   \PYG{l+m+mi}{6}   \PYG{l+m+mi}{7}   \PYG{l+m+mi}{7}   \PYG{l+m+mi}{9}  \PYG{l+m+mi}{11}  \PYG{l+m+mi}{19}  \PYG{l+m+mi}{21}                                   \PYG{n}{line} \PYG{l+m+mi}{10}
-  \PYG{l+m+mf}{0.10000E\PYGZhy{}06}   \PYG{l+m+mf}{1.2000}                                                     \PYG{n}{line} \PYG{l+m+mi}{11}
-   \PYG{l+m+mf}{2.0000}       \PYG{l+m+mi}{8}                                                          \PYG{n}{line} \PYG{l+m+mi}{12}
-   \PYG{l+m+mf}{2.0000}                                                                  \PYG{n}{line} \PYG{l+m+mi}{13}
-
-\end{sphinxVerbatim}
-
-\sphinxAtStartPar
-The default MESHDAT file for a FLOSIC calculations is shown below:
-
-\sphinxAtStartPar
-As noted above are two types of meshes used in the calculation. One is the radial mesh use for calculations within atomic spheres and the other is the interstitial mesh.
-
-\sphinxAtStartPar
-Line 1:
-
-\sphinxAtStartPar
-Line 2: The numbers in this line pertain to the radial mesh. The radial mesh is constructed to give integrations involving various Gaussians from short to long range. The small number is the error allowed in integration by the mesh. The second number, 1.2, separates the exponentials of the Gaussians which are tested i.e. the n+1st exponential is 1.2 times nth exponent. Decreasing the error tolerance will result in increase in number of mesh points and better integrals.
-
-\sphinxAtStartPar
-Line 3: The atomic sphere is divided into different concentric regions with different numbers of mesh points. The number of such radial zones is written in line 3.
-
-\sphinxAtStartPar
-Line 4: The outer radii of the radial zones.
-
-\sphinxAtStartPar
-Line 5: The mesh may be different for different atoms. For example, heavier atoms generally need denser radial meshes
-near the nucleus. Hence the periodic table (upto Z=56) is divided in 4 types of meshes.
-
-\sphinxAtStartPar
-Line 6: This line shows the 4 types of meshes for atoms : first one for Z\textless{}2.1, second one for Z\textless{}10.1 and third on for Z\textless{}18.1 and the last one for Z\textgreater{}18.
-
-\sphinxAtStartPar
-Line 7,8,9,10: These four lines contain the parameters for each type of atomic mesh. The numbers are
-
-\sphinxAtStartPar
-\sphinxstylestrong{NPATS, NPIST, NTHET, NPHI, LMAX} FOR EACH RADIAL ZONE
-
-\sphinxAtStartPar
-\sphinxstylestrong{NPATS} :
-
-\sphinxAtStartPar
-\sphinxstylestrong{NPIST, NTHET, NPHI} : Before creating the mesh, the space is divided into boxes such that each atom is contained in one box. Then a sphere around the atom is assumed and the radial mesh is created. The space at the box corners between the atomic sphere and the rectangular box is divided in a different mesh. The parameters NPIST, NTHET and NPHI correspond to the mesh at the box corners.
-
-\sphinxAtStartPar
-\sphinxstylestrong{LMAX} : LMAX for the each radial zone. This mesh will integrate a function of the type r lmax exp(\sphinxhyphen{}. r2) within the given error limit in this region. Increasing LMAX results in a more refined mesh.
-
-\sphinxAtStartPar
-Line 11 : This line contains the same parameters as line 2 but for the interstitial mesh. Decreasing the error limit results in more accurate integrals in the interstitial region.
-
-\sphinxAtStartPar
-Line 12: Cutfac, mx1d
-
-\sphinxAtStartPar
-\sphinxstylestrong{CUTFAC}: If a box transforms into itself due to symmetry, it will be split if it is larger than cutfac times the distance to the closest atom.
-
-\sphinxAtStartPar
-\sphinxstylestrong{MX1D}: max. number of points in a one\sphinxhyphen{}dimensional interstitial partition
-
-\sphinxAtStartPar
-Line 13: Splrat
-
-\sphinxAtStartPar
-\sphinxstylestrong{SPLRAT}: largest allowed ratio for: the size of an atomic box divided by the distance of another atom to the box boundary
-\begin{quote}
-
-\sphinxAtStartPar
-The user can set these parameters to exercise control over the quality of calculation. For example the default mesh in FLOSIC code has been tested for FLO\sphinxhyphen{}SIC\sphinxhyphen{}LSDA calculations and is capable of providing accurate results, while the mesh required in a DFT\sphinxhyphen{}LDA calculation does not have to have many mesh points as in a FLO\sphinxhyphen{}SIC\sphinxhyphen{}LDA calculation. Above values are default. \sphinxstyleemphasis{Warning} When taking energy differences and comparing the energies it is advisable to ensure that same quality of mesh was used in all pertaining calculations.
-\end{quote}
-
-
-\chapter{Input and Output Files}
-\label{\detokenize{docs/files:input-and-output-files}}\label{\detokenize{docs/files:nrlmolfiles}}\label{\detokenize{docs/files::doc}}
+\section{Input and Output Files}
+\label{\detokenize{docs/Reference/files:input-and-output-files}}\label{\detokenize{docs/Reference/files:nrlmolfiles}}\label{\detokenize{docs/Reference/files::doc}}
 \sphinxAtStartPar
 As mentioned above, the minimal set of input files required for a FLOSIC calculation includes CLUSTER and FRMORB.
 Once the code is run, a number of additional files are generated. Some of these, like NRLMOL\_INPUT.DAT (described earlier) can be edited to control how subsequent calculations run. The following is a list of important input/output files and a brief description of their contents:
@@ -865,9 +569,31 @@ XMOL.xyz : Geometry in the xyz format. The first column contains atomic labels. 
 \sphinxAtStartPar
 Disclaimer: Only the primary input and output files are explained here. For more information about additional files, please contact a FLOSIC team member or post a question to the FLOSIC listserv (See Ch. 13).
 
+\sphinxstepscope
 
-\chapter{Basis sets: the ISYMGEN file}
-\label{\detokenize{docs/isymgen:basis-sets-the-isymgen-file}}\label{\detokenize{docs/isymgen:usymgen}}\label{\detokenize{docs/isymgen::doc}}
+
+\section{Exchange correlation functionals}
+\label{\detokenize{docs/Reference/functionals:exchange-correlation-functionals}}\label{\detokenize{docs/Reference/functionals::doc}}
+\sphinxAtStartPar
+The exchange\sphinxhyphen{}correlation functional is specified in the CLUSTER and/or SYMBOL files. The user can currently choose to use LDA (PW92 version) or PBE functionals. The functional string needed to run them is as follows:
+
+\sphinxAtStartPar
+LDA\sphinxhyphen{}PW91*LDA\sphinxhyphen{}PW91
+
+\sphinxAtStartPar
+GGA\sphinxhyphen{}PBE*GGA\sphinxhyphen{}PBE
+
+\sphinxAtStartPar
+If the user wants to run GGA\sphinxhyphen{}PBE exchange\sphinxhyphen{}only, for example, the string will be :
+
+\sphinxAtStartPar
+GGA\sphinxhyphen{}PBE*GGA\sphinxhyphen{}NONE
+
+\sphinxstepscope
+
+
+\section{Basis sets: the ISYMGEN file}
+\label{\detokenize{docs/Reference/isymgen:basis-sets-the-isymgen-file}}\label{\detokenize{docs/Reference/isymgen:usymgen}}\label{\detokenize{docs/Reference/isymgen::doc}}
 \sphinxAtStartPar
 The basis set information is in the ISYMGEN file which is created when you run FLOSIC.
 This file contains the basis set for each atom type appearing in the calculation. For each orbital of a given atom, same set of primitive Gaussians is used. For example, the default basis set for carbon is written as below :
@@ -985,8 +711,310 @@ is for 2s Gaussian and so on. After the Ns number of such blocks, comes the Np b
 corresponding to the p\sphinxhyphen{}type contracted Gaussians followed by similar Nd number of d\sphinxhyphen{}type Gaussians. In the example for carbon atom above, the 1s and 2s contracted Gaussian is a linear combination of the all the primitive Gaussians whereas the higher unoccupied s orbitals are taken as single long\sphinxhyphen{}range Gaussians. Similarly for p orbitals where only the 2p orbital is occupied. These are then followed by similar blocks corresponding to the supplementary functions.
 By setting EXTRABASIS = 1 in the SYMBOL file, the additional basis functions described above are added to the calculation.  These are sometimes added when calculating dipole moments and polarizabilities.
 
+\sphinxstepscope
 
-\chapter{Tutorial 1: Molecular geometry optimization at the DFT level}
+
+\section{FLOSIC Mesh}
+\label{\detokenize{docs/Reference/mesh:flosic-mesh}}\label{\detokenize{docs/Reference/mesh:mesh}}\label{\detokenize{docs/Reference/mesh::doc}}
+\sphinxAtStartPar
+In FLOSIC, the mesh is generated by specifying the accuracy of various integrals. The mesh is refined until the specified accuracy of
+the integrals is accomplished. In this sense, the mesh is variational. For further details about how the mesh is generated please refer to the paper by Pederson and Jackson(Phys. Rev. B 41, 7453).
+There are two types of meshes used in the calculation. One is the radial mesh used for calculations within the
+atomic spheres and the other is the interstitial mesh (mesh between atomic spheres). The defaults for these are 1.E\sphinxhyphen{}06.
+The mesh parameters are stored in the MESHDAT file. The default MESHDAT file for a DFT level calculation will look like the one below.
+It is possible to change the default mesh.
+The parameters used in creating the mesh are listed in the MESHDAT file. The default MESHDAT file for a DFA calculation is as follows:
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+   \PYG{n}{F}                                                                     \PYG{n}{line} \PYG{l+m+mi}{1}
+  \PYG{l+m+mf}{0.10000E\PYGZhy{}06}   \PYG{l+m+mf}{1.2000}                                                     \PYG{n}{line} \PYG{l+m+mi}{2}
+   \PYG{l+m+mi}{6}                                                                       \PYG{n}{line} \PYG{l+m+mi}{3}
+  \PYG{l+m+mf}{0.20000}      \PYG{l+m+mf}{0.40000}      \PYG{l+m+mf}{0.60000}       \PYG{l+m+mf}{1.0000}       \PYG{l+m+mf}{1.6000}              \PYG{n}{line} \PYG{l+m+mi}{4}
+   \PYG{l+m+mi}{4}                                                                       \PYG{n}{line} \PYG{l+m+mi}{5}
+   \PYG{l+m+mf}{2.1000}       \PYG{l+m+mf}{10.100}       \PYG{l+m+mf}{18.100}                                        \PYG{n}{line} \PYG{l+m+mi}{6}
+   \PYG{l+m+mi}{2}   \PYG{l+m+mi}{1}   \PYG{l+m+mi}{3}   \PYG{l+m+mi}{5}   \PYG{l+m+mi}{5}   \PYG{l+m+mi}{7}   \PYG{l+m+mi}{9}  \PYG{l+m+mi}{11}  \PYG{l+m+mi}{19}  \PYG{l+m+mi}{21}                                   \PYG{n}{line} \PYG{l+m+mi}{7}
+   \PYG{l+m+mi}{4}   \PYG{l+m+mi}{1}   \PYG{l+m+mi}{3}   \PYG{l+m+mi}{5}   \PYG{l+m+mi}{5}   \PYG{l+m+mi}{7}   \PYG{l+m+mi}{9}  \PYG{l+m+mi}{11}  \PYG{l+m+mi}{19}  \PYG{l+m+mi}{21}                                   \PYG{n}{line} \PYG{l+m+mi}{8}
+   \PYG{l+m+mi}{4}   \PYG{l+m+mi}{1}   \PYG{l+m+mi}{3}   \PYG{l+m+mi}{6}   \PYG{l+m+mi}{5}   \PYG{l+m+mi}{7}   \PYG{l+m+mi}{9}  \PYG{l+m+mi}{11}  \PYG{l+m+mi}{19}  \PYG{l+m+mi}{21}                                   \PYG{n}{line} \PYG{l+m+mi}{9}
+   \PYG{l+m+mi}{6}   \PYG{l+m+mi}{1}   \PYG{l+m+mi}{3}   \PYG{l+m+mi}{6}   \PYG{l+m+mi}{7}   \PYG{l+m+mi}{7}   \PYG{l+m+mi}{9}  \PYG{l+m+mi}{11}  \PYG{l+m+mi}{19}  \PYG{l+m+mi}{21}                                   \PYG{n}{line} \PYG{l+m+mi}{10}
+  \PYG{l+m+mf}{0.10000E\PYGZhy{}06}   \PYG{l+m+mf}{1.2000}                                                     \PYG{n}{line} \PYG{l+m+mi}{11}
+   \PYG{l+m+mf}{2.0000}       \PYG{l+m+mi}{8}                                                          \PYG{n}{line} \PYG{l+m+mi}{12}
+   \PYG{l+m+mf}{2.0000}                                                                  \PYG{n}{line} \PYG{l+m+mi}{13}
+
+\end{sphinxVerbatim}
+
+\sphinxAtStartPar
+The default MESHDAT file for a FLOSIC calculations is shown below:
+
+\sphinxAtStartPar
+As noted above are two types of meshes used in the calculation. One is the radial mesh use for calculations within atomic spheres and the other is the interstitial mesh.
+
+\sphinxAtStartPar
+Line 1:
+
+\sphinxAtStartPar
+Line 2: The numbers in this line pertain to the radial mesh. The radial mesh is constructed to give integrations involving various Gaussians from short to long range. The small number is the error allowed in integration by the mesh. The second number, 1.2, separates the exponentials of the Gaussians which are tested i.e. the n+1st exponential is 1.2 times nth exponent. Decreasing the error tolerance will result in increase in number of mesh points and better integrals.
+
+\sphinxAtStartPar
+Line 3: The atomic sphere is divided into different concentric regions with different numbers of mesh points. The number of such radial zones is written in line 3.
+
+\sphinxAtStartPar
+Line 4: The outer radii of the radial zones.
+
+\sphinxAtStartPar
+Line 5: The mesh may be different for different atoms. For example, heavier atoms generally need denser radial meshes
+near the nucleus. Hence the periodic table (upto Z=56) is divided in 4 types of meshes.
+
+\sphinxAtStartPar
+Line 6: This line shows the 4 types of meshes for atoms : first one for Z\textless{}2.1, second one for Z\textless{}10.1 and third on for Z\textless{}18.1 and the last one for Z\textgreater{}18.
+
+\sphinxAtStartPar
+Line 7,8,9,10: These four lines contain the parameters for each type of atomic mesh. The numbers are
+
+\sphinxAtStartPar
+\sphinxstylestrong{NPATS, NPIST, NTHET, NPHI, LMAX} FOR EACH RADIAL ZONE
+
+\sphinxAtStartPar
+\sphinxstylestrong{NPATS} :
+
+\sphinxAtStartPar
+\sphinxstylestrong{NPIST, NTHET, NPHI} : Before creating the mesh, the space is divided into boxes such that each atom is contained in one box. Then a sphere around the atom is assumed and the radial mesh is created. The space at the box corners between the atomic sphere and the rectangular box is divided in a different mesh. The parameters NPIST, NTHET and NPHI correspond to the mesh at the box corners.
+
+\sphinxAtStartPar
+\sphinxstylestrong{LMAX} : LMAX for the each radial zone. This mesh will integrate a function of the type r lmax exp(\sphinxhyphen{}. r2) within the given error limit in this region. Increasing LMAX results in a more refined mesh.
+
+\sphinxAtStartPar
+Line 11 : This line contains the same parameters as line 2 but for the interstitial mesh. Decreasing the error limit results in more accurate integrals in the interstitial region.
+
+\sphinxAtStartPar
+Line 12: Cutfac, mx1d
+
+\sphinxAtStartPar
+\sphinxstylestrong{CUTFAC}: If a box transforms into itself due to symmetry, it will be split if it is larger than cutfac times the distance to the closest atom.
+
+\sphinxAtStartPar
+\sphinxstylestrong{MX1D}: max. number of points in a one\sphinxhyphen{}dimensional interstitial partition
+
+\sphinxAtStartPar
+Line 13: Splrat
+
+\sphinxAtStartPar
+\sphinxstylestrong{SPLRAT}: largest allowed ratio for: the size of an atomic box divided by the distance of another atom to the box boundary
+\begin{quote}
+
+\sphinxAtStartPar
+The user can set these parameters to exercise control over the quality of calculation. For example the default mesh in FLOSIC code has been tested for FLO\sphinxhyphen{}SIC\sphinxhyphen{}LSDA calculations and is capable of providing accurate results, while the mesh required in a DFT\sphinxhyphen{}LDA calculation does not have to have many mesh points as in a FLO\sphinxhyphen{}SIC\sphinxhyphen{}LDA calculation. Above values are default. \sphinxstyleemphasis{Warning} When taking energy differences and comparing the energies it is advisable to ensure that same quality of mesh was used in all pertaining calculations.
+\end{quote}
+
+\sphinxstepscope
+
+
+\section{Controlling a calculation: the NRLMOL\_INPUT.DAT file}
+\label{\detokenize{docs/Reference/nrlmolinputdat:controlling-a-calculation-the-nrlmol-input-dat-file}}\label{\detokenize{docs/Reference/nrlmolinputdat:nrlmolinput}}\label{\detokenize{docs/Reference/nrlmolinputdat::doc}}
+\sphinxAtStartPar
+The \sphinxstylestrong{NRLMOL\_INPUT.DAT} is an auxiliary input file that allows setting of control parameters for calculation.  If it does not exist, then it will be
+created by the FLOSIC executable using default values.
+
+\sphinxAtStartPar
+The NRLMOL\_INPUT.DAT with default values of parameters as of today (August 15, 2019) is given below.
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYGZsh{} Put Y,N or number next to the equal sign to determine execution
+\PYGZsh{} Don\PYGZsq{}t forget the quotation marks for the letters
+\PYGZsh{} All variables in this list end with V
+
+\PYGZam{}input\PYGZus{}data
+ATOMSPHV      = \PYGZsq{}N\PYGZsq{}
+BASISV        = \PYGZsq{}DEFAULT\PYGZsq{} ! Specify basis for calculation(basis.txt)
+CALCTYPEV     = \PYGZsq{}LBFGS\PYGZsq{}
+DFTD3V        = \PYGZsq{}N\PYGZsq{} ! Set to Y to do include Grimmes DFT\PYGZhy{}D3 dispersion
+DIAG1V        =  1  ! diagonalization to use on regular arrays (diagge.f90)
+DIAG2V        =  1  ! diagonalization to use on packed arrays (diag\PYGZus{}dspgv.f90)
+DIAG3V        =  0  ! diagonalization to use on parallel (sdiagge\PYGZus{}n.f90)
+DMATV         = \PYGZsq{}N\PYGZsq{} ! Create/use/mix density matrix
+DOSOCCUV      = \PYGZsq{}N\PYGZsq{} ! Controls wether to calculate density of states (only in DFA)
+FIXMV         = \PYGZsq{}N\PYGZsq{} ! Fix spin moment
+JNTDOSV       = \PYGZsq{}N\PYGZsq{} ! This calculates jonit density of states (only in DFA)
+MAXSCFV       = 100 ! Maximum SCF iterations
+MIXINGV       = \PYGZsq{}P\PYGZsq{} ! (H)amiltonian (P)otential (D)ensity matrix mixing
+NONSCFV       = \PYGZsq{}N\PYGZsq{} ! Set to Y to do a non SCF calculation
+NONSCFFORCESV = \PYGZsq{}N\PYGZsq{} ! Set to Y to calculate forces in a non SCF calculation
+NWFOUTV       = 10  ! Write WFOUT file for every N\PYGZhy{}th iteration
+POPULATIONV   = \PYGZsq{}N\PYGZsq{} ! Population analysis
+RHOGRIDV      = \PYGZsq{}N\PYGZsq{} ! Set to Y to execute RHOGRID
+SCALEDLBFGSV  = \PYGZsq{}Y\PYGZsq{} ! Set to Y to scaled LBFGS (only in SIC)
+SCFTOLV       = 1.0D\PYGZhy{}6 ! SCF tolerance
+SPNPOLV       = \PYGZsq{}N\PYGZsq{} ! Run spin polarized calculation from CLUSTER
+VERYFINEMESHV = \PYGZsq{}N\PYGZsq{} ! Set to Y to use very fine mesh
+SYMMETRYV     = \PYGZsq{}N\PYGZsq{} ! Set to Y to detect symmetry
+WFGRIDV       = \PYGZsq{}N\PYGZsq{} ! set to Y to write orbitals in cube format (only in DFA)
+WFFRMV        = \PYGZsq{}N\PYGZsq{} ! set to Y to write Fermi orbitals in cube format (only in SIC)
+\PYGZam{}end
+
+\end{sphinxVerbatim}
+
+\sphinxAtStartPar
+A large number of entries related to calculation of certain properties are given as yes or no. Here \sphinxstylestrong{N} means \sphinxstyleemphasis{NO}. If \sphinxstylestrong{Y} then the calculation of a given property is requested. Note that certain calculations such as, for example, the calculation of joint density of states is often useful only at the final converged geometry.
+
+\sphinxAtStartPar
+Most of the variables are already explained briefly in the NRLMOL\_INPUT.DAT file. Below we add some comments on a few of them.
+\begin{enumerate}
+\sphinxsetlistlabels{\arabic}{enumi}{enumii}{}{.}%
+\item {} 
+\sphinxAtStartPar
+ATOMSPHV: Set to \sphinxstylestrong{Y} to calculate charge and spin charge in each inequivalent atom integrated over a sphere of specified  radius.
+
+\item {} 
+\sphinxAtStartPar
+BASISV: Default value is \sphinxstylestrong{DEFAULT} which refers to the NRLMOL basis optimized for the PBE functional.
+This variable specifies which basis set is to be used. Users interested in using standard sets from the literature should look up basis.txt in the basis
+subdirectory of the directory containing the source files. This file lists all the basis sets available. The user
+needs to specify only the first string before the “.” from the entries in basis.txt. For example, if the user
+wants to use 6\sphinxhyphen{}31G basis then he should replace DEFAULT with 6\sphinxhyphen{}31G.
+
+\item {} 
+\sphinxAtStartPar
+CALCTYPEV:   Default is \sphinxstylestrong{LBFGS}.
+Available choices:  \sphinxstylestrong{SCF\sphinxhyphen{}ONLY}, \sphinxstylestrong{CONJUGATE\sphinxhyphen{}GRADIENT}.
+\begin{itemize}
+\item {} 
+\sphinxAtStartPar
+\sphinxstylestrong{SCF\sphinxhyphen{}ONLY} This choice is used when the user is not interested in an atomic geometry optimization. Atomic forces are not computed with this setting.
+
+\item {} 
+\sphinxAtStartPar
+\sphinxstylestrong{CONJUGATE\sphinxhyphen{}GRADIENT} : Atomic geometry optimization is done using the conjugate\sphinxhyphen{}gradient algorithm.
+
+\end{itemize}
+
+\item {} 
+\sphinxAtStartPar
+DIAG1V        =   Default is \sphinxstylestrong{1}
+This variable allows different diagonalization algorithms to use for  diagonalization of the Hamiltonian.
+\begin{quote}
+
+\sphinxAtStartPar
+The options for this variable are:
+0)  DSGVX (LAPACKL: computes selected eigenvalues, and optionally eigenvectors).
+1)  DSGVD (Default if matrix size is below 100).  Uses a divide and conquer algorithm to compute eigenvectors.
+2)  DSGV   (This is the slowest of the available) option.
+\end{quote}
+
+\item {} 
+\sphinxAtStartPar
+DIAG2V        =    Default is \sphinxstylestrong{1}
+This variable allows diagonalization of the Hamiltonian using packed storage format for memory savings. This is useful for large system sizes.
+\begin{quote}
+
+\sphinxAtStartPar
+Available options are:
+\begin{enumerate}
+\sphinxsetlistlabels{\arabic}{enumii}{enumiii}{}{)}%
+\setcounter{enumii}{-1}
+\item {} 
+\sphinxAtStartPar
+DSPGVX (LAPACK: computes selected eigenvalues, and optionally eigenvectors).
+
+\item {} 
+\sphinxAtStartPar
+DSPGVD (Default if matrix size is below 100).  Uses a divide and conquer algorithm to compute eigenvectors.
+
+\item {} 
+\sphinxAtStartPar
+DSPGV (QR\sphinxhyphen{} factorization. This is the slowest of the available) option.
+
+\end{enumerate}
+
+\sphinxAtStartPar
+The option 1 (DSPGVD) is the fastest if all eigenvectors are required otherwise use the default 0.
+Note that FLOSIC doesn’t use \sphinxstylestrong{SCALAPACK}
+\end{quote}
+
+\item {} 
+\sphinxAtStartPar
+POPULATIONV   = Default is \sphinxstylestrong{N}
+When it is set to Y, Mulliken and Lowdin Population analysis calculations are run. Note that this is available only for spin polarized calculations.
+
+\item {} 
+\sphinxAtStartPar
+RHOGRIDV  = Default is \sphinxstylestrong{N}
+When set to Y,  it will generate a CUBE file for visulaization of total and spin density (spin up \sphinxhyphen{} spin down).
+
+\item {} 
+\sphinxAtStartPar
+SCALEDLBFGSV  = Default is \sphinxstylestrong{Y}
+This indicates the FOD optimization algorithm. Here scaled LBFGS is set as the default FOD optimization routine. Conjugate Gradient is used when this option is set to ‘N’.
+
+\end{enumerate}
+
+\sphinxstepscope
+
+
+\chapter{Quick start guide to running a FLOSIC calculation}
+\label{\detokenize{docs/setupcal:quick-start-guide-to-running-a-flosic-calculation}}\label{\detokenize{docs/setupcal:setup}}\label{\detokenize{docs/setupcal::doc}}
+\sphinxAtStartPar
+Basic input files for FLOSIC are called “CLUSTER” and “FRMORB”.
+The files require minimal input from the user and most parameters required for the calculations are set with
+default values. You can specify some parameters that control the calculations in the file called “NRLMOL\_INPUT.DAT”.
+A version of this file with default values is created in the run directory if it otherwise does not exist. We will
+discuss the details of the parameters in the \sphinxstylestrong{NRLMOL\_INPUT.DAT} in a later section.
+
+\sphinxAtStartPar
+For now let’s work on setting up of the \sphinxstylestrong{CLUSTER} file. It is the minimal input needed to run the FLOSIC code.
+
+\sphinxAtStartPar
+An example CLUSTER file is shown below for the LiH molecule. The format is described in more detail in tutorial 1.
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{GGA}\PYG{o}{\PYGZhy{}}\PYG{n}{PBE}\PYG{o}{*}\PYG{n}{GGA}\PYG{o}{\PYGZhy{}}\PYG{n}{PBE}          \PYG{p}{(}\PYG{n}{DF} \PYG{n}{TYPE} \PYG{n}{EXCHANGE}\PYG{o}{*}\PYG{n}{CORRELATION}\PYG{p}{)}
+\PYG{n}{NONE}                     \PYG{p}{(}\PYG{n}{TD}\PYG{p}{,} \PYG{n}{OH}\PYG{p}{,} \PYG{n}{IH}\PYG{p}{,} \PYG{n}{X}\PYG{p}{,} \PYG{n}{Y}\PYG{p}{,} \PYG{n}{XY}\PYG{p}{,} \PYG{o}{.}\PYG{o}{.}\PYG{o}{.} \PYG{n}{OR} \PYG{n}{GRP}\PYG{p}{)}
+\PYG{l+m+mi}{2}                        \PYG{p}{(}\PYG{n}{NUMBER} \PYG{n}{OF} \PYG{n}{INEQUIV}\PYG{o}{.} \PYG{n}{ATOMS} \PYG{n}{IN} \PYG{n}{CH4}\PYG{p}{)}
+\PYG{l+m+mf}{0.0000}  \PYG{l+m+mf}{0.0000}  \PYG{l+m+mf}{0.0000} \PYG{l+m+mi}{3} \PYG{n}{ALL}
+\PYG{l+m+mf}{0.0000}  \PYG{l+m+mf}{0.0000}  \PYG{l+m+mf}{3.0139} \PYG{l+m+mi}{1} \PYG{n}{ALL}
+\PYG{l+m+mf}{0.0} \PYG{l+m+mf}{0.0}                  \PYG{p}{(}\PYG{n}{NET} \PYG{n}{CHARGE} \PYG{n}{AND} \PYG{n}{NET} \PYG{n}{SPIN}\PYG{p}{)}
+ \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{n}{OR}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}
+\PYG{n+nd}{@XMOL}\PYG{o}{.}\PYG{n}{DAT}
+ \PYG{n}{IF} \PYG{n}{YOU} \PYG{n}{WISH} \PYG{n}{TO} \PYG{n}{START} \PYG{n}{FROM} \PYG{n}{AN} \PYG{n}{XYZ} \PYG{n}{XMOL} \PYG{n}{FILE}
+\end{sphinxVerbatim}
+
+\sphinxAtStartPar
+To run a FLOSIC calculation, a FRMORB file is required, which contains positions for FODs. An example FRMORB file is shown below for the LiH molecule defined in the CLUSTER file above.
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+ \PYG{l+m+mi}{2} \PYG{l+m+mi}{2}
+\PYG{l+m+mf}{0.000} \PYG{l+m+mf}{0.000} \PYG{l+m+mf}{0.000}
+\PYG{l+m+mf}{0.000} \PYG{l+m+mf}{0.000} \PYG{l+m+mf}{2.500}
+\PYG{l+m+mf}{0.000} \PYG{l+m+mf}{0.000} \PYG{l+m+mf}{0.000}
+\PYG{l+m+mf}{0.000} \PYG{l+m+mf}{0.000} \PYG{l+m+mf}{2.500}
+\end{sphinxVerbatim}
+
+\sphinxAtStartPar
+The first line states how many up spin FODs, and how many down spin FODs are used in the calculation. There are 2 up FODs, so the next 2 lines (lines 2\sphinxhyphen{}3)
+contain x, y, \& z coordinates for up spin FODs. There are also 2 down FODs, so the last 2 coordinates are for down spin FODs (lines 4\sphinxhyphen{}5).
+
+\sphinxAtStartPar
+To create starting FOD positions, you can simply place them by hand or use an FOD generator such as the fodMC code to create them.
+You can obtain a copy of the fodMC and documentation \sphinxhref{https://github.com/pyflosic/fodMC}{here}.
+
+\sphinxAtStartPar
+Before starting a FLOSIC calculation, make sure that the CALCTYPEV option in the NRLMOL\_INPUT.DAT file is set to ‘SCF\sphinxhyphen{}ONLY’ instead of ‘LBFGS’.
+This ensures that atomic geometries will not be updated after each self\sphinxhyphen{}consisten energy evaluation. This is recommended practice when FOD positions are being optimized.
+
+\sphinxAtStartPar
+Try running the code using the example CLUSTER and FRMORB files given above. The final energy (EDFT+SIC) in the SUMMARY file after a completed self\sphinxhyphen{}consistent calculation should be \sphinxstylestrong{\sphinxhyphen{}8.052832898} Hartree.
+
+\sphinxAtStartPar
+You’ll notice the FOD positions in FRMORB have been moved, as they are being optimized, similar to an atomic geometry optimization at the DFT level.
+Previous FOD geometries are contained in the records file, along with FOD forces.
+
+\sphinxstepscope
+
+
+\chapter{Tutorials}
+\label{\detokenize{tutorials/tuttoc:tutorials}}\label{\detokenize{tutorials/tuttoc::doc}}
+\sphinxstepscope
+
+
+\section{Tutorial 1: Molecular geometry optimization at the DFT level}
 \label{\detokenize{tutorials/dtutorials/tutorial1:tutorial-1-molecular-geometry-optimization-at-the-dft-level}}\label{\detokenize{tutorials/dtutorials/tutorial1::doc}}
 \sphinxAtStartPar
 Very simple  tutorial  to get acquainted with electronic structure calculations using FLOSIC. This tutorial will explain how to run FLOSIC for molecular
@@ -1061,8 +1089,10 @@ the code again will carry out a calculation at the updated molecular geometry an
 update of the atomic coordinates will also be written into SYMBOL. Repeating this process several times will result in a local minimum energy geometry to be
 reached. This happens when the maximum force falls below the criterion set in GEOCNVRG.
 
+\sphinxstepscope
 
-\chapter{Tutorial 2: a FLOSIC calculation for H2}
+
+\section{Tutorial 2: a FLOSIC calculation for H2}
 \label{\detokenize{tutorials/dtutorials/tutorial2:tutorial-2-a-flosic-calculation-for-h2}}\label{\detokenize{tutorials/dtutorials/tutorial2::doc}}
 \sphinxAtStartPar
 In this tutorial we will learn to do a simple FLOSIC calculation.
@@ -1171,8 +1201,10 @@ A simple iterative loop can help with this process.
 For the example of H2, there is only one FOD of each spin. Placing the FODs at any position in space
 for such a case will give the same energy and the force on the FOD will therefore be zero.
 
+\sphinxstepscope
 
-\chapter{Tutorial 3:  FOD optimization of a water molecule}
+
+\section{Tutorial 3:  FOD optimization of a water molecule}
 \label{\detokenize{tutorials/dtutorials/T3-FOD_opt:tutorial-3-fod-optimization-of-a-water-molecule}}\label{\detokenize{tutorials/dtutorials/T3-FOD_opt::doc}}
 \sphinxAtStartPar
 This tutorial explains how to do a FODs optimization taking the example of the water molecule. It is recommended to run a DFT calculation first to get the DFT optimized density. To do this, we start from the usual CLUSTER file:
@@ -1343,11 +1375,13 @@ We can sucessively do this or use a script similar to that in the previous tutor
 \sphinxAtStartPar
 All the used FODs, obtained forces, and corrected total energies can be seen in the \sphinxstylestrong{records} file.
 
+\sphinxstepscope
 
-\chapter{Plotting density of states using NRLMOL}
+
+\section{Plotting density of states using NRLMOL}
 \label{\detokenize{tutorials/ddos/density_of_states:plotting-density-of-states-using-nrlmol}}\label{\detokenize{tutorials/ddos/density_of_states::doc}}
 
-\section{Introduction}
+\subsection{Introduction}
 \label{\detokenize{tutorials/ddos/density_of_states:introduction}}
 \sphinxAtStartPar
 Once you start using NRLMOL, eventually you will need to plot the density of states for the system that you are running. The process can get a little messy so this guide should solve out some doubts.
@@ -1369,7 +1403,7 @@ where \(\rho(E)\) is the number of independent\sphinxhyphen{}particles states pe
 The plots themselves are more qualitative than quantitative, since they tell us the localization of states within an energy interval, but the exact number of states for a given energy is rather unimportant. For our purposes (photovoltaics), we are interested mailnly in checking that the last occupied state (that is, the HOMO) is localized in the donor, and that the first unoccupied state (LUMO) resides in the acceptor.
 
 
-\section{Setup}
+\subsection{Setup}
 \label{\detokenize{tutorials/ddos/density_of_states:setup}}
 \sphinxAtStartPar
 So let’s do this by example. Let us do the calculation for the density of states for a system we have used previously, Tetracyanoethylene Benzene, or TCNE\sphinxhyphen{}Benzene. This is compound molecule made up of two components: the TCNE and Benzene, here the TCNE is in front and the benzene is in the backgound (Fig. 1).
@@ -1436,7 +1470,7 @@ Either the \sphinxstylestrong{NRLMOL\_INPUT.DAT} with the option set or an empty
 \end{itemize}
 
 
-\section{Results}
+\subsection{Results}
 \label{\detokenize{tutorials/ddos/density_of_states:results}}
 \sphinxAtStartPar
 Once the program finishes, it should have generated a list of files called \sphinxstylestrong{DOSO001}, \sphinxstylestrong{DOSO002}, and so forth (one for every atom in the structure you ran, there should be 22 files for our case of TCNE\sphinxhyphen{}Benzene).
@@ -1488,7 +1522,7 @@ As you can see from this listing, the atoms do not have the same order as in the
 From the listing, we now know that the first 12 DOS files correspond to the carbons, files 13\sphinxhyphen{}18 correspond to the hydrogens and files 19\sphinxhyphen{}22 correspond to the nitrogens. So now we have to plot the DOS files for each of the components and for the full complex, but in order to do so we are going to need membership files.
 
 
-\section{Membership files}
+\subsection{Membership files}
 \label{\detokenize{tutorials/ddos/density_of_states:membership-files}}
 \sphinxAtStartPar
 So far, we know that the \sphinxstylestrong{DOSO} files generated are for each atom in the system, and they follow the ordering from the \sphinxstylestrong{XMOL.DAT} file, so let’s put them side by side for clarity:
@@ -1655,7 +1689,7 @@ Again the ordering is not important as long as each atom is listed.
 We can now use these three membership files to plot their corresponding density of states.
 
 
-\section{Plotting}
+\subsection{Plotting}
 \label{\detokenize{tutorials/ddos/density_of_states:plotting}}
 \sphinxAtStartPar
 To plot the membership files, we use the NRLMOL\_GUI program to do so. Set the project directory by selecting \sphinxstyleemphasis{Set Project Directory} from the \sphinxstyleemphasis{File} menu. This is the directory where you ran the calculation and that contains the DOS and other output files.  After this, select \sphinxstyleemphasis{Plot Density of States} from \sphinxstyleemphasis{Viewer} in the main menu (fig. 4).
@@ -1727,7 +1761,7 @@ total.dat a data file containing the DOS information for all the atoms generated
 Let’s now use gnuplot{[}4{]} to generate the three plots in a single image from the data files.
 
 
-\section{Gnuplot usage}
+\subsection{Gnuplot usage}
 \label{\detokenize{tutorials/ddos/density_of_states:gnuplot-usage}}
 \sphinxAtStartPar
 To now join together the three data files, we need to setup a gnuplot script to process the data in each file and plot them. However, we also need one extra data file for the Fermi level.
@@ -1853,7 +1887,7 @@ Once you get plot you’re confortable with (fig. 7), you still need to include 
 \end{figure}
 
 
-\section{Bibliography}
+\subsection{Bibliography}
 \label{\detokenize{tutorials/ddos/density_of_states:bibliography}}\begin{enumerate}
 \sphinxsetlistlabels{\arabic}{enumi}{enumii}{}{.}%
 \item {} 
@@ -1878,11 +1912,13 @@ GIMP: The GNU Image Manipulation Program. \sphinxurl{http://www.gimp.org}
 
 \end{enumerate}
 
+\sphinxstepscope
+
 
 \chapter{Getting more information about FLOSIC}
 \label{\detokenize{docs/nrlmolfaq:getting-more-information-about-flosic}}\label{\detokenize{docs/nrlmolfaq:nrlmolfaq}}\label{\detokenize{docs/nrlmolfaq::doc}}\begin{quote}
 \begin{description}
-\item[{Questions about the FLOSIC code or its use can be directed to}] \leavevmode\begin{itemize}
+\sphinxlineitem{Questions about the FLOSIC code or its use can be directed to}\begin{itemize}
 \item {} 
 \sphinxAtStartPar
 Tunna Baruah        (UTEP), \sphinxhref{mailto:tbaruah@utep.edu}{tbaruah@utep.edu}
@@ -1907,7 +1943,7 @@ Some FAQs are listed below.
 \begin{enumerate}
 \sphinxsetlistlabels{\arabic}{enumi}{enumii}{}{.}%
 \item {} \begin{description}
-\item[{What convergence criteria should be considered for the FOD optimization?}] \leavevmode
+\sphinxlineitem{What convergence criteria should be considered for the FOD optimization?}
 \sphinxAtStartPar
 In general, you want to make sure that your total energy is converged within your given SCF tolerance (like in a standard DFT calculation) and
 that the largest FOD force is at least smaller than 5E\sphinxhyphen{}4 Ha/Bohr.
@@ -1915,7 +1951,7 @@ that the largest FOD force is at least smaller than 5E\sphinxhyphen{}4 Ha/Bohr.
 \end{description}
 
 \item {} \begin{description}
-\item[{How can I start a spin\sphinxhyphen{}polarized/ spin\sphinxhyphen{}unrestricted calculation?}] \leavevmode
+\sphinxlineitem{How can I start a spin\sphinxhyphen{}polarized/ spin\sphinxhyphen{}unrestricted calculation?}
 \sphinxAtStartPar
 For a spin\sphinxhyphen{}unrestricted calculation, you need to make sure that your underlying DFT density is spin\sphinxhyphen{}unrestricted as well.
 If your system has a permanent spin polarization (i.e. the number of up and down electrons is different), the calculation
@@ -1927,7 +1963,7 @@ SPNPOLV option in NRLMOL\_INPUT.DAT to Y.
 \end{description}
 
 \item {} \begin{description}
-\item[{Is it possible to force antiferromagntic spin ordering in some atoms?}] \leavevmode
+\sphinxlineitem{Is it possible to force antiferromagntic spin ordering in some atoms?}
 \sphinxAtStartPar
 Yes, you can specify atoms to have a preference for spin\sphinxhyphen{}up density, spin\sphinxhyphen{}down density or unpolarized density. The specifications needs to be made in the SYMBOL file. Here is an example :
 

@@ -1,50 +1,107 @@
-
 <!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
-<html xmlns="http://www.w3.org/1999/xhtml">
-  <head>
-    <meta charset="utf-8" />
-    <title>Plotting density of states using NRLMOL &#8212; NRLMOL  0 documentation</title>
-    <link rel="stylesheet" href="../../_static/classic.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-    
-    <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
-    <script type="text/javascript" src="../../_static/jquery.js"></script>
-    <script type="text/javascript" src="../../_static/underscore.js"></script>
-    <script type="text/javascript" src="../../_static/doctools.js"></script>
-    <script type="text/javascript" src="../../_static/language_data.js"></script>
-    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Plotting density of states using NRLMOL &mdash; NRLMOL  2020 documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Running fragment analysis with NRLMOL" href="../dfragment/fragment.html" />
-    <link rel="prev" title="Tutorial 3 Electronic structure of the C60 molecule" href="../dtutorials/c60.html" /> 
-  </head><body>
-    <div class="related" role="navigation" aria-label="related navigation">
-      <h3>Navigation</h3>
-      <ul>
-        <li class="right" style="margin-right: 10px">
-          <a href="../../genindex.html" title="General Index"
-             accesskey="I">index</a></li>
-        <li class="right" >
-          <a href="../dfragment/fragment.html" title="Running fragment analysis with NRLMOL"
-             accesskey="N">next</a> |</li>
-        <li class="right" >
-          <a href="../dtutorials/c60.html" title="Tutorial 3 Electronic structure of the C60 molecule"
-             accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../../nrlmoldoc_main.html">NRLMOL  0 documentation</a> &#187;</li> 
-      </ul>
-    </div>  
+    <link rel="next" title="Getting more information about FLOSIC" href="../../docs/nrlmolfaq.html" />
+    <link rel="prev" title="Tutorial 3: FOD optimization of a water molecule" href="../dtutorials/T3-FOD_opt.html" /> 
+</head>
 
-    <div class="document">
-      <div class="documentwrapper">
-        <div class="bodywrapper">
-          <div class="body" role="main">
-            
-  <div class="section" id="plotting-density-of-states-using-nrlmol">
-<h1>Plotting density of states using NRLMOL<a class="headerlink" href="#plotting-density-of-states-using-nrlmol" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="introduction">
-<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../main.html" class="icon icon-home"> NRLMOL 
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../index.html">Introduction and Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/install/toc.html">Installing FLOSIC</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../docs/install/Prerequisites.html">Prerequisites</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../docs/install/Build.html">Accessing and compiling the code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../docs/install/Support.html">Support</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/Reference/toc.html">Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../docs/Reference/files.html">Input and Output Files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../docs/Reference/functionals.html">Exchange correlation functionals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../docs/Reference/isymgen.html">Basis sets: the ISYMGEN file</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../docs/Reference/mesh.html">FLOSIC Mesh</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../docs/Reference/nrlmolinputdat.html">Controlling a calculation: the NRLMOL_INPUT.DAT file</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/setupcal.html">Quick start guide to running a FLOSIC calculation</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../tuttoc.html">Tutorials</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../dtutorials/tutorial1.html">Tutorial 1: Molecular geometry optimization at the DFT level</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dtutorials/tutorial2.html">Tutorial 2: a FLOSIC calculation for H2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dtutorials/T3-FOD_opt.html">Tutorial 3:  FOD optimization of a water molecule</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Plotting density of states using NRLMOL</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#introduction">Introduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#setup">Setup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#results">Results</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#membership-files">Membership files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#plotting">Plotting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#gnuplot-usage">Gnuplot usage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#bibliography">Bibliography</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/nrlmolfaq.html">Getting more information about FLOSIC</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../main.html">NRLMOL </a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../main.html" class="icon icon-home"></a></li>
+          <li class="breadcrumb-item"><a href="../tuttoc.html">Tutorials</a></li>
+      <li class="breadcrumb-item active">Plotting density of states using NRLMOL</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/tutorials/ddos/density_of_states.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="plotting-density-of-states-using-nrlmol">
+<h1>Plotting density of states using NRLMOL<a class="headerlink" href="#plotting-density-of-states-using-nrlmol" title="Permalink to this heading"></a></h1>
+<section id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading"></a></h2>
 <p>Once you start using NRLMOL, eventually you will need to plot the density of states for the system that you are running. The process can get a little messy so this guide should solve out some doubts.</p>
 <p>First of, what are densities of states?</p>
 <p>Basically, it’s the number of electronic states at a given energy, and is one of the most important quantities to describe the electronic state of a structure [1].</p>
@@ -52,13 +109,13 @@
 <span class="math notranslate nohighlight">\(\rho(E)=\frac{1}{N_k}\sum\limits_{i,k}\delta(\epsilon_{i,k}-E)\)</span></p>
 <p>where <span class="math notranslate nohighlight">\(\rho(E)\)</span> is the number of independent-particles states per unit energy, <span class="math notranslate nohighlight">\(\epsilon_{i,k}\)</span> denotes the energy of an electron [2].</p>
 <p>The plots themselves are more qualitative than quantitative, since they tell us the localization of states within an energy interval, but the exact number of states for a given energy is rather unimportant. For our purposes (photovoltaics), we are interested mailnly in checking that the last occupied state (that is, the HOMO) is localized in the donor, and that the first unoccupied state (LUMO) resides in the acceptor.</p>
-</div>
-<div class="section" id="setup">
-<h2>Setup<a class="headerlink" href="#setup" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="setup">
+<h2>Setup<a class="headerlink" href="#setup" title="Permalink to this heading"></a></h2>
 <p>So let’s do this by example. Let us do the calculation for the density of states for a system we have used previously, Tetracyanoethylene Benzene, or TCNE-Benzene. This is compound molecule made up of two components: the TCNE and Benzene, here the TCNE is in front and the benzene is in the backgound (Fig. 1).</p>
-<div class="figure align-center">
+<figure class="align-center">
 <a class="reference internal image-reference" href="../../_images/tcne_img.png"><img alt="TCNE-Benzene complex." src="../../_images/tcne_img.png" style="width: 211.20000000000002px; height: 197.60000000000002px;" /></a>
-</div>
+</figure>
 <p>The <strong>CLUSTER</strong> file to run the calculation of this structure is:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">GGA</span><span class="o">-</span><span class="n">PBE</span><span class="o">*</span><span class="n">GGA</span><span class="o">-</span><span class="n">PBE</span>
 <span class="n">GRP</span>
@@ -96,9 +153,9 @@
 <li><p>The <strong>CLUSTER</strong> file</p></li>
 <li><p>Either the <strong>NRLMOL_INPUT.DAT</strong> with the option set or an empty file called <strong>DOSOCCU</strong></p></li>
 </ul>
-</div>
-<div class="section" id="results">
-<h2>Results<a class="headerlink" href="#results" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="results">
+<h2>Results<a class="headerlink" href="#results" title="Permalink to this heading"></a></h2>
 <p>Once the program finishes, it should have generated a list of files called <strong>DOSO001</strong>, <strong>DOSO002</strong>, and so forth (one for every atom in the structure you ran, there should be 22 files for our case of TCNE-Benzene).</p>
 <p>The files may also have other starting names (<strong>AF1O, AF2O, MINO, MAJO</strong>) depending on the type of calculation you set up.</p>
 <p>So basically, we have a density of states file for every atom in our system that we must plot, but how do we know which file corresponds to what atom? Do we follow the order from the <strong>CLUSTER</strong> file? The answer is no, because NRLMOL orders the atoms once it processes the <strong>CLUSTER</strong> file.</p>
@@ -133,9 +190,9 @@
 </div>
 <p>As you can see from this listing, the atoms do not have the same order as in the <strong>CLUSTER</strong> file. Usually, NRLMOL orders atoms by listing carbons first, then hydrogens and the the rest of the atoms (it’s the standard ordering for molecules in Chemistry).</p>
 <p>From the listing, we now know that the first 12 DOS files correspond to the carbons, files 13-18 correspond to the hydrogens and files 19-22 correspond to the nitrogens. So now we have to plot the DOS files for each of the components and for the full complex, but in order to do so we are going to need membership files.</p>
-</div>
-<div class="section" id="membership-files">
-<h2>Membership files<a class="headerlink" href="#membership-files" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="membership-files">
+<h2>Membership files<a class="headerlink" href="#membership-files" title="Permalink to this heading"></a></h2>
 <p>So far, we know that the <strong>DOSO</strong> files generated are for each atom in the system, and they follow the ordering from the <strong>XMOL.DAT</strong> file, so let’s put them side by side for clarity:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>   <span class="mi">22</span>
 <span class="n">TCNE</span><span class="o">-</span><span class="n">Benzene</span>
@@ -182,9 +239,9 @@
 </pre></div>
 </div>
 <p>which are the indexes for the six carbon and the six hydrogen atoms.</p>
-<div class="figure align-center">
+<figure class="align-center">
 <a class="reference internal image-reference" href="../../_images/frag1.png"><img alt="Benzene." src="../../_images/frag1.png" style="width: 271.2px; height: 245.1px;" /></a>
-</div>
+</figure>
 <p>For TCNE (fig. 3) the membership is:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">7</span>
 <span class="mi">8</span>
@@ -200,9 +257,9 @@
 </pre></div>
 </div>
 <p>wich are the six carbon atoms and the four nitrogen atoms.</p>
-<div class="figure align-center">
+<figure class="align-center">
 <a class="reference internal image-reference" href="../../_images/frag2.png"><img alt="TCNE." src="../../_images/frag2.png" style="width: 243.29999999999998px; height: 237.89999999999998px;" /></a>
-</div>
+</figure>
 <p>We must now use this listings to create the membership files for plotting the DOS for each substructure, we only need to put in the first line of the membership file the total atoms for that membership. The membership file for benzene (let’s call it <strong>benzene.mem</strong>) is:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">12</span>
 <span class="mi">1</span>
@@ -262,13 +319,13 @@
 </div>
 <p>Again the ordering is not important as long as each atom is listed.</p>
 <p>We can now use these three membership files to plot their corresponding density of states.</p>
-</div>
-<div class="section" id="plotting">
-<h2>Plotting<a class="headerlink" href="#plotting" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="plotting">
+<h2>Plotting<a class="headerlink" href="#plotting" title="Permalink to this heading"></a></h2>
 <p>To plot the membership files, we use the NRLMOL_GUI program to do so. Set the project directory by selecting <em>Set Project Directory</em> from the <em>File</em> menu. This is the directory where you ran the calculation and that contains the DOS and other output files.  After this, select <em>Plot Density of States</em> from <em>Viewer</em> in the main menu (fig. 4).</p>
-<div class="figure align-center">
+<figure class="align-center">
 <a class="reference internal image-reference" href="../../_images/gui1.png"><img alt="NRLMOL_GUI main window." src="../../_images/gui1.png" style="width: 723.2px; height: 288.0px;" /></a>
-</div>
+</figure>
 <p>This will open the dialog box for plotting density of states (fig. 5), from here:</p>
 <ul class="simple">
 <li><p>Press the “Select File” button to select the membership file you want to plot.</p></li>
@@ -279,9 +336,9 @@
 <li><p>You can select to write a graphics file output, although you can do that by doing a right-click on the plot window, this second option is preferred since you can do some adjustments to the graph before saving.</p></li>
 <li><p>The last check mark <em>Create data file</em> should be checked, and a file name given (only when plotting from a membership file), no extension is required as it will automatically add .dat to the file name.</p></li>
 </ul>
-<div class="figure align-center">
+<figure class="align-center">
 <a class="reference internal image-reference" href="../../_images/dos_gui.png"><img alt="DOS plotting dialog box." src="../../_images/dos_gui.png" style="width: 472.8px; height: 346.40000000000003px;" /></a>
-</div>
+</figure>
 <p>Why should a data file be created when plotting from a membership file? Well, the process goes as this: The program will take each of the DOS files for each atom, adds them together and puts it in a file for plotting, however; if you want to plot the data yourself with another program, you can use this data file for that purpose.
 After you are finished, you should now have three final data files:</p>
 <ul class="simple">
@@ -290,9 +347,9 @@ After you are finished, you should now have three final data files:</p>
 <li><p>total.dat a data file containing the DOS information for all the atoms generated from the total.mem file.</p></li>
 </ul>
 <p>Let’s now use gnuplot[4] to generate the three plots in a single image from the data files.</p>
-</div>
-<div class="section" id="gnuplot-usage">
-<h2>Gnuplot usage<a class="headerlink" href="#gnuplot-usage" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="gnuplot-usage">
+<h2>Gnuplot usage<a class="headerlink" href="#gnuplot-usage" title="Permalink to this heading"></a></h2>
 <p>To now join together the three data files, we need to setup a gnuplot script to process the data in each file and plot them. However, we also need one extra data file for the Fermi level.</p>
 <p>We get the Fermi level from the <strong>EVALUES</strong> file: open the file and look for the line containing <em>FERMI LEVEL</em> and the number next to it, the number is however given in Hartrees, so you must convert it to electron-volt by multiplying it by 27.2116. You could have also got it from the GUI, if you requested to plot the Fermi level, this goes and reads it from the file and puts in a pop up window so you can jot it down.</p>
 <p>For the TCNE-Benzene this value is: -0.206529774179560 so its corresponding value in eV is -5.620005603</p>
@@ -303,9 +360,9 @@ After you are finished, you should now have three final data files:</p>
 </div>
 <p>These are just two x,y pairs to be plotted. If you think about it, if the points are connected on a graph, they will generate a vertical line at the Fermi level (fig. 6).
 We give the second point a big y value (70 in this case, it can be naything) to make shure we cover all the plot surface.</p>
-<div class="figure align-center">
+<figure class="align-center">
 <a class="reference internal image-reference" href="../../_images/fermi1.png"><img alt="Plot of the fermi.dat file" src="../../_images/fermi1.png" style="width: 512.0px; height: 320.0px;" /></a>
-</div>
+</figure>
 <p>Now we are ready to configure the plotting script for gnuplot. This is just a text file (let’s call it <strong>plot_sample.p</strong>) that conatins the following lines:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># This file will create a stacked plot for DOS</span>
 <span class="nb">set</span> <span class="n">terminal</span> <span class="n">png</span> <span class="n">size</span> <span class="mi">1200</span><span class="p">,</span><span class="mi">900</span> <span class="n">linewidth</span> <span class="mi">3</span>
@@ -350,15 +407,15 @@ We give the second point a big y value (70 in this case, it can be naything) to 
 <p><em>gnuplot plot_sample.p</em></p>
 <p>You may need to run this command several times, while adjusting the values in the gnuplot script.</p>
 <p>Once you get plot you’re confortable with (fig. 7), you still need to include the Axis labels as well as the descriptions of the individual plots (what part of the molecule each section represents), this can be done with any graphical editor (in the lab I usually use the GIMP[5] package, but it can be done with a presentation editor) to edit the png file (fig. 8).</p>
-<div class="figure align-center">
+<figure class="align-center">
 <a class="reference internal image-reference" href="../../_images/DOSplot_sample.png"><img alt="Plot of data files" src="../../_images/DOSplot_sample.png" style="width: 480.0px; height: 360.0px;" /></a>
-</div>
-<div class="figure align-center">
+</figure>
+<figure class="align-center">
 <a class="reference internal image-reference" href="../../_images/DOSplot_samplef.png"><img alt="Final touches to the graphic file" src="../../_images/DOSplot_samplef.png" style="width: 519.2px; height: 391.20000000000005px;" /></a>
-</div>
-</div>
-<div class="section" id="bibliography">
-<h2>Bibliography<a class="headerlink" href="#bibliography" title="Permalink to this headline">¶</a></h2>
+</figure>
+</section>
+<section id="bibliography">
+<h2>Bibliography<a class="headerlink" href="#bibliography" title="Permalink to this heading"></a></h2>
 <ol class="arabic simple">
 <li><p>David S. Sholll &amp;  Janice A. Steckel, <em>Density Functional Theory: A practical Introduction</em>, Wiley (2009).</p></li>
 <li><p>Ricahrd M. Martin, <em>Electronic Structure, Basic Theory and Practical Methods</em>, Cambridge University Press (2013).</p></li>
@@ -366,73 +423,40 @@ We give the second point a big y value (70 in this case, it can be naything) to 
 <li><p>gnuplot: A portable command-line driven graphing utility. <a class="reference external" href="http://www.gnuplot.info">http://www.gnuplot.info</a></p></li>
 <li><p>GIMP: The GNU Image Manipulation Program. <a class="reference external" href="http://www.gimp.org">http://www.gimp.org</a></p></li>
 </ol>
-</div>
-</div>
+</section>
+</section>
 
 
+           </div>
           </div>
-        </div>
-      </div>
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
-        <div class="sphinxsidebarwrapper">
-  <h3><a href="../../nrlmoldoc_main.html">Table of Contents</a></h3>
-  <ul>
-<li><a class="reference internal" href="#">Plotting density of states using NRLMOL</a><ul>
-<li><a class="reference internal" href="#introduction">Introduction</a></li>
-<li><a class="reference internal" href="#setup">Setup</a></li>
-<li><a class="reference internal" href="#results">Results</a></li>
-<li><a class="reference internal" href="#membership-files">Membership files</a></li>
-<li><a class="reference internal" href="#plotting">Plotting</a></li>
-<li><a class="reference internal" href="#gnuplot-usage">Gnuplot usage</a></li>
-<li><a class="reference internal" href="#bibliography">Bibliography</a></li>
-</ul>
-</li>
-</ul>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../dtutorials/T3-FOD_opt.html" class="btn btn-neutral float-left" title="Tutorial 3: FOD optimization of a water molecule" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../../docs/nrlmolfaq.html" class="btn btn-neutral float-right" title="Getting more information about FLOSIC" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
 
-  <h4>Previous topic</h4>
-  <p class="topless"><a href="../dtutorials/c60.html"
-                        title="previous chapter">Tutorial 3    Electronic structure of the C60 molecule</a></p>
-  <h4>Next topic</h4>
-  <p class="topless"><a href="../dfragment/fragment.html"
-                        title="next chapter">Running fragment analysis with NRLMOL</a></p>
-  <div role="note" aria-label="source link">
-    <h3>This Page</h3>
-    <ul class="this-page-menu">
-      <li><a href="../../_sources/tutorials/ddos/density_of_states.rst.txt"
-            rel="nofollow">Show Source</a></li>
-    </ul>
-   </div>
-<div id="searchbox" style="display: none" role="search">
-  <h3 id="searchlabel">Quick search</h3>
-    <div class="searchformwrapper">
-    <form class="search" action="../../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" />
-      <input type="submit" value="Go" />
-    </form>
-    </div>
-</div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022,   NRLMOL users .
+      <span class="lastupdated">Last updated on Jan 31, 2023.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
         </div>
       </div>
-      <div class="clearer"></div>
-    </div>
-    <div class="related" role="navigation" aria-label="related navigation">
-      <h3>Navigation</h3>
-      <ul>
-        <li class="right" style="margin-right: 10px">
-          <a href="../../genindex.html" title="General Index"
-             >index</a></li>
-        <li class="right" >
-          <a href="../dfragment/fragment.html" title="Running fragment analysis with NRLMOL"
-             >next</a> |</li>
-        <li class="right" >
-          <a href="../dtutorials/c60.html" title="Tutorial 3 Electronic structure of the C60 molecule"
-             >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../../nrlmoldoc_main.html">NRLMOL  0 documentation</a> &#187;</li> 
-      </ul>
-    </div>
-    <div class="footer" role="contentinfo">
-        &#169; Copyright 2013,   NRLMOL users .
-    </div>
-  </body>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
 </html>

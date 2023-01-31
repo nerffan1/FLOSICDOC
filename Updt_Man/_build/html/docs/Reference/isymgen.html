@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Basis sets: the ISYMGEN file &mdash; NRLMOL  2020 documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="FLOSIC Mesh" href="mesh.html" />
+    <link rel="prev" title="Exchange correlation functionals" href="functionals.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../main.html" class="icon icon-home"> NRLMOL 
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../index.html">Introduction and Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../install/toc.html">Installing FLOSIC</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../install/Prerequisites.html">Prerequisites</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../install/Build.html">Accessing and compiling the code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../install/Support.html">Support</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="toc.html">Reference</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="files.html">Input and Output Files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="functionals.html">Exchange correlation functionals</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Basis sets: the ISYMGEN file</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mesh.html">FLOSIC Mesh</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nrlmolinputdat.html">Controlling a calculation: the NRLMOL_INPUT.DAT file</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../setupcal.html">Quick start guide to running a FLOSIC calculation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorials/tuttoc.html">Tutorials</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../tutorials/dtutorials/tutorial1.html">Tutorial 1: Molecular geometry optimization at the DFT level</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../tutorials/dtutorials/tutorial2.html">Tutorial 2: a FLOSIC calculation for H2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../tutorials/dtutorials/T3-FOD_opt.html">Tutorial 3:  FOD optimization of a water molecule</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../tutorials/ddos/density_of_states.html">Plotting density of states using NRLMOL</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorials/ddos/density_of_states.html#introduction">Introduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorials/ddos/density_of_states.html#setup">Setup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorials/ddos/density_of_states.html#results">Results</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorials/ddos/density_of_states.html#membership-files">Membership files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorials/ddos/density_of_states.html#plotting">Plotting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorials/ddos/density_of_states.html#gnuplot-usage">Gnuplot usage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorials/ddos/density_of_states.html#bibliography">Bibliography</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../nrlmolfaq.html">Getting more information about FLOSIC</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../main.html">NRLMOL </a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../main.html" class="icon icon-home"></a></li>
+          <li class="breadcrumb-item"><a href="toc.html">Reference</a></li>
+      <li class="breadcrumb-item active">Basis sets: the ISYMGEN file</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/docs/Reference/isymgen.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="basis-sets-the-isymgen-file">
+<span id="usymgen"></span><h1>Basis sets: the ISYMGEN file<a class="headerlink" href="#basis-sets-the-isymgen-file" title="Permalink to this heading"></a></h1>
+<p>The basis set information is in the ISYMGEN file which is created when you run FLOSIC.
+This file contains the basis set for each atom type appearing in the calculation. For each orbital of a given atom, same set of primitive Gaussians is used. For example, the default basis set for carbon is written as below :</p>
+<p>The following is the Pederson-Porezag[3] (NRLMOL default) basis in the  <strong>ISYMGEN</strong> .  The FLOSIC code
+allows use of other basis sets such as : 6-31G*, 6-311G**, STO-3G, TZVP, DGDZVP etc.
+For a full list of available basis sets, see the file basis.txt (PATH_TO_FLOSIC/basis/basis.txt).
+The Pederson-Porezag (NRLMOL default) is specially optimized for the PBE functional, and roughly corresponds to quadruple zeta quality.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>   <span class="mi">1</span>          <span class="n">TOTAL</span> <span class="n">NUMBER</span> <span class="n">OF</span> <span class="n">ATOM</span> <span class="n">TYPES</span>
+   <span class="mi">6</span>   <span class="mi">6</span>      <span class="n">ELECTRONIC</span> <span class="n">AND</span> <span class="n">NUCLEAR</span> <span class="n">CHARGE</span>
+<span class="n">ALL</span>           <span class="n">ALL</span><span class="o">-</span><span class="n">ELECTRON</span> <span class="n">ATOM</span> <span class="n">TYPE</span>
+   <span class="mi">1</span>          <span class="n">NUMBER</span> <span class="n">OF</span> <span class="n">ATOMS</span> <span class="n">OF</span> <span class="n">TYPE</span> <span class="n">CAR</span>
+<span class="n">ALL</span><span class="o">-</span><span class="n">CAR001</span>
+<span class="n">EXTRABASIS</span>    <span class="n">CONTROLS</span> <span class="n">USAGE</span> <span class="n">OF</span> <span class="n">SUPPLEMENTARY</span> <span class="n">BASIS</span> <span class="n">FUNCTIONS</span>
+  <span class="mi">12</span>          <span class="n">NUMBER</span> <span class="n">OF</span> <span class="n">BARE</span> <span class="n">GAUSSIANS</span>
+   <span class="mi">5</span>   <span class="mi">4</span>   <span class="mi">3</span>  <span class="n">NUMBER</span> <span class="n">OF</span> <span class="n">S</span><span class="p">,</span><span class="n">P</span><span class="p">,</span><span class="n">D</span> <span class="n">FUNCTIONS</span>
+   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">1</span>  <span class="n">SUPPLEMENTARY</span> <span class="n">S</span><span class="p">,</span><span class="n">P</span><span class="p">,</span><span class="n">D</span> <span class="n">FUNCTIONS</span>
+       <span class="mf">0.2221336090</span><span class="n">D</span><span class="o">+</span><span class="mi">05</span>       <span class="mf">0.3331736980</span><span class="n">D</span><span class="o">+</span><span class="mi">04</span>       <span class="mf">0.7579013460</span><span class="n">D</span><span class="o">+</span><span class="mi">03</span>
+       <span class="mf">0.2145437190</span><span class="n">D</span><span class="o">+</span><span class="mi">03</span>       <span class="mf">0.6992488940</span><span class="n">D</span><span class="o">+</span><span class="mi">02</span>       <span class="mf">0.2508613490</span><span class="n">D</span><span class="o">+</span><span class="mi">02</span>
+       <span class="mf">0.9591041750</span><span class="n">D</span><span class="o">+</span><span class="mi">01</span>       <span class="mf">0.3802455710</span><span class="n">D</span><span class="o">+</span><span class="mi">01</span>       <span class="mf">0.1489185420</span><span class="n">D</span><span class="o">+</span><span class="mi">01</span>
+       <span class="mf">0.5748765300</span><span class="n">D</span><span class="o">+</span><span class="mi">00</span>       <span class="mf">0.2149473200</span><span class="n">D</span><span class="o">+</span><span class="mi">00</span>       <span class="mf">0.7720965000</span><span class="n">D</span><span class="o">-</span><span class="mi">01</span>
+ 
+       <span class="mf">0.1979224900</span><span class="n">D</span><span class="o">+</span><span class="mi">00</span>       <span class="mf">0.3699897740</span><span class="n">D</span><span class="o">+</span><span class="mi">00</span>       <span class="mf">0.6364461530</span><span class="n">D</span><span class="o">+</span><span class="mi">00</span>
+       <span class="mf">0.1012493110</span><span class="n">D</span><span class="o">+</span><span class="mi">01</span>       <span class="mf">0.1448078710</span><span class="n">D</span><span class="o">+</span><span class="mi">01</span>       <span class="mf">0.1717368870</span><span class="n">D</span><span class="o">+</span><span class="mi">01</span>
+       <span class="mf">0.1493193200</span><span class="n">D</span><span class="o">+</span><span class="mi">01</span>       <span class="mf">0.6898716060</span><span class="n">D</span><span class="o">+</span><span class="mi">00</span>       <span class="mf">0.8607224650</span><span class="n">D</span><span class="o">-</span><span class="mi">01</span>
+      <span class="o">-</span><span class="mf">0.1656669520</span><span class="n">D</span><span class="o">-</span><span class="mi">02</span>       <span class="mf">0.3776603340</span><span class="n">D</span><span class="o">-</span><span class="mi">03</span>      <span class="o">-</span><span class="mf">0.4710534310</span><span class="n">D</span><span class="o">-</span><span class="mi">04</span>
+ 
+      <span class="o">-</span><span class="mf">0.4500525960</span><span class="n">D</span><span class="o">-</span><span class="mi">01</span>      <span class="o">-</span><span class="mf">0.8462105180</span><span class="n">D</span><span class="o">-</span><span class="mi">01</span>      <span class="o">-</span><span class="mf">0.1449656410</span><span class="n">D</span><span class="o">+</span><span class="mi">00</span>
+      <span class="o">-</span><span class="mf">0.2353560110</span><span class="n">D</span><span class="o">+</span><span class="mi">00</span>      <span class="o">-</span><span class="mf">0.3421536850</span><span class="n">D</span><span class="o">+</span><span class="mi">00</span>      <span class="o">-</span><span class="mf">0.4459512370</span><span class="n">D</span><span class="o">+</span><span class="mi">00</span>
+      <span class="o">-</span><span class="mf">0.4526397090</span><span class="n">D</span><span class="o">+</span><span class="mi">00</span>      <span class="o">-</span><span class="mf">0.3221641360</span><span class="n">D</span><span class="o">+</span><span class="mi">00</span>      <span class="o">-</span><span class="mf">0.1298841970</span><span class="n">D</span><span class="o">-</span><span class="mi">01</span>
+       <span class="mf">0.2013547140</span><span class="n">D</span><span class="o">+</span><span class="mi">00</span>       <span class="mf">0.1276991250</span><span class="n">D</span><span class="o">+</span><span class="mi">00</span>       <span class="mf">0.1413546650</span><span class="n">D</span><span class="o">-</span><span class="mi">01</span>
+ 
+       <span class="mf">0.0000000000</span><span class="n">D</span><span class="o">+</span><span class="mi">00</span>       <span class="mf">0.0000000000</span><span class="n">D</span><span class="o">+</span><span class="mi">00</span>       <span class="mf">0.0000000000</span><span class="n">D</span><span class="o">+</span><span class="mi">00</span>
+       <span class="mf">0.0000000000</span><span class="n">D</span><span class="o">+</span><span class="mi">00</span>       <span class="mf">0.0000000000</span><span class="n">D</span><span class="o">+</span><span class="mi">00</span>       <span class="mf">0.0000000000</span><span class="n">D</span><span class="o">+</span><span class="mi">00</span>
+       <span class="mf">0.0000000000</span><span class="n">D</span><span class="o">+</span><span class="mi">00</span>       <span class="mf">0.0000000000</span><span class="n">D</span><span class="o">+</span><span class="mi">00</span>       <span class="mf">0.0000000000</span><span class="n">D</span><span class="o">+</span><span class="mi">00</span>
+       <span class="mf">0.1000000000</span><span class="n">D</span><span class="o">+</span><span class="mi">01</span>       <span class="mf">0.0000000000</span><span class="n">D</span><span class="o">+</span><span class="mi">00</span>       <span class="mf">0.0000000000</span><span class="n">D</span><span class="o">+</span><span class="mi">00</span>
+ 
+       <span class="mf">0.0000000000</span><span class="n">D</span><span class="o">+</span><span class="mi">00</span>       <span class="mf">0.0000000000</span><span class="n">D</span><span class="o">+</span><span class="mi">00</span>       <span class="mf">0.0000000000</span><span class="n">D</span><span class="o">+</span><span class="mi">00</span>
+       <span class="mf">0.0000000000</span><span class="n">D</span><span class="o">+</span><span class="mi">00</span>       <span class="mf">0.0000000000</span><span class="n">D</span><span class="o">+</span><span class="mi">00</span>       <span class="mf">0.0000000000</span><span class="n">D</span><span class="o">+</span><span class="mi">00</span>
+       <span class="mf">0.0000000000</span><span class="n">D</span><span class="o">+</span><span class="mi">00</span>       <span class="mf">0.0000000000</span><span class="n">D</span><span class="o">+</span><span class="mi">00</span>       <span class="mf">0.0000000000</span><span class="n">D</span><span class="o">+</span><span class="mi">00</span>
+       <span class="mf">0.0000000000</span><span class="n">D</span><span class="o">+</span><span class="mi">00</span>       <span class="mf">0.1000000000</span><span class="n">D</span><span class="o">+</span><span class="mi">01</span>       <span class="mf">0.0000000000</span><span class="n">D</span><span class="o">+</span><span class="mi">00</span>
+ 
+       <span class="mf">0.0000000000</span><span class="n">D</span><span class="o">+</span><span class="mi">00</span>       <span class="mf">0.0000000000</span><span class="n">D</span><span class="o">+</span><span class="mi">00</span>       <span class="mf">0.0000000000</span><span class="n">D</span><span class="o">+</span><span class="mi">00</span>
+       <span class="mf">0.0000000000</span><span class="n">D</span><span class="o">+</span><span class="mi">00</span>       <span class="mf">0.0000000000</span><span class="n">D</span><span class="o">+</span><span class="mi">00</span>       <span class="mf">0.0000000000</span><span class="n">D</span><span class="o">+</span><span class="mi">00</span>
+       <span class="mf">0.0000000000</span><span class="n">D</span><span class="o">+</span><span class="mi">00</span>       <span class="mf">0.0000000000</span><span class="n">D</span><span class="o">+</span><span class="mi">00</span>       <span class="mf">0.0000000000</span><span class="n">D</span><span class="o">+</span><span class="mi">00</span>
+       <span class="mf">0.0000000000</span><span class="n">D</span><span class="o">+</span><span class="mi">00</span>       <span class="mf">0.0000000000</span><span class="n">D</span><span class="o">+</span><span class="mi">00</span>       <span class="mf">0.1000000000</span><span class="n">D</span><span class="o">+</span><span class="mi">01</span>
+ 
+       <span class="mf">0.2313862990</span><span class="n">D</span><span class="o">-</span><span class="mi">01</span>       <span class="mf">0.4264913270</span><span class="n">D</span><span class="o">-</span><span class="mi">01</span>       <span class="mf">0.7465885120</span><span class="n">D</span><span class="o">-</span><span class="mi">01</span>
+       <span class="mf">0.1202411540</span><span class="n">D</span><span class="o">+</span><span class="mi">00</span>       <span class="mf">0.1835117630</span><span class="n">D</span><span class="o">+</span><span class="mi">00</span>       <span class="mf">0.2470680430</span><span class="n">D</span><span class="o">+</span><span class="mi">00</span>
+       <span class="mf">0.3071421870</span><span class="n">D</span><span class="o">+</span><span class="mi">00</span>       <span class="mf">0.3137270600</span><span class="n">D</span><span class="o">+</span><span class="mi">00</span>       <span class="mf">0.2672633980</span><span class="n">D</span><span class="o">+</span><span class="mi">00</span>
+       <span class="mf">0.1475658550</span><span class="n">D</span><span class="o">+</span><span class="mi">00</span>       <span class="mf">0.4758557640</span><span class="n">D</span><span class="o">-</span><span class="mi">01</span>       <span class="mf">0.7279645930</span><span class="n">D</span><span class="o">-</span><span class="mi">02</span>
+ 
+       <span class="mf">0.0000000000</span><span class="n">D</span><span class="o">+</span><span class="mi">00</span>       <span class="mf">0.0000000000</span><span class="n">D</span><span class="o">+</span><span class="mi">00</span>       <span class="mf">0.0000000000</span><span class="n">D</span><span class="o">+</span><span class="mi">00</span>
+       <span class="mf">0.0000000000</span><span class="n">D</span><span class="o">+</span><span class="mi">00</span>       <span class="mf">0.0000000000</span><span class="n">D</span><span class="o">+</span><span class="mi">00</span>       <span class="mf">0.0000000000</span><span class="n">D</span><span class="o">+</span><span class="mi">00</span>
+       <span class="mf">0.0000000000</span><span class="n">D</span><span class="o">+</span><span class="mi">00</span>       <span class="mf">0.0000000000</span><span class="n">D</span><span class="o">+</span><span class="mi">00</span>       <span class="mf">0.0000000000</span><span class="n">D</span><span class="o">+</span><span class="mi">00</span>
+       <span class="mf">0.1000000000</span><span class="n">D</span><span class="o">+</span><span class="mi">01</span>       <span class="mf">0.0000000000</span><span class="n">D</span><span class="o">+</span><span class="mi">00</span>       <span class="mf">0.0000000000</span><span class="n">D</span><span class="o">+</span><span class="mi">00</span>
+ 
+       <span class="mf">0.0000000000</span><span class="n">D</span><span class="o">+</span><span class="mi">00</span>       <span class="mf">0.0000000000</span><span class="n">D</span><span class="o">+</span><span class="mi">00</span>       <span class="mf">0.0000000000</span><span class="n">D</span><span class="o">+</span><span class="mi">00</span>
+       <span class="mf">0.0000000000</span><span class="n">D</span><span class="o">+</span><span class="mi">00</span>       <span class="mf">0.0000000000</span><span class="n">D</span><span class="o">+</span><span class="mi">00</span>       <span class="mf">0.0000000000</span><span class="n">D</span><span class="o">+</span><span class="mi">00</span>
+       <span class="mf">0.0000000000</span><span class="n">D</span><span class="o">+</span><span class="mi">00</span>       <span class="mf">0.0000000000</span><span class="n">D</span><span class="o">+</span><span class="mi">00</span>       <span class="mf">0.0000000000</span><span class="n">D</span><span class="o">+</span><span class="mi">00</span>
+       <span class="mf">0.0000000000</span><span class="n">D</span><span class="o">+</span><span class="mi">00</span>       <span class="mf">0.1000000000</span><span class="n">D</span><span class="o">+</span><span class="mi">01</span>       <span class="mf">0.0000000000</span><span class="n">D</span><span class="o">+</span><span class="mi">00</span>
+ 
+       <span class="mf">0.0000000000</span><span class="n">D</span><span class="o">+</span><span class="mi">00</span>       <span class="mf">0.0000000000</span><span class="n">D</span><span class="o">+</span><span class="mi">00</span>       <span class="mf">0.0000000000</span><span class="n">D</span><span class="o">+</span><span class="mi">00</span>
+       <span class="mf">0.0000000000</span><span class="n">D</span><span class="o">+</span><span class="mi">00</span>       <span class="mf">0.0000000000</span><span class="n">D</span><span class="o">+</span><span class="mi">00</span>       <span class="mf">0.0000000000</span><span class="n">D</span><span class="o">+</span><span class="mi">00</span>
+       <span class="mf">0.0000000000</span><span class="n">D</span><span class="o">+</span><span class="mi">00</span>       <span class="mf">0.0000000000</span><span class="n">D</span><span class="o">+</span><span class="mi">00</span>       <span class="mf">0.0000000000</span><span class="n">D</span><span class="o">+</span><span class="mi">00</span>
+       <span class="mf">0.0000000000</span><span class="n">D</span><span class="o">+</span><span class="mi">00</span>       <span class="mf">0.0000000000</span><span class="n">D</span><span class="o">+</span><span class="mi">00</span>       <span class="mf">0.1000000000</span><span class="n">D</span><span class="o">+</span><span class="mi">01</span>
+ 
+       <span class="mf">0.0000000000</span><span class="n">D</span><span class="o">+</span><span class="mi">00</span>       <span class="mf">0.0000000000</span><span class="n">D</span><span class="o">+</span><span class="mi">00</span>       <span class="mf">0.0000000000</span><span class="n">D</span><span class="o">+</span><span class="mi">00</span>
+       <span class="mf">0.0000000000</span><span class="n">D</span><span class="o">+</span><span class="mi">00</span>       <span class="mf">0.0000000000</span><span class="n">D</span><span class="o">+</span><span class="mi">00</span>       <span class="mf">0.0000000000</span><span class="n">D</span><span class="o">+</span><span class="mi">00</span>
+       <span class="mf">0.0000000000</span><span class="n">D</span><span class="o">+</span><span class="mi">00</span>       <span class="mf">0.0000000000</span><span class="n">D</span><span class="o">+</span><span class="mi">00</span>       <span class="mf">0.1000000000</span><span class="n">D</span><span class="o">+</span><span class="mi">01</span>
+       <span class="mf">0.0000000000</span><span class="n">D</span><span class="o">+</span><span class="mi">00</span>       <span class="mf">0.0000000000</span><span class="n">D</span><span class="o">+</span><span class="mi">00</span>       <span class="mf">0.0000000000</span><span class="n">D</span><span class="o">+</span><span class="mi">00</span>
+ 
+       <span class="mf">0.0000000000</span><span class="n">D</span><span class="o">+</span><span class="mi">00</span>       <span class="mf">0.0000000000</span><span class="n">D</span><span class="o">+</span><span class="mi">00</span>       <span class="mf">0.0000000000</span><span class="n">D</span><span class="o">+</span><span class="mi">00</span>
+       <span class="mf">0.0000000000</span><span class="n">D</span><span class="o">+</span><span class="mi">00</span>       <span class="mf">0.0000000000</span><span class="n">D</span><span class="o">+</span><span class="mi">00</span>       <span class="mf">0.0000000000</span><span class="n">D</span><span class="o">+</span><span class="mi">00</span>
+       <span class="mf">0.0000000000</span><span class="n">D</span><span class="o">+</span><span class="mi">00</span>       <span class="mf">0.0000000000</span><span class="n">D</span><span class="o">+</span><span class="mi">00</span>       <span class="mf">0.0000000000</span><span class="n">D</span><span class="o">+</span><span class="mi">00</span>
+       <span class="mf">0.1000000000</span><span class="n">D</span><span class="o">+</span><span class="mi">01</span>       <span class="mf">0.0000000000</span><span class="n">D</span><span class="o">+</span><span class="mi">00</span>       <span class="mf">0.0000000000</span><span class="n">D</span><span class="o">+</span><span class="mi">00</span>
+ 
+       <span class="mf">0.0000000000</span><span class="n">D</span><span class="o">+</span><span class="mi">00</span>       <span class="mf">0.0000000000</span><span class="n">D</span><span class="o">+</span><span class="mi">00</span>       <span class="mf">0.0000000000</span><span class="n">D</span><span class="o">+</span><span class="mi">00</span>
+       <span class="mf">0.0000000000</span><span class="n">D</span><span class="o">+</span><span class="mi">00</span>       <span class="mf">0.0000000000</span><span class="n">D</span><span class="o">+</span><span class="mi">00</span>       <span class="mf">0.0000000000</span><span class="n">D</span><span class="o">+</span><span class="mi">00</span>
+       <span class="mf">0.0000000000</span><span class="n">D</span><span class="o">+</span><span class="mi">00</span>       <span class="mf">0.0000000000</span><span class="n">D</span><span class="o">+</span><span class="mi">00</span>       <span class="mf">0.0000000000</span><span class="n">D</span><span class="o">+</span><span class="mi">00</span>
+       <span class="mf">0.0000000000</span><span class="n">D</span><span class="o">+</span><span class="mi">00</span>       <span class="mf">0.1000000000</span><span class="n">D</span><span class="o">+</span><span class="mi">01</span>       <span class="mf">0.0000000000</span><span class="n">D</span><span class="o">+</span><span class="mi">00</span>
+ 
+       <span class="mf">0.0000000000</span><span class="n">D</span><span class="o">+</span><span class="mi">00</span>       <span class="mf">0.0000000000</span><span class="n">D</span><span class="o">+</span><span class="mi">00</span>       <span class="mf">0.0000000000</span><span class="n">D</span><span class="o">+</span><span class="mi">00</span>
+       <span class="mf">0.0000000000</span><span class="n">D</span><span class="o">+</span><span class="mi">00</span>       <span class="mf">0.0000000000</span><span class="n">D</span><span class="o">+</span><span class="mi">00</span>       <span class="mf">0.0000000000</span><span class="n">D</span><span class="o">+</span><span class="mi">00</span>
+       <span class="mf">0.0000000000</span><span class="n">D</span><span class="o">+</span><span class="mi">00</span>       <span class="mf">0.0000000000</span><span class="n">D</span><span class="o">+</span><span class="mi">00</span>       <span class="mf">0.0000000000</span><span class="n">D</span><span class="o">+</span><span class="mi">00</span>
+       <span class="mf">0.0000000000</span><span class="n">D</span><span class="o">+</span><span class="mi">00</span>       <span class="mf">0.0000000000</span><span class="n">D</span><span class="o">+</span><span class="mi">00</span>       <span class="mf">0.1000000000</span><span class="n">D</span><span class="o">+</span><span class="mi">01</span>
+ 
+<span class="n">ELECTRONS</span>
+<span class="n">WFOUT</span>
+</pre></div>
+</div>
+<p>Here, the second line specifies the nuclear and electronic charges in the atom. The nuclear and electronic charges specifies the actual atom (e.g. Nuc charge = 6 for carbon) but the electronic charge depends on whether all electron or pseudo potential calculations are used (e.g. for carbon it would be 6 for all electron and 4 for a pseudopotential calculation)</p>
+<p>The third line specifies the type of calculation :</p>
+<p>ALL for all-electron, BHS for BHS pseudopotential, TAB for tabulated user-supplied pseudopotential.</p>
+<p>The third and fourth lines specify the number of total such atoms in the geometry
+and their symbols in the SYMBOL file. EXTRABASIS =1 in SYMBOL file will signal
+the program to use the supplementary basis functions. Then comes the number of
+primitive Gaussians followed by the number of the s, p and d -type contracted
+Gaussians. The number of supplementary functions of s, p and d type are written next.
+These informations are followed by some blocks of numbers. The first block lists the
+exponents of the primitive Gaussians. This is then followed by Ns blocks where Ns
+is the number of contracted s-type Gaussians. The first block is the coefficients
+multiplying the primitive Gaussians for the 1s contracted Gaussian, the second block
+is for 2s Gaussian and so on. After the Ns number of such blocks, comes the Np blocks
+corresponding to the p-type contracted Gaussians followed by similar Nd number of d-type Gaussians. In the example for carbon atom above, the 1s and 2s contracted Gaussian is a linear combination of the all the primitive Gaussians whereas the higher unoccupied s orbitals are taken as single long-range Gaussians. Similarly for p orbitals where only the 2p orbital is occupied. These are then followed by similar blocks corresponding to the supplementary functions.
+By setting EXTRABASIS = 1 in the SYMBOL file, the additional basis functions described above are added to the calculation.  These are sometimes added when calculating dipole moments and polarizabilities.</p>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="functionals.html" class="btn btn-neutral float-left" title="Exchange correlation functionals" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="mesh.html" class="btn btn-neutral float-right" title="FLOSIC Mesh" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022,   NRLMOL users .
+      <span class="lastupdated">Last updated on Jan 31, 2023.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

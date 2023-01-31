@@ -4,9 +4,9 @@ Getting more information about FLOSIC
 =====================================
 
 
- Whenever you have a question about the code and its usage, don't hesitate to contact 
- 	- Tunna Baruah       (UTEP), tbaruah@utep.edu
- 	- Raja Zope          (UTEP), rzope@utep.edu
+ Questions about the FLOSIC code or its use can be directed to
+ 	- Tunna Baruah        (UTEP), tbaruah@utep.edu
+ 	- Rajendra R. Zope    (UTEP), rzope@utep.edu
  	- Koblar Alan Jackson (CMU), jacks1ka@cmich.edu
  
  or write to the FLOSIC mail server electronic_structure_lab@listserv.utep.edu.
@@ -23,14 +23,8 @@ Getting more information about FLOSIC
 	If your system has a permanent spin polarization (i.e. the number of up and down electrons is different), the calculation
 	will always be spin-unrestricted.
 	In the case of a total spin of S = 0 (i.e. same number of up and down electrons), the code automatically carries out
-	a spin-restricted calculation. To switch to a spin-unrestricted setup (i.e. having individual sets of up and down FODs in the FRMORB file),
-	you will need to change the SYMBOL file. In that file, there are two numbers next to the tag 'ELECTRONS'. 
-	By changing the second number to be negative, like
-
-	| ELECTRONS  =     5.00000000  5.00000000  -- Original
-	| ELECTRONS  =     5.00000000 -5.00000000  -- Changed
-
-	the code will run spin-unrestricted.
+	a spin-restricted calculation. To switch to a spin-unrestricted setup (i.e. having individual sets of up and down FODs in the FRMORB file), set the
+        SPNPOLV option in NRLMOL_INPUT.DAT to Y. 
 
   #. Is it possible to force antiferromagntic spin ordering in some atoms?
 	Yes, you can specify atoms to have a preference for spin-up density, spin-down density or unpolarized density. The specifications needs to be made in the SYMBOL file. Here is an example :

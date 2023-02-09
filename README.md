@@ -10,6 +10,7 @@ This is the source code for FLOSIC's documentation update.
 ### How to Compile:
 
 You will need the *Sphinx* documentation generator and the *Read-the-Docs* theme. You can install them with pip,
+    
     $ pip install sphinx-rtd-theme
     $ pip install Sphinx
 

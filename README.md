@@ -7,16 +7,20 @@ This is the source code for FLOSIC's documentation update.
 - Changed file layout
 - Updated Information
      
-### How to Compile:
+## How to Compile:
 
 You will need the *Sphinx* documentation generator and the *Read-the-Docs* theme. You can install them with pip,
     
     $ pip install sphinx-rtd-theme
     $ pip install Sphinx
 
-Once you have installed these, you can run the Makefile in the **Updt_man** directory.
+Once you have installed these, you can run the Makefile in the **Updt_man** directory. To build the html output:
+     
+     $ make html
 
-### Updating the Documentation:
+The **html** target will build the output into the `BUILDDIR` variable.
+
+## Updating the Documentation:
 
 Sphinx uses their reSructuredText markup language.   
 It contains Markdown support
@@ -25,9 +29,9 @@ https://www.markdownguide.org/basic-syntax/
 and it additional features that can be found here
 https://www.sphinx-doc.org/en/master/usage/restructuredtext/basics.html
 
-### Future Updates:
+## Future Updates:
 
 - Have a more fleshed out structure of the documentation
 
-### Additional Support:
+## Additional Support:
 If you have any questions please email me directly at ville2a@cmich.edu

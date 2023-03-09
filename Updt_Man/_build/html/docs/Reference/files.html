@@ -1,19 +1,21 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Input and Output Files &mdash; NRLMOL  2020 documentation</title>
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/_static/css/custom.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
         <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
         <script src="../../_static/doctools.js"></script>
-        <script src="../../_static/sphinx_highlight.js"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -26,49 +28,55 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-            <a href="../../main.html" class="icon icon-home"> NRLMOL 
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            NRLMOL 
+              <img src="../../_static/log.jpeg" class="logo" alt="Logo"/>
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../../index.html">Introduction and Overview</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../install/toc.html">Installing FLOSIC</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../install/Prerequisites.html">Prerequisites</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../install/Build.html">Accessing and compiling the code</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../install/Support.html">Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation Guide</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="toc.html">Reference</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Input and Output Files</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#atomsphnn">ATOMSPHNN</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cluster">CLUSTER:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#dipole">DIPOLE:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#evalues">EVALUES:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#evalnnn">EVALNNN:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#frcout">FRCOUT:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#frmorb">FRMORB:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#fande-out">fande.out:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#geocnvrg">GEOCNVRG:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#history">HISTORY:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#isymgen">ISYMGEN</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#records">records:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#rhotot">RHOTOT:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#rhospn">RHOSPN:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#runs">RUNS:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#summary">SUMMARY:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#symbol">SYMBOL:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#xmol-dat">XMOL.DAT:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#xmol-xyz">XMOL.xyz:</a></li>
 </ul>
 </li>
-<li class="toctree-l1 current"><a class="reference internal" href="toc.html">Reference</a><ul class="current">
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Input and Output Files</a></li>
 <li class="toctree-l2"><a class="reference internal" href="functionals.html">Exchange correlation functionals</a></li>
 <li class="toctree-l2"><a class="reference internal" href="isymgen.html">Basis sets: the ISYMGEN file</a></li>
 <li class="toctree-l2"><a class="reference internal" href="mesh.html">FLOSIC Mesh</a></li>
 <li class="toctree-l2"><a class="reference internal" href="nrlmolinputdat.html">Controlling a calculation: the NRLMOL_INPUT.DAT file</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../setupcal.html">Quick start guide to running a FLOSIC calculation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../tutorials/tuttoc.html">Tutorials</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../tutorials/dtutorials/tutorial1.html">Tutorial 1: Molecular geometry optimization at the DFT level</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../tutorials/dtutorials/tutorial2.html">Tutorial 2: a FLOSIC calculation for H2</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../tutorials/dtutorials/T3-FOD_opt.html">Tutorial 3:  FOD optimization of a water molecule</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../tutorials/ddos/density_of_states.html">Plotting density of states using NRLMOL</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../tutorials/ddos/density_of_states.html#introduction">Introduction</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../tutorials/ddos/density_of_states.html#setup">Setup</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../tutorials/ddos/density_of_states.html#results">Results</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../tutorials/ddos/density_of_states.html#membership-files">Membership files</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../tutorials/ddos/density_of_states.html#plotting">Plotting</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../tutorials/ddos/density_of_states.html#gnuplot-usage">Gnuplot usage</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../tutorials/ddos/density_of_states.html#bibliography">Bibliography</a></li>
-</ul>
-</li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="../setupcal.html">Quick start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorials/tuttoc.html">Tutorials</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../nrlmolfaq.html">Getting more information about FLOSIC</a></li>
 </ul>
 
@@ -78,14 +86,14 @@
 
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../../main.html">NRLMOL </a>
+          <a href="../../index.html">NRLMOL </a>
       </nav>
 
       <div class="wy-nav-content">
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../../main.html" class="icon icon-home"></a></li>
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="toc.html">Reference</a></li>
       <li class="breadcrumb-item active">Input and Output Files</li>
       <li class="wy-breadcrumbs-aside">
@@ -98,47 +106,119 @@
            <div itemprop="articleBody">
              
   <section id="input-and-output-files">
-<span id="nrlmolfiles"></span><h1>Input and Output Files<a class="headerlink" href="#input-and-output-files" title="Permalink to this heading"></a></h1>
+<span id="nrlmolfiles"></span><h1>Input and Output Files<a class="headerlink" href="#input-and-output-files" title="Permalink to this headline"></a></h1>
 <p>As mentioned above, the minimal set of input files required for a FLOSIC calculation includes CLUSTER and FRMORB.
 Once the code is run, a number of additional files are generated. Some of these, like NRLMOL_INPUT.DAT (described earlier) can be edited to control how subsequent calculations run. The following is a list of important input/output files and a brief description of their contents:</p>
+<section id="atomsphnn">
+<h2>ATOMSPHNN<a class="headerlink" href="#atomsphnn" title="Permalink to this headline"></a></h2>
 <blockquote>
-<div><ul class="simple">
-<li><p>LIST of FILES</p></li>
-</ul>
+<div><p>Charge and spin charge in each inequivalent atom integrated over a sphere of specified  radius.</p>
+</div></blockquote>
+</section>
+<section id="cluster">
+<h2>CLUSTER:<a class="headerlink" href="#cluster" title="Permalink to this headline"></a></h2>
 <blockquote>
-<div><ol class="arabic simple">
-<li><p>ATOMSPHNN: Charge and spin charge in each inequivalent atom integrated over a sphere of
-specified  radius.</p></li>
-<li><p>CLUSTER  : Main input file.</p></li>
-<li><p>DIPOLE  : Contains x, y, z components of dipole moments in the atomic units.</p></li>
-<li><p>EVALUES : The canonical eigenvalues for the current step in an SCF calculation.
+<div><p>Main input file.</p>
+</div></blockquote>
+</section>
+<section id="dipole">
+<h2>DIPOLE:<a class="headerlink" href="#dipole" title="Permalink to this headline"></a></h2>
+<blockquote>
+<div><p>Contains x, y, z components of dipole moments in the atomic units.</p>
+</div></blockquote>
+</section>
+<section id="evalues">
+<h2>EVALUES:<a class="headerlink" href="#evalues" title="Permalink to this headline"></a></h2>
+<blockquote>
+<div><p>The canonical eigenvalues for the current step in an SCF calculation.
 If symmetry is used in the calculation, the eigenvalues are sorted by symmetry, and also by spin, if the calculation is spin-polarized.
-A list of eigenvalues and the occupation of the corresponding orbital is given at the end of the file.</p></li>
-<li><p>EVALNNN : The eigenvalues, their spin, symmetry representation, degeneracy and occupancy,
-Fermi energy for each iteration number NNN.</p></li>
-<li><p>FRCOUT   : Total energy, forces on each atom, dipole moment, applied electric field.</p></li>
-<li><p>FRMORB : number of up spin FODs and down spin FODs, followed by the up spin FOD positions, then down spin FOD positions.</p></li>
-<li><p>fande.out : Iteration, total energy, square root of the sum of the squares of FOD forces, max FOD force.</p></li>
-<li><p>GEOCNVRG : Convergence criteria, Total energy , largest atomic force, information about atomic geometry
-optimization.  Is written after every complete SCF cycle.</p></li>
-<li><p>HISTORY:   Contains history of the geometry optimization. To see the energy as function of optimization step
-do ‘grep -i TR HISTORY’ in the directory.</p></li>
-<li><p>ISYMGEN: Information about the basis set. (For an in depth description, see chapter 8.)</p></li>
-<li><p>records  : copy of the FRMORB file used during each iteration, followed by the FOD forces on those FODs.</p></li>
-<li><p>RHOTOT  : Total density on a specified grid. Is written in Gaussian cubic format.</p></li>
-<li><p>RHOSPN  : Spin density on a specified grid. Is written in Gaussian cubic format.</p></li>
-<li><p>RUNS    :  Control restart of calculation. Calculations can be restarted from Hamiltonian (<strong>HAMOLD</strong>), wavefunctions (<strong>WFOUT</strong>), or potential (<strong>COUPOT</strong>).</p></li>
-<li><p>SUMMARY : Total energy, electronic charge, kinetic energy and trace of hamiltonian for each
-iteration.</p></li>
-<li><p>SYMBOL : The exchange-correlation functional is specified on the first line. Atomic coordinates and bias potentials for each atom are stored for each
-iteration of an atomic geometry optimization. The last line allows the use of a more extensive default basis set (to use, set EXTRABASIS=1).
-SYMBOL includes essentially the same information as the CLUSTER file. If the SYMBOL file exists, CLUSTER is not read.</p></li>
-<li><p>XMOL.DAT : Geometry in the xyz format. The first column contains atomic numbers. The atomic coordinates are in Angstrom.</p></li>
-<li><p>XMOL.xyz : Geometry in the xyz format. The first column contains atomic labels. The atomic coordinates are in Angstrom. Use <strong>JMOL</strong> to visualize this.</p></li>
-</ol>
+A list of eigenvalues and the occupation of the corresponding orbital is given at the end of the file.</p>
 </div></blockquote>
+</section>
+<section id="evalnnn">
+<h2>EVALNNN:<a class="headerlink" href="#evalnnn" title="Permalink to this headline"></a></h2>
+<blockquote>
+<div><p>The eigenvalues, their spin, symmetry representation, degeneracy and occupancy,
+Fermi energy for each iteration number NNN.</p>
 </div></blockquote>
-<p>Disclaimer: Only the primary input and output files are explained here. For more information about additional files, please contact a FLOSIC team member or post a question to the FLOSIC listserv (See Ch. 13).</p>
+</section>
+<section id="frcout">
+<h2>FRCOUT:<a class="headerlink" href="#frcout" title="Permalink to this headline"></a></h2>
+<blockquote>
+<div><p>Total energy, forces on each atom, dipole moment, applied electric field.</p>
+</div></blockquote>
+</section>
+<section id="frmorb">
+<h2>FRMORB:<a class="headerlink" href="#frmorb" title="Permalink to this headline"></a></h2>
+<p>Number of up spin FODs and down spin FODs, followed by the up spin FOD positions, then down spin FOD positions.</p>
+</section>
+<section id="fande-out">
+<h2>fande.out:<a class="headerlink" href="#fande-out" title="Permalink to this headline"></a></h2>
+<blockquote>
+<div><p>Iteration, total energy, square root of the sum of the squares of FOD forces, max FOD force.</p>
+</div></blockquote>
+</section>
+<section id="geocnvrg">
+<h2>GEOCNVRG:<a class="headerlink" href="#geocnvrg" title="Permalink to this headline"></a></h2>
+<blockquote>
+<div><p>Convergence criteria, Total energy , largest atomic force, information about atomic geometry
+optimization.  Is written after every complete SCF cycle.</p>
+</div></blockquote>
+</section>
+<section id="history">
+<h2>HISTORY:<a class="headerlink" href="#history" title="Permalink to this headline"></a></h2>
+<blockquote>
+<div><p>Contains history of the geometry optimization. To see the energy as function of optimization step
+do ‘grep -i TR HISTORY’ in the directory.</p>
+</div></blockquote>
+</section>
+<section id="isymgen">
+<span id="id1"></span><h2>ISYMGEN<a class="headerlink" href="#isymgen" title="Permalink to this headline"></a></h2>
+<p>Information about the basis set. (For an in depth description, see chapter 8.)</p>
+</section>
+<section id="records">
+<h2>records:<a class="headerlink" href="#records" title="Permalink to this headline"></a></h2>
+<p>copy of the FRMORB file used during each iteration, followed by the FOD forces on those FODs.</p>
+</section>
+<section id="rhotot">
+<h2>RHOTOT:<a class="headerlink" href="#rhotot" title="Permalink to this headline"></a></h2>
+<p>Total density on a specified grid. Is written in Gaussian cubic format.</p>
+</section>
+<section id="rhospn">
+<h2>RHOSPN:<a class="headerlink" href="#rhospn" title="Permalink to this headline"></a></h2>
+<p>Spin density on a specified grid. Is written in Gaussian cubic format.</p>
+</section>
+<section id="runs">
+<h2>RUNS:<a class="headerlink" href="#runs" title="Permalink to this headline"></a></h2>
+<p>Control restart of calculation. Calculations can be restarted from Hamiltonian (<strong>HAMOLD</strong>), wavefunctions (<strong>WFOUT</strong>), or potential (<strong>COUPOT</strong>).</p>
+</section>
+<section id="summary">
+<h2>SUMMARY:<a class="headerlink" href="#summary" title="Permalink to this headline"></a></h2>
+<dl class="simple">
+<dt>Total energy, electronic charge, kinetic energy and trace of hamiltonian for each</dt><dd><p>iteration.</p>
+</dd>
+</dl>
+</section>
+<section id="symbol">
+<h2>SYMBOL:<a class="headerlink" href="#symbol" title="Permalink to this headline"></a></h2>
+<dl class="simple">
+<dt>The exchange-correlation functional is specified on the first line. Atomic coordinates and bias potentials for each atom are stored for each</dt><dd><p>iteration of an atomic geometry optimization. The last line allows the use of a more extensive default basis set (to use, set EXTRABASIS=1).
+SYMBOL includes essentially the same information as the CLUSTER file. If the SYMBOL file exists, CLUSTER is not read.</p>
+</dd>
+</dl>
+</section>
+<section id="xmol-dat">
+<h2>XMOL.DAT:<a class="headerlink" href="#xmol-dat" title="Permalink to this headline"></a></h2>
+<p>Geometry in the xyz format. The first column contains atomic numbers. The atomic coordinates are in Angstrom.</p>
+</section>
+<section id="xmol-xyz">
+<h2>XMOL.xyz:<a class="headerlink" href="#xmol-xyz" title="Permalink to this headline"></a></h2>
+<p>Geometry in the xyz format. The first column contains atomic labels. The atomic coordinates are in Angstrom. Use <strong>JMOL</strong> to visualize this.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Only the primary input and output files are explained here. For more information about additional files, please contact a FLOSIC team member or post a question to the FLOSIC listserv (See Ch. 13).</p>
+</div>
+</section>
 </section>
 
 
@@ -152,8 +232,8 @@ SYMBOL includes essentially the same information as the CLUSTER file. If the SYM
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2022,   NRLMOL users .
-      <span class="lastupdated">Last updated on Jan 31, 2023.
+    <p>&#169; Copyright 2023,   NRLMOL users .
+      <span class="lastupdated">Last updated on Mar 09, 2023.
       </span></p>
   </div>
 

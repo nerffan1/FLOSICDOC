@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Getting more information about FLOSIC &mdash; NRLMOL  2020 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Plotting density of states using NRLMOL" href="../tutorials/ddos/density_of_states.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #4372c4" >
+
+          
+          
+          <a href="../main.html">
+            
+              <img src="../_static/log.jpeg" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Introduction and Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="install/toc.html">Installing FLOSIC</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="install/Prerequisites.html">Prerequisites</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install/Build.html">Accessing and compiling the code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install/Support.html">Support</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Reference/toc.html">Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Reference/files.html">Input and Output Files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Reference/functionals.html">Exchange correlation functionals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Reference/isymgen.html">Basis sets: the ISYMGEN file</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Reference/mesh.html">FLOSIC Mesh</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Reference/nrlmolinputdat.html">Controlling a calculation: the NRLMOL_INPUT.DAT file</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="setupcal.html">Quick start guide to running a FLOSIC calculation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/tuttoc.html">Tutorials</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/dtutorials/tutorial1.html">Tutorial 1: Molecular geometry optimization at the DFT level</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/dtutorials/tutorial2.html">Tutorial 2: a FLOSIC calculation for H2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/dtutorials/T3-FOD_opt.html">Tutorial 3:  FOD optimization of a water molecule</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/ddos/density_of_states.html">Plotting density of states using NRLMOL</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/ddos/density_of_states.html#introduction">Introduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/ddos/density_of_states.html#setup">Setup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/ddos/density_of_states.html#results">Results</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/ddos/density_of_states.html#membership-files">Membership files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/ddos/density_of_states.html#plotting">Plotting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/ddos/density_of_states.html#gnuplot-usage">Gnuplot usage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/ddos/density_of_states.html#bibliography">Bibliography</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Getting more information about FLOSIC</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #4372c4" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../main.html">NRLMOL </a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../main.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Getting more information about FLOSIC</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/docs/nrlmolfaq.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="getting-more-information-about-flosic">
+<span id="nrlmolfaq"></span><h1>Getting more information about FLOSIC<a class="headerlink" href="#getting-more-information-about-flosic" title="Permalink to this heading"></a></h1>
+<blockquote>
+<div><dl class="simple">
+<dt>Questions about the FLOSIC code or its use can be directed to</dt><dd><ul class="simple">
+<li><p>Tunna Baruah        (UTEP), <a class="reference external" href="mailto:tbaruah&#37;&#52;&#48;utep&#46;edu">tbaruah<span>&#64;</span>utep<span>&#46;</span>edu</a></p></li>
+<li><p>Rajendra R. Zope    (UTEP), <a class="reference external" href="mailto:rzope&#37;&#52;&#48;utep&#46;edu">rzope<span>&#64;</span>utep<span>&#46;</span>edu</a></p></li>
+<li><p>Koblar Alan Jackson (CMU), <a class="reference external" href="mailto:jacks1ka&#37;&#52;&#48;cmich&#46;edu">jacks1ka<span>&#64;</span>cmich<span>&#46;</span>edu</a></p></li>
+</ul>
+</dd>
+</dl>
+<p>or write to the FLOSIC mail server <a class="reference external" href="mailto:electronic_structure_lab&#37;&#52;&#48;listserv&#46;utep&#46;edu">electronic_structure_lab<span>&#64;</span>listserv<span>&#46;</span>utep<span>&#46;</span>edu</a>.</p>
+<p>Some FAQs are listed below.</p>
+<blockquote>
+<div><ol class="arabic">
+<li><dl class="simple">
+<dt>What convergence criteria should be considered for the FOD optimization?</dt><dd><p>In general, you want to make sure that your total energy is converged within your given SCF tolerance (like in a standard DFT calculation) and
+that the largest FOD force is at least smaller than 5E-4 Ha/Bohr.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>How can I start a spin-polarized/ spin-unrestricted calculation?</dt><dd><p>For a spin-unrestricted calculation, you need to make sure that your underlying DFT density is spin-unrestricted as well.
+If your system has a permanent spin polarization (i.e. the number of up and down electrons is different), the calculation
+will always be spin-unrestricted.
+In the case of a total spin of S = 0 (i.e. same number of up and down electrons), the code automatically carries out
+a spin-restricted calculation. To switch to a spin-unrestricted setup (i.e. having individual sets of up and down FODs in the FRMORB file), set the
+SPNPOLV option in NRLMOL_INPUT.DAT to Y.</p>
+</dd>
+</dl>
+</li>
+<li><dl>
+<dt>Is it possible to force antiferromagntic spin ordering in some atoms?</dt><dd><p>Yes, you can specify atoms to have a preference for spin-up density, spin-down density or unpolarized density. The specifications needs to be made in the SYMBOL file. Here is an example :</p>
+<div class="line-block">
+<div class="line">ALL-MAN001 =        2.137000       -0.350000        0.003300 SUP</div>
+<div class="line">ALL-MAN001 =        3.456900       -2.109300        0.093100 SDN</div>
+<div class="line">ALL-CAR001 =        2.720100       -2.490500        0.106000 UPO</div>
+</div>
+<p>SUP, SDN and UPO signify spin up, spin down and unpolarized atoms. The default choice is UPO.
+Note that these are starting values for the atoms. After SCF, the density can be different than what has been initialized.</p>
+</dd>
+</dl>
+</li>
+</ol>
+</div></blockquote>
+</div></blockquote>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../tutorials/ddos/density_of_states.html" class="btn btn-neutral float-left" title="Plotting density of states using NRLMOL" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023,   NRLMOL users .
+      <span class="lastupdated">Last updated on Feb 26, 2023.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

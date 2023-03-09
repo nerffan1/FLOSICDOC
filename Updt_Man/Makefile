@@ -16,6 +16,11 @@ I18NSPHINXOPTS  = $(PAPEROPT_$(PAPER)) $(SPHINXOPTS) .
 
 .PHONY: help clean html dirhtml singlehtml pickle json htmlhelp qthelp devhelp epub latex latexpdf text man changes linkcheck doctest gettext
 
+#If not on an osx machine, shoose path to an html viewer (e.g. Chrome.exe)
+#This assumes open will work on your osx machine
+HTML_VIEW = "/mnt/c/Users/angel/AppData/Local/Google/Chrome/Application/chrome.exe"
+OS = $(shell uname -s)
+
 help:
 	@echo "Please use \`make <target>' where <target> is one of"
 	@echo "  html       to make standalone HTML files"
@@ -42,10 +47,18 @@ clean:
 	-rm -rf $(BUILDDIR)/*
 
 html:
-	$(SPHINXBUILD) -b html $(ALLSPHINXOPTS) $(BUILDDIR)/html
+	$(SPHINXBUILD) -b html $(ALLSPHINXOPTS) $(BUILDDIR)/html -q
 	@echo
 	@echo "Build finished. The HTML pages are in $(BUILDDIR)/html."
-	open $(BUILDDIR)/html/index.html
+#Open in browser
+	@case  $(OS) in \
+		Darwin) \
+			open $(BUILDDIR)/html/index.html ;; \
+		Linux) \
+			if [ $(WSL_DISTRO_NAME) = "Ubuntu-22.04" ]; then \
+				$(HTML_VIEW) "\\$(shell wslpath -w  $(PWD)/$(BUILDDIR)/html/index.html)"; \
+			fi;; \
+	esac
 
 dirhtml:
 	$(SPHINXBUILD) -b dirhtml $(ALLSPHINXOPTS) $(BUILDDIR)/dirhtml

@@ -1,8 +1,8 @@
 .. _setup:
 
-=================================================
-Quick start guide to running a FLOSIC calculation
-=================================================
+==================
+Quick start 
+==================
 
 
 Basic input files for FLOSIC are called "CLUSTER" and "FRMORB".  

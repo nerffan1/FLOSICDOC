@@ -1,19 +1,21 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Quick start guide to running a FLOSIC calculation &mdash; NRLMOL  2020 documentation</title>
+  <title>Quick start &mdash; NRLMOL  2020 documentation</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/_static/css/custom.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
         <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
         <script src="../_static/doctools.js"></script>
-        <script src="../_static/sphinx_highlight.js"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -26,49 +28,27 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-            <a href="../main.html" class="icon icon-home"> NRLMOL 
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            NRLMOL 
+              <img src="../_static/log.jpeg" class="logo" alt="Logo"/>
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../index.html">Introduction and Overview</a></li>
-<li class="toctree-l1"><a class="reference internal" href="install/toc.html">Installing FLOSIC</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="install/Prerequisites.html">Prerequisites</a></li>
-<li class="toctree-l2"><a class="reference internal" href="install/Build.html">Accessing and compiling the code</a></li>
-<li class="toctree-l2"><a class="reference internal" href="install/Support.html">Support</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="Reference/toc.html">Reference</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="Reference/files.html">Input and Output Files</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Reference/functionals.html">Exchange correlation functionals</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Reference/isymgen.html">Basis sets: the ISYMGEN file</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Reference/mesh.html">FLOSIC Mesh</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Reference/nrlmolinputdat.html">Controlling a calculation: the NRLMOL_INPUT.DAT file</a></li>
-</ul>
-</li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Quick start guide to running a FLOSIC calculation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../tutorials/tuttoc.html">Tutorials</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../tutorials/dtutorials/tutorial1.html">Tutorial 1: Molecular geometry optimization at the DFT level</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../tutorials/dtutorials/tutorial2.html">Tutorial 2: a FLOSIC calculation for H2</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../tutorials/dtutorials/T3-FOD_opt.html">Tutorial 3:  FOD optimization of a water molecule</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../tutorials/ddos/density_of_states.html">Plotting density of states using NRLMOL</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../tutorials/ddos/density_of_states.html#introduction">Introduction</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../tutorials/ddos/density_of_states.html#setup">Setup</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../tutorials/ddos/density_of_states.html#results">Results</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../tutorials/ddos/density_of_states.html#membership-files">Membership files</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../tutorials/ddos/density_of_states.html#plotting">Plotting</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../tutorials/ddos/density_of_states.html#gnuplot-usage">Gnuplot usage</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../tutorials/ddos/density_of_states.html#bibliography">Bibliography</a></li>
-</ul>
-</li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="../introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Reference/toc.html">Reference</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Quick start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/tuttoc.html">Tutorials</a></li>
 <li class="toctree-l1"><a class="reference internal" href="nrlmolfaq.html">Getting more information about FLOSIC</a></li>
 </ul>
 
@@ -78,15 +58,15 @@
 
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../main.html">NRLMOL </a>
+          <a href="../index.html">NRLMOL </a>
       </nav>
 
       <div class="wy-nav-content">
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../main.html" class="icon icon-home"></a></li>
-      <li class="breadcrumb-item active">Quick start guide to running a FLOSIC calculation</li>
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Quick start</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../_sources/docs/setupcal.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -96,8 +76,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="quick-start-guide-to-running-a-flosic-calculation">
-<span id="setup"></span><h1>Quick start guide to running a FLOSIC calculation<a class="headerlink" href="#quick-start-guide-to-running-a-flosic-calculation" title="Permalink to this heading"></a></h1>
+  <section id="quick-start">
+<span id="setup"></span><h1>Quick start<a class="headerlink" href="#quick-start" title="Permalink to this headline"></a></h1>
 <p>Basic input files for FLOSIC are called “CLUSTER” and “FRMORB”.
 The files require minimal input from the user and most parameters required for the calculations are set with
 default values. You can specify some parameters that control the calculations in the file called “NRLMOL_INPUT.DAT”.
@@ -146,8 +126,8 @@ Previous FOD geometries are contained in the records file, along with FOD forces
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2022,   NRLMOL users .
-      <span class="lastupdated">Last updated on Jan 31, 2023.
+    <p>&#169; Copyright 2023,   NRLMOL users .
+      <span class="lastupdated">Last updated on Mar 09, 2023.
       </span></p>
   </div>
 

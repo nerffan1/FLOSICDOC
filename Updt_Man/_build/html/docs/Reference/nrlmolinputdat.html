@@ -1,23 +1,25 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Controlling a calculation: the NRLMOL_INPUT.DAT file &mdash; NRLMOL  2020 documentation</title>
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/_static/css/custom.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
         <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
         <script src="../../_static/doctools.js"></script>
-        <script src="../../_static/sphinx_highlight.js"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Quick start guide to running a FLOSIC calculation" href="../setupcal.html" />
+    <link rel="next" title="Quick start" href="../setupcal.html" />
     <link rel="prev" title="FLOSIC Mesh" href="mesh.html" /> 
 </head>
 
@@ -26,49 +28,43 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-            <a href="../../main.html" class="icon icon-home"> NRLMOL 
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            NRLMOL 
+              <img src="../../_static/log.jpeg" class="logo" alt="Logo"/>
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../../index.html">Introduction and Overview</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../install/toc.html">Installing FLOSIC</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../install/Prerequisites.html">Prerequisites</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../install/Build.html">Accessing and compiling the code</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../install/Support.html">Support</a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation Guide</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="toc.html">Reference</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="files.html">Input and Output Files</a></li>
 <li class="toctree-l2"><a class="reference internal" href="functionals.html">Exchange correlation functionals</a></li>
 <li class="toctree-l2"><a class="reference internal" href="isymgen.html">Basis sets: the ISYMGEN file</a></li>
 <li class="toctree-l2"><a class="reference internal" href="mesh.html">FLOSIC Mesh</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Controlling a calculation: the NRLMOL_INPUT.DAT file</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="../setupcal.html">Quick start guide to running a FLOSIC calculation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../tutorials/tuttoc.html">Tutorials</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../tutorials/dtutorials/tutorial1.html">Tutorial 1: Molecular geometry optimization at the DFT level</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../tutorials/dtutorials/tutorial2.html">Tutorial 2: a FLOSIC calculation for H2</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../tutorials/dtutorials/T3-FOD_opt.html">Tutorial 3:  FOD optimization of a water molecule</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../tutorials/ddos/density_of_states.html">Plotting density of states using NRLMOL</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../tutorials/ddos/density_of_states.html#introduction">Introduction</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../tutorials/ddos/density_of_states.html#setup">Setup</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../tutorials/ddos/density_of_states.html#results">Results</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../tutorials/ddos/density_of_states.html#membership-files">Membership files</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../tutorials/ddos/density_of_states.html#plotting">Plotting</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../tutorials/ddos/density_of_states.html#gnuplot-usage">Gnuplot usage</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../tutorials/ddos/density_of_states.html#bibliography">Bibliography</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Controlling a calculation: the NRLMOL_INPUT.DAT file</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#atomsphv">ATOMSPHV</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#basisv">BASISV</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#calctypev">CALCTYPEV</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#diag1v">DIAG1V</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#diag2v">DIAG2V</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#populationv">POPULATIONV</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#rhogridv">RHOGRIDV</a></li>
 </ul>
 </li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="../setupcal.html">Quick start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorials/tuttoc.html">Tutorials</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../nrlmolfaq.html">Getting more information about FLOSIC</a></li>
 </ul>
 
@@ -78,14 +74,14 @@
 
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../../main.html">NRLMOL </a>
+          <a href="../../index.html">NRLMOL </a>
       </nav>
 
       <div class="wy-nav-content">
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../../main.html" class="icon icon-home"></a></li>
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="toc.html">Reference</a></li>
       <li class="breadcrumb-item active">Controlling a calculation: the NRLMOL_INPUT.DAT file</li>
       <li class="wy-breadcrumbs-aside">
@@ -98,7 +94,7 @@
            <div itemprop="articleBody">
              
   <section id="controlling-a-calculation-the-nrlmol-input-dat-file">
-<span id="nrlmolinput"></span><h1>Controlling a calculation: the NRLMOL_INPUT.DAT file<a class="headerlink" href="#controlling-a-calculation-the-nrlmol-input-dat-file" title="Permalink to this heading"></a></h1>
+<span id="nrlmolinput"></span><h1>Controlling a calculation: the NRLMOL_INPUT.DAT file<a class="headerlink" href="#controlling-a-calculation-the-nrlmol-input-dat-file" title="Permalink to this headline"></a></h1>
 <p>The <strong>NRLMOL_INPUT.DAT</strong> is an auxiliary input file that allows setting of control parameters for calculation.  If it does not exist, then it will be
 created by the FLOSIC executable using default values.</p>
 <p>The NRLMOL_INPUT.DAT with default values of parameters as of today (August 15, 2019) is given below.</p>
@@ -136,57 +132,165 @@ WFFRMV        = &#39;N&#39; ! set to Y to write Fermi orbitals in cube format (o
 
 </pre></div>
 </div>
-<p>A large number of entries related to calculation of certain properties are given as yes or no. Here <strong>N</strong> means <em>NO</em>. If <strong>Y</strong> then the calculation of a given property is requested. Note that certain calculations such as, for example, the calculation of joint density of states is often useful only at the final converged geometry.</p>
+<p>A large number of entries related to calculation of certain properties are given as yes or no. Here <strong>N</strong> means <em>NO</em>. If <strong>Y</strong> then the calculation
+of a given property is requested. Note that certain calculations such as, for example, the calculation of joint density of states is often useful only at the final converged geometry.</p>
 <p>Most of the variables are already explained briefly in the NRLMOL_INPUT.DAT file. Below we add some comments on a few of them.</p>
+<section id="atomsphv">
+<h2>ATOMSPHV<a class="headerlink" href="#atomsphv" title="Permalink to this headline"></a></h2>
+<p>(Default: <strong>1</strong>) Set to <strong>Y</strong> to calculate charge and spin charge in each inequivalent atom integrated over a sphere of specified  radius.</p>
+</section>
+<hr class="docutils" />
+<section id="basisv">
+<h2>BASISV<a class="headerlink" href="#basisv" title="Permalink to this headline"></a></h2>
 <blockquote>
-<div><ol class="arabic">
-<li><p>ATOMSPHV: Set to <strong>Y</strong> to calculate charge and spin charge in each inequivalent atom integrated over a sphere of specified  radius.</p></li>
-<li><p>BASISV: Default value is <strong>DEFAULT</strong> which refers to the NRLMOL basis optimized for the PBE functional.
-This variable specifies which basis set is to be used. Users interested in using standard sets from the literature should look up basis.txt in the basis
-subdirectory of the directory containing the source files. This file lists all the basis sets available. The user
-needs to specify only the first string before the “.” from the entries in basis.txt. For example, if the user
-wants to use 6-31G basis then he should replace DEFAULT with 6-31G.</p></li>
-<li><p>CALCTYPEV:   Default is <strong>LBFGS</strong>.
-Available choices:  <strong>SCF-ONLY</strong>, <strong>CONJUGATE-GRADIENT</strong>.</p>
-<blockquote>
-<div><ul class="simple">
-<li><p><strong>SCF-ONLY</strong> This choice is used when the user is not interested in an atomic geometry optimization. Atomic forces are not computed with this setting.</p></li>
-<li><p><strong>CONJUGATE-GRADIENT</strong> : Atomic geometry optimization is done using the conjugate-gradient algorithm.</p></li>
+<div><p>Default: <strong>DEFAULT</strong> (The NRLMOL Basis, optimized for the PBE functional)</p>
+</div></blockquote>
+<p>This variable specifies which basis set is employed.</p>
+<p>Other bases are available in the <strong>basis.txt</strong> file, found in the <strong>basis</strong>
+subdirectory. This file lists all the basis sets available.</p>
+<p>The following bases are available:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 26%" />
+<col style="width: 23%" />
+<col style="width: 26%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>3-21G</p></td>
+<td><p>6-31G-Blaudeau</p></td>
+<td><p>Ahlrichs_TZV</p></td>
+<td><p>Partridge_Uncontracted_1</p></td>
+</tr>
+<tr class="row-even"><td><p>3-21Gs</p></td>
+<td><p>6-31Gs</p></td>
+<td><p>Ahlrichs_VDZ</p></td>
+<td><p>Partridge_Uncontracted_2</p></td>
+</tr>
+<tr class="row-odd"><td><p>3-21GSP</p></td>
+<td><p>6-31Gs-Blaudeau</p></td>
+<td><p>Ahlrichs_VTZ</p></td>
+<td><p>Partridge_Uncontracted_3</p></td>
+</tr>
+<tr class="row-even"><td><p>3-21Gs_Polarization</p></td>
+<td><p>6-31Gs_Polarization</p></td>
+<td><p>DZVP2</p></td>
+<td><p>Partridge_Uncontracted_4</p></td>
+</tr>
+<tr class="row-odd"><td><p>3-21ppG</p></td>
+<td><p>6-31Gss</p></td>
+<td><p>DZVP</p></td>
+<td><p>Saddlej</p></td>
+</tr>
+<tr class="row-even"><td><p>3-21ppGs</p></td>
+<td><p>6-31Gss_Polarization</p></td>
+<td><p>GAMESS_PVTZ</p></td>
+<td><p>STO-2G</p></td>
+</tr>
+<tr class="row-odd"><td><p>6-311G</p></td>
+<td><p>6-31pGs</p></td>
+<td><p>GAMESS_VTZ</p></td>
+<td><p>STO-3G</p></td>
+</tr>
+<tr class="row-even"><td><p>6-311Gss</p></td>
+<td><p>6-31ppG</p></td>
+<td><p>Huzinaga_polarization</p></td>
+<td><p>STO-3Gs</p></td>
+</tr>
+<tr class="row-odd"><td><p>6-311Gss_Polarization</p></td>
+<td><p>6-31ppGs</p></td>
+<td><p>IGLO-II</p></td>
+<td><p>STO-3Gs_Polarization</p></td>
+</tr>
+<tr class="row-even"><td><p>6-311pGs</p></td>
+<td><p>6-31ppGss</p></td>
+<td><p>IGLO-III</p></td>
+<td><p>STO-6G</p></td>
+</tr>
+<tr class="row-odd"><td><p>6-311ppG2d2p</p></td>
+<td><p>Ahlrichs_Coulomb_Fitting</p></td>
+<td><p>McLeanChandler_VTZ</p></td>
+<td><p>TZVP</p></td>
+</tr>
+<tr class="row-even"><td><p>6-311ppGss</p></td>
+<td><p>Ahlrichs_Polarization</p></td>
+<td><p>MIDI_Huzinaga</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>6-31G</p></td>
+<td><p>Ahlrichs_pVDZ</p></td>
+<td><p>MINI_Huzinaga</p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>The user only needs to specify the string preceding the <em>.basis</em> extension in the input file. For example,
+if the user wants to use 6-31G basis then he should replace <code class="code docutils literal notranslate"><span class="pre">'DEFAULT'</span></code> with <code class="code docutils literal notranslate"><span class="pre">6-31G</span></code>.</p>
+</section>
+<hr class="docutils" />
+<section id="calctypev">
+<h2>CALCTYPEV<a class="headerlink" href="#calctypev" title="Permalink to this headline"></a></h2>
+<p>Available choices:</p>
+<ul class="simple">
+<li><p><strong>SCF-ONLY</strong>: This choice is used when the user is not interested in an atomic geometry optimization. Atomic forces are not computed with this setting.</p></li>
+<li><p><strong>CONJUGATE-GRADIENT</strong>: Atomic geometry optimization is done using the conjugate-gradient algorithm.</p></li>
+<li><p><strong>LBFGS</strong> : …WIP…</p></li>
 </ul>
+</section>
+<hr class="docutils" />
+<section id="diag1v">
+<h2>DIAG1V<a class="headerlink" href="#diag1v" title="Permalink to this headline"></a></h2>
+<blockquote>
+<div><p>Default is <strong>1</strong></p>
 </div></blockquote>
-</li>
-<li><p>DIAG1V        =   Default is <strong>1</strong>
-This variable allows different diagonalization algorithms to use for  diagonalization of the Hamiltonian.</p>
+<p>This variable allows different diagonalization algorithms to use for  diagonalization of the Hamiltonian.
+The options for this variable are:</p>
 <blockquote>
-<div><p>The options for this variable are:
-0)  DSGVX (LAPACKL: computes selected eigenvalues, and optionally eigenvectors).
-1)  DSGVD (Default if matrix size is below 100).  Uses a divide and conquer algorithm to compute eigenvectors.
-2)  DSGV   (This is the slowest of the available) option.</p>
+<div><ol class="arabic simple">
+<li><p>DSGVX (LAPACKL: computes selected eigenvalues, and optionally eigenvectors).</p></li>
+<li><p>DSGVD (Default if matrix size is below 100).  Uses a divide and conquer algorithm to compute eigenvectors.</p></li>
+<li><p>DSGV   (This is the slowest of the available)</p></li>
+</ol>
 </div></blockquote>
-</li>
-<li><p>DIAG2V        =    Default is <strong>1</strong>
-This variable allows diagonalization of the Hamiltonian using packed storage format for memory savings. This is useful for large system sizes.</p>
+</section>
+<hr class="docutils" />
+<section id="diag2v">
+<h2>DIAG2V<a class="headerlink" href="#diag2v" title="Permalink to this headline"></a></h2>
 <blockquote>
-<div><p>Available options are:</p>
+<div><p>Default: <strong>1</strong></p>
+</div></blockquote>
+<p>This variable allows diagonalization of the Hamiltonian using packed storage format for memory savings. This is useful for large system sizes.
+Available options are:</p>
 <blockquote>
-<div><ol class="arabic simple" start="0">
+<div><ol class="arabic simple">
 <li><p>DSPGVX (LAPACK: computes selected eigenvalues, and optionally eigenvectors).</p></li>
 <li><p>DSPGVD (Default if matrix size is below 100).  Uses a divide and conquer algorithm to compute eigenvectors.</p></li>
-<li><p>DSPGV (QR- factorization. This is the slowest of the available) option.</p></li>
+<li><p>DSPGV (QR- factorization. This is the slowest of the available)</p></li>
 </ol>
 </div></blockquote>
-<p>The option 1 (DSPGVD) is the fastest if all eigenvectors are required otherwise use the default 0.
-Note that FLOSIC doesn’t use <strong>SCALAPACK</strong></p>
+<p>The option 1 (DSPGVD) is the fastest if all eigenvectors are required otherwise use the default 0.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>FLOSIC does not use <strong>SCALAPACK</strong></p>
+</div>
+</section>
+<hr class="docutils" />
+<section id="populationv">
+<h2>POPULATIONV<a class="headerlink" href="#populationv" title="Permalink to this headline"></a></h2>
+<blockquote>
+<div><p>Default is <strong>N</strong></p>
 </div></blockquote>
-</li>
-<li><p>POPULATIONV   = Default is <strong>N</strong>
-When it is set to Y, Mulliken and Lowdin Population analysis calculations are run. Note that this is available only for spin polarized calculations.</p></li>
-<li><p>RHOGRIDV  = Default is <strong>N</strong>
-When set to Y,  it will generate a CUBE file for visulaization of total and spin density (spin up - spin down).</p></li>
-<li><p>SCALEDLBFGSV  = Default is <strong>Y</strong>
-This indicates the FOD optimization algorithm. Here scaled LBFGS is set as the default FOD optimization routine. Conjugate Gradient is used when this option is set to ‘N’.</p></li>
-</ol>
+<p>When it is set to Y, Mulliken and Lowdin Population analysis calculations are run. Note that this is available only for spin polarized.</p>
+</section>
+<hr class="docutils" />
+<section id="rhogridv">
+<h2>RHOGRIDV<a class="headerlink" href="#rhogridv" title="Permalink to this headline"></a></h2>
+<blockquote>
+<div><p>Default: <strong>N</strong></p>
 </div></blockquote>
+<p>When set to Y,  it will generate a CUBE file for visulaization of total and spin density (spin up - spin down).</p>
+<hr class="docutils" />
+</section>
 </section>
 
 
@@ -194,14 +298,14 @@ This indicates the FOD optimization algorithm. Here scaled LBFGS is set as the d
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="mesh.html" class="btn btn-neutral float-left" title="FLOSIC Mesh" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="../setupcal.html" class="btn btn-neutral float-right" title="Quick start guide to running a FLOSIC calculation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../setupcal.html" class="btn btn-neutral float-right" title="Quick start" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2022,   NRLMOL users .
-      <span class="lastupdated">Last updated on Jan 31, 2023.
+    <p>&#169; Copyright 2023,   NRLMOL users .
+      <span class="lastupdated">Last updated on Mar 09, 2023.
       </span></p>
   </div>
 

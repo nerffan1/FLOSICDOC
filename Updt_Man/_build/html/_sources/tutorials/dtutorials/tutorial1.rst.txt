@@ -1,7 +1,6 @@
-
+============================================================== 
 Tutorial 1: Molecular geometry optimization at the DFT level
-========================================================= 
-
+============================================================== 
 
 Very simple  tutorial  to get acquainted with electronic structure calculations using FLOSIC. This tutorial will explain how to run FLOSIC for molecular 
 geometry optimizations using DFT. 

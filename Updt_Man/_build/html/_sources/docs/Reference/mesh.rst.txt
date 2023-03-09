@@ -12,7 +12,6 @@ The mesh parameters are stored in the MESHDAT file. The default MESHDAT file for
 It is possible to change the default mesh.
 The parameters used in creating the mesh are listed in the MESHDAT file. The default MESHDAT file for a DFA calculation is as follows:
 
-
 .. This is numerical problem and can be solved by refining the mesh used in the calculation. To refine a mesh see following question.
 
 

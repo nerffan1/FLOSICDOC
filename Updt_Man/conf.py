@@ -42,12 +42,12 @@ source_suffix = '.rst'
 # The encoding of source files.
 #source_encoding = 'utf-8-sig'
 
-# The master toctree document.
-master_doc = 'main'
+# The main toctree document.
+master_doc = 'index'
 
 # General information about the project.
 project = u'NRLMOL '
-copyright = u'2022,   NRLMOL users '
+copyright = u'2023,   NRLMOL users '
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
@@ -103,8 +103,9 @@ html_theme = 'sphinx_rtd_theme'
 # further.  For a list of options available for each theme, see the
 # documentation.
 html_theme_options = {
-  'collapse_navigation':'False',
-  'logo_only':'True'
+#  "announcement": "This is a documentation with ongoing development!", #py_datatheme
+#  "external_links": [
+#      {"name": "FLOSIC Website", "url": "https://www.flosic.org/"}]
 }
 
 # Add any paths that contain custom themes here, relative to this directory.
@@ -119,7 +120,7 @@ html_theme_options = {
 
 # The name of an image file (relative to this directory) to place at the top
 # of the sidebar.
-html_logo = 'log.jpeg'
+html_logo = '_static/log.jpeg'
 
 # The name of an image file (within the static path) to use as favicon of the
 # docs.  This file should be a Windows icon file (.ico) being 16x16 or 32x32
@@ -130,6 +131,10 @@ html_logo = 'log.jpeg'
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
 html_static_path = ['_static']
+
+html_css_files = [
+    '_static/css/custom.css',
+]
 
 # If not '', a 'Last updated on:' timestamp is inserted at every page bottom,
 # using the given strftime format.

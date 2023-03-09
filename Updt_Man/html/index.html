@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Introduction and Overview &mdash; NRLMOL  2020 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Installing FLOSIC" href="docs/install/toc.html" />
+    <link rel="prev" title="Table of Contents" href="main.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #4372c4" >
+
+          
+          
+          <a href="main.html">
+            
+              <img src="_static/log.jpeg" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Introduction and Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="docs/install/toc.html">Installing FLOSIC</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="docs/install/Prerequisites.html">Prerequisites</a></li>
+<li class="toctree-l2"><a class="reference internal" href="docs/install/Build.html">Accessing and compiling the code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="docs/install/Support.html">Support</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="docs/Reference/toc.html">Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="docs/Reference/files.html">Input and Output Files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="docs/Reference/functionals.html">Exchange correlation functionals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="docs/Reference/isymgen.html">Basis sets: the ISYMGEN file</a></li>
+<li class="toctree-l2"><a class="reference internal" href="docs/Reference/mesh.html">FLOSIC Mesh</a></li>
+<li class="toctree-l2"><a class="reference internal" href="docs/Reference/nrlmolinputdat.html">Controlling a calculation: the NRLMOL_INPUT.DAT file</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="docs/setupcal.html">Quick start guide to running a FLOSIC calculation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorials/tuttoc.html">Tutorials</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="tutorials/dtutorials/tutorial1.html">Tutorial 1: Molecular geometry optimization at the DFT level</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorials/dtutorials/tutorial2.html">Tutorial 2: a FLOSIC calculation for H2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorials/dtutorials/T3-FOD_opt.html">Tutorial 3:  FOD optimization of a water molecule</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorials/ddos/density_of_states.html">Plotting density of states using NRLMOL</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="tutorials/ddos/density_of_states.html#introduction">Introduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorials/ddos/density_of_states.html#setup">Setup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorials/ddos/density_of_states.html#results">Results</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorials/ddos/density_of_states.html#membership-files">Membership files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorials/ddos/density_of_states.html#plotting">Plotting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorials/ddos/density_of_states.html#gnuplot-usage">Gnuplot usage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorials/ddos/density_of_states.html#bibliography">Bibliography</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="docs/nrlmolfaq.html">Getting more information about FLOSIC</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #4372c4" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="main.html">NRLMOL </a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="main.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Introduction and Overview</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/index.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="introduction-and-overview">
+<span id="formatting-text"></span><h1>Introduction and Overview<a class="headerlink" href="#introduction-and-overview" title="Permalink to this heading"></a></h1>
+<p>The FLOSIC code is based on the UTEP version of NRLMOL, the Naval Research
+Laboratory Molecular Orbital Library.[1-4] LOOK AT <a href="#id1"><span class="problematic" id="id2">ISYMGEN_</span></a>
+NRLMOL is a massively parallel code for electronic structure calculations on molecules and clusters.
+It is based on the Kohn-Sham (KS) formulation of density functional theory (DFT) and solves KS equations by expressing
+the KS orbitals as a linear combination of Gaussian orbitals. NRLMOL was developed by Mark Pederson and collaborators.</p>
+<p>NRLMOL contains an implementation of the Fermi-Löwdin orbital self-interaction correction (FLO-SIC) method[5-8]
+that corrects the self-interaction error for common exchange-correlation functionals.
+In FLO-SIC, the Kohn-Sham canonical orbitals are transformed into Fermi orbitals, which are orthogonalized to become Fermi-Löwdin orbitals (FLOs).
+These FLOs are used to evaluate the orbital-dependent self-interaction corrected total energy. The transformation requires
+a set of parameters that are points in three dimensional space, the so-called
+Fermi-orbital descriptors (FODs). These FODs form what can be thought of as the electronic geometry.
+The FOD positions are optimized to obtain the FLOs that minimize the total energy.
+Thus, there are two geometries to consider in a FLOSIC calculation: The molecular geometry (given by the atoms) and the electronic geometry (given by the FODs).</p>
+<p>The optimization of the FODs is a crucial part of any FLO-SIC calculation.
+FOD optimization is analagous to a molecular geometry optimization. From a given FOD starting point,
+FOD forces (energy gradients with respect to FOD positions)
+are calculated and fed into a gradient-based optimization scheme,
+along with the FOD positions and the total energy, to update FOD positions.
+The optimization continues until the total energy and the FOD forces are converged.</p>
+<p>The following is a list of some SIC-related properties that are calculated using the FLOSIC code:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Total energy</p></li>
+<li><p>SIC contribution to the energy</p></li>
+<li><p>Orbital energies</p></li>
+<li><p>Orbital contributions to self-interaction correction; orbital moments, self-Coulomb, self-exchange, and self-correlation energy.</p></li>
+<li><p>Analytical FOD forces (for FOD optimization using conjugate gradient or LBFGS optimizers)</p></li>
+<li><p>Orbitals in .cube format</p></li>
+</ul>
+</div></blockquote>
+<p>Physically interesting properties that have been evaluated recently with the FLOSIC code include:[9-14]</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Atomization energies</p></li>
+<li><p>Ionization potentials from the highest occupied orbitals</p></li>
+<li><p>SIC optimized molecular geometries</p></li>
+<li><p>Polarizabilities</p></li>
+<li><p>Dipole moments</p></li>
+<li><p>Magnetic exchange couplings</p></li>
+</ul>
+<p>$alpha$</p>
+</div></blockquote>
+<p>The following are references to the NRLMOL code:</p>
+<blockquote>
+<div><p>[1] M.R. Pederson and K.A. Jackson, <em>Phys. Rev. B</em>, <strong>41</strong>, 7453, 1990.</p>
+<p>[2] K.A. Jackson and M.R. Pederson, <em>Phys. Rev. B</em>, <strong>42</strong>, 3276, 1990.</p>
+<p>[3] D. Porezag and M.R. Pederson, <em>Phys. Rev. A</em>, <strong>60</strong>, 2840, 1999.</p>
+<p>[4] M.R. Pederson et al., <em>phys. stat. sol. b</em>, <strong>217</strong>, 197, 2000.</p>
+</div></blockquote>
+<p>Further information about the FLO-SIC method can be found in the following references:</p>
+<blockquote>
+<div><p>[5] M.R. Pederson, A. Ruszsinszky, J.P. Perdew., <em>J. Chem. Phys.</em>, <strong>140</strong>, 121103, 2014.</p>
+<p>[6] M.R. Pederson, <em>J. Chem. Phys.</em>, <strong>142</strong>, 064112, 2015.</p>
+<p>[7] Z.-h. Yang, M.R. Pederson, J.P. Perdew, <em>Phys. Rev. A</em>, <strong>95</strong>, 052505, 2017.</p>
+<p>[8] M.R. Pederson, T. Baruah, <em>Advances In Atomic, Molecular, and Optical Physics</em>, Chapter 8, 2015.</p>
+</div></blockquote>
+<p>Applications of FLO-SIC are described in these references:</p>
+<blockquote>
+<div><p>[9] K. Sharkas et al., <em>J.  Phys. Chem. A</em>, <strong>122</strong>, 9307-9315, 2018.</p>
+<p>[10] R.P. Joshi et al., <em>J. Chem. Phys.</em>,**149**, 164101, 2018.</p>
+<p>[11] D.-y. Kao, K. Withanage, T. Hahn, J. Batool, J. Kortus, K. Jackson, <em>J. Chem. Phys</em>, <strong>147</strong>, 164107, 2017.</p>
+<p>[12] S. Schwalbe, T. Hahn, S. Liebing, K. Trepte, J. Kortus, <em>J. Comput. Chem.</em>, <strong>39</strong>, 2463-2471, 2018.</p>
+<p>[13] K. Withanage, K. Trepte, J.E. Peralta, T. Baruah, R. Zope, K.A. Jackson, <em>J. Chem. Theory Comput.</em>, <strong>14</strong>, 4122-4128, 2018.</p>
+<p>[14] K. Trepte, S. Schwalbe, T. Hahn, J. Kortus, D.-y. Kao, et al., <em>J. Comput. Chem.</em>, <strong>40</strong>, 820-825, 2019.</p>
+</div></blockquote>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="main.html" class="btn btn-neutral float-left" title="Table of Contents" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="docs/install/toc.html" class="btn btn-neutral float-right" title="Installing FLOSIC" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023,   NRLMOL users .
+      <span class="lastupdated">Last updated on Feb 26, 2023.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -12,9 +12,5 @@ Table of Contents
    introduction
    docs/installation
    docs/Reference/toc
-   docs/setupcal
    tutorials/tuttoc
    docs/nrlmolfaq
-
-.. post recurring links here
-.. _github: https://github.com/FLOSIC/PublicRelease_2020.git/

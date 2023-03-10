@@ -7,7 +7,7 @@
   <title>Installation Guide &mdash; NRLMOL  2020 documentation</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-      <link rel="stylesheet" href="../_static/_static/css/custom.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="../_static/js/html5shiv.min.js"></script>
   <![endif]-->
@@ -53,8 +53,7 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="Reference/toc.html">Reference</a></li>
-<li class="toctree-l1"><a class="reference internal" href="setupcal.html">Quick start</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../tutorials/tuttoc.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/tuttoc.html">User Guide and Tutorials</a></li>
 <li class="toctree-l1"><a class="reference internal" href="nrlmolfaq.html">Getting more information about FLOSIC</a></li>
 </ul>
 
@@ -117,11 +116,11 @@ You only have to switch a few variables.</p>
 <span class="nv">GROUP</span><span class="o">=</span>N
 </pre></div>
 </div>
-<p>In this block, the user specifies whether the compilation will be for a parallel (MPI=Y) or serial (MPI=N) version of the code.
-When using a parallel version (MPI=Y), the user can choose to use a multi-level parallel scheme by setting GROUP=Y.
+<p>In this block, the user specifies whether the compilation will be for a parallel <code class="code docutils literal notranslate"><span class="pre">MPI=Y</span></code> or serial <code class="code docutils literal notranslate"><span class="pre">MPI=N</span></code> version of the code.
+When using a parallel version <code class="code docutils literal notranslate"><span class="pre">MPI=Y</span></code>, the user can choose to use a multi-level parallel scheme by setting GROUP=Y.
 This parallelizes over the orbitals in calculating SIC potentials, and also over the grid points.
 This option can deliver a greater speed up than the single-level parallel scheme, but it is not recommended for new users.</p>
-<p>When GROUP=Y, the user should edit the “igroup” file in the run directory.  This file should contain an integer that is
+<p>When <code class="code docutils literal notranslate"><span class="pre">GROUP=Y</span></code>, the user should edit the “igroup” file in the run directory.  This file should contain an integer that is
 an even divisor of the number of orbitals. For example, for 100 orbitals, igroup might be 10 or 20, but not 15.</p>
 <p><strong>Second block: compiler choices</strong></p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># COMPILERS</span>
@@ -134,7 +133,9 @@ an even divisor of the number of orbitals. For example, for 100 orbitals, igroup
 <span class="nv">LFLAGS</span> <span class="o">=</span> -O3 -mcmodel<span class="o">=</span>medium
 </pre></div>
 </div>
-<p>The second block is to specify the compilers and their flags used during the compilation. A number of routines require static allocation of arrays. The code needs to be compiled for appropriate array sizes for the system under study and these static parameters are listed in the file called PARAMA2 (<em>vide infra</em>)</p>
+<p>The second block is to specify the compilers and their flags used during the compilation. A number of routines require
+static allocation of arrays. The code needs to be compiled for appropriate array sizes for the system under study and
+these static parameters are listed in the file called PARAMA2 (<em>vide infra</em>)</p>
 <p>An example of the compilers used for NERSC is below.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">CC</span> <span class="o">=</span> cc
 <span class="nv">FC</span> <span class="o">=</span> ftn
@@ -147,15 +148,14 @@ an even divisor of the number of orbitals. For example, for 100 orbitals, igroup
 </pre></div>
 </div>
 <p>This block specifies the libraries used for linking, where it is recommended to use optimized BLAS and LPACK libraries if they are available on your platform to achieve the best performance.</p>
-<p>Edit PARAMA2 for static parameters :</p>
+<p>Edit <strong>PARAMA2</strong> for static parameters :</p>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 22%" />
 <col style="width: 78%" />
 </colgroup>
 <thead>
-<tr class="row-odd"><th class="head"><p>parameter</p></th>
-<th class="head"><p>brief  explanation</p></th>
+<tr class="row-odd"><th class="head" colspan="2"><p><strong>Parameter</strong> | <strong>Brief  explanation</strong></p></th>
 </tr>
 </thead>
 <tbody>
@@ -184,8 +184,10 @@ an even divisor of the number of orbitals. For example, for 100 orbitals, igroup
 </table>
 <p>An example for serial compilation on a laptop (in this case a mac) is shown below.</p>
 <p><strong>First block:</strong> Compile the serial version</p>
-<p>MPI=N</p>
-<p>GROUP=N</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">MPI</span><span class="o">=</span>N
+<span class="nv">GROUP</span><span class="o">=</span>N
+</pre></div>
+</div>
 <p><strong>Second block:</strong> use gcc and gfortran compilers</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1">#COMPILERS</span>
 <span class="nv">CC</span> <span class="o">=</span> gcc
@@ -222,7 +224,7 @@ an even divisor of the number of orbitals. For example, for 100 orbitals, igroup
 
   <div role="contentinfo">
     <p>&#169; Copyright 2023,   NRLMOL users .
-      <span class="lastupdated">Last updated on Mar 09, 2023.
+      <span class="lastupdated">Last updated on Mar 10, 2023.
       </span></p>
   </div>
 

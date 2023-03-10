@@ -14,7 +14,7 @@ For a full list of available basis sets, see the file basis.txt (PATH_TO_FLOSIC/
 The Pederson-Porezag (NRLMOL default) is specially optimized for the PBE functional, and roughly corresponds to quadruple zeta quality.
 
 
-.. literalinclude:: ../input_files/flosic_carbon_isymgen.file
+.. literalinclude:: /_static/input_files/flosic_carbon_isymgen.file
 
  
 Here, the second line specifies the nuclear and electronic charges in the atom. The nuclear and electronic charges specifies the actual atom (e.g. Nuc charge = 6 for carbon) but the electronic charge depends on whether all electron or pseudo potential calculations are used (e.g. for carbon it would be 6 for all electron and 4 for a pseudopotential calculation)

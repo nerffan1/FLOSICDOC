@@ -15,7 +15,7 @@ The parameters used in creating the mesh are listed in the MESHDAT file. The def
 .. This is numerical problem and can be solved by refining the mesh used in the calculation. To refine a mesh see following question.
 
 
-.. literalinclude:: ../input_files/meshdat.file
+.. literalinclude:: /_static/input_files/meshdat.file
 
 The default MESHDAT file for a FLOSIC calculations is shown below:
 

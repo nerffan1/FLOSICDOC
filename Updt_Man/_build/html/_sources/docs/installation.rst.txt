@@ -38,12 +38,12 @@ need to edit three blocks of lines in the makefile to suit your needs.
         # Group calculation     
         GROUP=N
 
-In this block, the user specifies whether the compilation will be for a parallel (MPI=Y) or serial (MPI=N) version of the code.
-When using a parallel version (MPI=Y), the user can choose to use a multi-level parallel scheme by setting GROUP=Y. 
+In this block, the user specifies whether the compilation will be for a parallel :code:`MPI=Y` or serial :code:`MPI=N` version of the code.
+When using a parallel version :code:`MPI=Y`, the user can choose to use a multi-level parallel scheme by setting GROUP=Y. 
 This parallelizes over the orbitals in calculating SIC potentials, and also over the grid points.  
 This option can deliver a greater speed up than the single-level parallel scheme, but it is not recommended for new users.
 
-When GROUP=Y, the user should edit the "igroup" file in the run directory.  This file should contain an integer that is
+When :code:`GROUP=Y`, the user should edit the "igroup" file in the run directory.  This file should contain an integer that is
 an even divisor of the number of orbitals. For example, for 100 orbitals, igroup might be 10 or 20, but not 15.  
 
 **Second block: compiler choices**        
@@ -59,7 +59,9 @@ an even divisor of the number of orbitals. For example, for 100 orbitals, igroup
         FFLAGS = -O3 -mcmodel=medium 
         LFLAGS = -O3 -mcmodel=medium
 
-The second block is to specify the compilers and their flags used during the compilation. A number of routines require static allocation of arrays. The code needs to be compiled for appropriate array sizes for the system under study and these static parameters are listed in the file called PARAMA2 (*vide infra*)   
+The second block is to specify the compilers and their flags used during the compilation. A number of routines require
+static allocation of arrays. The code needs to be compiled for appropriate array sizes for the system under study and 
+these static parameters are listed in the file called PARAMA2 (*vide infra*)   
 
 An example of the compilers used for NERSC is below.
 
@@ -79,10 +81,10 @@ An example of the compilers used for NERSC is below.
 
 This block specifies the libraries used for linking, where it is recommended to use optimized BLAS and LPACK libraries if they are available on your platform to achieve the best performance.
 
-Edit PARAMA2 for static parameters :
+Edit **PARAMA2** for static parameters :
 
 +--------------+--------------------------------------------------+
-| parameter    | brief  explanation                               |               
+| **Parameter** | **Brief  explanation**                          |               
 +==============+==================================================+
 |  *MAX_PTS*   | maximum size of integration grid                 |
 +--------------+--------------------------------------------------+
@@ -104,10 +106,10 @@ An example for serial compilation on a laptop (in this case a mac) is shown belo
 
 **First block:** Compile the serial version
 
-MPI=N
-
-GROUP=N
-
+.. code-block:: bash
+        
+        MPI=N
+        GROUP=N
 
 **Second block:** use gcc and gfortran compilers
 

@@ -133,7 +133,7 @@ html_logo = '_static/log.jpeg'
 html_static_path = ['_static']
 
 html_css_files = [
-    '_static/css/custom.css',
+    'css/custom.css',
 ]
 
 # If not '', a 'Last updated on:' timestamp is inserted at every page bottom,
@@ -200,13 +200,13 @@ latex_elements = {
 # Grouping the document tree into LaTeX files. List of tuples
 # (source start file, target name, title, author, documentclass [howto/manual]).
 latex_documents = [
-  ('main', 'NRLMOLTutorialsandDocumentation.tex', u'FLOSIC Documentation and Tutorials ',
+  ('index', 'NRLMOLTutorialsandDocumentation.tex', u'FLOSIC Documentation and Tutorials ',
    u'  FLOSIC developers group ', 'manual'),
 ]
 
 # The name of an image file (relative to this directory) to place at the top of
 # the title page.
-latex_logo = 'log.jpeg'
+latex_logo = '_static/log.jpeg'
 
 # For "manual" documents, if this is true, then toplevel headings are parts,
 # not chapters.

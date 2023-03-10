@@ -1,0 +1,9 @@
+GGA-PBE*GGA-PBE          (DF TYPE EXCHANGE*CORRELATION)
+NONE                     (TD, OH, IH, X, Y, XY, ... OR GRP)
+2                        (NUMBER OF INEQUIV. ATOMS IN CH4)
+0.0000  0.0000  0.0000 3 ALL
+0.0000  0.0000  3.0139 1 ALL
+0.0 0.0                  (NET CHARGE AND NET SPIN)
+ --------------OR-------------------
+@XMOL.DAT
+ IF YOU WISH TO START FROM AN XYZ XMOL FILE

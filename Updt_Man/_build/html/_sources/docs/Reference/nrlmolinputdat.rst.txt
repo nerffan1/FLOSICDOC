@@ -9,7 +9,7 @@ created by the FLOSIC executable using default values.
 
 The NRLMOL_INPUT.DAT with default values of parameters as of today (August 15, 2019) is given below. 
 
-.. literalinclude:: ../input_files/nrlmolinput.file
+.. literalinclude:: /_static/input_files/nrlmolinput.file
 
 A large number of entries related to calculation of certain properties are given as yes or no. Here **N** means *NO*. If **Y** then the calculation 
 of a given property is requested. Note that certain calculations such as, for example, the calculation of joint density of states is often useful only at the final converged geometry.
@@ -19,16 +19,14 @@ Most of the variables are already explained briefly in the NRLMOL_INPUT.DAT file
 ATOMSPHV
 -------------
 
-(Default: **1**) Set to **Y** to calculate charge and spin charge in each inequivalent atom integrated over a sphere of specified  radius.
+Set to **Y** to calculate charge and spin charge in each inequivalent atom integrated over a sphere of specified  radius.
 
 ----------------------------------------------------
 
 BASISV
 -------------
  
-      Default: **DEFAULT** (The NRLMOL Basis, optimized for the PBE functional)
-
-This variable specifies which basis set is employed. 
+This variable specifies which basis set is employed.  The ``'DEFAULT'`` basis is the NRLMOL Basis, optimized for the PBE functional
 
 Other bases are available in the **basis.txt** file, found in the **basis** 
 subdirectory. This file lists all the basis sets available.
@@ -64,7 +62,7 @@ The following bases are available:
 +-------------------------+--------------------------+-----------------------+--------------------------+
 
 The user only needs to specify the string preceding the *.basis* extension in the input file. For example, 
-if the user wants to use 6-31G basis then he should replace :code:`'DEFAULT'` with :code:`6-31G`.
+if the user wants to use 6-31G basis then he should replace :code:`'DEFAULT'` with :code:`'6-31G'`.
 
 ----------------------------------------------------------------------------------------------------------------------------
 
@@ -80,11 +78,10 @@ Available choices:
 ----------------------------------------------------------------------------------------------------------------------------
 
 DIAG1V
--------------
+-----------------------
 
-      Default is **1**
+This variable allows different diagonalization algorithms to use for  diagonalization of the Hamiltonian.
 
-This variable allows different diagonalization algorithms to use for  diagonalization of the Hamiltonian. 
 The options for this variable are:
    #.  DSGVX (LAPACKL: computes selected eigenvalues, and optionally eigenvectors). 
    #.  DSGVD (Default if matrix size is below 100).  Uses a divide and conquer algorithm to compute eigenvectors.
@@ -93,15 +90,13 @@ The options for this variable are:
 ----------------------------------------------------------------------------------------------------------------------------
 
 DIAG2V
--------------
-
-   Default: **1**
+---------------------
 
 This variable allows diagonalization of the Hamiltonian using packed storage format for memory savings. This is useful for large system sizes.
-Available options are: 
-   #. DSPGVX (LAPACK: computes selected eigenvalues, and optionally eigenvectors). 
-   #. DSPGVD (Default if matrix size is below 100).  Uses a divide and conquer algorithm to compute eigenvectors.
-   #.  DSPGV (QR- factorization. This is the slowest of the available) 
+Available options are:
+#. DSPGVX (LAPACK: computes selected eigenvalues, and optionally eigenvectors). 
+#. DSPGVD (Default if matrix size is below 100).  Uses a divide and conquer algorithm to compute eigenvectors.
+#.  DSPGV (QR- factorization. This is the slowest of the available) 
 
 The option 1 (DSPGVD) is the fastest if all eigenvectors are required otherwise use the default 0. 
 
@@ -112,18 +107,14 @@ The option 1 (DSPGVD) is the fastest if all eigenvectors are required otherwise 
 ----------------------------------------------------------------------------------------------------------------------------
 
 POPULATIONV
--------------
-
-   Default is **N**
+--------------------------
 
 When it is set to Y, Mulliken and Lowdin Population analysis calculations are run. Note that this is available only for spin polarized. 
 
 ----------------------------------------------------------------------------------------------------------------------------
 
 RHOGRIDV
---------------------
-
-   Default: **N**
+------------------------
 
 When set to Y,  it will generate a CUBE file for visulaization of total and spin density (spin up - spin down). 
 

@@ -15,12 +15,12 @@ For now let's work on setting up of the **CLUSTER** file. It is the minimal inpu
 
 An example CLUSTER file is shown below for the LiH molecule. The format is described in more detail in tutorial 1.
 
-.. literalinclude:: input_files/CLUSTER
+.. literalinclude:: /_static/input_files/CLUSTER
 
 
 To run a FLOSIC calculation, a FRMORB file is required, which contains positions for FODs. An example FRMORB file is shown below for the LiH molecule defined in the CLUSTER file above.
 
-.. literalinclude:: input_files/FRMORB
+.. literalinclude:: /_static/input_files/FRMORB
 
 The first line states how many up spin FODs, and how many down spin FODs are used in the calculation. There are 2 up FODs, so the next 2 lines (lines 2-3)
 contain x, y, & z coordinates for up spin FODs. There are also 2 down FODs, so the last 2 coordinates are for down spin FODs (lines 4-5).

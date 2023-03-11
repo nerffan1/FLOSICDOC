@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Installation Guide &mdash; NRLMOL  2020 documentation</title>
@@ -12,10 +12,10 @@
     <script src="../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
         <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-        <script src="../_static/jquery.js"></script>
-        <script src="../_static/underscore.js"></script>
         <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -82,16 +82,16 @@
            <div itemprop="articleBody">
              
   <section id="installation-guide">
-<h1>Installation Guide<a class="headerlink" href="#installation-guide" title="Permalink to this headline"></a></h1>
+<h1>Installation Guide<a class="headerlink" href="#installation-guide" title="Permalink to this heading"></a></h1>
 <section id="obtaining-the-code">
-<h2>Obtaining the Code<a class="headerlink" href="#obtaining-the-code" title="Permalink to this headline"></a></h2>
+<h2>Obtaining the Code<a class="headerlink" href="#obtaining-the-code" title="Permalink to this heading"></a></h2>
 <p>The code is accessible from a GitHub repository. To download the latest version, use a git command as follows:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git clone https://github.com/FLOSIC/PublicRelease_2020.git
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/FLOSIC/PublicRelease_2020.git
 </pre></div>
 </div>
 </section>
 <section id="prerequisites">
-<h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this headline"></a></h2>
+<h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this heading"></a></h2>
 <dl class="simple">
 <dt>The following modules are needed to be able to compile the FLOSIC</dt><dd><ul class="simple">
 <li><p>OpenBLAS</p></li>
@@ -100,7 +100,7 @@
 </dl>
 </section>
 <section id="compilation">
-<h2>Compilation<a class="headerlink" href="#compilation" title="Permalink to this headline"></a></h2>
+<h2>Compilation<a class="headerlink" href="#compilation" title="Permalink to this heading"></a></h2>
 <p>Once you have obtained the code from the repository, go to the directory containing the source files.  You will
 need to edit three blocks of lines in the makefile to suit your needs.</p>
 <div class="admonition note">
@@ -124,36 +124,32 @@ This option can deliver a greater speed up than the single-level parallel scheme
 an even divisor of the number of orbitals. For example, for 100 orbitals, igroup might be 10 or 20, but not 15.</p>
 <p><strong>Second block: compiler choices</strong></p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># COMPILERS</span>
-<span class="nv">CC</span> <span class="o">=</span> gcc
-<span class="nv">FC</span> <span class="o">=</span> mpif90
-<span class="nv">FFF</span> <span class="o">=</span> mpif90
+<span class="nv">CC</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>gcc
+<span class="nv">FC</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>mpif90
+<span class="nv">FFF</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>mpif90
 <span class="c1"># COMPILER FLAGS</span>
-<span class="nv">CFLAGS</span> <span class="o">=</span> -O3 -mcmodel<span class="o">=</span>medium
-<span class="nv">FFLAGS</span> <span class="o">=</span> -O3 -mcmodel<span class="o">=</span>medium
-<span class="nv">LFLAGS</span> <span class="o">=</span> -O3 -mcmodel<span class="o">=</span>medium
+<span class="nv">CFLAGS</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>-O3<span class="w"> </span>-mcmodel<span class="o">=</span>medium
+<span class="nv">FFLAGS</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>-O3<span class="w"> </span>-mcmodel<span class="o">=</span>medium
+<span class="nv">LFLAGS</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>-O3<span class="w"> </span>-mcmodel<span class="o">=</span>medium
 </pre></div>
 </div>
 <p>The second block is to specify the compilers and their flags used during the compilation. A number of routines require
 static allocation of arrays. The code needs to be compiled for appropriate array sizes for the system under study and
 these static parameters are listed in the file called PARAMA2 (<em>vide infra</em>)</p>
 <p>An example of the compilers used for NERSC is below.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">CC</span> <span class="o">=</span> cc
-<span class="nv">FC</span> <span class="o">=</span> ftn
-<span class="nv">FFF</span> <span class="o">=</span> ftn
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">CC</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>cc
+<span class="nv">FC</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>ftn
+<span class="nv">FFF</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>ftn
 </pre></div>
 </div>
 <p><strong>Third block: linking options</strong></p>
 <p># Linking options</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="k">$(</span>FFF<span class="k">)</span> <span class="k">$(</span>LFLAGS<span class="k">)</span> <span class="k">$(</span>OBJ<span class="k">)</span> -o <span class="k">$(</span>BIN<span class="k">)</span> -llapack -lblas <span class="k">$(</span>LIBS<span class="k">)</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="k">$(</span>FFF<span class="k">)</span><span class="w"> </span><span class="k">$(</span>LFLAGS<span class="k">)</span><span class="w"> </span><span class="k">$(</span>OBJ<span class="k">)</span><span class="w"> </span>-o<span class="w"> </span><span class="k">$(</span>BIN<span class="k">)</span><span class="w"> </span>-llapack<span class="w"> </span>-lblas<span class="w"> </span><span class="k">$(</span>LIBS<span class="k">)</span>
 </pre></div>
 </div>
 <p>This block specifies the libraries used for linking, where it is recommended to use optimized BLAS and LPACK libraries if they are available on your platform to achieve the best performance.</p>
 <p>Edit <strong>PARAMA2</strong> for static parameters :</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 22%" />
-<col style="width: 78%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head" colspan="2"><p><strong>Parameter</strong> | <strong>Brief  explanation</strong></p></th>
 </tr>
@@ -190,24 +186,24 @@ these static parameters are listed in the file called PARAMA2 (<em>vide infra</e
 </div>
 <p><strong>Second block:</strong> use gcc and gfortran compilers</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1">#COMPILERS</span>
-<span class="nv">CC</span> <span class="o">=</span> gcc
-<span class="nv">FC</span> <span class="o">=</span> gfortran
-<span class="nv">FFF</span> <span class="o">=</span> gfortran
+<span class="nv">CC</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>gcc
+<span class="nv">FC</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>gfortran
+<span class="nv">FFF</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>gfortran
 
 <span class="c1">#COMPILER FLAGS</span>
-<span class="nv">CFLAGS</span> <span class="o">=</span> -O3
-<span class="nv">FFLAGS</span> <span class="o">=</span> -O3
-<span class="nv">LFLAGS</span> <span class="o">=</span> -O3
+<span class="nv">CFLAGS</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>-O3
+<span class="nv">FFLAGS</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>-O3
+<span class="nv">LFLAGS</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>-O3
 </pre></div>
 </div>
 <p><strong>Third block:</strong> Use the linking options under Fedora (Quantum/Luis local)</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="k">$(</span>FFF<span class="k">)</span> <span class="k">$(</span>LFLAGS<span class="k">)</span> <span class="k">$(</span>OBJ<span class="k">)</span> -o <span class="k">$(</span>BIN<span class="k">)</span> <span class="k">$(</span>PCM_LIBS<span class="k">)</span> <span class="k">$(</span>EFP_LIB<span class="k">)</span> -llapack -lblas <span class="k">$(</span>LIBS<span class="k">)</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="k">$(</span>FFF<span class="k">)</span><span class="w"> </span><span class="k">$(</span>LFLAGS<span class="k">)</span><span class="w"> </span><span class="k">$(</span>OBJ<span class="k">)</span><span class="w"> </span>-o<span class="w"> </span><span class="k">$(</span>BIN<span class="k">)</span><span class="w"> </span><span class="k">$(</span>PCM_LIBS<span class="k">)</span><span class="w"> </span><span class="k">$(</span>EFP_LIB<span class="k">)</span><span class="w"> </span>-llapack<span class="w"> </span>-lblas<span class="w"> </span><span class="k">$(</span>LIBS<span class="k">)</span>
 </pre></div>
 </div>
 <p>Use the <code class="code docutils literal notranslate"><span class="pre">make</span></code> command on the command line to compile FLOSIC. If the compilation was successful, an executable file titled <strong>nrlmol_exe</strong> will be created.</p>
 </section>
 <section id="additional-support">
-<h2>Additional Support<a class="headerlink" href="#additional-support" title="Permalink to this headline"></a></h2>
+<h2>Additional Support<a class="headerlink" href="#additional-support" title="Permalink to this heading"></a></h2>
 <p>Please visit our Github to access our <a class="reference external" href="https://github.com/FLOSIC/PublicRelease_2020/discussions">Discussions</a> forum and to report any issues with the software.</p>
 </section>
 </section>

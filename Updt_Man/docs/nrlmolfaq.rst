@@ -32,5 +32,6 @@ Getting more information about FLOSIC
 	| ALL-MAN001 =        2.137000       -0.350000        0.003300 SUP
 	| ALL-MAN001 =        3.456900       -2.109300        0.093100 SDN
 	| ALL-CAR001 =        2.720100       -2.490500        0.106000 UPO
+	
 	SUP, SDN and UPO signify spin up, spin down and unpolarized atoms. The default choice is UPO.
 	Note that these are starting values for the atoms. After SCF, the density can be different than what has been initialized.

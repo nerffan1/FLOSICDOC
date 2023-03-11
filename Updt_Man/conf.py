@@ -97,15 +97,24 @@ pygments_style = 'sphinx'
 
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
-html_theme = 'sphinx_rtd_theme'
+html_theme = "sphinx_rtd_theme" #'pydata_sphinx_theme'
 
 # Theme options are theme-specific and customize the look and feel of a theme
 # further.  For a list of options available for each theme, see the
 # documentation.
 html_theme_options = {
+  "use_edit_page_button": True,
 #  "announcement": "This is a documentation with ongoing development!", #py_datatheme
 #  "external_links": [
 #      {"name": "FLOSIC Website", "url": "https://www.flosic.org/"}]
+}
+
+html_context = {
+    # "github_url": "https://github.com", # or your GitHub Enterprise site
+    "github_user": "nerffan1",
+    "github_repo": "FLOSICDOC",
+    "github_version": "main",
+    "doc_path": "Updt_Man/",
 }
 
 # Add any paths that contain custom themes here, relative to this directory.
@@ -145,7 +154,7 @@ html_last_updated_fmt = '%b %d, %Y'
 #html_use_smartypants = True
 
 # Custom sidebar templates, maps document names to template names.
-#html_sidebars = {}
+#html_sidebars = {} 
 
 # Additional templates that should be rendered to pages, maps page names to
 # template names.

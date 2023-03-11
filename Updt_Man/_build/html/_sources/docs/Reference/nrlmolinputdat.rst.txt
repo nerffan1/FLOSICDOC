@@ -117,5 +117,3 @@ RHOGRIDV
 ------------------------
 
 When set to Y,  it will generate a CUBE file for visulaization of total and spin density (spin up - spin down). 
-
-----------------------------------------------------------------------------------------------------------------------------

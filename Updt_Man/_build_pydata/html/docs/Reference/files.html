@@ -30,7 +30,7 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/_static/css/custom.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d" />
@@ -88,12 +88,6 @@
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
-
-
-  <div class="bd-header-announcement container-fluid bd-header-announcement">
-    <div class="bd-header-announcement__content">This is a documentation with ongoing development!</div>
-  </div>
-
   
     <nav class="bd-header navbar navbar-expand-lg bd-navbar">
 <div class="bd-header__inner bd-page-width">
@@ -106,7 +100,7 @@
       <div class="navbar-item">
   
 
-<a class="navbar-brand logo" href="../../main.html">
+<a class="navbar-brand logo" href="../../index.html">
   
   
   
@@ -146,8 +140,8 @@
                 
 
                     <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../install/toc.html">
-                        Installing FLOSIC
+                      <a class="nav-link nav-internal" href="../installation.html">
+                        Installation Guide
                       </a>
                     </li>
                 
@@ -160,40 +154,18 @@
                 
 
                     <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../setupcal.html">
-                        Quick start
+                      <a class="nav-link nav-internal" href="../../tutorials/tuttoc.html">
+                        User Guide and Tutorials
                       </a>
                     </li>
                 
 
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../../tutorials/tuttoc.html">
-                        Tutorials
-                      </a>
-                    </li>
-                
-            <div class="nav-item dropdown">
-                <button class="btn dropdown-toggle nav-item" type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    More
-                </button>
-                <div class="dropdown-menu">
-                    
                     <li class="nav-item">
                       <a class="nav-link nav-internal" href="../nrlmolfaq.html">
                         Getting more information about FLOSIC
                       </a>
                     </li>
                 
-
-                <li class="nav-item">
-                  <a class="nav-link nav-external" href="https://www.flosic.org/">
-                    FLOSIC Website
-                  </a>
-                </li>
-                
-                </div>
-            </div>
-            
   </ul>
 </nav></div>
       
@@ -279,8 +251,8 @@ document.write(`
                 
 
                     <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../install/toc.html">
-                        Installing FLOSIC
+                      <a class="nav-link nav-internal" href="../installation.html">
+                        Installation Guide
                       </a>
                     </li>
                 
@@ -293,40 +265,18 @@ document.write(`
                 
 
                     <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../setupcal.html">
-                        Quick start
+                      <a class="nav-link nav-internal" href="../../tutorials/tuttoc.html">
+                        User Guide and Tutorials
                       </a>
                     </li>
                 
 
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../../tutorials/tuttoc.html">
-                        Tutorials
-                      </a>
-                    </li>
-                
-            <div class="nav-item dropdown">
-                <button class="btn dropdown-toggle nav-item" type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    More
-                </button>
-                <div class="dropdown-menu">
-                    
                     <li class="nav-item">
                       <a class="nav-link nav-internal" href="../nrlmolfaq.html">
                         Getting more information about FLOSIC
                       </a>
                     </li>
                 
-
-                <li class="nav-item">
-                  <a class="nav-link nav-external" href="https://www.flosic.org/">
-                    FLOSIC Website
-                  </a>
-                </li>
-                
-                </div>
-            </div>
-            
   </ul>
 </nav></div>
         
@@ -394,7 +344,7 @@ document.write(`
   <ul class="bd-breadcrumbs" role="navigation" aria-label="Breadcrumb">
     
     <li class="breadcrumb-item breadcrumb-home">
-      <a href="../../main.html" class="nav-link" aria-label="Home">
+      <a href="../../index.html" class="nav-link" aria-label="Home">
         <i class="fa-solid fa-home"></i>
       </a>
     </li>
@@ -422,110 +372,109 @@ document.write(`
 <span id="nrlmolfiles"></span><h1>Input and Output Files<a class="headerlink" href="#input-and-output-files" title="Permalink to this heading">#</a></h1>
 <p>As mentioned above, the minimal set of input files required for a FLOSIC calculation includes CLUSTER and FRMORB.
 Once the code is run, a number of additional files are generated. Some of these, like NRLMOL_INPUT.DAT (described earlier) can be edited to control how subsequent calculations run. The following is a list of important input/output files and a brief description of their contents:</p>
+<hr class="docutils" />
 <section id="atomsphnn">
 <h2>ATOMSPHNN<a class="headerlink" href="#atomsphnn" title="Permalink to this heading">#</a></h2>
-<blockquote>
-<div><p>Charge and spin charge in each inequivalent atom integrated over a sphere of specified  radius.</p>
-</div></blockquote>
+<p>Charge and spin charge in each inequivalent atom integrated over a sphere of specified  radius.</p>
 </section>
+<hr class="docutils" />
 <section id="cluster">
-<h2>CLUSTER:<a class="headerlink" href="#cluster" title="Permalink to this heading">#</a></h2>
-<blockquote>
-<div><p>Main input file.</p>
-</div></blockquote>
+<h2>CLUSTER<a class="headerlink" href="#cluster" title="Permalink to this heading">#</a></h2>
+<p>Main input file.</p>
 </section>
+<hr class="docutils" />
 <section id="dipole">
-<h2>DIPOLE:<a class="headerlink" href="#dipole" title="Permalink to this heading">#</a></h2>
-<blockquote>
-<div><p>Contains x, y, z components of dipole moments in the atomic units.</p>
-</div></blockquote>
+<h2>DIPOLE<a class="headerlink" href="#dipole" title="Permalink to this heading">#</a></h2>
+<p>Contains x, y, z components of dipole moments in the atomic units.</p>
 </section>
+<hr class="docutils" />
 <section id="evalues">
-<h2>EVALUES:<a class="headerlink" href="#evalues" title="Permalink to this heading">#</a></h2>
-<blockquote>
-<div><p>The canonical eigenvalues for the current step in an SCF calculation.
+<h2>EVALUES<a class="headerlink" href="#evalues" title="Permalink to this heading">#</a></h2>
+<p>The canonical eigenvalues for the current step in an SCF calculation.
 If symmetry is used in the calculation, the eigenvalues are sorted by symmetry, and also by spin, if the calculation is spin-polarized.
 A list of eigenvalues and the occupation of the corresponding orbital is given at the end of the file.</p>
-</div></blockquote>
 </section>
+<hr class="docutils" />
 <section id="evalnnn">
-<h2>EVALNNN:<a class="headerlink" href="#evalnnn" title="Permalink to this heading">#</a></h2>
-<blockquote>
-<div><p>The eigenvalues, their spin, symmetry representation, degeneracy and occupancy,
+<h2>EVALNNN<a class="headerlink" href="#evalnnn" title="Permalink to this heading">#</a></h2>
+<p>The eigenvalues, their spin, symmetry representation, degeneracy and occupancy,
 Fermi energy for each iteration number NNN.</p>
-</div></blockquote>
 </section>
+<hr class="docutils" />
 <section id="frcout">
-<h2>FRCOUT:<a class="headerlink" href="#frcout" title="Permalink to this heading">#</a></h2>
-<blockquote>
-<div><p>Total energy, forces on each atom, dipole moment, applied electric field.</p>
-</div></blockquote>
+<h2>FRCOUT<a class="headerlink" href="#frcout" title="Permalink to this heading">#</a></h2>
+<p>Total energy, forces on each atom, dipole moment, applied electric field.</p>
 </section>
+<hr class="docutils" />
 <section id="frmorb">
-<h2>FRMORB:<a class="headerlink" href="#frmorb" title="Permalink to this heading">#</a></h2>
+<h2>FRMORB<a class="headerlink" href="#frmorb" title="Permalink to this heading">#</a></h2>
 <p>Number of up spin FODs and down spin FODs, followed by the up spin FOD positions, then down spin FOD positions.</p>
 </section>
+<hr class="docutils" />
 <section id="fande-out">
-<h2>fande.out:<a class="headerlink" href="#fande-out" title="Permalink to this heading">#</a></h2>
-<blockquote>
-<div><p>Iteration, total energy, square root of the sum of the squares of FOD forces, max FOD force.</p>
-</div></blockquote>
+<h2>fande.out<a class="headerlink" href="#fande-out" title="Permalink to this heading">#</a></h2>
+<p>Iteration, total energy, square root of the sum of the squares of FOD forces, max FOD force.</p>
 </section>
+<hr class="docutils" />
 <section id="geocnvrg">
-<h2>GEOCNVRG:<a class="headerlink" href="#geocnvrg" title="Permalink to this heading">#</a></h2>
-<blockquote>
-<div><p>Convergence criteria, Total energy , largest atomic force, information about atomic geometry
+<h2>GEOCNVRG<a class="headerlink" href="#geocnvrg" title="Permalink to this heading">#</a></h2>
+<p>Convergence criteria, Total energy , largest atomic force, information about atomic geometry
 optimization.  Is written after every complete SCF cycle.</p>
-</div></blockquote>
 </section>
+<hr class="docutils" />
 <section id="history">
-<h2>HISTORY:<a class="headerlink" href="#history" title="Permalink to this heading">#</a></h2>
-<blockquote>
-<div><p>Contains history of the geometry optimization. To see the energy as function of optimization step
+<h2>HISTORY<a class="headerlink" href="#history" title="Permalink to this heading">#</a></h2>
+<p>Contains history of the geometry optimization. To see the energy as function of optimization step
 do ‘grep -i TR HISTORY’ in the directory.</p>
-</div></blockquote>
 </section>
-<section id="isymgen">
-<span id="id1"></span><h2>ISYMGEN<a class="headerlink" href="#isymgen" title="Permalink to this heading">#</a></h2>
+<hr class="docutils" id="isymgen" />
+<section id="id1">
+<h2>ISYMGEN<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
 <p>Information about the basis set. (For an in depth description, see chapter 8.)</p>
 </section>
+<hr class="docutils" />
 <section id="records">
-<h2>records:<a class="headerlink" href="#records" title="Permalink to this heading">#</a></h2>
+<h2>records<a class="headerlink" href="#records" title="Permalink to this heading">#</a></h2>
 <p>copy of the FRMORB file used during each iteration, followed by the FOD forces on those FODs.</p>
 </section>
+<hr class="docutils" />
 <section id="rhotot">
-<h2>RHOTOT:<a class="headerlink" href="#rhotot" title="Permalink to this heading">#</a></h2>
+<h2>RHOTOT<a class="headerlink" href="#rhotot" title="Permalink to this heading">#</a></h2>
 <p>Total density on a specified grid. Is written in Gaussian cubic format.</p>
 </section>
+<hr class="docutils" />
 <section id="rhospn">
-<h2>RHOSPN:<a class="headerlink" href="#rhospn" title="Permalink to this heading">#</a></h2>
+<h2>RHOSPN<a class="headerlink" href="#rhospn" title="Permalink to this heading">#</a></h2>
 <p>Spin density on a specified grid. Is written in Gaussian cubic format.</p>
 </section>
+<hr class="docutils" />
 <section id="runs">
-<h2>RUNS:<a class="headerlink" href="#runs" title="Permalink to this heading">#</a></h2>
+<h2>RUNS<a class="headerlink" href="#runs" title="Permalink to this heading">#</a></h2>
 <p>Control restart of calculation. Calculations can be restarted from Hamiltonian (<strong>HAMOLD</strong>), wavefunctions (<strong>WFOUT</strong>), or potential (<strong>COUPOT</strong>).</p>
 </section>
+<hr class="docutils" />
 <section id="summary">
-<h2>SUMMARY:<a class="headerlink" href="#summary" title="Permalink to this heading">#</a></h2>
+<h2>SUMMARY<a class="headerlink" href="#summary" title="Permalink to this heading">#</a></h2>
 <dl class="simple">
 <dt>Total energy, electronic charge, kinetic energy and trace of hamiltonian for each</dt><dd><p>iteration.</p>
 </dd>
 </dl>
 </section>
+<hr class="docutils" />
 <section id="symbol">
-<h2>SYMBOL:<a class="headerlink" href="#symbol" title="Permalink to this heading">#</a></h2>
-<dl class="simple">
-<dt>The exchange-correlation functional is specified on the first line. Atomic coordinates and bias potentials for each atom are stored for each</dt><dd><p>iteration of an atomic geometry optimization. The last line allows the use of a more extensive default basis set (to use, set EXTRABASIS=1).
+<h2>SYMBOL<a class="headerlink" href="#symbol" title="Permalink to this heading">#</a></h2>
+<p>The exchange-correlation functional is specified on the first line. Atomic coordinates and bias potentials for each atom are stored for each
+iteration of an atomic geometry optimization. The last line allows the use of a more extensive default basis set (to use, set EXTRABASIS=1).
 SYMBOL includes essentially the same information as the CLUSTER file. If the SYMBOL file exists, CLUSTER is not read.</p>
-</dd>
-</dl>
 </section>
+<hr class="docutils" />
 <section id="xmol-dat">
-<h2>XMOL.DAT:<a class="headerlink" href="#xmol-dat" title="Permalink to this heading">#</a></h2>
+<h2>XMOL.DAT<a class="headerlink" href="#xmol-dat" title="Permalink to this heading">#</a></h2>
 <p>Geometry in the xyz format. The first column contains atomic numbers. The atomic coordinates are in Angstrom.</p>
 </section>
+<hr class="docutils" />
 <section id="xmol-xyz">
-<h2>XMOL.xyz:<a class="headerlink" href="#xmol-xyz" title="Permalink to this heading">#</a></h2>
+<h2>XMOL.xyz<a class="headerlink" href="#xmol-xyz" title="Permalink to this heading">#</a></h2>
 <p>Geometry in the xyz format. The first column contains atomic labels. The atomic coordinates are in Angstrom. Use <strong>JMOL</strong> to visualize this.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -576,26 +525,41 @@ SYMBOL includes essentially the same information as the CLUSTER file. If the SYM
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#atomsphnn">ATOMSPHNN</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cluster">CLUSTER:</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dipole">DIPOLE:</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#evalues">EVALUES:</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#evalnnn">EVALNNN:</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#frcout">FRCOUT:</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#frmorb">FRMORB:</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fande-out">fande.out:</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#geocnvrg">GEOCNVRG:</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#history">HISTORY:</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#isymgen">ISYMGEN</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#records">records:</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rhotot">RHOTOT:</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rhospn">RHOSPN:</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#runs">RUNS:</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">SUMMARY:</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#symbol">SYMBOL:</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#xmol-dat">XMOL.DAT:</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#xmol-xyz">XMOL.xyz:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cluster">CLUSTER</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dipole">DIPOLE</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#evalues">EVALUES</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#evalnnn">EVALNNN</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#frcout">FRCOUT</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#frmorb">FRMORB</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fande-out">fande.out</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#geocnvrg">GEOCNVRG</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#history">HISTORY</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">ISYMGEN</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#records">records</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rhotot">RHOTOT</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rhospn">RHOSPN</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#runs">RUNS</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">SUMMARY</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#symbol">SYMBOL</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#xmol-dat">XMOL.DAT</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#xmol-xyz">XMOL.xyz</a></li>
 </ul>
   </nav></div>
+
+  <div class="sidebar-secondary-item">
+  
+  <div class="tocsection editthispage">
+    <a href="https://github.com/nerffan1/FLOSICDOC/edit/main/Updt_Man/docs/Reference/files.rst">
+      <i class="fa-solid fa-pencil"></i>
+      
+      
+        
+          Edit on GitHub
+        
+      
+    </a>
+  </div>
+</div>
 
   <div class="sidebar-secondary-item">
   <div class="tocsection sourcelink">
@@ -648,7 +612,7 @@ SYMBOL includes essentially the same information as the CLUSTER file. If the SYM
     <div class="footer-items__end">
       
         <div class="footer-item"><p class="theme-version">
-  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.13.0.
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.13.1.
 </p></div>
       
     </div>

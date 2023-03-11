@@ -2,9 +2,9 @@
    sphinx-quickstart on Tue Dec  3 14:04:58 2013.
    Last Modified by AEVS on 10/31/22.
 
-==================
-Table of Contents  
-==================
+====================================
+Welcome to the FLOSIC Documentation!  
+====================================
 
 .. toctree::
    :maxdepth: 2

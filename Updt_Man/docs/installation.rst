@@ -39,7 +39,7 @@ need to edit three blocks of lines in the makefile to suit your needs.
         GROUP=N
 
 In this block, the user specifies whether the compilation will be for a parallel :code:`MPI=Y` or serial :code:`MPI=N` version of the code.
-When using a parallel version :code:`MPI=Y`, the user can choose to use a multi-level parallel scheme by setting GROUP=Y. 
+When using a parallel version :code:`MPI=Y`, the user can choose to use a multi-level parallel scheme by setting :code:`GROUP=Y`.
 This parallelizes over the orbitals in calculating SIC potentials, and also over the grid points.  
 This option can deliver a greater speed up than the single-level parallel scheme, but it is not recommended for new users.
 

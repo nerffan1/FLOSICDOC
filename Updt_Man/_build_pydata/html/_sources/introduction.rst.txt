@@ -70,7 +70,7 @@ Further information about the FLO-SIC method can be found in the following refer
 
 Applications of FLO-SIC are described in these references:
 
-        [9] K. Sharkas et al., *J.  Phys. Chem. A*, **122**, 9307-9315, 2018.
+        [9] `K. Sharkas et al., *J.  Phys. Chem. A*, **122**, 9307-9315, 2018.`
 
         [10] R.P. Joshi et al., *J. Chem. Phys.*,**149**, 164101, 2018.
 

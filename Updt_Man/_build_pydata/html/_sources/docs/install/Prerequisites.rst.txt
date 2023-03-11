@@ -1,5 +1,0 @@
-================================
-Prerequisites
-================================
-
-The following modules are needed to be able to compile the FLOSIC

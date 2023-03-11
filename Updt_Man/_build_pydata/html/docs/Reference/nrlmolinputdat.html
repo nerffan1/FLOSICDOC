@@ -30,7 +30,7 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/_static/css/custom.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d" />
@@ -43,7 +43,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'docs/Reference/nrlmolinputdat';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Quick start" href="../setupcal.html" />
+    <link rel="next" title="User Guide and Tutorials" href="../../tutorials/tuttoc.html" />
     <link rel="prev" title="FLOSIC Mesh" href="mesh.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -88,12 +88,6 @@
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
-
-
-  <div class="bd-header-announcement container-fluid bd-header-announcement">
-    <div class="bd-header-announcement__content">This is a documentation with ongoing development!</div>
-  </div>
-
   
     <nav class="bd-header navbar navbar-expand-lg bd-navbar">
 <div class="bd-header__inner bd-page-width">
@@ -106,7 +100,7 @@
       <div class="navbar-item">
   
 
-<a class="navbar-brand logo" href="../../main.html">
+<a class="navbar-brand logo" href="../../index.html">
   
   
   
@@ -146,8 +140,8 @@
                 
 
                     <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../install/toc.html">
-                        Installing FLOSIC
+                      <a class="nav-link nav-internal" href="../installation.html">
+                        Installation Guide
                       </a>
                     </li>
                 
@@ -160,40 +154,18 @@
                 
 
                     <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../setupcal.html">
-                        Quick start
+                      <a class="nav-link nav-internal" href="../../tutorials/tuttoc.html">
+                        User Guide and Tutorials
                       </a>
                     </li>
                 
 
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../../tutorials/tuttoc.html">
-                        Tutorials
-                      </a>
-                    </li>
-                
-            <div class="nav-item dropdown">
-                <button class="btn dropdown-toggle nav-item" type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    More
-                </button>
-                <div class="dropdown-menu">
-                    
                     <li class="nav-item">
                       <a class="nav-link nav-internal" href="../nrlmolfaq.html">
                         Getting more information about FLOSIC
                       </a>
                     </li>
                 
-
-                <li class="nav-item">
-                  <a class="nav-link nav-external" href="https://www.flosic.org/">
-                    FLOSIC Website
-                  </a>
-                </li>
-                
-                </div>
-            </div>
-            
   </ul>
 </nav></div>
       
@@ -279,8 +251,8 @@ document.write(`
                 
 
                     <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../install/toc.html">
-                        Installing FLOSIC
+                      <a class="nav-link nav-internal" href="../installation.html">
+                        Installation Guide
                       </a>
                     </li>
                 
@@ -293,40 +265,18 @@ document.write(`
                 
 
                     <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../setupcal.html">
-                        Quick start
+                      <a class="nav-link nav-internal" href="../../tutorials/tuttoc.html">
+                        User Guide and Tutorials
                       </a>
                     </li>
                 
 
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../../tutorials/tuttoc.html">
-                        Tutorials
-                      </a>
-                    </li>
-                
-            <div class="nav-item dropdown">
-                <button class="btn dropdown-toggle nav-item" type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    More
-                </button>
-                <div class="dropdown-menu">
-                    
                     <li class="nav-item">
                       <a class="nav-link nav-internal" href="../nrlmolfaq.html">
                         Getting more information about FLOSIC
                       </a>
                     </li>
                 
-
-                <li class="nav-item">
-                  <a class="nav-link nav-external" href="https://www.flosic.org/">
-                    FLOSIC Website
-                  </a>
-                </li>
-                
-                </div>
-            </div>
-            
   </ul>
 </nav></div>
         
@@ -394,7 +344,7 @@ document.write(`
   <ul class="bd-breadcrumbs" role="navigation" aria-label="Breadcrumb">
     
     <li class="breadcrumb-item breadcrumb-home">
-      <a href="../../main.html" class="nav-link" aria-label="Home">
+      <a href="../../index.html" class="nav-link" aria-label="Home">
         <i class="fa-solid fa-home"></i>
       </a>
     </li>
@@ -462,15 +412,12 @@ of a given property is requested. Note that certain calculations such as, for ex
 <p>Most of the variables are already explained briefly in the NRLMOL_INPUT.DAT file. Below we add some comments on a few of them.</p>
 <section id="atomsphv">
 <h2>ATOMSPHV<a class="headerlink" href="#atomsphv" title="Permalink to this heading">#</a></h2>
-<p>(Default: <strong>1</strong>) Set to <strong>Y</strong> to calculate charge and spin charge in each inequivalent atom integrated over a sphere of specified  radius.</p>
+<p>Set to <strong>Y</strong> to calculate charge and spin charge in each inequivalent atom integrated over a sphere of specified  radius.</p>
 </section>
 <hr class="docutils" />
 <section id="basisv">
 <h2>BASISV<a class="headerlink" href="#basisv" title="Permalink to this heading">#</a></h2>
-<blockquote>
-<div><p>Default: <strong>DEFAULT</strong> (The NRLMOL Basis, optimized for the PBE functional)</p>
-</div></blockquote>
-<p>This variable specifies which basis set is employed.</p>
+<p>This variable specifies which basis set is employed.  The <code class="docutils literal notranslate"><span class="pre">'DEFAULT'</span></code> basis is the NRLMOL Basis, optimized for the PBE functional</p>
 <p>Other bases are available in the <strong>basis.txt</strong> file, found in the <strong>basis</strong>
 subdirectory. This file lists all the basis sets available.</p>
 <p>The following bases are available:</p>
@@ -544,7 +491,7 @@ subdirectory. This file lists all the basis sets available.</p>
 </tbody>
 </table>
 <p>The user only needs to specify the string preceding the <em>.basis</em> extension in the input file. For example,
-if the user wants to use 6-31G basis then he should replace <code class="code docutils literal notranslate"><span class="pre">'DEFAULT'</span></code> with <code class="code docutils literal notranslate"><span class="pre">6-31G</span></code>.</p>
+if the user wants to use 6-31G basis then he should replace <code class="code docutils literal notranslate"><span class="pre">'DEFAULT'</span></code> with <code class="code docutils literal notranslate"><span class="pre">'6-31G'</span></code>.</p>
 </section>
 <hr class="docutils" />
 <section id="calctypev">
@@ -559,34 +506,24 @@ if the user wants to use 6-31G basis then he should replace <code class="code do
 <hr class="docutils" />
 <section id="diag1v">
 <h2>DIAG1V<a class="headerlink" href="#diag1v" title="Permalink to this heading">#</a></h2>
-<blockquote>
-<div><p>Default is <strong>1</strong></p>
-</div></blockquote>
-<p>This variable allows different diagonalization algorithms to use for  diagonalization of the Hamiltonian.
-The options for this variable are:</p>
-<blockquote>
-<div><ol class="arabic simple">
+<p>This variable allows different diagonalization algorithms to use for  diagonalization of the Hamiltonian.</p>
+<dl class="simple">
+<dt>The options for this variable are:</dt><dd><ol class="arabic simple">
 <li><p>DSGVX (LAPACKL: computes selected eigenvalues, and optionally eigenvectors).</p></li>
 <li><p>DSGVD (Default if matrix size is below 100).  Uses a divide and conquer algorithm to compute eigenvectors.</p></li>
 <li><p>DSGV   (This is the slowest of the available)</p></li>
 </ol>
-</div></blockquote>
+</dd>
+</dl>
 </section>
 <hr class="docutils" />
 <section id="diag2v">
 <h2>DIAG2V<a class="headerlink" href="#diag2v" title="Permalink to this heading">#</a></h2>
-<blockquote>
-<div><p>Default: <strong>1</strong></p>
-</div></blockquote>
 <p>This variable allows diagonalization of the Hamiltonian using packed storage format for memory savings. This is useful for large system sizes.
-Available options are:</p>
-<blockquote>
-<div><ol class="arabic simple">
-<li><p>DSPGVX (LAPACK: computes selected eigenvalues, and optionally eigenvectors).</p></li>
-<li><p>DSPGVD (Default if matrix size is below 100).  Uses a divide and conquer algorithm to compute eigenvectors.</p></li>
-<li><p>DSPGV (QR- factorization. This is the slowest of the available)</p></li>
-</ol>
-</div></blockquote>
+Available options are:
+#. DSPGVX (LAPACK: computes selected eigenvalues, and optionally eigenvectors).
+#. DSPGVD (Default if matrix size is below 100).  Uses a divide and conquer algorithm to compute eigenvectors.
+#.  DSPGV (QR- factorization. This is the slowest of the available)</p>
 <p>The option 1 (DSPGVD) is the fastest if all eigenvectors are required otherwise use the default 0.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -596,19 +533,12 @@ Available options are:</p>
 <hr class="docutils" />
 <section id="populationv">
 <h2>POPULATIONV<a class="headerlink" href="#populationv" title="Permalink to this heading">#</a></h2>
-<blockquote>
-<div><p>Default is <strong>N</strong></p>
-</div></blockquote>
 <p>When it is set to Y, Mulliken and Lowdin Population analysis calculations are run. Note that this is available only for spin polarized.</p>
 </section>
 <hr class="docutils" />
 <section id="rhogridv">
 <h2>RHOGRIDV<a class="headerlink" href="#rhogridv" title="Permalink to this heading">#</a></h2>
-<blockquote>
-<div><p>Default: <strong>N</strong></p>
-</div></blockquote>
 <p>When set to Y,  it will generate a CUBE file for visulaization of total and spin density (spin up - spin down).</p>
-<hr class="docutils" />
 </section>
 </section>
 
@@ -630,11 +560,11 @@ Available options are:</p>
       </div>
     </a>
     <a class="right-next"
-       href="../setupcal.html"
+       href="../../tutorials/tuttoc.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Quick start</p>
+        <p class="prev-next-title">User Guide and Tutorials</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -662,6 +592,21 @@ Available options are:</p>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rhogridv">RHOGRIDV</a></li>
 </ul>
   </nav></div>
+
+  <div class="sidebar-secondary-item">
+  
+  <div class="tocsection editthispage">
+    <a href="https://github.com/nerffan1/FLOSICDOC/edit/main/Updt_Man/docs/Reference/nrlmolinputdat.rst">
+      <i class="fa-solid fa-pencil"></i>
+      
+      
+        
+          Edit on GitHub
+        
+      
+    </a>
+  </div>
+</div>
 
   <div class="sidebar-secondary-item">
   <div class="tocsection sourcelink">
@@ -714,7 +659,7 @@ Available options are:</p>
     <div class="footer-items__end">
       
         <div class="footer-item"><p class="theme-version">
-  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.13.0.
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.13.1.
 </p></div>
       
     </div>

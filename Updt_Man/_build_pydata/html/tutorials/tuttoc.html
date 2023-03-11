@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Tutorials &#8212; NRLMOL  2020 documentation</title>
+    <title>User Guide and Tutorials &#8212; NRLMOL  2020 documentation</title>
   
   
   
@@ -30,7 +30,7 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/_static/css/custom.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/custom.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d" />
@@ -43,8 +43,8 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'tutorials/tuttoc';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Tutorial 1: Molecular geometry optimization at the DFT level" href="dtutorials/tutorial1.html" />
-    <link rel="prev" title="Quick start" href="../docs/setupcal.html" />
+    <link rel="next" title="Quick start" href="setupcal.html" />
+    <link rel="prev" title="Controlling a calculation: the NRLMOL_INPUT.DAT file" href="../docs/Reference/nrlmolinputdat.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -88,12 +88,6 @@
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
-
-
-  <div class="bd-header-announcement container-fluid bd-header-announcement">
-    <div class="bd-header-announcement__content">This is a documentation with ongoing development!</div>
-  </div>
-
   
     <nav class="bd-header navbar navbar-expand-lg bd-navbar">
 <div class="bd-header__inner bd-page-width">
@@ -106,7 +100,7 @@
       <div class="navbar-item">
   
 
-<a class="navbar-brand logo" href="../main.html">
+<a class="navbar-brand logo" href="../index.html">
   
   
   
@@ -146,8 +140,8 @@
                 
 
                     <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../docs/install/toc.html">
-                        Installing FLOSIC
+                      <a class="nav-link nav-internal" href="../docs/installation.html">
+                        Installation Guide
                       </a>
                     </li>
                 
@@ -159,41 +153,19 @@
                     </li>
                 
 
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../docs/setupcal.html">
-                        Quick start
+                    <li class="nav-item current active">
+                      <a class="nav-link nav-internal" href="#">
+                        User Guide and Tutorials
                       </a>
                     </li>
                 
 
-                    <li class="nav-item current active">
-                      <a class="nav-link nav-internal" href="#">
-                        Tutorials
-                      </a>
-                    </li>
-                
-            <div class="nav-item dropdown">
-                <button class="btn dropdown-toggle nav-item" type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    More
-                </button>
-                <div class="dropdown-menu">
-                    
                     <li class="nav-item">
                       <a class="nav-link nav-internal" href="../docs/nrlmolfaq.html">
                         Getting more information about FLOSIC
                       </a>
                     </li>
                 
-
-                <li class="nav-item">
-                  <a class="nav-link nav-external" href="https://www.flosic.org/">
-                    FLOSIC Website
-                  </a>
-                </li>
-                
-                </div>
-            </div>
-            
   </ul>
 </nav></div>
       
@@ -279,8 +251,8 @@ document.write(`
                 
 
                     <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../docs/install/toc.html">
-                        Installing FLOSIC
+                      <a class="nav-link nav-internal" href="../docs/installation.html">
+                        Installation Guide
                       </a>
                     </li>
                 
@@ -292,41 +264,19 @@ document.write(`
                     </li>
                 
 
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../docs/setupcal.html">
-                        Quick start
+                    <li class="nav-item current active">
+                      <a class="nav-link nav-internal" href="#">
+                        User Guide and Tutorials
                       </a>
                     </li>
                 
 
-                    <li class="nav-item current active">
-                      <a class="nav-link nav-internal" href="#">
-                        Tutorials
-                      </a>
-                    </li>
-                
-            <div class="nav-item dropdown">
-                <button class="btn dropdown-toggle nav-item" type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    More
-                </button>
-                <div class="dropdown-menu">
-                    
                     <li class="nav-item">
                       <a class="nav-link nav-internal" href="../docs/nrlmolfaq.html">
                         Getting more information about FLOSIC
                       </a>
                     </li>
                 
-
-                <li class="nav-item">
-                  <a class="nav-link nav-external" href="https://www.flosic.org/">
-                    FLOSIC Website
-                  </a>
-                </li>
-                
-                </div>
-            </div>
-            
   </ul>
 </nav></div>
         
@@ -356,6 +306,7 @@ document.write(`
      aria-label="Section Navigation">
   <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
   <div class="bd-toc-item navbar-nav"><ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="setupcal.html">Quick start</a></li>
 <li class="toctree-l1"><a class="reference internal" href="dtutorials/tutorial1.html">Tutorial 1: Molecular geometry optimization at the DFT level</a></li>
 <li class="toctree-l1"><a class="reference internal" href="dtutorials/tutorial2.html">Tutorial 2: a FLOSIC calculation for H2</a></li>
 <li class="toctree-l1"><a class="reference internal" href="dtutorials/T3-FOD_opt.html">Tutorial 3:  FOD optimization of a water molecule</a></li>
@@ -393,11 +344,11 @@ document.write(`
   <ul class="bd-breadcrumbs" role="navigation" aria-label="Breadcrumb">
     
     <li class="breadcrumb-item breadcrumb-home">
-      <a href="../main.html" class="nav-link" aria-label="Home">
+      <a href="../index.html" class="nav-link" aria-label="Home">
         <i class="fa-solid fa-home"></i>
       </a>
     </li>
-    <li class="breadcrumb-item active" aria-current="page">Tutorials</li>
+    <li class="breadcrumb-item active" aria-current="page">User Guide and Tutorials</li>
   </ul>
 </nav>
 </div>
@@ -414,10 +365,11 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section id="tutorials">
-<h1>Tutorials<a class="headerlink" href="#tutorials" title="Permalink to this heading">#</a></h1>
+  <section id="user-guide-and-tutorials">
+<h1>User Guide and Tutorials<a class="headerlink" href="#user-guide-and-tutorials" title="Permalink to this heading">#</a></h1>
 <div class="toctree-wrapper compound">
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="setupcal.html">Quick start</a></li>
 <li class="toctree-l1"><a class="reference internal" href="dtutorials/tutorial1.html">Tutorial 1: Molecular geometry optimization at the DFT level</a></li>
 <li class="toctree-l1"><a class="reference internal" href="dtutorials/tutorial2.html">Tutorial 2: a FLOSIC calculation for H2</a></li>
 <li class="toctree-l1"><a class="reference internal" href="dtutorials/T3-FOD_opt.html">Tutorial 3:  FOD optimization of a water molecule</a></li>
@@ -444,20 +396,20 @@ document.write(`
                   <!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../docs/setupcal.html"
+       href="../docs/Reference/nrlmolinputdat.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Quick start</p>
+        <p class="prev-next-title">Controlling a calculation: the NRLMOL_INPUT.DAT file</p>
       </div>
     </a>
     <a class="right-next"
-       href="dtutorials/tutorial1.html"
+       href="setupcal.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Tutorial 1: Molecular geometry optimization at the DFT level</p>
+        <p class="prev-next-title">Quick start</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -469,6 +421,21 @@ document.write(`
             
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  
+  <div class="tocsection editthispage">
+    <a href="https://github.com/nerffan1/FLOSICDOC/edit/main/Updt_Man/tutorials/tuttoc.rst">
+      <i class="fa-solid fa-pencil"></i>
+      
+      
+        
+          Edit on GitHub
+        
+      
+    </a>
+  </div>
+</div>
 
   <div class="sidebar-secondary-item">
   <div class="tocsection sourcelink">
@@ -521,7 +488,7 @@ document.write(`
     <div class="footer-items__end">
       
         <div class="footer-item"><p class="theme-version">
-  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.13.0.
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.13.1.
 </p></div>
       
     </div>

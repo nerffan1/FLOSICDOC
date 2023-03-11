@@ -117,7 +117,7 @@ You only have to switch a few variables.</p>
 </pre></div>
 </div>
 <p>In this block, the user specifies whether the compilation will be for a parallel <code class="code docutils literal notranslate"><span class="pre">MPI=Y</span></code> or serial <code class="code docutils literal notranslate"><span class="pre">MPI=N</span></code> version of the code.
-When using a parallel version <code class="code docutils literal notranslate"><span class="pre">MPI=Y</span></code>, the user can choose to use a multi-level parallel scheme by setting GROUP=Y.
+When using a parallel version <code class="code docutils literal notranslate"><span class="pre">MPI=Y</span></code>, the user can choose to use a multi-level parallel scheme by setting <code class="code docutils literal notranslate"><span class="pre">GROUP=Y</span></code>.
 This parallelizes over the orbitals in calculating SIC potentials, and also over the grid points.
 This option can deliver a greater speed up than the single-level parallel scheme, but it is not recommended for new users.</p>
 <p>When <code class="code docutils literal notranslate"><span class="pre">GROUP=Y</span></code>, the user should edit the “igroup” file in the run directory.  This file should contain an integer that is
@@ -220,7 +220,7 @@ these static parameters are listed in the file called PARAMA2 (<em>vide infra</e
 
   <div role="contentinfo">
     <p>&#169; Copyright 2023,   NRLMOL users .
-      <span class="lastupdated">Last updated on Mar 10, 2023.
+      <span class="lastupdated">Last updated on Mar 11, 2023.
       </span></p>
   </div>
 

@@ -3,7 +3,7 @@
    Last Modified by AEVS on 10/31/22.
 
 ====================================
-Welcome to the FLOSIC Documentation!  
+Welcome to the new FLOSIC Documentation!  
 ====================================
 
 .. toctree::

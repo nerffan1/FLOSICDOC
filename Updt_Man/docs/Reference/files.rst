@@ -12,7 +12,7 @@ Once the code is run, a number of additional files are generated. Some of these,
 ATOMSPHNN  
 --------------------
 
-Charge and spin charge in each inequivalent atom integrated over a sphere of specified  radius.
+Charge and spin-based charge in each inequivalent atom integrated over a sphere of specified  radius.
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------
 

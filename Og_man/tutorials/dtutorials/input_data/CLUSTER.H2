@@ -1,7 +1,0 @@
-GGA-PBE*GGA-PBE            # Exchange-correlation parametrization
-NONE                       # Point group of system
-2                          # No. of atoms
-0.0 0.0  0.5    1  ALL    # x,y,z coordinates, Atomic number, ALL means all electron
-0.0 0.0 -0.5    1  ALL    # x,y,z coordinates, Atomic number, ALL means all electron
-0.0 0.000                 # Charge and Moment
-

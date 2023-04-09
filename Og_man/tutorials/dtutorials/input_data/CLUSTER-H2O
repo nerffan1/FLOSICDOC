@@ -1,7 +1,0 @@
-GGA-PBE*GGA-PBE      (DF TYPE EXCHANGE*CORRELATION)
-NONE                 (TD, OH, IH, X, Y, XY, ... OR GRP)
-3                    (NUMBER OF ATOMS)
-  0.000   0.000   0.0   8  ALL  (R, Z, ALL-ELECTRON)
-  1.443   1.128   0.0   1  ALL  (R, Z, ALL-ELECTRON)
- -1.443   1.128   0.0   1  ALL  (R, Z, ALL-ELECTRON)
- 0.000   0.000                  (NET CHARGE AND NET SPIN)

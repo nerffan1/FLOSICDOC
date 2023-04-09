@@ -1,5 +1,0 @@
-GGA-PBE*GGA-PBE          (DF TYPE EXCHANGE*CORRELATION)
-IH                       (TD, OH, IH, X, Y, XY, ... OR GRP)
-1                        (NUMBER OF INEQUIV. ATOMS IN CH4)
-0.000000  6.579993  1.321695   6 ALL
-0.0 0.0                  (NET CHARGE AND NET SPIN)

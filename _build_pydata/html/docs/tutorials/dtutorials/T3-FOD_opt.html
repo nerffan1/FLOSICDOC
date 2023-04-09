@@ -1,0 +1,615 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Tutorial 3: FOD optimization of a water molecule &#8212; NRLMOL  2020 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+<link href="../../../_static/styles/bootstrap.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+
+  
+  <link href="../../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/css/custom.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d" />
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'docs/tutorials/dtutorials/T3-FOD_opt';</script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Plotting density of states using NRLMOL" href="../ddos/density_of_states.html" />
+    <link rel="prev" title="Tutorial 2: a FLOSIC calculation for H2" href="tutorial2.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+
+  <div class="bd-header-announcement container-fluid bd-header-announcement">
+    <div class="bd-header-announcement__content">This is a documentation in ongoing development! Please contact us if you have questions!</div>
+  </div>
+
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+<div class="bd-header__inner bd-page-width">
+  <label class="sidebar-toggle primary-toggle" for="__primary">
+    <span class="fa-solid fa-bars"></span>
+  </label>
+  
+  <div class="navbar-header-items__start">
+    
+      <div class="navbar-item">
+  
+
+<a class="navbar-brand logo" href="../../../index.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../_static/log.jpeg" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../../../_static/log.jpeg" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+    
+  </div>
+  
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item"><nav class="navbar-nav">
+  <p class="sidebar-header-items__title"
+     role="heading"
+     aria-level="1"
+     aria-label="Site Navigation">
+    Site Navigation
+  </p>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../introduction.html">
+                        Introduction
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../installation.html">
+                        Installation Guide
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../Reference/toc.html">
+                        Reference
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item current active">
+                      <a class="nav-link nav-internal" href="../tuttoc.html">
+                        User Guide and Tutorials
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../nrlmolfaq.html">
+                        Getting more information about FLOSIC
+                      </a>
+                    </li>
+                
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+        </div>
+      
+      
+        <div class="navbar-item">
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+    </div>
+  
+
+  
+    <label class="sidebar-toggle secondary-toggle" for="__secondary">
+      <span class="fa-solid fa-outdent"></span>
+    </label>
+  
+</div>
+
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          <div class="navbar-item"><nav class="navbar-nav">
+  <p class="sidebar-header-items__title"
+     role="heading"
+     aria-level="1"
+     aria-label="Site Navigation">
+    Site Navigation
+  </p>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../introduction.html">
+                        Introduction
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../installation.html">
+                        Installation Guide
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../Reference/toc.html">
+                        Reference
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item current active">
+                      <a class="nav-link nav-internal" href="../tuttoc.html">
+                        User Guide and Tutorials
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../nrlmolfaq.html">
+                        Getting more information about FLOSIC
+                      </a>
+                    </li>
+                
+  </ul>
+</nav></div>
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item"><nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../setupcal.html">Quick start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial1.html">Tutorial 1: Molecular geometry optimization at the DFT level</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial2.html">Tutorial 2: a FLOSIC calculation for H2</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Tutorial 3:  FOD optimization of a water molecule</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ddos/density_of_states.html">Plotting density of states using NRLMOL</a></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+
+
+<nav aria-label="Breadcrumbs">
+  <ul class="bd-breadcrumbs" role="navigation" aria-label="Breadcrumb">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../tuttoc.html" class="nav-link">User Guide and Tutorials</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page">Tutorial 3:  FOD optimization of a water molecule</li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section id="tutorial-3-fod-optimization-of-a-water-molecule">
+<h1>Tutorial 3:  FOD optimization of a water molecule<a class="headerlink" href="#tutorial-3-fod-optimization-of-a-water-molecule" title="Permalink to this heading">#</a></h1>
+<p>This tutorial explains how to do a FODs optimization taking the example of the water molecule. It is recommended to run a DFT calculation first to get the DFT optimized density. To do this, we start from the usual CLUSTER file:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">GGA</span><span class="o">-</span><span class="n">PBE</span><span class="o">*</span><span class="n">GGA</span><span class="o">-</span><span class="n">PBE</span>      <span class="p">(</span><span class="n">DF</span> <span class="n">TYPE</span> <span class="n">EXCHANGE</span><span class="o">*</span><span class="n">CORRELATION</span><span class="p">)</span>
+<span class="n">NONE</span>                 <span class="p">(</span><span class="n">TD</span><span class="p">,</span> <span class="n">OH</span><span class="p">,</span> <span class="n">IH</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">XY</span><span class="p">,</span> <span class="o">...</span> <span class="n">OR</span> <span class="n">GRP</span><span class="p">)</span>
+<span class="mi">3</span>                    <span class="p">(</span><span class="n">NUMBER</span> <span class="n">OF</span> <span class="n">ATOMS</span><span class="p">)</span>
+  <span class="mf">0.000</span>   <span class="mf">0.000</span>   <span class="mf">0.0</span>   <span class="mi">8</span>  <span class="n">ALL</span>  <span class="p">(</span><span class="n">R</span><span class="p">,</span> <span class="n">Z</span><span class="p">,</span> <span class="n">ALL</span><span class="o">-</span><span class="n">ELECTRON</span><span class="p">)</span>
+  <span class="mf">1.443</span>   <span class="mf">1.128</span>   <span class="mf">0.0</span>   <span class="mi">1</span>  <span class="n">ALL</span>  <span class="p">(</span><span class="n">R</span><span class="p">,</span> <span class="n">Z</span><span class="p">,</span> <span class="n">ALL</span><span class="o">-</span><span class="n">ELECTRON</span><span class="p">)</span>
+ <span class="o">-</span><span class="mf">1.443</span>   <span class="mf">1.128</span>   <span class="mf">0.0</span>   <span class="mi">1</span>  <span class="n">ALL</span>  <span class="p">(</span><span class="n">R</span><span class="p">,</span> <span class="n">Z</span><span class="p">,</span> <span class="n">ALL</span><span class="o">-</span><span class="n">ELECTRON</span><span class="p">)</span>
+ <span class="mf">0.000</span>   <span class="mf">0.000</span>                  <span class="p">(</span><span class="n">NET</span> <span class="n">CHARGE</span> <span class="n">AND</span> <span class="n">NET</span> <span class="n">SPIN</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>In the NRLMOL_INPUT.DAT file we change CALCTYPEV from ‘LBFGS’ to ‘SCF-ONLY’ to switch off the molecular optimization. We also turn on the unrestricted calculation setting SPNPOLV = ‘Y’. Then we run NRLMOL in a new directory with only CLUSTER and NRLMOL_INPUT.DAT files:</p>
+<blockquote>
+<div><p>$ <strong>PATH_TO_FLOSIC/nrlmol_exe &gt; print.DFT</strong></p>
+</div></blockquote>
+<p>All the normal NRLMOL outputs are generated. If the calculation finished correctly, we should have the following RUNS file</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>     <span class="mi">0</span>     <span class="mi">1</span>            <span class="n">ITBEG</span><span class="p">,</span> <span class="n">NCALC</span>
+     <span class="mi">4</span>     <span class="mi">4</span>            <span class="n">START</span><span class="p">:</span> <span class="mi">0</span><span class="o">=</span><span class="n">SCR</span><span class="o">.</span><span class="n">NUC</span><span class="p">,</span> <span class="mi">1</span><span class="o">=</span><span class="n">HAM</span><span class="p">,</span> <span class="mi">2</span><span class="o">=</span><span class="n">POT</span><span class="p">,</span> <span class="mi">3</span><span class="o">=</span><span class="n">LSF</span><span class="p">,</span> <span class="mi">4</span><span class="o">=</span><span class="n">WFUNC</span><span class="p">,</span> <span class="mi">5</span><span class="o">=</span><span class="n">WFUNC_FRAG</span>
+     <span class="mi">0</span>                  <span class="n">START</span> <span class="n">HAMILTONIAN</span> <span class="n">IS</span> <span class="n">INTERPOLATED</span><span class="p">:</span> <span class="mi">0</span><span class="o">=</span><span class="n">NO</span><span class="p">,</span> <span class="mi">1</span><span class="o">=</span><span class="n">YES</span>
+</pre></div>
+</div>
+<p>The second number in the first line may be different if a molecular optimization was carried out. It is important to check that we have 4 4 in the second line. This tells FLOSIC to use the wave function stored in WFOUT to start the next calculation.</p>
+<p>Now, we have to include the FOD positions. Here, we can use the Monte Cartlo FOD generator <strong>fodMC</strong>. For that, we copy XMOL.xyz into a file named <strong>system</strong> and edit the second and last lines as shown:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="mi">3</span>
+<span class="n">angstrom</span>  <span class="n">fix1s</span>
+ <span class="n">O</span>     <span class="mf">0.00000</span>    <span class="mf">0.00000</span>    <span class="mf">0.00000</span>
+ <span class="n">H</span>     <span class="mf">0.76360</span>    <span class="mf">0.59691</span>    <span class="mf">0.00000</span>
+ <span class="n">H</span>    <span class="o">-</span><span class="mf">0.76360</span>    <span class="mf">0.59691</span>    <span class="mf">0.00000</span>
+<span class="n">con_mat</span>
+
+</pre></div>
+</div>
+<p>It might have an empty line at the end. The fodMC code and documentation can be found <a class="reference external" href="https://github.com/pyflosic/fodMC">here</a>. When fodMC is executed 3 files are generated: <strong>CLUSTER</strong>, <strong>FRMORB</strong> and <strong>Nuc_FOD.xyz</strong>. Thus, it will overwrite our <strong>CLUSTER</strong> file if executed in the same directory. In our case, it does not matter because whenever the <strong>SYMBOL</strong> file is present <strong>CLUSTER</strong> is ignored. <strong>FRMORB</strong> contains the FODs in Bohrs for the unrestricted calculation (first the up, then the down). You should get something like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>  <span class="mi">5</span>       <span class="mi">5</span>
+   <span class="mf">0.0000000000000000</span>        <span class="mf">0.0000000000000000</span>        <span class="mf">0.0000000000000000</span>     
+   <span class="mf">1.2265460953713494</span>       <span class="mf">0.95879731507086485</span>        <span class="mf">0.0000000000000000</span>     
+  <span class="o">-</span><span class="mf">1.2265460953713494</span>       <span class="mf">0.95879731507086485</span>        <span class="mf">0.0000000000000000</span>     
+   <span class="mf">9.8690853618931581E-005</span> <span class="o">-</span><span class="mf">0.84709659045951247</span>       <span class="o">-</span><span class="mf">1.0165159441533127</span>     
+  <span class="o">-</span><span class="mf">1.5276582823942571E-005</span> <span class="o">-</span><span class="mf">0.84709659045951247</span>        <span class="mf">1.0165159488293354</span>     
+   <span class="mf">0.0000000000000000</span>        <span class="mf">0.0000000000000000</span>        <span class="mf">0.0000000000000000</span>     
+   <span class="mf">9.8690853618931581E-005</span> <span class="o">-</span><span class="mf">0.84709659045951247</span>       <span class="o">-</span><span class="mf">1.0165159441533127</span>     
+  <span class="o">-</span><span class="mf">1.5276582823942571E-005</span> <span class="o">-</span><span class="mf">0.84709659045951247</span>        <span class="mf">1.0165159488293354</span>     
+   <span class="mf">1.2265461383759642</span>       <span class="mf">0.95879734868779065</span>        <span class="mf">0.0000000000000000</span>     
+  <span class="o">-</span><span class="mf">1.2265461383759642</span>       <span class="mf">0.95879734868779065</span>        <span class="mf">0.0000000000000000</span>     
+</pre></div>
+</div>
+<p>If you do not have fodMC, you can copy-paste the previous <strong>FRMORB</strong>. It is important to always check how the FODs are distributed. For that, you can visualize <strong>Nuc_FOD.xyz</strong> with the software of your choice. The spin up FODs have the label X and the down FODs have the symbol He by default, so be careful if the He atom is included in your system.</p>
+<p>Running the FLOSIC code again in this directory will now cause a FLO-SIC-PBE calculation to be run.  (The existence of FRMORB is the flag for running a FLO-SIC calculation).</p>
+<blockquote>
+<div><p>$ <strong>PATH_TO_FLOSIC/nrlmol_exe &gt; print.001</strong></p>
+</div></blockquote>
+<p>If everything goes well, we get now all the FLOSIC output files. Check the <strong>SUMMARY</strong> file. It should look like this (note that some columns of this file do not fit on the page):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>  <span class="n">IT</span>          <span class="n">TRACE</span>                <span class="n">ETOT</span>                 <span class="n">EKIN</span><span class="o">+</span><span class="n">ENONLOC</span>          <span class="n">CHARGE</span>              <span class="n">EDFT</span><span class="o">+</span><span class="n">SIC</span>              <span class="n">LOWEST</span>
+   <span class="mi">1</span>        <span class="o">-</span><span class="mf">42.416153386</span>        <span class="o">-</span><span class="mf">76.326968147</span>         <span class="mf">76.469793374</span>          <span class="mf">9.999999301</span>        <span class="o">-</span><span class="mf">76.326968147</span>          <span class="mf">0.000000000</span>
+   <span class="mi">2</span>        <span class="o">-</span><span class="mf">40.529422883</span>        <span class="o">-</span><span class="mf">76.287479323</span>         <span class="mf">74.155137275</span>          <span class="mf">9.999999484</span>        <span class="o">-</span><span class="mf">76.287479323</span>        <span class="o">-</span><span class="mf">76.326968147</span>
+   <span class="mi">3</span>        <span class="o">-</span><span class="mf">41.037801666</span>        <span class="o">-</span><span class="mf">76.360861763</span>         <span class="mf">75.120435771</span>          <span class="mf">9.999999577</span>        <span class="o">-</span><span class="mf">76.360861763</span>        <span class="o">-</span><span class="mf">76.287479323</span>
+   <span class="mi">4</span>        <span class="o">-</span><span class="mf">41.547677518</span>        <span class="o">-</span><span class="mf">76.386605548</span>         <span class="mf">76.071092878</span>          <span class="mf">9.999999652</span>        <span class="o">-</span><span class="mf">76.386605548</span>        <span class="o">-</span><span class="mf">76.360861763</span>
+   <span class="mi">5</span>        <span class="o">-</span><span class="mf">41.579433885</span>        <span class="o">-</span><span class="mf">76.387012272</span>         <span class="mf">76.156784862</span>          <span class="mf">9.999999660</span>        <span class="o">-</span><span class="mf">76.387012272</span>        <span class="o">-</span><span class="mf">76.386605548</span>
+   <span class="mi">6</span>        <span class="o">-</span><span class="mf">41.537373241</span>        <span class="o">-</span><span class="mf">76.387091483</span>         <span class="mf">76.105263133</span>          <span class="mf">9.999999659</span>        <span class="o">-</span><span class="mf">76.387091483</span>        <span class="o">-</span><span class="mf">76.387012272</span>
+   <span class="mi">7</span>        <span class="o">-</span><span class="mf">41.535132409</span>        <span class="o">-</span><span class="mf">76.387091342</span>         <span class="mf">76.101118384</span>          <span class="mf">9.999999659</span>        <span class="o">-</span><span class="mf">76.387091342</span>        <span class="o">-</span><span class="mf">76.387091483</span>
+   <span class="mi">8</span>        <span class="o">-</span><span class="mf">41.541270575</span>        <span class="o">-</span><span class="mf">76.387093972</span>         <span class="mf">76.111112778</span>          <span class="mf">9.999999661</span>        <span class="o">-</span><span class="mf">76.387093972</span>        <span class="o">-</span><span class="mf">76.387091342</span>
+  <span class="n">IT</span>          <span class="n">TRACE</span>                <span class="n">ETOT</span>                 <span class="n">EKIN</span><span class="o">+</span><span class="n">ENONLOC</span>          <span class="n">CHARGE</span>              <span class="n">EDFT</span><span class="o">+</span><span class="n">SIC</span>              <span class="n">LOWEST</span>
+   <span class="mi">1</span>          <span class="mf">0.000000000</span>        <span class="o">-</span><span class="mf">76.387093972</span>         <span class="mf">76.111112778</span>          <span class="mf">9.999999661</span>        <span class="o">-</span><span class="mf">76.325884480</span>          <span class="mf">0.000000000</span>
+   <span class="mi">2</span>        <span class="o">-</span><span class="mf">47.383872787</span>        <span class="o">-</span><span class="mf">76.377766430</span>         <span class="mf">75.943917202</span>          <span class="mf">9.999999707</span>        <span class="o">-</span><span class="mf">76.336806819</span>        <span class="o">-</span><span class="mf">76.325884480</span>
+   <span class="mi">3</span>        <span class="o">-</span><span class="mf">47.434397301</span>        <span class="o">-</span><span class="mf">76.376079958</span>         <span class="mf">76.027004027</span>          <span class="mf">9.999999708</span>        <span class="o">-</span><span class="mf">76.337098863</span>        <span class="o">-</span><span class="mf">76.336806819</span>
+   <span class="mi">4</span>        <span class="o">-</span><span class="mf">47.441559320</span>        <span class="o">-</span><span class="mf">76.375691097</span>         <span class="mf">76.055957777</span>          <span class="mf">9.999999706</span>        <span class="o">-</span><span class="mf">76.337109578</span>        <span class="o">-</span><span class="mf">76.337098863</span>
+   <span class="mi">5</span>        <span class="o">-</span><span class="mf">47.324136604</span>        <span class="o">-</span><span class="mf">76.375845538</span>         <span class="mf">75.998150088</span>          <span class="mf">9.999999702</span>        <span class="o">-</span><span class="mf">76.337049496</span>        <span class="o">-</span><span class="mf">76.337109578</span>
+   <span class="mi">6</span>        <span class="o">-</span><span class="mf">47.312036177</span>        <span class="o">-</span><span class="mf">76.376132863</span>         <span class="mf">76.000962346</span>          <span class="mf">9.999999700</span>        <span class="o">-</span><span class="mf">76.337038707</span>        <span class="o">-</span><span class="mf">76.337049496</span>
+   <span class="mi">7</span>        <span class="o">-</span><span class="mf">47.315234163</span>        <span class="o">-</span><span class="mf">76.376185290</span>         <span class="mf">76.002987681</span>          <span class="mf">9.999999700</span>        <span class="o">-</span><span class="mf">76.337041096</span>        <span class="o">-</span><span class="mf">76.337038707</span>
+   <span class="mi">8</span>        <span class="o">-</span><span class="mf">47.332770384</span>        <span class="o">-</span><span class="mf">76.376285169</span>         <span class="mf">76.024925697</span>          <span class="mf">9.999999700</span>        <span class="o">-</span><span class="mf">76.337087551</span>        <span class="o">-</span><span class="mf">76.337041096</span>
+   <span class="mi">9</span>        <span class="o">-</span><span class="mf">47.303951079</span>        <span class="o">-</span><span class="mf">76.376194186</span>         <span class="mf">75.999998287</span>          <span class="mf">9.999999700</span>        <span class="o">-</span><span class="mf">76.337026990</span>        <span class="o">-</span><span class="mf">76.337087551</span>
+  <span class="mi">10</span>        <span class="o">-</span><span class="mf">47.374868090</span>        <span class="o">-</span><span class="mf">76.376350868</span>         <span class="mf">76.064567671</span>          <span class="mf">9.999999702</span>        <span class="o">-</span><span class="mf">76.337132117</span>        <span class="o">-</span><span class="mf">76.337026990</span>
+  <span class="mi">11</span>        <span class="o">-</span><span class="mf">47.381393225</span>        <span class="o">-</span><span class="mf">76.376294921</span>         <span class="mf">76.083303549</span>          <span class="mf">9.999999703</span>        <span class="o">-</span><span class="mf">76.337128855</span>        <span class="o">-</span><span class="mf">76.337132117</span>
+  <span class="mi">12</span>        <span class="o">-</span><span class="mf">47.365402178</span>        <span class="o">-</span><span class="mf">76.376255647</span>         <span class="mf">76.070377576</span>          <span class="mf">9.999999703</span>        <span class="o">-</span><span class="mf">76.337133358</span>        <span class="o">-</span><span class="mf">76.337128855</span>
+  <span class="mi">13</span>        <span class="o">-</span><span class="mf">47.358580387</span>        <span class="o">-</span><span class="mf">76.376246217</span>         <span class="mf">76.060102340</span>          <span class="mf">9.999999702</span>        <span class="o">-</span><span class="mf">76.337132539</span>        <span class="o">-</span><span class="mf">76.337133358</span>
+  <span class="mi">14</span>        <span class="o">-</span><span class="mf">47.369783782</span>        <span class="o">-</span><span class="mf">76.376261648</span>         <span class="mf">76.069168121</span>          <span class="mf">9.999999702</span>        <span class="o">-</span><span class="mf">76.337133952</span>        <span class="o">-</span><span class="mf">76.337132539</span>
+</pre></div>
+</div>
+<p>The first block is for the normal DFT calculation with the 3rd and 6th column exactly the same (no SIC). The second block is for the FLOSIC run. In the standard output file – renamed print.001 in this example (see the execution line above) – search for the word ITERATION.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ITERATION</span>   <span class="mi">1</span>
+<span class="o">=============</span>
+<span class="n">READING</span> <span class="n">OLD</span> <span class="n">WAVEFUNCTIONS</span> <span class="n">FROM</span> <span class="n">FILE</span> <span class="n">WFOUT</span>
+ <span class="n">MREP</span> <span class="o">=</span>           <span class="mi">1</span>
+ <span class="n">N_OCC</span><span class="p">,</span> <span class="n">NBASF</span> <span class="o">=</span>           <span class="mi">5</span>          <span class="mi">73</span>          <span class="mi">73</span>
+ <span class="n">N_OCC</span><span class="p">,</span> <span class="n">NBASF</span> <span class="o">=</span>           <span class="mi">5</span>          <span class="mi">73</span>          <span class="mi">73</span>
+</pre></div>
+</div>
+<p>There it states that the wave function is read from WFOUT and gives the occupied and total number of orbitals. After giving the occupancies, it calculates the Lowdin overlap eigenvalues.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">LOWDEN</span> <span class="n">OVERLAP</span> <span class="n">EIGENVALUES</span><span class="p">:</span>
+    <span class="mf">0.751388</span>       <span class="mf">0.791811</span>        <span class="mf">1.06742</span>        <span class="mf">1.07216</span>        <span class="mf">1.31722</span>
+<span class="n">BACK</span> <span class="n">FROM</span> <span class="n">LOWSIC</span>
+<span class="n">CALLING</span> <span class="n">DIAGGE</span><span class="p">:</span>        <span class="mi">1000</span>           <span class="mi">5</span>
+<span class="n">LOWDEN</span> <span class="n">OVERLAP</span> <span class="n">EIGENVALUES</span><span class="p">:</span>
+    <span class="mf">0.751388</span>       <span class="mf">0.791811</span>        <span class="mf">1.06742</span>        <span class="mf">1.07216</span>        <span class="mf">1.31722</span>
+</pre></div>
+</div>
+<p>These values correspond to the eigenvalues of the overlap matrix formed from the Fermi orbitals.  This is diagonalized in the Lowdin process.  When one or more of these eigenvalues are smaller than 1E-08, it means that two or more of the Fermi orbitals are identical and the calculation stops with a message of bad FOD positions. At the end of the SCF cycle we get the following summary of energy contributions. Some of them are in the <strong>SUMMARY</strong> file too.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SUMMARY</span> <span class="n">OF</span> <span class="n">ENERGY</span> <span class="n">CONTRIBUTIONS</span><span class="p">:</span>
+<span class="o">================================</span>
+<span class="n">TOTAL</span> <span class="n">ENERGY</span><span class="p">:</span>                         <span class="o">-</span><span class="mf">76.337134</span>
+<span class="n">NUCLEAR</span> <span class="n">REPULSION</span><span class="p">:</span>                      <span class="mf">9.082196</span>
+<span class="n">LOCAL</span> <span class="n">POTENTIAL</span><span class="p">:</span>                     <span class="o">-</span><span class="mf">198.922706</span>
+<span class="n">MEAN</span><span class="o">-</span><span class="n">FIELD</span> <span class="n">COULOMB</span><span class="p">:</span>                    <span class="mf">46.647189</span>
+<span class="n">NONLOCAL</span> <span class="n">POTENTIAL</span><span class="p">:</span>                     <span class="mf">0.000000</span>
+<span class="n">KINETIC</span><span class="p">:</span>                               <span class="mf">76.069168</span>
+<span class="n">LOCAL</span> <span class="n">EXCHANGE</span><span class="p">:</span>                        <span class="o">-</span><span class="mf">8.108217</span>
+<span class="n">LOCAL</span> <span class="n">CORRELATION</span><span class="p">:</span>                     <span class="o">-</span><span class="mf">0.660695</span>
+<span class="n">NONLOCAL</span> <span class="n">EXCHANGE</span><span class="p">:</span>                     <span class="o">-</span><span class="mf">0.816267</span>
+<span class="n">NONLOCAL</span> <span class="n">CORRELATION</span><span class="p">:</span>                   <span class="mf">0.333071</span>
+<span class="n">EXTERNAL</span> <span class="n">ELECTRIC</span> <span class="n">FIELD</span><span class="p">:</span>                <span class="mf">0.000000</span>
+</pre></div>
+</div>
+<p>Once self-consistency is reached, the FOD forces are calculated and FOD positions are updated in <strong>FRMIDT</strong> (and/or in <strong>FRMORB</strong>) using the chosen optimization method. The default is scaled LBFGS, but it sometimes gets stuck or fails to obtain the next step. In those cases, we may switch off this variable in <strong>NRLMOL_INPUT.DAT</strong> SCALEDLBFGSV = ‘N’ to use the conjuged gradient for the FOD optimization. As the FODs are already updated and we also have the wave function and the <strong>RUNS</strong> file, we just run FLOSIC in the same directory to do the SCF cycle with the new FODs.</p>
+<blockquote>
+<div><p>$ <strong>PATH_TO_FLOSIC/nrlmol_exe &gt; print.002</strong></p>
+</div></blockquote>
+<p>We can sucessively do this or use a script similar to that in the previous tutorial. After doing 5 steps of FOD optimization we can see in <strong>fande.out</strong> how the energy is decreasing and converging and the forces diminishing (not at every step).</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="mi">1</span>    <span class="o">-</span><span class="mf">76.337133952182</span>  <span class="mf">0.533401361320E-02</span>  <span class="mf">0.376016287388E-02</span>
+    <span class="mi">2</span>    <span class="o">-</span><span class="mf">76.336140893884</span>  <span class="mf">0.316012354712E-01</span>  <span class="mf">0.222645230322E-01</span>
+    <span class="mi">3</span>    <span class="o">-</span><span class="mf">76.337242375732</span>  <span class="mf">0.165238505484E-02</span>  <span class="mf">0.109072276621E-02</span>
+    <span class="mi">4</span>    <span class="o">-</span><span class="mf">76.337256822409</span>  <span class="mf">0.184877969533E-02</span>  <span class="mf">0.129662662282E-02</span>
+    <span class="mi">5</span>    <span class="o">-</span><span class="mf">76.337254671865</span>  <span class="mf">0.203173772471E-03</span>  <span class="mf">0.997893243061E-04</span>
+</pre></div>
+</div>
+<p>All the used FODs, obtained forces, and corrected total energies can be seen in the <strong>records</strong> file.</p>
+</section>
+
+
+                </article>
+              
+              
+              
+                <footer class="bd-footer-article">
+                  <!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="tutorial2.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Tutorial 2: a FLOSIC calculation for H2</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../ddos/density_of_states.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Plotting density of states using NRLMOL</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  
+  <div class="tocsection editthispage">
+    <a href="https://github.com/nerffan1/FLOSICDOC/edit/main/Updt_Man/docs/tutorials/dtutorials/T3-FOD_opt.rst">
+      <i class="fa-solid fa-pencil"></i>
+      
+      
+        
+          Edit on GitHub
+        
+      
+    </a>
+  </div>
+</div>
+
+  <div class="sidebar-secondary-item">
+  <div class="tocsection sourcelink">
+    <a href="../../../_sources/docs/tutorials/dtutorials/T3-FOD_opt.rst.txt">
+      <i class="fa-solid fa-file-lines"></i> Show Source
+    </a>
+  </div>
+</div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            <div class="bd-footer-content__inner"></div>
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d"></script>
+<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+  <p class="copyright">
+    
+      © Copyright 2023,   NRLMOL users .
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+  <p class="sphinx-version">
+    Created using <a href="https://sphinx-doc.org/">Sphinx</a> 6.1.3.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item"><p class="theme-version">
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.13.1.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

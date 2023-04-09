@@ -9,8 +9,8 @@ Welcome to the new FLOSIC Documentation!
 .. toctree::
    :maxdepth: 2
 
-   introduction
+   docs/introduction
    docs/installation
    docs/Reference/toc
-   tutorials/tuttoc
+   docs/tutorials/tuttoc
    docs/nrlmolfaq

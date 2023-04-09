@@ -97,7 +97,6 @@ pygments_style = 'sphinx'
 
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
-#html_theme = "sphinx_rtd_theme" 
 html_theme = "pydata_sphinx_theme"
 
 # Theme options are theme-specific and customize the look and feel of a theme
@@ -105,7 +104,7 @@ html_theme = "pydata_sphinx_theme"
 # documentation.
 html_theme_options = {
   "use_edit_page_button": True,
-#  "announcement": "This is a documentation with ongoing development!", #py_datatheme
+  "announcement": "This is a documentation in ongoing development! Please contact us if you have questions!", #py_datatheme
 #  "external_links": [
 #      {"name": "FLOSIC Website", "url": "https://www.flosic.org/"}]
 }

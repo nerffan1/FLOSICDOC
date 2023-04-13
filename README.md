@@ -9,9 +9,9 @@ This is the source code for FLOSIC's documentation update.
      
 ## How to Compile:
 
-You will need the *Sphinx* documentation generator and the *Read-the-Docs* theme. You can install them with pip,
+You will need the *Sphinx* documentation generator and the *PyData* theme. You can install them with pip,
     
-    $ pip install Sphinx sphinx-rtd-theme
+    $ pip install Sphinx pydata-sphinx-theme
 
 Once you have installed these, you can run compile the documentation in different formats (see recipes in Makefile for reference). To build the html output:
      
@@ -21,11 +21,12 @@ The **html** target will build the output into the `BUILDDIR` variable, which is
 
 ## Updating the Documentation:
 
-Sphinx uses their reSructuredText markup language and can be found here: https://www.sphinx-doc.org/en/master/usage/restructuredtext/basics.html
+Sphinx uses the reSructuredText markup language. Reference can be found here: https://www.sphinx-doc.org/en/master/usage/restructuredtext/basics.html
 
 ## Future Updates:
 
-- Have a concrete list of additions to make and have done by the end of the summer.
+- Have a concrete list of additions to make and have done by the end of the Summer 20223.
+- Add Suggestions for contributors in the README file
 
 ## Additional Support:
 If you have any questions please email me directly at ville2a@cmich.edu

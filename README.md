@@ -12,7 +12,7 @@ You will need the *Sphinx* documentation generator and the *PyData* theme. You c
     
     $ pip install Sphinx pydata-sphinx-theme
 
-Once you have installed these, you should be able to compile the documentation (see recipes in Makefile for formats). To build the html output:
+Once you have these installed, you should be able to compile the documentation (see recipes in Makefile for different formats). To build the html output:
      
      $ make html
 

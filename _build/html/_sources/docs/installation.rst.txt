@@ -2,20 +2,19 @@
 Installation Guide
 ================================
 
-Obtaining the Code
+Prerequisites
 --------------------
+
+The following modules are needed to be able to compile FLOSIC:
+
+* OpenBLAS
+* LAPACK
 
 The code is accessible from a GitHub repository. To download the latest version, use a git command as follows:
 
 .. code-block:: bash
 
         git clone https://github.com/FLOSIC/PublicRelease_2020.git
-
-Prerequisites
---------------------
-
-The following modules are needed to be able to compile the FLOSIC
-        - OpenBLAS 
 
 Compilation
 --------------------
@@ -38,9 +37,9 @@ need to edit three blocks of lines in the makefile to suit your needs.
         # Group calculation     
         GROUP=N
 
-In this block, the user specifies whether the compilation will be for a parallel :code:`MPI=Y` or serial :code:`MPI=N` version of the code.
-When using a parallel version :code:`MPI=Y`, the user can choose to use a multi-level parallel scheme by setting :code:`GROUP=Y`.
-This parallelizes over the orbitals in calculating SIC potentials, and also over the grid points.  
+In this block, the user specifies whether the compilation will be the parallel (:code:`MPI=Y`) or serial (:code:`MPI=N`) version of the code.
+When using a parallel version, the user can choose to use a multi-level parallel scheme by setting :code:`GROUP=Y`:
+this parallelizes over the orbitals in calculating SIC potentials, and also over the grid points.  
 This option can deliver a greater speed up than the single-level parallel scheme, but it is not recommended for new users.
 
 When :code:`GROUP=Y`, the user should edit the "igroup" file in the run directory.  This file should contain an integer that is
@@ -137,7 +136,7 @@ Use the :code:`make` command on the command line to compile FLOSIC. If the compi
 Additional Support
 --------------------
 
-Please visit our Github to access our Discussions_ forum and to report any issues with the software. 
+Please visit our Discussions_ forum for additional support. 
 
 .. _Discussions: https://github.com/FLOSIC/PublicRelease_2020/discussions
 

@@ -3,14 +3,14 @@
    Last Modified by AEVS on 10/31/22.
 
 ====================================
-Welcome to the FLOSIC Documentation!  
+Welcome to the *NEW* FLOSIC Documentation!  
 ====================================
 
 .. toctree::
    :maxdepth: 2
 
-   introduction
+   docs/introduction
    docs/installation
    docs/Reference/toc
-   tutorials/tuttoc
+   docs/tutorials/tuttoc 
    docs/nrlmolfaq

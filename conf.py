@@ -113,7 +113,7 @@ html_context = {
     "github_user": "nerffan1",
     "github_repo": "FLOSICDOC",
     "github_version": "main",
-    "doc_path": "Updt_Man/",
+    "doc_path": "",
 }
 
 # Add any paths that contain custom themes here, relative to this directory.

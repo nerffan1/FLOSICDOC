@@ -12,25 +12,25 @@ Once the code is run, a number of additional files are generated. Some of these,
 ATOMSPHNN  
 --------------------
 
-Charge and spin charge in each inequivalent atom integrated over a sphere of specified  radius.
+Charge and spin-based charge in each inequivalent atom integrated over a sphere of specified  radius.
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------
 
-CLUSTER: 
+CLUSTER
 --------------------
  
 Main input file.
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------
 
-DIPOLE: 
+DIPOLE
 --------------------
  
 Contains x, y, z components of dipole moments in the atomic units.
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------
 
-EVALUES: 
+EVALUES
 --------------------
 
 The canonical eigenvalues for the current step in an SCF calculation.  
@@ -39,7 +39,7 @@ A list of eigenvalues and the occupation of the corresponding orbital is given a
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------
 
-EVALNNN:
+EVALNNN
 --------------------
   
 The eigenvalues, their spin, symmetry representation, degeneracy and occupancy,
@@ -47,28 +47,28 @@ Fermi energy for each iteration number NNN.
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------
 
-FRCOUT: 
+FRCOUT
 --------------------
 
 Total energy, forces on each atom, dipole moment, applied electric field.
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------
 
-FRMORB:
+FRMORB
 --------------------
 
 Number of up spin FODs and down spin FODs, followed by the up spin FOD positions, then down spin FOD positions.
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------
 
-fande.out:
+fande.out
 --------------------
 
 Iteration, total energy, square root of the sum of the squares of FOD forces, max FOD force. 
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------
 
-GEOCNVRG: 
+GEOCNVRG
 --------------------
 
 Convergence criteria, Total energy , largest atomic force, information about atomic geometry 
@@ -76,7 +76,7 @@ optimization.  Is written after every complete SCF cycle.
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------
 
-HISTORY:
+HISTORY
 --------------------
    
 Contains history of the geometry optimization. To see the energy as function of optimization step 
@@ -93,35 +93,35 @@ Information about the basis set. (For an in depth description, see chapter 8.)
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------
 
-records: 
+records
 --------------------
 
 copy of the FRMORB file used during each iteration, followed by the FOD forces on those FODs.
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------
 
-RHOTOT: 
+RHOTOT
 --------------------
 
 Total density on a specified grid. Is written in Gaussian cubic format.
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------
 
-RHOSPN: 
+RHOSPN
 --------------------
 
 Spin density on a specified grid. Is written in Gaussian cubic format.
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------
 
-RUNS:  
+RUNS
 --------------------
 
 Control restart of calculation. Calculations can be restarted from Hamiltonian (**HAMOLD**), wavefunctions (**WFOUT**), or potential (**COUPOT**).
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------
 
-SUMMARY: 
+SUMMARY
 --------------------
 
 Total energy, electronic charge, kinetic energy and trace of hamiltonian for each 
@@ -129,7 +129,7 @@ Total energy, electronic charge, kinetic energy and trace of hamiltonian for eac
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------
 
-SYMBOL: 
+SYMBOL
 --------------------
 
 The exchange-correlation functional is specified on the first line. Atomic coordinates and bias potentials for each atom are stored for each 
@@ -138,14 +138,14 @@ SYMBOL includes essentially the same information as the CLUSTER file. If the SYM
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------
 
-XMOL.DAT: 
+XMOL.DAT
 --------------------
 
 Geometry in the xyz format. The first column contains atomic numbers. The atomic coordinates are in Angstrom.
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------
 
-XMOL.xyz: 
+XMOL.xyz
 --------------------
 
 Geometry in the xyz format. The first column contains atomic labels. The atomic coordinates are in Angstrom. Use **JMOL** to visualize this.

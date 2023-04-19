@@ -33,4 +33,6 @@ Sphinx uses the reSructuredText markup language. Reference can be found here: ht
 
 If you have any questions please email me directly at ville2a@cmich.edu
 
-If you have suggestions, please post onto the Issues section. 
+If you have suggestions, please post onto the Issues section.
+
+Test commit 

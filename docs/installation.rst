@@ -131,7 +131,8 @@ An example for serial compilation on a laptop (in this case a mac) is shown belo
 
         $(FFF) $(LFLAGS) $(OBJ) -o $(BIN) $(PCM_LIBS) $(EFP_LIB) -llapack -lblas $(LIBS)
 
-Use the :code:`make` command on the command line to compile FLOSIC. If the compilation was successful, an executable file titled **nrlmol_exe** will be created.
+Use the :code:`make` command on the command line to compile FLOSIC. If the compilation was successful, 
+an executable file titled **nrlmol_exe** will be created.
 
 Additional Support
 --------------------

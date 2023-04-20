@@ -1,4 +1,3 @@
-.. _formatting-text:
 
 Introduction 
 ============================================================== 
@@ -43,8 +42,6 @@ Physically interesting properties that have been evaluated recently with the FLO
 	- Polarizabilities
 	- Dipole moments
 	- Magnetic exchange couplings
-
-        $\alpha$
 
 The following are references to the NRLMOL code:
 

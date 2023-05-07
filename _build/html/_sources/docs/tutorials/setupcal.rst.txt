@@ -5,7 +5,7 @@ Quick start
 ==================
 
 
-Basic input files for FLOSIC are called "CLUSTER" and "FRMORB".  
+Basic input files for FLOSIC are called **CLUSTER** and **FRMORB**.  
 The files require minimal input from the user and most parameters required for the calculations are set with 
 default values. You can specify some parameters that control the calculations in the file called "NRLMOL_INPUT.DAT". 
 A version of this file with default values is created in the run directory if it otherwise does not exist. We will 

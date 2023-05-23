@@ -17,7 +17,6 @@ An example CLUSTER file is shown below for the LiH molecule. The format is descr
 
 .. literalinclude:: /_static/input_files/CLUSTER
 
-
 To run a FLOSIC calculation, a FRMORB file is required, which contains positions for FODs. An example FRMORB file is shown below for the LiH molecule defined in the CLUSTER file above.
 
 .. literalinclude:: /_static/input_files/FRMORB

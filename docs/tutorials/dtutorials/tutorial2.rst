@@ -1,10 +1,10 @@
 
+########################################################################
 Tutorial 2: a FLOSIC calculation for H2
-========================================================================
+########################################################################
 
-In this tutorial we will learn to do a simple FLOSIC calculation.
-We choose the case of the H2 molecule.
-Again, as a reminder the **CLUSTER** file is the main input file of FLOSIC. It contains 
+In this tutorial we will learn to do a simple FLOSIC calculation with an H2 molecule.
+As a reminder, the **CLUSTER** file is the main input file of FLOSIC. It contains 
 the minimal information to set up the calculation. See below the CLUSTER file for the hydrogen molecule.
 
 .. literalinclude:: input_data/CLUSTER.H2

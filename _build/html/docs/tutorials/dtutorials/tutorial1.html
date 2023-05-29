@@ -378,6 +378,8 @@ document.write(`
 <h1>Tutorial 1: Molecular geometry optimization at the DFT level<a class="headerlink" href="#tutorial-1-molecular-geometry-optimization-at-the-dft-level" title="Permalink to this heading">#</a></h1>
 <p>This is a very simple  tutorial  to get acquainted with electronic structure calculations using FLOSIC. This tutorial will explain how to run
 FLOSIC for molecular geometry optimizations using DFT.</p>
+<section id="setting-up-input-structure">
+<h2>Setting Up Input Structure<a class="headerlink" href="#setting-up-input-structure" title="Permalink to this heading">#</a></h2>
 <p>The <strong>CLUSTER</strong> file is the main input file of FLOSIC. It contains the minimal information to set up a calculation. For this tutorial, we will use
 a CH4 molecule, which uses a <strong>CLUSTER</strong> file like the one shown below:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="n">GGA</span><span class="o">-</span><span class="n">PBE</span><span class="o">*</span><span class="n">GGA</span><span class="o">-</span><span class="n">PBE</span>          <span class="p">(</span><span class="n">DF</span> <span class="n">TYPE</span> <span class="n">EXCHANGE</span><span class="o">*</span><span class="n">CORRELATION</span><span class="p">)</span>
@@ -401,7 +403,7 @@ gradient approximation (GGA) using the Perdew-Burke-Ernzerhof (PBE) parametrizat
 <p>The second line is <code class="code docutils literal notranslate"><span class="pre">NONE</span></code>. It refers to point group symmetry of the molecule. For the purposes of the tutorial, we will not enforce symmetry.
 If you would like to use symmetry, a symmetry (TD,OH, etc.) can be selected in place of <code class="code docutils literal notranslate"><span class="pre">NONE</span></code>. In these cases, the code will create a <strong>GRPMAT</strong>
 file containing the appropriate symmetry operations (each represented by a 3x3 matrix).  If you would like to use symmetry operations
-directly from an existing GRPMAT file, replace <code class="code docutils literal notranslate"><span class="pre">NONE</span></code> with <code class="code docutils literal notranslate"><span class="pre">GRP</span></code>.</p>
+directly from an existing <strong>GRPMAT</strong> file, replace <code class="code docutils literal notranslate"><span class="pre">NONE</span></code> with <code class="code docutils literal notranslate"><span class="pre">GRP</span></code>.</p>
 <p>The third line contains <code class="code docutils literal notranslate"><span class="pre">5</span></code>. It specifies the number of inequivalent atoms in the calculation. We’re running a CH4 calculation, so the number
 of atoms is 5 (1 C and 4 H). The following lines contain the cartesian positions of the atoms in atomic units (A.U.), followed by number of
 electrons of each  atom (e.g. 6 for Carbon). The string <code class="code docutils literal notranslate"><span class="pre">ALL</span></code> means include all (i.e. 6 in this case) electrons into the calculation.
@@ -410,7 +412,11 @@ The next 4 lines are the hydrogen atoms, which follow the same format.</p>
 the neutral molecule. If the first field was  <code class="code docutils literal notranslate"><span class="pre">1</span></code>,  then the calculations would be performed for a cation of CH4. The next field which is also
 <code class="code docutils literal notranslate"><span class="pre">0.0</span></code> in this example corresponds to the number of unpaired electrons in the system, or the net spin in multiples of <span class="math notranslate nohighlight">\(\frac{\hbar}{2}\)</span>. CH4
 is a closed shell system, so it has no unpaired electrons. Lines after the Charge and Spin fields are ignored.</p>
-<p>Now, create an empty directory and run the <code class="code docutils literal notranslate"><span class="pre">nrlmol_exe</span></code> executable inside of it. Multiple files should be created:</p>
+</section>
+<section id="running-the-calculation">
+<h2>Running the Calculation<a class="headerlink" href="#running-the-calculation" title="Permalink to this heading">#</a></h2>
+<p>Now, create an empty directory and run the <code class="code docutils literal notranslate"><span class="pre">nrlmol_exe</span></code> executable inside of it. Multiple default files will be
+created:</p>
 <ul class="simple">
 <li><p>AVRGDAT</p></li>
 <li><p>CLUSTER</p></li>
@@ -441,6 +447,7 @@ a gradient optimization routine (either LBFGS or CONJUGATE-GRADIENT). The file <
 atomic geometry. Running the code again will carry out a calculation at the updated molecular geometry and a new total energy and new atomic forces will
 be computed. A new update of the atomic coordinates will also be written into SYMBOL. Repeating this process several times will result in a local minimum energy
 geometry to be reached. This happens when the maximum force falls below the criterion set in <strong>GEOCNVRG</strong>.</p>
+</section>
 </section>
 
 
@@ -483,6 +490,17 @@ geometry to be reached. This happens when the maximum force falls below the crit
             
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setting-up-input-structure">Setting Up Input Structure</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#running-the-calculation">Running the Calculation</a></li>
+</ul>
+  </nav></div>
 
   <div class="sidebar-secondary-item">
   

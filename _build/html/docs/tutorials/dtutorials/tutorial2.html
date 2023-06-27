@@ -406,10 +406,13 @@ spin momentum</p>
 <section id="flosic-calculation-the-frmorb-file">
 <h2>FLOSIC Calculation: The FRMORB File<a class="headerlink" href="#flosic-calculation-the-frmorb-file" title="Permalink to this heading">#</a></h2>
 <p>A file called <strong>FRMORB</strong> is also required, which contains the FOD positions. An example FRMORB file for H2 is shown below:</p>
+<div class="literal-block-wrapper docutils container" id="id1">
+<div class="code-block-caption"><span class="caption-text"><strong>FRMORB</strong></span><a class="headerlink" href="#id1" title="Permalink to this code">#</a></div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span> <span class="mi">1</span> <span class="mi">1</span>
 <span class="mf">0.00</span> <span class="mf">0.00</span> <span class="mf">0.00</span>
 <span class="mf">0.00</span> <span class="mf">0.00</span> <span class="mf">0.00</span>
 </pre></div>
+</div>
 </div>
 <p>The first line contains two fields:</p>
 <ul class="simple">
@@ -428,17 +431,48 @@ using the following command at the prompt.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="si">${</span><span class="nv">PATH_TO_FLOSIC</span><span class="si">}</span>/nrlmol_exe<span class="w"> </span><span class="p">&amp;</span>&gt;&gt;<span class="w"> </span>log<span class="w"> </span><span class="p">&amp;</span>
 </pre></div>
 </div>
-<p>Now, browse through the <strong>SUMMARY</strong>  file and look at the energies printed at each iteration of the SCF cycle. You should see that the minimum
-total energy is reached at self-consistency.</p>
-<p>Also, look at the <strong>EVALUES</strong> file in which Kohn-Sham eigenvalues and occupation numbers are printed.</p>
-<p>The FOD forces are displayed in the <strong>records</strong> file, which has the same format as <strong>FRMORB</strong>, followed by the FOD forces in the same order.</p>
-<p>The <strong>fande.out</strong> file contains the iteration, total DFT+SIC energy, square root of the sum of the squares of the FOD forces, and the max FOD force.
-When optimizing FODs, this is a good file to check for the convergence of FOD forces.</p>
-<p>After completing a self-consistent calculation, the FOD forces are used in a gradient optimization scheme to update the FOD positions.
-These are written into the FRMORB file.  Re-running the code will cause another self-consistent calculation to be performed, using the
-updated FOD positions.  A new total energy and new FOD forces will be calculated, and the FOD positions will again be updated.
-Repeating this process will result in the optimization of the FOD positions.  Convergence can be gauged by the size by the largest FOD
-force.  When this drops below a chosen convergence criterion, the FODs are optimized.</p>
+<section id="understanding-the-summary-file">
+<h3>Understanding the SUMMARY file<a class="headerlink" href="#understanding-the-summary-file" title="Permalink to this heading">#</a></h3>
+<p>Browse through <strong>SUMMARY</strong> and look at the energies printed at each iteration of the SCF cycle. You should see that the minimum total energy is reached at self-consistency. The threshold for self-consistency is set in <strong>NRLMOL_INPUT.DAT</strong>, in the variable <code class="code docutils literal notranslate"><span class="pre">SCFTOLV</span></code>. The default value is 1.0D-6.</p>
+<p>Once a self-consistent calculation finishes, the FOD forces are used in a gradient optimization scheme to update the FOD positions.
+You can see this for yourself, in <strong>SUMMARY</strong>, that the <code class="code docutils literal notranslate"><span class="pre">TRACE</span></code> (i.e. the 1st column) is set to 0.0000, but the
+<code class="code docutils literal notranslate"><span class="pre">EDFT+SIC</span></code> energy changes per iteration.</p>
+<div class="literal-block-wrapper docutils container" id="id2">
+<div class="code-block-caption"><span class="caption-text">Sample SUMMARY</span><a class="headerlink" href="#id2" title="Permalink to this code">#</a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>  <span class="mi">25</span>        <span class="o">-</span><span class="mf">70.449947088</span>       <span class="o">-</span><span class="mf">114.945747472</span>        <span class="mf">115.012262729</span>         <span class="mf">21.999999620</span>       <span class="o">-</span><span class="mf">115.887906354</span>       <span class="o">-</span><span class="mf">115.887910090</span>
+  <span class="mi">26</span>        <span class="o">-</span><span class="mf">70.449832213</span>       <span class="o">-</span><span class="mf">114.945752918</span>        <span class="mf">115.012120854</span>         <span class="mf">21.999999620</span>       <span class="o">-</span><span class="mf">115.887901358</span>       <span class="o">-</span><span class="mf">115.887910090</span>
+  <span class="mi">27</span>        <span class="o">-</span><span class="mf">70.449833257</span>       <span class="o">-</span><span class="mf">114.945755178</span>        <span class="mf">115.012088824</span>         <span class="mf">21.999999620</span>       <span class="o">-</span><span class="mf">115.887899304</span>       <span class="o">-</span><span class="mf">115.887910090</span>
+  <span class="mi">28</span>        <span class="o">-</span><span class="mf">70.449765288</span>       <span class="o">-</span><span class="mf">114.945756086</span>        <span class="mf">115.012053732</span>         <span class="mf">21.999999620</span>       <span class="o">-</span><span class="mf">115.887898772</span>       <span class="o">-</span><span class="mf">115.887910090</span>
+  <span class="mi">29</span>        <span class="o">-</span><span class="mf">70.449689889</span>       <span class="o">-</span><span class="mf">114.945756716</span>        <span class="mf">115.012010580</span>         <span class="mf">21.999999620</span>       <span class="o">-</span><span class="mf">115.887898574</span>       <span class="o">-</span><span class="mf">115.887910090</span>
+  <span class="mi">30</span>          <span class="mf">0.000000000</span>       <span class="o">-</span><span class="mf">114.945756716</span>        <span class="mf">115.012010580</span>         <span class="mf">21.999999620</span>       <span class="o">-</span><span class="mf">115.887898574</span>       <span class="o">-</span><span class="mf">115.887910090</span>
+  <span class="mi">31</span>          <span class="mf">0.000000000</span>       <span class="o">-</span><span class="mf">114.945756716</span>        <span class="mf">115.012010580</span>         <span class="mf">21.999999620</span>       <span class="o">-</span><span class="mf">115.993753670</span>       <span class="o">-</span><span class="mf">115.993753670</span>
+  <span class="mi">32</span>          <span class="mf">0.000000000</span>       <span class="o">-</span><span class="mf">114.945756716</span>        <span class="mf">115.012010580</span>         <span class="mf">21.999999620</span>       <span class="o">-</span><span class="mf">116.376476586</span>       <span class="o">-</span><span class="mf">116.376476586</span>
+  <span class="mi">33</span>          <span class="mf">0.000000000</span>       <span class="o">-</span><span class="mf">114.945756716</span>        <span class="mf">115.012010580</span>         <span class="mf">21.999999620</span>       <span class="o">-</span><span class="mf">116.377998509</span>       <span class="o">-</span><span class="mf">116.377998509</span>
+  <span class="mi">34</span>          <span class="mf">0.000000000</span>       <span class="o">-</span><span class="mf">114.945756716</span>        <span class="mf">115.012010580</span>         <span class="mf">21.999999620</span>       <span class="o">-</span><span class="mf">116.382675125</span>       <span class="o">-</span><span class="mf">116.382675125</span>
+  <span class="mi">35</span>          <span class="mf">0.000000000</span>       <span class="o">-</span><span class="mf">114.945756716</span>        <span class="mf">115.012010580</span>         <span class="mf">21.999999620</span>       <span class="o">-</span><span class="mf">116.387459689</span>       <span class="o">-</span><span class="mf">116.387459689</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="other-important-output-files-to-keep-in-mind">
+<h3>Other Important Output files to keep in mind<a class="headerlink" href="#other-important-output-files-to-keep-in-mind" title="Permalink to this heading">#</a></h3>
+<p>Look at the <strong>EVALUES</strong> file in which Kohn-Sham eigenvalues and occupation numbers are printed.</p>
+<p>The FOD forces, along their respective FOD positions, are displayed in the <strong>records</strong> file.</p>
+<p>The <strong>fande.out</strong> file contains the (1) iterations, (2)total DFT+SIC energies, (3) square root of the sum of the squares of the FOD forces,
+and (4) the max FOD forces. When optimizing FODs, this is a good file to check for the convergence of FOD forces.
+There is also <strong>fande.dat</strong> which holds the last iteration of <strong>fande.out</strong>.</p>
+</section>
+</section>
+<section id="further-iterations-for-optimal-fods">
+<h2>Further Iterations for Optimal FODs<a class="headerlink" href="#further-iterations-for-optimal-fods" title="Permalink to this heading">#</a></h2>
+<p>Re-running the code will cause another self-consistent calculation to be performed using the updated FOD positions. A new total energy
+and new FOD forces will be calculated, and the FOD positions will again be updated. Repeating this process will result in the optimization
+of the FOD positions. Convergence can be gauged by the size by the largest FOD force.  When this drops below a chosen convergence
+criterion, the FODs are optimized.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Currently, the FOD convergence criterion is hard-coded and requires recompilation.</p>
+</div>
 <p>To further optimize FODs, repeatedly run the code until the calculation is optimized to your criterion.
 A simple iterative loop can help with this process.</p>
 <p>For the example of H2, there is only one FOD of each spin. Placing the FODs at any position in space
@@ -495,7 +529,12 @@ for such a case will give the same energy and the force on the FOD will therefor
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setting-up-input-structure">Setting Up Input Structure</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#flosic-calculation-the-frmorb-file">FLOSIC Calculation: The FRMORB File</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#running-the-flosic-calculation">Running the FLOSIC Calculation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#running-the-flosic-calculation">Running the FLOSIC Calculation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#understanding-the-summary-file">Understanding the SUMMARY file</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#other-important-output-files-to-keep-in-mind">Other Important Output files to keep in mind</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#further-iterations-for-optimal-fods">Further Iterations for Optimal FODs</a></li>
 </ul>
   </nav></div>
 

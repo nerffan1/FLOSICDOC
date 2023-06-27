@@ -36,6 +36,7 @@ FLOSIC Calculation: The FRMORB File
 A file called **FRMORB** is also required, which contains the FOD positions. An example FRMORB file for H2 is shown below:
 
 .. literalinclude:: input_data/FRMORB.H2
+    :caption: **FRMORB**
 
 The first line contains two fields: 
 
@@ -59,23 +60,44 @@ using the following command at the prompt.
 
     ${PATH_TO_FLOSIC}/nrlmol_exe &>> log &
 
-Now, browse through the **SUMMARY**  file and look at the energies printed at each iteration of the SCF cycle. You should see that the minimum
-total energy is reached at self-consistency.
 
-.. TODO Put the SUMMARY of a H2 Calculation here 
+Understanding the SUMMARY file
+===================================
 
-Also, look at the **EVALUES** file in which Kohn-Sham eigenvalues and occupation numbers are printed. 
+Browse through **SUMMARY** and look at the energies printed at each iteration of the SCF cycle. You should see that the minimum total energy is reached at self-consistency. The threshold for self-consistency is set in **NRLMOL_INPUT.DAT**, in the variable :code:`SCFTOLV`. The default value is 1.0D-6.
 
-The FOD forces are displayed in the **records** file, which has the same format as **FRMORB**, followed by the FOD forces in the same order.
+Once a self-consistent calculation finishes, the FOD forces are used in a gradient optimization scheme to update the FOD positions.
+You can see this for yourself, in **SUMMARY**, that the :code:`TRACE` (i.e. the 1st column) is set to 0.0000, but the 
+:code:`EDFT+SIC` energy changes per iteration.
 
-The **fande.out** file contains the iteration, total DFT+SIC energy, square root of the sum of the squares of the FOD forces, and the max FOD force.
-When optimizing FODs, this is a good file to check for the convergence of FOD forces.
+.. literalinclude:: input_data/SampleSummary
+    :caption: Sample SUMMARY
+    :lines: 26-36
 
-After completing a self-consistent calculation, the FOD forces are used in a gradient optimization scheme to update the FOD positions.  
-These are written into the FRMORB file.  Re-running the code will cause another self-consistent calculation to be performed, using the 
-updated FOD positions.  A new total energy and new FOD forces will be calculated, and the FOD positions will again be updated.  
-Repeating this process will result in the optimization of the FOD positions.  Convergence can be gauged by the size by the largest FOD 
-force.  When this drops below a chosen convergence criterion, the FODs are optimized.
+
+Other Important Output files to keep in mind 
+=============================================
+
+Look at the **EVALUES** file in which Kohn-Sham eigenvalues and occupation numbers are printed. 
+
+The FOD forces, along their respective FOD positions, are displayed in the **records** file.
+
+The **fande.out** file contains the (1) iterations, (2)total DFT+SIC energies, (3) square root of the sum of the squares of the FOD forces, 
+and (4) the max FOD forces. When optimizing FODs, this is a good file to check for the convergence of FOD forces. 
+There is also **fande.dat** which holds the last iteration of **fande.out**.
+
+************************************
+Further Iterations for Optimal FODs
+************************************
+
+Re-running the code will cause another self-consistent calculation to be performed using the updated FOD positions. A new total energy 
+and new FOD forces will be calculated, and the FOD positions will again be updated. Repeating this process will result in the optimization 
+of the FOD positions. Convergence can be gauged by the size by the largest FOD force.  When this drops below a chosen convergence 
+criterion, the FODs are optimized.
+
+.. note:: 
+
+    Currently, the FOD convergence criterion is hard-coded and requires recompilation. 
 
 To further optimize FODs, repeatedly run the code until the calculation is optimized to your criterion. 
 A simple iterative loop can help with this process.

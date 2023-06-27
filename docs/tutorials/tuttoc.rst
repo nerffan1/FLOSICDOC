@@ -2,6 +2,8 @@
 User Guide and Tutorials
 =========================
 
+These tutorials stem from the original *FLOSIC Documentation and Tutorials* document, but have been expanded and enhanced upon. 
+
 .. toctree::
 
    setupcal

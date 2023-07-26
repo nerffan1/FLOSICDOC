@@ -2,22 +2,42 @@
 Tutorial 3:  FOD optimization of a water molecule 
 ########################################################################
 
-This tutorial explains how to do a FODs optimization taking the example of the water molecule. It is recommended to run a DFT calculation first to get the DFT optimized density. 
-To do this, we start from the usual **CLUSTER** file:
+This tutorial explains how to do a FODs optimization taking the example of the water molecule.
+
+**************************************************
+Setting Up Input Structure and Input Parameters
+**************************************************
+
+It is recommended to run a DFT calculation first to get the DFT optimized density. To do this, we start from the usual input:
 
 .. literalinclude:: input_data/CLUSTER-H2O
+    :caption: CLUSTER
  
-In the **nrlmol_input.dat** file we change CALCTYPEV from 'LBFGS' to 'SCF-ONLY' to switch off the molecular optimization. We also turn on the unrestricted calculation setting SPNPOLV = 'Y'. Then we run NRLMOL in a new directory with only CLUSTER and **nrlmol_input.dat** files:
+In the **nrlmol_input.dat** file we change :code:`CALCTYPEV` from :code:`LBFGS` to :code:`SCF-ONLY` to switch off the molecular optimization. 
+We also turn on the unrestricted calculation setting :code:`SPNPOLV = 'Y'`. Then we run :code:`NRLMOL` in a new directory with only **CLUSTER** and **nrlmol_input.dat** files:
 
- $ **PATH_TO_FLOSIC/nrlmol_exe > print.DFT**
+.. code-block:: bash
 
-All the normal NRLMOL outputs are generated. If the calculation finished correctly, we should have the following RUNS file
+    ${PATH_TO_FLOSIC}/nrlmol_exe > print.DFT
+
+**************************************************
+The RUNS file
+**************************************************
+
+All the normal NRLMOL outputs are generated. If the calculation finished correctly, we should have the following **RUNS** file
 
 .. literalinclude:: input_data/RUNS-H2O
 
-The second number in the first line may be different if a molecular optimization was carried out. It is important to check that we have 4 4 in the second line. This tells FLOSIC to use the wave function stored in WFOUT to start the next calculation.
+.. important::
 
-Now, we have to include the FOD positions. Here, we can use the Monte Cartlo FOD generator **fodMC**. For that, we copy XMOL.xyz into a file named **system** and edit the second and last lines as shown:
+    Check that you have :code:`4     4` in the second line. This tells FLOSIC to use the wave function stored in WFOUT to start the next calculation.
+    The second number in the first line may be different if a molecular optimization was carried out.
+
+**************************************************
+Creating FODs for a FLOSIC Calculation
+**************************************************
+
+Now, we have to include the FOD positions. Here, we can use the `Monte Carlo FOD generator (fodMC) <https://pypi.org/project/fodMC/>`_. For that, we copy XMOL.xyz into a file named **system** and edit the second and last lines as shown:
 
 .. literalinclude:: input_data/system-H2O
 

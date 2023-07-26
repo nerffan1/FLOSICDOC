@@ -82,7 +82,7 @@ Look at the **EVALUES** file in which Kohn-Sham eigenvalues and occupation numbe
 
 The FOD forces, along their respective FOD positions, are displayed in the **records** file.
 
-The **fande.out** file contains the (1) iterations, (2)total DFT+SIC energies, (3) square root of the sum of the squares of the FOD forces, 
+The **fande.out** file contains the (1) iterations, (2) total DFT+SIC energies, (3) square root of the sum of the squares of the FOD forces, 
 and (4) the max FOD forces. When optimizing FODs, this is a good file to check for the convergence of FOD forces. 
 There is also **fande.dat** which holds the last iteration of **fande.out**.
 

@@ -375,8 +375,12 @@ document.write(`
                   
   <section id="tutorial-3-fod-optimization-of-a-water-molecule">
 <h1>Tutorial 3:  FOD optimization of a water molecule<a class="headerlink" href="#tutorial-3-fod-optimization-of-a-water-molecule" title="Permalink to this heading">#</a></h1>
-<p>This tutorial explains how to do a FODs optimization taking the example of the water molecule. It is recommended to run a DFT calculation first to get the DFT optimized density.
-To do this, we start from the usual <strong>CLUSTER</strong> file:</p>
+<p>This tutorial explains how to do a FODs optimization taking the example of the water molecule.</p>
+<section id="setting-up-input-structure-and-input-parameters">
+<h2>Setting Up Input Structure and Input Parameters<a class="headerlink" href="#setting-up-input-structure-and-input-parameters" title="Permalink to this heading">#</a></h2>
+<p>It is recommended to run a DFT calculation first to get the DFT optimized density. To do this, we start from the usual input:</p>
+<div class="literal-block-wrapper docutils container" id="id1">
+<div class="code-block-caption"><span class="caption-text">CLUSTER</span><a class="headerlink" href="#id1" title="Permalink to this code">#</a></div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">GGA</span><span class="o">-</span><span class="n">PBE</span><span class="o">*</span><span class="n">GGA</span><span class="o">-</span><span class="n">PBE</span>      <span class="p">(</span><span class="n">DF</span> <span class="n">TYPE</span> <span class="n">EXCHANGE</span><span class="o">*</span><span class="n">CORRELATION</span><span class="p">)</span>
 <span class="n">NONE</span>                 <span class="p">(</span><span class="n">TD</span><span class="p">,</span> <span class="n">OH</span><span class="p">,</span> <span class="n">IH</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">XY</span><span class="p">,</span> <span class="o">...</span> <span class="n">OR</span> <span class="n">GRP</span><span class="p">)</span>
 <span class="mi">3</span>                    <span class="p">(</span><span class="n">NUMBER</span> <span class="n">OF</span> <span class="n">ATOMS</span><span class="p">)</span>
@@ -386,18 +390,30 @@ To do this, we start from the usual <strong>CLUSTER</strong> file:</p>
  <span class="mf">0.000</span>   <span class="mf">0.000</span>                  <span class="p">(</span><span class="n">NET</span> <span class="n">CHARGE</span> <span class="n">AND</span> <span class="n">NET</span> <span class="n">SPIN</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>In the <strong>nrlmol_input.dat</strong> file we change CALCTYPEV from ‘LBFGS’ to ‘SCF-ONLY’ to switch off the molecular optimization. We also turn on the unrestricted calculation setting SPNPOLV = ‘Y’. Then we run NRLMOL in a new directory with only CLUSTER and <strong>nrlmol_input.dat</strong> files:</p>
-<blockquote>
-<div><p>$ <strong>PATH_TO_FLOSIC/nrlmol_exe &gt; print.DFT</strong></p>
-</div></blockquote>
-<p>All the normal NRLMOL outputs are generated. If the calculation finished correctly, we should have the following RUNS file</p>
+</div>
+<p>In the <strong>nrlmol_input.dat</strong> file we change <code class="code docutils literal notranslate"><span class="pre">CALCTYPEV</span></code> from <code class="code docutils literal notranslate"><span class="pre">LBFGS</span></code> to <code class="code docutils literal notranslate"><span class="pre">SCF-ONLY</span></code> to switch off the molecular optimization.
+We also turn on the unrestricted calculation setting <code class="code docutils literal notranslate"><span class="pre">SPNPOLV</span> <span class="pre">=</span> <span class="pre">'Y'</span></code>. Then we run <code class="code docutils literal notranslate"><span class="pre">NRLMOL</span></code> in a new directory with only <strong>CLUSTER</strong> and <strong>nrlmol_input.dat</strong> files:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="si">${</span><span class="nv">PATH_TO_FLOSIC</span><span class="si">}</span>/nrlmol_exe<span class="w"> </span>&gt;<span class="w"> </span>print.DFT
+</pre></div>
+</div>
+</section>
+<section id="the-runs-file">
+<h2>The RUNS file<a class="headerlink" href="#the-runs-file" title="Permalink to this heading">#</a></h2>
+<p>All the normal NRLMOL outputs are generated. If the calculation finished correctly, we should have the following <strong>RUNS</strong> file</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>     <span class="mi">0</span>     <span class="mi">1</span>            <span class="n">ITBEG</span><span class="p">,</span> <span class="n">NCALC</span>
      <span class="mi">4</span>     <span class="mi">4</span>            <span class="n">START</span><span class="p">:</span> <span class="mi">0</span><span class="o">=</span><span class="n">SCR</span><span class="o">.</span><span class="n">NUC</span><span class="p">,</span> <span class="mi">1</span><span class="o">=</span><span class="n">HAM</span><span class="p">,</span> <span class="mi">2</span><span class="o">=</span><span class="n">POT</span><span class="p">,</span> <span class="mi">3</span><span class="o">=</span><span class="n">LSF</span><span class="p">,</span> <span class="mi">4</span><span class="o">=</span><span class="n">WFUNC</span><span class="p">,</span> <span class="mi">5</span><span class="o">=</span><span class="n">WFUNC_FRAG</span>
      <span class="mi">0</span>                  <span class="n">START</span> <span class="n">HAMILTONIAN</span> <span class="n">IS</span> <span class="n">INTERPOLATED</span><span class="p">:</span> <span class="mi">0</span><span class="o">=</span><span class="n">NO</span><span class="p">,</span> <span class="mi">1</span><span class="o">=</span><span class="n">YES</span>
 </pre></div>
 </div>
-<p>The second number in the first line may be different if a molecular optimization was carried out. It is important to check that we have 4 4 in the second line. This tells FLOSIC to use the wave function stored in WFOUT to start the next calculation.</p>
-<p>Now, we have to include the FOD positions. Here, we can use the Monte Cartlo FOD generator <strong>fodMC</strong>. For that, we copy XMOL.xyz into a file named <strong>system</strong> and edit the second and last lines as shown:</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Check that you have <code class="code docutils literal notranslate"><span class="pre">4</span>&#160;&#160;&#160;&#160; <span class="pre">4</span></code> in the second line. This tells FLOSIC to use the wave function stored in WFOUT to start the next calculation.
+The second number in the first line may be different if a molecular optimization was carried out.</p>
+</div>
+</section>
+<section id="creating-fods-for-a-flosic-calculation">
+<h2>Creating FODs for a FLOSIC Calculation<a class="headerlink" href="#creating-fods-for-a-flosic-calculation" title="Permalink to this heading">#</a></h2>
+<p>Now, we have to include the FOD positions. Here, we can use the <a class="reference external" href="https://pypi.org/project/fodMC/">Monte Carlo FOD generator (fodMC)</a>. For that, we copy XMOL.xyz into a file named <strong>system</strong> and edit the second and last lines as shown:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="mi">3</span>
 <span class="n">angstrom</span>  <span class="n">fix1s</span>
  <span class="n">O</span>     <span class="mf">0.00000</span>    <span class="mf">0.00000</span>    <span class="mf">0.00000</span>
@@ -501,6 +517,7 @@ To do this, we start from the usual <strong>CLUSTER</strong> file:</p>
 </div>
 <p>All the used FODs, obtained forces, and corrected total energies can be seen in the <strong>records</strong> file.</p>
 </section>
+</section>
 
 
                 </article>
@@ -542,6 +559,18 @@ To do this, we start from the usual <strong>CLUSTER</strong> file:</p>
             
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setting-up-input-structure-and-input-parameters">Setting Up Input Structure and Input Parameters</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-runs-file">The RUNS file</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-fods-for-a-flosic-calculation">Creating FODs for a FLOSIC Calculation</a></li>
+</ul>
+  </nav></div>
 
   <div class="sidebar-secondary-item">
   

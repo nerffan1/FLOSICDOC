@@ -124,8 +124,7 @@ Control restart of calculation. Calculations can be restarted from Hamiltonian (
 SUMMARY
 --------------------
 
-Total energy, electronic charge, kinetic energy and trace of hamiltonian for each 
-     iteration.  
+Total energy, electronic charge, kinetic energy and trace of hamiltonian for each iteration.  
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------
 

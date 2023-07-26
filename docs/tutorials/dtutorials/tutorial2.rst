@@ -46,7 +46,7 @@ The first line contains two fields:
 For H2, we only have one electron in each spin channel. The up FOD coordinates (x,y,z) are the following N lines, and 
 the down FODs are the subsequent M lines.
 
-To avoid optimizing atomic geometries, change the :code:`CALCTYPE`` field in **NRLMOL_INPUT.DAT** from :code:`LBFGS` to :code:`SCF-ONLY`. 
+To avoid optimizing atomic geometries, change the :code:`CALCTYPE` field in **NRLMOL_INPUT.DAT** from :code:`LBFGS` to :code:`SCF-ONLY`. 
 This is recommended for FLOSIC calculations when the FODs are being optimized.
 
 ************************************
@@ -82,25 +82,24 @@ Look at the **EVALUES** file in which Kohn-Sham eigenvalues and occupation numbe
 
 The FOD forces, along their respective FOD positions, are displayed in the **records** file.
 
-The **fande.out** file contains the (1) iterations, (2)total DFT+SIC energies, (3) square root of the sum of the squares of the FOD forces, 
+The **fande.out** file contains the (1) iterations, (2) total DFT+SIC energies, (3) square root of the sum of the squares of the FOD forces, 
 and (4) the max FOD forces. When optimizing FODs, this is a good file to check for the convergence of FOD forces. 
 There is also **fande.dat** which holds the last iteration of **fande.out**.
 
 ************************************
-Further Iterations for Optimal FODs
+How to Further Optimize FODs
 ************************************
 
-Re-running the code will cause another self-consistent calculation to be performed using the updated FOD positions. A new total energy 
-and new FOD forces will be calculated, and the FOD positions will again be updated. Repeating this process will result in the optimization 
+Re-executing the code will run another SCF calculation to be performed using the updated FOD positions. A new total energy
+and new FOD forces will be calculated, and the FOD positions will - again - be updated. Repeating this process will result in the optimization 
 of the FOD positions. Convergence can be gauged by the size by the largest FOD force.  When this drops below a chosen convergence 
 criterion, the FODs are optimized.
 
 .. note:: 
 
-    Currently, the FOD convergence criterion is hard-coded and requires recompilation. 
-
-To further optimize FODs, repeatedly run the code until the calculation is optimized to your criterion. 
-A simple iterative loop can help with this process.
+    Currently, the FOD convergence criterion is hard-coded and requires recompilation. Look into :code:`electronic_geometry_lbfgs.f`
+ 
+A simple iterative loop can repeatedly run the code until the calculation is optimized to your criterion.
 
 For the example of H2, there is only one FOD of each spin. Placing the FODs at any position in space
 for such a case will give the same energy and the force on the FOD will therefore be zero.

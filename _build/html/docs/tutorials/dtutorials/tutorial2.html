@@ -421,7 +421,7 @@ spin momentum</p>
 </ul>
 <p>For H2, we only have one electron in each spin channel. The up FOD coordinates (x,y,z) are the following N lines, and
 the down FODs are the subsequent M lines.</p>
-<p>To avoid optimizing atomic geometries, change the <code class="code docutils literal notranslate"><span class="pre">CALCTYPE`</span></code> field in <strong>NRLMOL_INPUT.DAT</strong> from <code class="code docutils literal notranslate"><span class="pre">LBFGS</span></code> to <code class="code docutils literal notranslate"><span class="pre">SCF-ONLY</span></code>.
+<p>To avoid optimizing atomic geometries, change the <code class="code docutils literal notranslate"><span class="pre">CALCTYPE</span></code> field in <strong>NRLMOL_INPUT.DAT</strong> from <code class="code docutils literal notranslate"><span class="pre">LBFGS</span></code> to <code class="code docutils literal notranslate"><span class="pre">SCF-ONLY</span></code>.
 This is recommended for FLOSIC calculations when the FODs are being optimized.</p>
 </section>
 <section id="running-the-flosic-calculation">
@@ -463,18 +463,17 @@ and (4) the max FOD forces. When optimizing FODs, this is a good file to check f
 There is also <strong>fande.dat</strong> which holds the last iteration of <strong>fande.out</strong>.</p>
 </section>
 </section>
-<section id="further-iterations-for-optimal-fods">
-<h2>Further Iterations for Optimal FODs<a class="headerlink" href="#further-iterations-for-optimal-fods" title="Permalink to this heading">#</a></h2>
-<p>Re-running the code will cause another self-consistent calculation to be performed using the updated FOD positions. A new total energy
-and new FOD forces will be calculated, and the FOD positions will again be updated. Repeating this process will result in the optimization
+<section id="how-to-further-optimize-fods">
+<h2>How to Further Optimize FODs<a class="headerlink" href="#how-to-further-optimize-fods" title="Permalink to this heading">#</a></h2>
+<p>Re-executing the code will run another SCF calculation to be performed using the updated FOD positions. A new total energy
+and new FOD forces will be calculated, and the FOD positions will - again - be updated. Repeating this process will result in the optimization
 of the FOD positions. Convergence can be gauged by the size by the largest FOD force.  When this drops below a chosen convergence
 criterion, the FODs are optimized.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Currently, the FOD convergence criterion is hard-coded and requires recompilation.</p>
+<p>Currently, the FOD convergence criterion is hard-coded and requires recompilation. Look into <code class="code docutils literal notranslate"><span class="pre">electronic_geometry_lbfgs.f</span></code></p>
 </div>
-<p>To further optimize FODs, repeatedly run the code until the calculation is optimized to your criterion.
-A simple iterative loop can help with this process.</p>
+<p>A simple iterative loop can repeatedly run the code until the calculation is optimized to your criterion.</p>
 <p>For the example of H2, there is only one FOD of each spin. Placing the FODs at any position in space
 for such a case will give the same energy and the force on the FOD will therefore be zero.</p>
 </section>
@@ -534,7 +533,7 @@ for such a case will give the same energy and the force on the FOD will therefor
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#other-important-output-files-to-keep-in-mind">Other Important Output files to keep in mind</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#further-iterations-for-optimal-fods">Further Iterations for Optimal FODs</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-further-optimize-fods">How to Further Optimize FODs</a></li>
 </ul>
   </nav></div>
 

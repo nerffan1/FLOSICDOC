@@ -1,13 +1,13 @@
-
+########################################################################
 Tutorial 3:  FOD optimization of a water molecule 
-======================================================
+########################################################################
 
-
-This tutorial explains how to do a FODs optimization taking the example of the water molecule. It is recommended to run a DFT calculation first to get the DFT optimized density. To do this, we start from the usual CLUSTER file:
+This tutorial explains how to do a FODs optimization taking the example of the water molecule. It is recommended to run a DFT calculation first to get the DFT optimized density. 
+To do this, we start from the usual **CLUSTER** file:
 
 .. literalinclude:: input_data/CLUSTER-H2O
  
-In the NRLMOL_INPUT.DAT file we change CALCTYPEV from 'LBFGS' to 'SCF-ONLY' to switch off the molecular optimization. We also turn on the unrestricted calculation setting SPNPOLV = 'Y'. Then we run NRLMOL in a new directory with only CLUSTER and NRLMOL_INPUT.DAT files:
+In the **nrlmol_input.dat** file we change CALCTYPEV from 'LBFGS' to 'SCF-ONLY' to switch off the molecular optimization. We also turn on the unrestricted calculation setting SPNPOLV = 'Y'. Then we run NRLMOL in a new directory with only CLUSTER and **nrlmol_input.dat** files:
 
  $ **PATH_TO_FLOSIC/nrlmol_exe > print.DFT**
 

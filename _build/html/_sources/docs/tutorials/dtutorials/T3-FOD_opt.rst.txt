@@ -20,11 +20,7 @@ We also turn on the unrestricted calculation setting :code:`SPNPOLV = 'Y'`. Then
 
     ${PATH_TO_FLOSIC}/nrlmol_exe > print.DFT
 
-**************************************************
-The RUNS file
-**************************************************
-
-All the normal NRLMOL outputs are generated. If the calculation finished correctly, we should have the following **RUNS** file
+If the calculation finished correctly, all outputs should be generated, and we should have the following in the **RUNS** file
 
 .. literalinclude:: input_data/RUNS-H2O
 

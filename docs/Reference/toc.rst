@@ -5,6 +5,7 @@ Reference
 .. toctree::
     :maxdepth: 1
     
+    Theory
     io_files
     inputdat
     functionals

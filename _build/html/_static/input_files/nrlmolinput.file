@@ -29,4 +29,3 @@ SYMMETRYV     = 'N' ! Set to Y to detect symmetry
 WFGRIDV       = 'N' ! set to Y to write orbitals in cube format (only in DFA)
 WFFRMV        = 'N' ! set to Y to write Fermi orbitals in cube format (only in SIC)
 &end
-

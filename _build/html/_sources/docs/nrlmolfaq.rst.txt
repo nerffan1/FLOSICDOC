@@ -1,6 +1,6 @@
 .. _nrlmolfaq:
 
-Getting more information about FLOSIC
+FAQs
 =====================================
 
 

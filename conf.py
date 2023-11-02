@@ -104,9 +104,9 @@ html_theme = "pydata_sphinx_theme"
 # documentation.
 html_theme_options = {
   "use_edit_page_button": True,
-  "announcement": "This is a documentation in ongoing development! Please contact us if you have questions!", #py_datatheme
-#  "external_links": [
-#      {"name": "FLOSIC Website", "url": "https://www.flosic.org/"}]
+  #"announcement": "This is a documentation in ongoing development! Please contact us if you have questions!", #py_datatheme
+  "external_links": [
+      {"name": "FLOSIC Website", "url": "https://www.flosic.org/"}]
 }
 
 html_context = {

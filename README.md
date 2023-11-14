@@ -22,6 +22,9 @@ The **html** target will build the output into the `BUILDDIR` variable, which is
 
 Sphinx uses the reSructuredText markup language. Reference can be found here: https://www.sphinx-doc.org/en/master/usage/restructuredtext/basics.html
 
+Additionally, you can refer to the [Pydata Examples](https://pydata-sphinx-theme.readthedocs.io/en/stable/examples/index.html) section to see more examples of PyData's
+outputs. By clicking on `Show Source` on the right hand side of the examples you are observing, you can see the original .rst source code of that page.
+
 ## Future Updates:
 
 - Have a concrete list of additions to make, and aim to have it done by the end of the Summer 2023.
@@ -34,5 +37,3 @@ Sphinx uses the reSructuredText markup language. Reference can be found here: ht
 If you have any questions please email me directly at ville2a@cmich.edu
 
 If you have suggestions, please post onto the Issues section.
-
-Test commit. Another test commit from a different computer.....

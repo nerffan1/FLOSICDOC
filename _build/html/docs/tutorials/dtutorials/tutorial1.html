@@ -47,7 +47,7 @@
     <link rel="prev" title="Quick start" href="../setupcal.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-    <meta name="docbuild:last-update" content="Nov 02, 2023"/>
+    <meta name="docbuild:last-update" content="Nov 14, 2023"/>
   </head>
   
   
@@ -438,7 +438,7 @@ a CH4 molecule, which uses a <strong>CLUSTER</strong> file like the one shown be
 <p>We will now describe the input structure of this file.</p>
 <p>The first line is <code class="code docutils literal notranslate"><span class="pre">GGA-PBE*GGA-PBE</span></code>. It means that the exchange-correlation interactions in the systems are modeled within the generalized
 gradient approximation (GGA) using the Perdew-Burke-Ernzerhof (PBE) parametrization. This is the default functional used in NRLMOL. A few other
-<a class="reference internal" href="../../Reference/functionals.html#exchange-correlation-functionals"><span class="std std-ref">functionals</span></a> are also available.</p>
+<span class="xref std std-ref">functionals</span> are also available.</p>
 <p>The second line is <code class="code docutils literal notranslate"><span class="pre">NONE</span></code>. It refers to point group symmetry of the molecule. For the purposes of the tutorial, we will not enforce symmetry.
 If you would like to use symmetry, a symmetry (TD,OH, etc.) can be selected in place of <code class="code docutils literal notranslate"><span class="pre">NONE</span></code>. In these cases, the code will create a <strong>GRPMAT</strong>
 file containing the appropriate symmetry operations (each represented by a 3x3 matrix).  If you would like to use symmetry operations

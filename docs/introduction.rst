@@ -1,6 +1,5 @@
-
 Introduction 
-============================================================== 
+============== 
 
 The FLOSIC code is based on the UTEP version of NRLMOL, the Naval Research 
 Laboratory Molecular Orbital Library.[1-4]
@@ -57,26 +56,27 @@ The following are references to the NRLMOL code:
 
 Further information about the FLO-SIC method can be found in the following references:
 
-        [5] `M.R. Pederson, A. Ruszsinszky, J.P. Perdew., J. Chem. Phys. 140, 121103, 2014. <https://aip.scitation.org/doi/10.1063/1.4869581>`_
+        [5] `M.R. Pederson, A. Ruszsinszky, J.P. Perdew., J. Chem. Phys. 140, 121103, (2014). <https://aip.scitation.org/doi/10.1063/1.4869581>`_
 
-        [6] `M.R. Pederson, J. Chem. Phys. 142, 064112, 2015. <https://aip.scitation.org/doi/10.1063/1.4907592>`_
+        [6] `M.R. Pederson, J. Chem. Phys. 142, 064112, (2015). <https://aip.scitation.org/doi/10.1063/1.4907592>`_
 
-        [7] `Z.-h. Yang, M.R. Pederson, J.P. Perdew, Phys. Rev. A 95, 052505, 2017. <https://journals.aps.org/pra/abstract/10.1103/PhysRevA.95.052505>`_
+        [7] `Z.-h. Yang, M.R. Pederson, J.P. Perdew, Phys. Rev. A 95, 052505, (2017). <https://journals.aps.org/pra/abstract/10.1103/PhysRevA.95.052505>`_
 
-        [8] `M.R. Pederson, T. Baruah, Advances In Atomic, Molecular, and Optical Physics, Chapter 8, 2015. 
+        [8] `M.R. Pederson, T. Baruah, Advances In Atomic, Molecular, and Optical Physics, Chapter 8, (2015). 
         <https://www.sciencedirect.com/science/article/pii/S1049250X15000087?casa_token=yjEnP6mZkNIAAAAA:JnqLVhS0FyoQT6ZbQM-4ZtNXRkkRFHFnYvM_UQO1ItyCsR8LSWHuo4MgN3RuDA44OFl8n1Ao_Q>`_
 
 Applications of FLO-SIC are described in these references:
 
-        [9] `K. Sharkas et al., J. Phys. Chem. A 122, 9307-9315, 2018. <https://pubs.acs.org/doi/10.1021/acs.jpca.8b09940>`_
+        [9] `K. Sharkas et al., J. Phys. Chem. A 122, 9307-9315, (2018). <https://pubs.acs.org/doi/10.1021/acs.jpca.8b09940>`_
 
-        [10] R.P. Joshi et al., J. Chem. Phys. 149, 164101, 2018.
+        [10] `R.P. Joshi et al., J. Chem. Phys. 149, 164101, (2018). <https://pubs.aip.org/aip/jcp/article/149/16/164101/199258/Fermi-Lowdin-orbital-self-interaction-correction>`_
 
-        [11] D.-y. Kao, K. Withanage, T. Hahn, J. Batool, J. Kortus, K. Jackson, J. Chem. Phys 147, 164107, 2017.
+        [11] `D.-y. Kao, K. Withanage, T. Hahn, J. Batool, J. Kortus, K. Jackson, J. Chem. Phys 147, 164107, (2017).
+        <https://pubs.aip.org/aip/jcp/article/147/16/164107/76817/Self-consistent-self-interaction-corrected-density>`_
 
-        [12] S. Schwalbe, T. Hahn, S. Liebing, K. Trepte, J. Kortus, J. Comput. Chem. 39, 2463-2471, 2018.
+        [12] `S. Schwalbe, T. Hahn, S. Liebing, K. Trepte, J. Kortus, J. Comput. Chem. 39, 2463-2471, (2018). <https://onlinelibrary.wiley.com/doi/10.1002/jcc.25586>`_
 
-        [13] K. Withanage, K. Trepte, J.E. Peralta, T. Baruah, R. Zope, K.A. Jackson, J. Chem. Theory Comput. 14, 4122-4128, 2018.
+        [13] `K. Withanage, K. Trepte, J.E. Peralta, T. Baruah, R. Zope, K.A. Jackson, J. Chem. Theory Comput. 14, 4122-4128, (2018). <https://pubs.acs.org/doi/10.1021/acs.jctc.8b00344>`_
 
-        [14] K. Trepte, S. Schwalbe, T. Hahn, J. Kortus, D.-y. Kao, et al., J. Comput. Chem. 40, 820-825, 2019.
+        [14] `K. Trepte, S. Schwalbe, T. Hahn, J. Kortus, D.-y. Kao, et al., J. Comput. Chem. 40, 820-825, (2019). <https://onlinelibrary.wiley.com/doi/10.1002/jcc.25767>`_
 

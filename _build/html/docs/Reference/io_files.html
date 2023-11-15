@@ -1,4 +1,5 @@
 
+
 <!DOCTYPE html>
 
 
@@ -6,7 +7,7 @@
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Input and Output Files &#8212; NRLMOL  2020 documentation</title>
   
@@ -18,35 +19,33 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
-<link href="../../_static/styles/bootstrap.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+  <link href="../../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
 
   
-  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
   <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
-    <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css?v=61eb95e5" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=365ca57ee442770a23c6" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=365ca57ee442770a23c6" />
-  <script src="../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=365ca57ee442770a23c6"></script>
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
 
-    <script src="../../_static/documentation_options.js?v=939ec2ff"></script>
-    <script src="../../_static/doctools.js?v=888ff710"></script>
-    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/sphinx_highlight.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'docs/Reference/io_files';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Controlling a calculation: the NRLMOL_INPUT.DAT file" href="inputdat.html" />
+    <link rel="next" title="NRLMOL_INPUT.DAT: Controlling a calculation" href="inputdat.html" />
     <link rel="prev" title="Theoretical Background" href="Theory.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-    <meta name="docbuild:last-update" content="Nov 14, 2023"/>
   </head>
   
   
@@ -55,15 +54,6 @@
   
   
   <a class="skip-link" href="#main-content">Skip to main content</a>
-  
-  <div id="pst-scroll-pixel-helper"></div>
-
-  
-  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>
-    Back to top
-  </button>
-
   
   <input type="checkbox"
           class="sidebar-toggle"
@@ -104,8 +94,7 @@
     <span class="fa-solid fa-bars"></span>
   </label>
   
-  
-  <div class="col-lg-3 navbar-header-items__start">
+  <div class="navbar-header-items__start">
     
       <div class="navbar-item">
   
@@ -115,19 +104,19 @@
   
   
   
-  
     
     
       
     
     
-    <img src="../../_static/log.jpeg" class="logo__image only-light" alt="NRLMOL  2020 documentation - Home"/>
-    <script>document.write(`<img src="../../_static/log.jpeg" class="logo__image only-dark" alt="NRLMOL  2020 documentation - Home"/>`);</script>
+    <img src="../../_static/log.jpeg" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../../_static/log.jpeg" class="logo__image only-dark" alt="Logo image"/>`);</script>
   
   
 </a></div>
     
   </div>
+  
   
   <div class="col-lg-9 navbar-header-items">
     
@@ -176,20 +165,20 @@
                       </a>
                     </li>
                 
-            <li class="nav-item dropdown">
-                <button class="btn dropdown-toggle nav-item" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-controls="pst-nav-more-links">
+            <div class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     More
                 </button>
-                <ul id="pst-nav-more-links" class="dropdown-menu">
+                <div class="dropdown-menu">
                     
                 <li class="nav-item">
-                  <a class="nav-link dropdown-item nav-external" href="https://www.flosic.org/">
+                  <a class="nav-link nav-external" href="https://www.flosic.org/">
                     FLOSIC Website
                   </a>
                 </li>
                 
-                </ul>
-            </li>
+                </div>
+            </div>
             
   </ul>
 </nav></div>
@@ -201,25 +190,23 @@
       
         <div class="navbar-item navbar-persistent--container">
           
- <script>
- document.write(`
-   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass"></i>
-    <span class="search-button__default-text">Search</span>
-    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-   </button>
- `);
- </script>
+  </button>
+`);
+</script>
         </div>
       
       
         <div class="navbar-item">
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
   </button>
 `);
 </script></div>
@@ -230,20 +217,18 @@ document.write(`
   
   
     <div class="navbar-persistent--mobile">
- <script>
- document.write(`
-   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass"></i>
-    <span class="search-button__default-text">Search</span>
-    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-   </button>
- `);
- </script>
+  </button>
+`);
+</script>
     </div>
   
 
   
-    <label class="sidebar-toggle secondary-toggle" for="__secondary" tabindex="0">
+    <label class="sidebar-toggle secondary-toggle" for="__secondary">
       <span class="fa-solid fa-outdent"></span>
     </label>
   
@@ -306,20 +291,20 @@ document.write(`
                       </a>
                     </li>
                 
-            <li class="nav-item dropdown">
-                <button class="btn dropdown-toggle nav-item" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-controls="pst-nav-more-links-2">
+            <div class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     More
                 </button>
-                <ul id="pst-nav-more-links-2" class="dropdown-menu">
+                <div class="dropdown-menu">
                     
                 <li class="nav-item">
-                  <a class="nav-link dropdown-item nav-external" href="https://www.flosic.org/">
+                  <a class="nav-link nav-external" href="https://www.flosic.org/">
                     FLOSIC Website
                   </a>
                 </li>
                 
-                </ul>
-            </li>
+                </div>
+            </div>
             
   </ul>
 </nav></div>
@@ -333,10 +318,10 @@ document.write(`
           <div class="navbar-item">
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
   </button>
 `);
 </script></div>
@@ -352,7 +337,7 @@ document.write(`
   <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="Theory.html">Theoretical Background</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Input and Output Files</a></li>
-<li class="toctree-l1"><a class="reference internal" href="inputdat.html">Controlling a calculation: the NRLMOL_INPUT.DAT file</a></li>
+<li class="toctree-l1"><a class="reference internal" href="inputdat.html">NRLMOL_INPUT.DAT: Controlling a calculation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="functionals.html">Exchange-Correlation functionals</a></li>
 <li class="toctree-l1"><a class="reference internal" href="isymgen.html">Basis sets: the ISYMGEN file</a></li>
 <li class="toctree-l1"><a class="reference internal" href="mesh.html">FLOSIC Mesh</a></li>
@@ -386,8 +371,8 @@ document.write(`
 
 
 
-<nav aria-label="Breadcrumb">
-  <ul class="bd-breadcrumbs">
+<nav aria-label="Breadcrumbs">
+  <ul class="bd-breadcrumbs" role="navigation" aria-label="Breadcrumb">
     
     <li class="breadcrumb-item breadcrumb-home">
       <a href="../../index.html" class="nav-link" aria-label="Home">
@@ -397,7 +382,7 @@ document.write(`
     
     <li class="breadcrumb-item"><a href="toc.html" class="nav-link">Reference</a></li>
     
-    <li class="breadcrumb-item active" aria-current="page">Input and...</li>
+    <li class="breadcrumb-item active" aria-current="page">Input and Output Files</li>
   </ul>
 </nav>
 </div>
@@ -415,114 +400,119 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section id="input-and-output-files">
-<span id="nrlmolfiles"></span><h1>Input and Output Files<a class="headerlink" href="#input-and-output-files" title="Link to this heading">#</a></h1>
+<span id="nrlmolfiles"></span><h1>Input and Output Files<a class="headerlink" href="#input-and-output-files" title="Permalink to this heading">#</a></h1>
 <p>As mentioned above, the minimal set of input files required for a FLOSIC calculation includes CLUSTER and FRMORB.
 Once the code is run, a number of additional files are generated. Some of these, like NRLMOL_INPUT.DAT (described earlier) can be edited to control how subsequent calculations run. The following is a list of important input/output files and a brief description of their contents:</p>
-<hr class="docutils" />
-<section id="atomsphnn">
-<h2>ATOMSPHNN<a class="headerlink" href="#atomsphnn" title="Link to this heading">#</a></h2>
-<p>Charge and spin-based charge in each inequivalent atom integrated over a sphere of specified  radius.</p>
-</section>
-<hr class="docutils" />
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Only the primary input and output files are explained here. For more information about additional files, please contact a FLOSIC team member or post on our GitHub Discussion section!</p>
+</div>
+<section id="input-files">
+<h2>Input Files<a class="headerlink" href="#input-files" title="Permalink to this heading">#</a></h2>
 <section id="cluster">
-<h2>CLUSTER<a class="headerlink" href="#cluster" title="Link to this heading">#</a></h2>
+<h3>CLUSTER<a class="headerlink" href="#cluster" title="Permalink to this heading">#</a></h3>
 <p>Main input file.</p>
 </section>
 <hr class="docutils" />
+<section id="symbol">
+<h3>SYMBOL<a class="headerlink" href="#symbol" title="Permalink to this heading">#</a></h3>
+<p>The exchange-correlation functional is specified on the first line. Atomic coordinates and bias potentials for each atom are stored for each
+iteration of an atomic geometry optimization. The last line allows the use of a more extensive default basis set (to use, set EXTRABASIS=1).
+SYMBOL includes essentially the same information as the CLUSTER file. If the SYMBOL file exists, CLUSTER is not read.</p>
+</section>
+<hr class="docutils" />
+<section id="frmorb">
+<h3>FRMORB<a class="headerlink" href="#frmorb" title="Permalink to this heading">#</a></h3>
+<p>Number of up spin FODs and down spin FODs, followed by the up spin FOD positions, then down spin FOD positions.</p>
+</section>
+<hr class="docutils" />
+<section id="runs">
+<h3>RUNS<a class="headerlink" href="#runs" title="Permalink to this heading">#</a></h3>
+<p>Control restart of calculation. Calculations can be restarted from Hamiltonian (<strong>HAMOLD</strong>), wavefunctions (<strong>WFOUT</strong>), or potential (<strong>COUPOT</strong>).</p>
+</section>
+<hr class="docutils" />
+<section id="isymgen">
+<h3>ISYMGEN<a class="headerlink" href="#isymgen" title="Permalink to this heading">#</a></h3>
+<p>Information about the basis set. (For an in depth description, see chapter 8.)</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="output-files">
+<h2>Output Files<a class="headerlink" href="#output-files" title="Permalink to this heading">#</a></h2>
+<section id="atomsphnn">
+<h3>ATOMSPHNN<a class="headerlink" href="#atomsphnn" title="Permalink to this heading">#</a></h3>
+<p>Charge and spin-based charge in each inequivalent atom integrated over a sphere of specified  radius.</p>
+</section>
+<hr class="docutils" />
 <section id="dipole">
-<h2>DIPOLE<a class="headerlink" href="#dipole" title="Link to this heading">#</a></h2>
+<h3>DIPOLE<a class="headerlink" href="#dipole" title="Permalink to this heading">#</a></h3>
 <p>Contains x, y, z components of dipole moments in the atomic units.</p>
 </section>
 <hr class="docutils" />
 <section id="evalues">
-<h2>EVALUES<a class="headerlink" href="#evalues" title="Link to this heading">#</a></h2>
+<h3>EVALUES<a class="headerlink" href="#evalues" title="Permalink to this heading">#</a></h3>
 <p>The canonical eigenvalues for the current step in an SCF calculation.
 If symmetry is used in the calculation, the eigenvalues are sorted by symmetry, and also by spin, if the calculation is spin-polarized.
 A list of eigenvalues and the occupation of the corresponding orbital is given at the end of the file.</p>
 </section>
 <hr class="docutils" />
 <section id="evalnnn">
-<h2>EVALNNN<a class="headerlink" href="#evalnnn" title="Link to this heading">#</a></h2>
+<h3>EVALNNN<a class="headerlink" href="#evalnnn" title="Permalink to this heading">#</a></h3>
 <p>The eigenvalues, their spin, symmetry representation, degeneracy and occupancy,
 Fermi energy for each iteration number NNN.</p>
 </section>
 <hr class="docutils" />
 <section id="frcout">
-<h2>FRCOUT<a class="headerlink" href="#frcout" title="Link to this heading">#</a></h2>
+<h3>FRCOUT<a class="headerlink" href="#frcout" title="Permalink to this heading">#</a></h3>
 <p>Total energy, forces on each atom, dipole moment, applied electric field.</p>
 </section>
 <hr class="docutils" />
-<section id="frmorb">
-<h2>FRMORB<a class="headerlink" href="#frmorb" title="Link to this heading">#</a></h2>
-<p>Number of up spin FODs and down spin FODs, followed by the up spin FOD positions, then down spin FOD positions.</p>
-</section>
-<hr class="docutils" />
 <section id="fande-out">
-<h2>fande.out<a class="headerlink" href="#fande-out" title="Link to this heading">#</a></h2>
+<h3>fande.out<a class="headerlink" href="#fande-out" title="Permalink to this heading">#</a></h3>
 <p>Iteration, total energy, square root of the sum of the squares of FOD forces, max FOD force.</p>
 </section>
 <hr class="docutils" />
 <section id="geocnvrg">
-<h2>GEOCNVRG<a class="headerlink" href="#geocnvrg" title="Link to this heading">#</a></h2>
+<h3>GEOCNVRG<a class="headerlink" href="#geocnvrg" title="Permalink to this heading">#</a></h3>
 <p>Convergence criteria, Total energy , largest atomic force, information about atomic geometry
 optimization.  Is written after every complete SCF cycle.</p>
 </section>
 <hr class="docutils" />
 <section id="history">
-<h2>HISTORY<a class="headerlink" href="#history" title="Link to this heading">#</a></h2>
+<h3>HISTORY<a class="headerlink" href="#history" title="Permalink to this heading">#</a></h3>
 <p>Contains history of the geometry optimization. To see the energy as function of optimization step
 do ‘grep -i TR HISTORY’ in the directory.</p>
 </section>
-<hr class="docutils" id="isymgen" />
-<section id="id1">
-<h2>ISYMGEN<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
-<p>Information about the basis set. (For an in depth description, see chapter 8.)</p>
-</section>
 <hr class="docutils" />
 <section id="records">
-<h2>records<a class="headerlink" href="#records" title="Link to this heading">#</a></h2>
+<h3>records<a class="headerlink" href="#records" title="Permalink to this heading">#</a></h3>
 <p>copy of the FRMORB file used during each iteration, followed by the FOD forces on those FODs.</p>
 </section>
 <hr class="docutils" />
 <section id="rhotot">
-<h2>RHOTOT<a class="headerlink" href="#rhotot" title="Link to this heading">#</a></h2>
+<h3>RHOTOT<a class="headerlink" href="#rhotot" title="Permalink to this heading">#</a></h3>
 <p>Total density on a specified grid. Is written in Gaussian cubic format.</p>
 </section>
 <hr class="docutils" />
 <section id="rhospn">
-<h2>RHOSPN<a class="headerlink" href="#rhospn" title="Link to this heading">#</a></h2>
+<h3>RHOSPN<a class="headerlink" href="#rhospn" title="Permalink to this heading">#</a></h3>
 <p>Spin density on a specified grid. Is written in Gaussian cubic format.</p>
 </section>
 <hr class="docutils" />
-<section id="runs">
-<h2>RUNS<a class="headerlink" href="#runs" title="Link to this heading">#</a></h2>
-<p>Control restart of calculation. Calculations can be restarted from Hamiltonian (<strong>HAMOLD</strong>), wavefunctions (<strong>WFOUT</strong>), or potential (<strong>COUPOT</strong>).</p>
-</section>
-<hr class="docutils" />
 <section id="summary">
-<h2>SUMMARY<a class="headerlink" href="#summary" title="Link to this heading">#</a></h2>
+<h3>SUMMARY<a class="headerlink" href="#summary" title="Permalink to this heading">#</a></h3>
 <p>Total energy, electronic charge, kinetic energy and trace of hamiltonian for each iteration.</p>
 </section>
 <hr class="docutils" />
-<section id="symbol">
-<h2>SYMBOL<a class="headerlink" href="#symbol" title="Link to this heading">#</a></h2>
-<p>The exchange-correlation functional is specified on the first line. Atomic coordinates and bias potentials for each atom are stored for each
-iteration of an atomic geometry optimization. The last line allows the use of a more extensive default basis set (to use, set EXTRABASIS=1).
-SYMBOL includes essentially the same information as the CLUSTER file. If the SYMBOL file exists, CLUSTER is not read.</p>
-</section>
-<hr class="docutils" />
 <section id="xmol-dat">
-<h2>XMOL.DAT<a class="headerlink" href="#xmol-dat" title="Link to this heading">#</a></h2>
+<h3>XMOL.DAT<a class="headerlink" href="#xmol-dat" title="Permalink to this heading">#</a></h3>
 <p>Geometry in the xyz format. The first column contains atomic numbers. The atomic coordinates are in Angstrom.</p>
 </section>
 <hr class="docutils" />
 <section id="xmol-xyz">
-<h2>XMOL.xyz<a class="headerlink" href="#xmol-xyz" title="Link to this heading">#</a></h2>
+<h3>XMOL.xyz<a class="headerlink" href="#xmol-xyz" title="Permalink to this heading">#</a></h3>
 <p>Geometry in the xyz format. The first column contains atomic labels. The atomic coordinates are in Angstrom. Use <strong>JMOL</strong> to visualize this.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Only the primary input and output files are explained here. For more information about additional files, please contact a FLOSIC team member or post a question to the FLOSIC listserv (See Ch. 13).</p>
-</div>
+</section>
 </section>
 </section>
 
@@ -531,10 +521,11 @@ SYMBOL includes essentially the same information as the CLUSTER file. If the SYM
               
               
               
-              
-              
-                <footer class="prev-next-footer">
-                  <!-- Previous / next buttons -->
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
        href="Theory.html"
@@ -550,11 +541,14 @@ SYMBOL includes essentially the same information as the CLUSTER file. If the SYM
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Controlling a calculation: the NRLMOL_INPUT.DAT file</p>
+        <p class="prev-next-title">NRLMOL_INPUT.DAT: Controlling a calculation</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
+</div></div>
+  
 </div>
+
                 </footer>
               
             </div>
@@ -569,25 +563,31 @@ SYMBOL includes essentially the same information as the CLUSTER file. If the SYM
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#atomsphnn">ATOMSPHNN</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cluster">CLUSTER</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dipole">DIPOLE</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#evalues">EVALUES</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#evalnnn">EVALNNN</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#frcout">FRCOUT</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#frmorb">FRMORB</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fande-out">fande.out</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#geocnvrg">GEOCNVRG</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#history">HISTORY</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">ISYMGEN</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#records">records</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rhotot">RHOTOT</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rhospn">RHOSPN</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#runs">RUNS</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">SUMMARY</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#symbol">SYMBOL</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#xmol-dat">XMOL.DAT</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#xmol-xyz">XMOL.xyz</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#input-files">Input Files</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cluster">CLUSTER</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#symbol">SYMBOL</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#frmorb">FRMORB</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#runs">RUNS</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#isymgen">ISYMGEN</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#output-files">Output Files</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#atomsphnn">ATOMSPHNN</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dipole">DIPOLE</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#evalues">EVALUES</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#evalnnn">EVALNNN</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#frcout">FRCOUT</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fande-out">fande.out</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#geocnvrg">GEOCNVRG</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#history">HISTORY</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#records">records</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rhotot">RHOTOT</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rhospn">RHOSPN</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">SUMMARY</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#xmol-dat">XMOL.DAT</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#xmol-xyz">XMOL.xyz</a></li>
+</ul>
+</li>
 </ul>
   </nav></div>
 
@@ -627,8 +627,8 @@ SYMBOL includes essentially the same information as the CLUSTER file. If the SYM
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../_static/scripts/bootstrap.js?digest=365ca57ee442770a23c6"></script>
-<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=365ca57ee442770a23c6"></script>
+  <script src="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
 
   <footer class="bd-footer">
 <div class="bd-footer__inner bd-page-width">
@@ -646,7 +646,7 @@ SYMBOL includes essentially the same information as the CLUSTER file. If the SYM
       
         <div class="footer-item">
   <p class="sphinx-version">
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.2.6.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.1.3.
     <br/>
   </p>
 </div>
@@ -654,11 +654,10 @@ SYMBOL includes essentially the same information as the CLUSTER file. If the SYM
     </div>
   
   
-  
     <div class="footer-items__end">
       
         <div class="footer-item"><p class="theme-version">
-  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.14.3.
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.13.3.
 </p></div>
       
     </div>

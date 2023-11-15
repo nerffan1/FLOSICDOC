@@ -1,7 +1,7 @@
 .. _nrlmolinput:
 
 =====================================================
-Controlling a calculation: the NRLMOL_INPUT.DAT file
+NRLMOL_INPUT.DAT: Controlling a calculation
 =====================================================
 
 The **NRLMOL_INPUT.DAT** is an auxiliary input file that allows setting of control parameters for calculation.  If it does not exist, then it will be 

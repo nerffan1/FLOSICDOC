@@ -1,133 +1,26 @@
 .. _nrlmolfiles:
 
-==================================
+#######################
 Input and Output Files
-==================================
+#######################
 
 As mentioned above, the minimal set of input files required for a FLOSIC calculation includes CLUSTER and FRMORB. 
 Once the code is run, a number of additional files are generated. Some of these, like NRLMOL_INPUT.DAT (described earlier) can be edited to control how subsequent calculations run. The following is a list of important input/output files and a brief description of their contents:
 
----------------------------------------------------------------------------------------------------------------------------------------------------
+.. note::
+  
+  Only the primary input and output files are explained here. For more information about additional files, please contact a FLOSIC team member or post on our GitHub Discussion section!
 
-ATOMSPHNN  
---------------------
 
-Charge and spin-based charge in each inequivalent atom integrated over a sphere of specified  radius.
-
----------------------------------------------------------------------------------------------------------------------------------------------------
-
+Input Files
+===========
 
 CLUSTER
 --------------------
  
 Main input file.
 
----------------------------------------------------------------------------------------------------------------------------------------------------
-
-DIPOLE
---------------------
- 
-Contains x, y, z components of dipole moments in the atomic units.
-
----------------------------------------------------------------------------------------------------------------------------------------------------
-
-EVALUES
---------------------
-
-The canonical eigenvalues for the current step in an SCF calculation.  
-If symmetry is used in the calculation, the eigenvalues are sorted by symmetry, and also by spin, if the calculation is spin-polarized.  
-A list of eigenvalues and the occupation of the corresponding orbital is given at the end of the file. 
-
----------------------------------------------------------------------------------------------------------------------------------------------------
-
-EVALNNN
---------------------
-  
-The eigenvalues, their spin, symmetry representation, degeneracy and occupancy,
-Fermi energy for each iteration number NNN.
-
----------------------------------------------------------------------------------------------------------------------------------------------------
-
-FRCOUT
---------------------
-
-Total energy, forces on each atom, dipole moment, applied electric field.
-
----------------------------------------------------------------------------------------------------------------------------------------------------
-
-FRMORB
---------------------
-
-Number of up spin FODs and down spin FODs, followed by the up spin FOD positions, then down spin FOD positions.
-
----------------------------------------------------------------------------------------------------------------------------------------------------
-
-fande.out
---------------------
-
-Iteration, total energy, square root of the sum of the squares of FOD forces, max FOD force. 
-
----------------------------------------------------------------------------------------------------------------------------------------------------
-
-GEOCNVRG
---------------------
-
-Convergence criteria, Total energy , largest atomic force, information about atomic geometry 
-optimization.  Is written after every complete SCF cycle.
-
----------------------------------------------------------------------------------------------------------------------------------------------------
-
-HISTORY
---------------------
-   
-Contains history of the geometry optimization. To see the energy as function of optimization step 
-do 'grep -i TR HISTORY' in the directory.
-
-.. _ISYMGEN:
-
----------------------------------------------------------------------------------------------------------------------------------------------------
-
-ISYMGEN 
---------------------
-
-Information about the basis set. (For an in depth description, see chapter 8.)
-
----------------------------------------------------------------------------------------------------------------------------------------------------
-
-records
---------------------
-
-copy of the FRMORB file used during each iteration, followed by the FOD forces on those FODs.
-
----------------------------------------------------------------------------------------------------------------------------------------------------
-
-RHOTOT
---------------------
-
-Total density on a specified grid. Is written in Gaussian cubic format.
-
----------------------------------------------------------------------------------------------------------------------------------------------------
-
-RHOSPN
---------------------
-
-Spin density on a specified grid. Is written in Gaussian cubic format.
-
----------------------------------------------------------------------------------------------------------------------------------------------------
-
-RUNS
---------------------
-
-Control restart of calculation. Calculations can be restarted from Hamiltonian (**HAMOLD**), wavefunctions (**WFOUT**), or potential (**COUPOT**).
-
----------------------------------------------------------------------------------------------------------------------------------------------------
-
-SUMMARY
---------------------
-
-Total energy, electronic charge, kinetic energy and trace of hamiltonian for each iteration.  
-
----------------------------------------------------------------------------------------------------------------------------------------------------
+-----
 
 SYMBOL
 --------------------
@@ -136,20 +29,130 @@ The exchange-correlation functional is specified on the first line. Atomic coord
 iteration of an atomic geometry optimization. The last line allows the use of a more extensive default basis set (to use, set EXTRABASIS=1).
 SYMBOL includes essentially the same information as the CLUSTER file. If the SYMBOL file exists, CLUSTER is not read.
 
----------------------------------------------------------------------------------------------------------------------------------------------------
+-----
+
+FRMORB
+--------------------
+
+Number of up spin FODs and down spin FODs, followed by the up spin FOD positions, then down spin FOD positions.
+
+-----
+
+RUNS
+--------------------
+
+Control restart of calculation. Calculations can be restarted from Hamiltonian (**HAMOLD**), wavefunctions (**WFOUT**), or potential (**COUPOT**).
+
+-----
+
+ISYMGEN 
+--------------------
+
+Information about the basis set. (For an in depth description, see chapter 8.)
+
+-----
+
+Output Files
+============
+
+ATOMSPHNN
+-----------
+
+Charge and spin-based charge in each inequivalent atom integrated over a sphere of specified  radius.
+
+-----
+
+DIPOLE
+--------------------
+ 
+Contains x, y, z components of dipole moments in the atomic units.
+
+-----
+
+EVALUES
+--------------------
+
+The canonical eigenvalues for the current step in an SCF calculation.  
+If symmetry is used in the calculation, the eigenvalues are sorted by symmetry, and also by spin, if the calculation is spin-polarized.  
+A list of eigenvalues and the occupation of the corresponding orbital is given at the end of the file. 
+
+-----
+
+EVALNNN
+--------------------
+  
+The eigenvalues, their spin, symmetry representation, degeneracy and occupancy,
+Fermi energy for each iteration number NNN.
+
+-----
+
+FRCOUT
+--------------------
+
+Total energy, forces on each atom, dipole moment, applied electric field.
+
+-----
+
+fande.out
+--------------------
+
+Iteration, total energy, square root of the sum of the squares of FOD forces, max FOD force. 
+
+-----
+
+GEOCNVRG
+--------------------
+
+Convergence criteria, Total energy , largest atomic force, information about atomic geometry 
+optimization.  Is written after every complete SCF cycle.
+
+-----
+
+HISTORY
+--------------------
+   
+Contains history of the geometry optimization. To see the energy as function of optimization step 
+do 'grep -i TR HISTORY' in the directory.
+
+-----
+
+records
+--------------------
+
+copy of the FRMORB file used during each iteration, followed by the FOD forces on those FODs.
+
+-----
+
+RHOTOT
+--------------------
+
+Total density on a specified grid. Is written in Gaussian cubic format.
+
+-----
+
+RHOSPN
+--------------------
+
+Spin density on a specified grid. Is written in Gaussian cubic format.
+
+-----
+
+
+SUMMARY
+--------------------
+
+Total energy, electronic charge, kinetic energy and trace of hamiltonian for each iteration.  
+
+-----
 
 XMOL.DAT
 --------------------
 
 Geometry in the xyz format. The first column contains atomic numbers. The atomic coordinates are in Angstrom.
 
----------------------------------------------------------------------------------------------------------------------------------------------------
+-----
 
 XMOL.xyz
 --------------------
 
 Geometry in the xyz format. The first column contains atomic labels. The atomic coordinates are in Angstrom. Use **JMOL** to visualize this.
-
-.. note::
-  
-  Only the primary input and output files are explained here. For more information about additional files, please contact a FLOSIC team member or post a question to the FLOSIC listserv (See Ch. 13).

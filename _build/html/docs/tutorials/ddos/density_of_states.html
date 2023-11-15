@@ -1,4 +1,5 @@
 
+
 <!DOCTYPE html>
 
 
@@ -6,7 +7,7 @@
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Plotting density of states using NRLMOL &#8212; NRLMOL  2020 documentation</title>
   
@@ -18,27 +19,26 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../../_static/styles/theme.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
-<link href="../../../_static/styles/bootstrap.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
-<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+  <link href="../../../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
 
   
-  <link href="../../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+  <link href="../../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
   <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=fa44fd50" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/css/custom.css?v=61eb95e5" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/css/custom.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=365ca57ee442770a23c6" />
-<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=365ca57ee442770a23c6" />
-  <script src="../../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=365ca57ee442770a23c6"></script>
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
 
-    <script src="../../../_static/documentation_options.js?v=939ec2ff"></script>
-    <script src="../../../_static/doctools.js?v=888ff710"></script>
-    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
     <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'docs/tutorials/ddos/density_of_states';</script>
     <link rel="index" title="Index" href="../../../genindex.html" />
@@ -47,7 +47,6 @@
     <link rel="prev" title="Tutorial 3: FOD optimization of a water molecule" href="../dtutorials/T3-FOD_opt.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-    <meta name="docbuild:last-update" content="Nov 14, 2023"/>
   </head>
   
   
@@ -56,15 +55,6 @@
   
   
   <a class="skip-link" href="#main-content">Skip to main content</a>
-  
-  <div id="pst-scroll-pixel-helper"></div>
-
-  
-  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>
-    Back to top
-  </button>
-
   
   <input type="checkbox"
           class="sidebar-toggle"
@@ -105,8 +95,7 @@
     <span class="fa-solid fa-bars"></span>
   </label>
   
-  
-  <div class="col-lg-3 navbar-header-items__start">
+  <div class="navbar-header-items__start">
     
       <div class="navbar-item">
   
@@ -116,19 +105,19 @@
   
   
   
-  
     
     
       
     
     
-    <img src="../../../_static/log.jpeg" class="logo__image only-light" alt="NRLMOL  2020 documentation - Home"/>
-    <script>document.write(`<img src="../../../_static/log.jpeg" class="logo__image only-dark" alt="NRLMOL  2020 documentation - Home"/>`);</script>
+    <img src="../../../_static/log.jpeg" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../../../_static/log.jpeg" class="logo__image only-dark" alt="Logo image"/>`);</script>
   
   
 </a></div>
     
   </div>
+  
   
   <div class="col-lg-9 navbar-header-items">
     
@@ -177,20 +166,20 @@
                       </a>
                     </li>
                 
-            <li class="nav-item dropdown">
-                <button class="btn dropdown-toggle nav-item" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-controls="pst-nav-more-links">
+            <div class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     More
                 </button>
-                <ul id="pst-nav-more-links" class="dropdown-menu">
+                <div class="dropdown-menu">
                     
                 <li class="nav-item">
-                  <a class="nav-link dropdown-item nav-external" href="https://www.flosic.org/">
+                  <a class="nav-link nav-external" href="https://www.flosic.org/">
                     FLOSIC Website
                   </a>
                 </li>
                 
-                </ul>
-            </li>
+                </div>
+            </div>
             
   </ul>
 </nav></div>
@@ -202,25 +191,23 @@
       
         <div class="navbar-item navbar-persistent--container">
           
- <script>
- document.write(`
-   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass"></i>
-    <span class="search-button__default-text">Search</span>
-    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-   </button>
- `);
- </script>
+  </button>
+`);
+</script>
         </div>
       
       
         <div class="navbar-item">
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
   </button>
 `);
 </script></div>
@@ -231,20 +218,18 @@ document.write(`
   
   
     <div class="navbar-persistent--mobile">
- <script>
- document.write(`
-   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass"></i>
-    <span class="search-button__default-text">Search</span>
-    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-   </button>
- `);
- </script>
+  </button>
+`);
+</script>
     </div>
   
 
   
-    <label class="sidebar-toggle secondary-toggle" for="__secondary" tabindex="0">
+    <label class="sidebar-toggle secondary-toggle" for="__secondary">
       <span class="fa-solid fa-outdent"></span>
     </label>
   
@@ -307,20 +292,20 @@ document.write(`
                       </a>
                     </li>
                 
-            <li class="nav-item dropdown">
-                <button class="btn dropdown-toggle nav-item" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-controls="pst-nav-more-links-2">
+            <div class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     More
                 </button>
-                <ul id="pst-nav-more-links-2" class="dropdown-menu">
+                <div class="dropdown-menu">
                     
                 <li class="nav-item">
-                  <a class="nav-link dropdown-item nav-external" href="https://www.flosic.org/">
+                  <a class="nav-link nav-external" href="https://www.flosic.org/">
                     FLOSIC Website
                   </a>
                 </li>
                 
-                </ul>
-            </li>
+                </div>
+            </div>
             
   </ul>
 </nav></div>
@@ -334,10 +319,10 @@ document.write(`
           <div class="navbar-item">
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
   </button>
 `);
 </script></div>
@@ -385,8 +370,8 @@ document.write(`
 
 
 
-<nav aria-label="Breadcrumb">
-  <ul class="bd-breadcrumbs">
+<nav aria-label="Breadcrumbs">
+  <ul class="bd-breadcrumbs" role="navigation" aria-label="Breadcrumb">
     
     <li class="breadcrumb-item breadcrumb-home">
       <a href="../../../index.html" class="nav-link" aria-label="Home">
@@ -396,7 +381,7 @@ document.write(`
     
     <li class="breadcrumb-item"><a href="../tuttoc.html" class="nav-link">User Guide and Tutorials</a></li>
     
-    <li class="breadcrumb-item active" aria-current="page">Plotting...</li>
+    <li class="breadcrumb-item active" aria-current="page">Plotting density of states using NRLMOL</li>
   </ul>
 </nav>
 </div>
@@ -414,9 +399,9 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section id="plotting-density-of-states-using-nrlmol">
-<h1>Plotting density of states using NRLMOL<a class="headerlink" href="#plotting-density-of-states-using-nrlmol" title="Link to this heading">#</a></h1>
+<h1>Plotting density of states using NRLMOL<a class="headerlink" href="#plotting-density-of-states-using-nrlmol" title="Permalink to this heading">#</a></h1>
 <section id="introduction">
-<h2>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h2>
 <p>Once you start using NRLMOL, eventually you will need to plot the density of states for the system that you are running. The process can get a little messy so this guide should solve out some doubts.</p>
 <p>First of, what are densities of states?</p>
 <p>Basically, it’s the number of electronic states at a given energy, and is one of the most important quantities to describe the electronic state of a structure [1].</p>
@@ -426,7 +411,7 @@ document.write(`
 <p>The plots themselves are more qualitative than quantitative, since they tell us the localization of states within an energy interval, but the exact number of states for a given energy is rather unimportant. For our purposes (photovoltaics), we are interested mailnly in checking that the last occupied state (that is, the HOMO) is localized in the donor, and that the first unoccupied state (LUMO) resides in the acceptor.</p>
 </section>
 <section id="setup">
-<h2>Setup<a class="headerlink" href="#setup" title="Link to this heading">#</a></h2>
+<h2>Setup<a class="headerlink" href="#setup" title="Permalink to this heading">#</a></h2>
 <p>So let’s do this by example. Let us do the calculation for the density of states for a system we have used previously, Tetracyanoethylene Benzene, or TCNE-Benzene. This is compound molecule made up of two components: the TCNE and Benzene, here the TCNE is in front and the benzene is in the backgound (Fig. 1).</p>
 <figure class="align-center">
 <a class="reference internal image-reference" href="../../../_images/tcne_img.png"><img alt="TCNE-Benzene complex." src="../../../_images/tcne_img.png" style="width: 211.20000000000002px; height: 197.60000000000002px;" /></a>
@@ -470,7 +455,7 @@ document.write(`
 </ul>
 </section>
 <section id="results">
-<h2>Results<a class="headerlink" href="#results" title="Link to this heading">#</a></h2>
+<h2>Results<a class="headerlink" href="#results" title="Permalink to this heading">#</a></h2>
 <p>Once the program finishes, it should have generated a list of files called <strong>DOSO001</strong>, <strong>DOSO002</strong>, and so forth (one for every atom in the structure you ran, there should be 22 files for our case of TCNE-Benzene).</p>
 <p>The files may also have other starting names (<strong>AF1O, AF2O, MINO, MAJO</strong>) depending on the type of calculation you set up.</p>
 <p>So basically, we have a density of states file for every atom in our system that we must plot, but how do we know which file corresponds to what atom? Do we follow the order from the <strong>CLUSTER</strong> file? The answer is no, because NRLMOL orders the atoms once it processes the <strong>CLUSTER</strong> file.</p>
@@ -507,7 +492,7 @@ document.write(`
 <p>From the listing, we now know that the first 12 DOS files correspond to the carbons, files 13-18 correspond to the hydrogens and files 19-22 correspond to the nitrogens. So now we have to plot the DOS files for each of the components and for the full complex, but in order to do so we are going to need membership files.</p>
 </section>
 <section id="membership-files">
-<h2>Membership files<a class="headerlink" href="#membership-files" title="Link to this heading">#</a></h2>
+<h2>Membership files<a class="headerlink" href="#membership-files" title="Permalink to this heading">#</a></h2>
 <p>So far, we know that the <strong>DOSO</strong> files generated are for each atom in the system, and they follow the ordering from the <strong>XMOL.DAT</strong> file, so let’s put them side by side for clarity:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>   <span class="mi">22</span>
 <span class="n">TCNE</span><span class="o">-</span><span class="n">Benzene</span>
@@ -636,7 +621,7 @@ document.write(`
 <p>We can now use these three membership files to plot their corresponding density of states.</p>
 </section>
 <section id="plotting">
-<h2>Plotting<a class="headerlink" href="#plotting" title="Link to this heading">#</a></h2>
+<h2>Plotting<a class="headerlink" href="#plotting" title="Permalink to this heading">#</a></h2>
 <p>To plot the membership files, we use the NRLMOL_GUI program to do so. Set the project directory by selecting <em>Set Project Directory</em> from the <em>File</em> menu. This is the directory where you ran the calculation and that contains the DOS and other output files.  After this, select <em>Plot Density of States</em> from <em>Viewer</em> in the main menu (fig. 4).</p>
 <figure class="align-center">
 <a class="reference internal image-reference" href="../../../_images/gui1.png"><img alt="NRLMOL_GUI main window." src="../../../_images/gui1.png" style="width: 723.2px; height: 288.0px;" /></a>
@@ -664,7 +649,7 @@ After you are finished, you should now have three final data files:</p>
 <p>Let’s now use gnuplot[4] to generate the three plots in a single image from the data files.</p>
 </section>
 <section id="gnuplot-usage">
-<h2>Gnuplot usage<a class="headerlink" href="#gnuplot-usage" title="Link to this heading">#</a></h2>
+<h2>Gnuplot usage<a class="headerlink" href="#gnuplot-usage" title="Permalink to this heading">#</a></h2>
 <p>To now join together the three data files, we need to setup a gnuplot script to process the data in each file and plot them. However, we also need one extra data file for the Fermi level.</p>
 <p>We get the Fermi level from the <strong>EVALUES</strong> file: open the file and look for the line containing <em>FERMI LEVEL</em> and the number next to it, the number is however given in Hartrees, so you must convert it to electron-volt by multiplying it by 27.2116. You could have also got it from the GUI, if you requested to plot the Fermi level, this goes and reads it from the file and puts in a pop up window so you can jot it down.</p>
 <p>For the TCNE-Benzene this value is: -0.206529774179560 so its corresponding value in eV is -5.620005603</p>
@@ -730,7 +715,7 @@ We give the second point a big y value (70 in this case, it can be naything) to 
 </figure>
 </section>
 <section id="bibliography">
-<h2>Bibliography<a class="headerlink" href="#bibliography" title="Link to this heading">#</a></h2>
+<h2>Bibliography<a class="headerlink" href="#bibliography" title="Permalink to this heading">#</a></h2>
 <ol class="arabic simple">
 <li><p>David S. Sholll &amp;  Janice A. Steckel, <em>Density Functional Theory: A practical Introduction</em>, Wiley (2009).</p></li>
 <li><p>Ricahrd M. Martin, <em>Electronic Structure, Basic Theory and Practical Methods</em>, Cambridge University Press (2013).</p></li>
@@ -746,10 +731,11 @@ We give the second point a big y value (70 in this case, it can be naything) to 
               
               
               
-              
-              
-                <footer class="prev-next-footer">
-                  <!-- Previous / next buttons -->
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
        href="../dtutorials/T3-FOD_opt.html"
@@ -769,7 +755,10 @@ We give the second point a big y value (70 in this case, it can be naything) to 
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
+</div></div>
+  
 </div>
+
                 </footer>
               
             </div>
@@ -830,8 +819,8 @@ We give the second point a big y value (70 in this case, it can be naything) to 
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../../_static/scripts/bootstrap.js?digest=365ca57ee442770a23c6"></script>
-<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=365ca57ee442770a23c6"></script>
+  <script src="../../../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
 
   <footer class="bd-footer">
 <div class="bd-footer__inner bd-page-width">
@@ -849,7 +838,7 @@ We give the second point a big y value (70 in this case, it can be naything) to 
       
         <div class="footer-item">
   <p class="sphinx-version">
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.2.6.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.1.3.
     <br/>
   </p>
 </div>
@@ -857,11 +846,10 @@ We give the second point a big y value (70 in this case, it can be naything) to 
     </div>
   
   
-  
     <div class="footer-items__end">
       
         <div class="footer-item"><p class="theme-version">
-  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.14.3.
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.13.3.
 </p></div>
       
     </div>

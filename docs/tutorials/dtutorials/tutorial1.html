@@ -1,0 +1,622 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Tutorial 1: Molecular geometry optimization at the DFT level &#8212; NRLMOL  2020 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=f0c89327" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=87e54e7c" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css?v=61eb95e5" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../_static/documentation_options.js?v=939ec2ff"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'tutorials/dtutorials/tutorial1';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Tutorial 2: a FLOSIC calculation for H2" href="tutorial2.html" />
+    <link rel="prev" title="Quick start" href="../setupcal.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+    <meta name="docbuild:last-update" content="Aug 01, 2024"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/log.jpeg" class="logo__image only-light" alt="NRLMOL  2020 documentation - Home"/>
+    <script>document.write(`<img src="../../_static/log.jpeg" class="logo__image only-dark" alt="NRLMOL  2020 documentation - Home"/>`);</script>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../installation.html">
+    Installation Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../Reference/toc.html">
+    Reference
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../tuttoc.html">
+    User Guide and Tutorials
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../dev_guide/docu_guide.html">
+    Documentation Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../nrlmolfaq.html">
+    FAQs
+  </a>
+</li>
+
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-controls="pst-nav-more-links">
+                    More
+                </button>
+                <ul id="pst-nav-more-links" class="dropdown-menu">
+                    
+<li class=" ">
+  <a class="nav-link dropdown-item nav-external" href="https://www.flosic.org/">
+    FLOSIC Website
+  </a>
+</li>
+
+                </ul>
+            </li>
+            
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../installation.html">
+    Installation Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../Reference/toc.html">
+    Reference
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../tuttoc.html">
+    User Guide and Tutorials
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../dev_guide/docu_guide.html">
+    Documentation Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../nrlmolfaq.html">
+    FAQs
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="https://www.flosic.org/">
+    FLOSIC Website
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../setupcal.html">Quick start</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Tutorial 1: Molecular geometry optimization at the DFT level</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial2.html">Tutorial 2: a FLOSIC calculation for H2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="T3-FOD_opt.html">Tutorial 3:  FOD optimization of a water molecule</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ddos/density_of_states.html">Plotting density of states using NRLMOL</a></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../tuttoc.html" class="nav-link">User Guide and Tutorials</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page">Tutorial 1:...</li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="tutorial-1-molecular-geometry-optimization-at-the-dft-level">
+<h1>Tutorial 1: Molecular geometry optimization at the DFT level<a class="headerlink" href="#tutorial-1-molecular-geometry-optimization-at-the-dft-level" title="Link to this heading">#</a></h1>
+<p>This is a very simple  tutorial  to get acquainted with electronic structure calculations using FLOSIC. This tutorial will explain how to run
+FLOSIC for molecular geometry optimizations using DFT.</p>
+<section id="setting-up-input-structure">
+<h2>Setting Up Input Structure<a class="headerlink" href="#setting-up-input-structure" title="Link to this heading">#</a></h2>
+<p>The <strong>CLUSTER</strong> file is the main input file of FLOSIC. It contains the minimal information to set up a calculation. For this tutorial, we will use
+a CH4 molecule, which uses a <strong>CLUSTER</strong> file like the one shown below:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="n">GGA</span><span class="o">-</span><span class="n">PBE</span><span class="o">*</span><span class="n">GGA</span><span class="o">-</span><span class="n">PBE</span>          <span class="p">(</span><span class="n">DF</span> <span class="n">TYPE</span> <span class="n">EXCHANGE</span><span class="o">*</span><span class="n">CORRELATION</span><span class="p">)</span>
+<span class="linenos"> 2</span><span class="n">NONE</span>                     <span class="p">(</span><span class="n">TD</span><span class="p">,</span> <span class="n">OH</span><span class="p">,</span> <span class="n">IH</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">XY</span><span class="p">,</span> <span class="o">...</span> <span class="n">OR</span> <span class="n">GRP</span><span class="p">)</span>
+<span class="linenos"> 3</span><span class="mi">5</span>                        <span class="p">(</span><span class="n">NUMBER</span> <span class="n">OF</span> <span class="n">INEQUIV</span><span class="o">.</span> <span class="n">ATOMS</span> <span class="n">IN</span> <span class="n">CH4</span><span class="p">)</span>
+<span class="linenos"> 4</span> <span class="mf">0.0000</span>  <span class="mf">0.0000</span>  <span class="mf">0.0000</span> <span class="mi">6</span> <span class="n">ALL</span>
+<span class="linenos"> 5</span> <span class="mf">1.1860</span>  <span class="mf">1.1860</span>  <span class="mf">1.1860</span> <span class="mi">1</span> <span class="n">ALL</span>
+<span class="linenos"> 6</span> <span class="mf">1.1860</span> <span class="o">-</span><span class="mf">1.1860</span> <span class="o">-</span><span class="mf">1.1860</span> <span class="mi">1</span> <span class="n">ALL</span>
+<span class="linenos"> 7</span><span class="o">-</span><span class="mf">1.1860</span>  <span class="mf">1.1860</span> <span class="o">-</span><span class="mf">1.1860</span> <span class="mi">1</span> <span class="n">ALL</span>
+<span class="linenos"> 8</span><span class="o">-</span><span class="mf">1.1860</span> <span class="o">-</span><span class="mf">1.1860</span>  <span class="mf">1.1860</span> <span class="mi">1</span> <span class="n">ALL</span>
+<span class="linenos"> 9</span><span class="mf">0.0</span> <span class="mf">0.0</span>                  <span class="p">(</span><span class="n">NET</span> <span class="n">CHARGE</span> <span class="n">AND</span> <span class="n">NET</span> <span class="n">SPIN</span><span class="p">)</span>
+<span class="linenos">10</span> <span class="o">--------------</span><span class="n">OR</span><span class="o">-------------------</span>
+<span class="linenos">11</span><span class="nd">@XMOL</span><span class="o">.</span><span class="n">DAT</span>
+<span class="linenos">12</span> <span class="n">IF</span> <span class="n">YOU</span> <span class="n">WISH</span> <span class="n">TO</span> <span class="n">START</span> <span class="n">FROM</span> <span class="n">AN</span> <span class="n">XYZ</span> <span class="n">XMOL</span> <span class="n">FILE</span>
+</pre></div>
+</div>
+<p>We will now describe the input structure of this file.</p>
+<p>The first line is <code class="code docutils literal notranslate"><span class="pre">GGA-PBE*GGA-PBE</span></code>. It means that the exchange-correlation interactions in the systems are modeled within the generalized
+gradient approximation (GGA) using the Perdew-Burke-Ernzerhof (PBE) parametrization. This is the default functional used in NRLMOL. A few other
+<span class="xref std std-ref">functionals</span> are also available.</p>
+<p>The second line is <code class="code docutils literal notranslate"><span class="pre">NONE</span></code>. It refers to point group symmetry of the molecule. For the purposes of the tutorial, we will not enforce symmetry.
+If you would like to use symmetry, a symmetry (TD,OH, etc.) can be selected in place of <code class="code docutils literal notranslate"><span class="pre">NONE</span></code>. In these cases, the code will create a <strong>GRPMAT</strong>
+file containing the appropriate symmetry operations (each represented by a 3x3 matrix).  If you would like to use symmetry operations
+directly from an existing <strong>GRPMAT</strong> file, replace <code class="code docutils literal notranslate"><span class="pre">NONE</span></code> with <code class="code docutils literal notranslate"><span class="pre">GRP</span></code>.</p>
+<p>The third line contains <code class="code docutils literal notranslate"><span class="pre">5</span></code>. It specifies the number of inequivalent atoms in the calculation. We’re running a CH4 calculation, so the number
+of atoms is 5 (1 C and 4 H). The following lines contain the cartesian positions of the atoms in atomic units (A.U.), followed by number of
+electrons of each  atom (e.g. 6 for Carbon). The string <code class="code docutils literal notranslate"><span class="pre">ALL</span></code> means include all (i.e. 6 in this case) electrons into the calculation.
+The next 4 lines are the hydrogen atoms, which follow the same format.</p>
+<p>The ninth line in the example file has two fields: net charge and net spin. The first field is <code class="code docutils literal notranslate"><span class="pre">0.0</span></code> which means to perform the calculation for
+the neutral molecule. If the first field was  <code class="code docutils literal notranslate"><span class="pre">1</span></code>,  then the calculations would be performed for a cation of CH4. The next field which is also
+<code class="code docutils literal notranslate"><span class="pre">0.0</span></code> in this example corresponds to the number of unpaired electrons in the system, or the net spin in multiples of <span class="math notranslate nohighlight">\(\frac{\hbar}{2}\)</span>. CH4
+is a closed shell system, so it has no unpaired electrons. Lines after the Charge and Spin fields are ignored.</p>
+</section>
+<section id="running-the-calculation">
+<h2>Running the Calculation<a class="headerlink" href="#running-the-calculation" title="Link to this heading">#</a></h2>
+<p>Now, create an empty directory and run the <code class="code docutils literal notranslate"><span class="pre">nrlmol_exe</span></code> executable inside of it. Multiple default files will be
+created:</p>
+<ul class="simple">
+<li><p>AVRGDAT</p></li>
+<li><p>CLUSTER</p></li>
+<li><p>GEOCNVRG</p></li>
+<li><p>NRLMOL_INPUT.DAT</p></li>
+<li><p>PARASAV</p></li>
+<li><p>RUNS</p></li>
+<li><p>SPNORB</p></li>
+</ul>
+<p>Copy the input from this example into the <strong>CLUSTER</strong>, replacing the default input. Run the calculation for CH4 and redirect output into some log file:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="si">${</span><span class="nv">PATH_TO_FLOSIC</span><span class="si">}</span>/nrlmol_exe<span class="w"> </span><span class="p">&amp;</span>&gt;&gt;<span class="w"> </span>log<span class="w"> </span><span class="p">&amp;</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You can call your log file whatever you want. The final ampersand (&amp;) is to run the program in the background.</p>
+</div>
+<p>Open the <strong>GEOCNVRG</strong> file, you should see the following:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>   <span class="mf">1.0000000000000000E-003</span>
+ <span class="n">CONVERGE</span> <span class="n">FALSE</span>
+ <span class="n">ENERGY</span><span class="o">=</span>   <span class="o">-</span><span class="mf">40.466969</span>
+ <span class="n">TOTAL</span> <span class="n">GRADIENT</span><span class="o">=</span> <span class="mf">0.113937</span><span class="n">D</span><span class="o">-</span><span class="mi">01</span>
+ <span class="n">LARGEST</span> <span class="n">NUCLEAR</span> <span class="n">GRADIENT</span><span class="o">=</span> <span class="mf">0.569685</span><span class="n">D</span><span class="o">-</span><span class="mi">02</span>
+</pre></div>
+</div>
+<p>A new atomic geometry will be appended to the <strong>SYMBOL</strong> file; this file is created from the data in <strong>CLUSTER</strong>. The new geometry is created by
+a gradient optimization routine (either LBFGS or CONJUGATE-GRADIENT). The file <strong>FRCOUT.G0</strong> contains the atomic forces and coordiantes of the previous
+atomic geometry. Running the code again will carry out a calculation at the updated molecular geometry and a new total energy and new atomic forces will
+be computed. A new update of the atomic coordinates will also be written into SYMBOL. Repeating this process several times will result in a local minimum energy
+geometry to be reached. This happens when the maximum force falls below the criterion set in <strong>GEOCNVRG</strong>.</p>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../setupcal.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Quick start</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="tutorial2.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Tutorial 2: a FLOSIC calculation for H2</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setting-up-input-structure">Setting Up Input Structure</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#running-the-calculation">Running the Calculation</a></li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+
+  
+  <div class="tocsection editthispage">
+    <a href="https://github.com/nerffan1/FLOSICDOC/edit/main/tutorials/dtutorials/tutorial1.rst">
+      <i class="fa-solid fa-pencil"></i>
+      
+      
+        
+          Edit on GitHub
+        
+      
+    </a>
+  </div>
+</div>
+
+  <div class="sidebar-secondary-item">
+
+  <div class="tocsection sourcelink">
+    <a href="../../_sources/tutorials/dtutorials/tutorial1.rst.txt">
+      <i class="fa-solid fa-file-lines"></i> Show Source
+    </a>
+  </div>
+</div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2023,   NRLMOL users .
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.7.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.15.4.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

@@ -2,13 +2,13 @@
 Welcome to the *NEW* FLOSIC Documentation!  
 ===========================================
 
-.. include:: src/introduction.rst
+.. include:: ./introduction.rst
 
 .. toctree::
    :maxdepth: 2
 
-   src/installation
-   src/Reference/toc
-   src/tutorials/tuttoc
-   src/dev_guide/docu_guide
-   src/nrlmolfaq
+   ./installation
+   ./Reference/toc
+   ./tutorials/tuttoc
+   ./dev_guide/docu_guide
+   ./nrlmolfaq

@@ -18,7 +18,7 @@ I18NSPHINXOPTS  = $(PAPEROPT_$(PAPER)) $(SPHINXOPTS) .
 
 #If not on an osx machine, shoose path to an html viewer (e.g. Chrome.exe)
 #This assumes open will work on your osx machine
-HTML_VIEW = "/mnt/c/Users/angel/AppData/Local/Google/Chrome/Application/chrome.exe"
+HTML_VIEW = $(BROWSER)
 OS = $(shell uname -s)
 
 help:

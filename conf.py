@@ -30,7 +30,8 @@ extensions = [
    'sphinx.ext.todo',
     'sphinx.ext.ifconfig',
     'sphinx.ext.mathjax',
-    'sphinx.ext.autosectionlabel'
+    'sphinx.ext.autosectionlabel',
+    'sphinx_design'
     ]
 
 # Add any paths that contain templates here, relative to this directory.

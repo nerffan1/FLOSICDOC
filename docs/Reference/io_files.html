@@ -48,7 +48,7 @@
     <link rel="prev" title="Theoretical Background" href="Theory.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-    <meta name="docbuild:last-update" content="Aug 01, 2024"/>
+    <meta name="docbuild:last-update" content="Aug 02, 2024"/>
   </head>
   
   
@@ -513,7 +513,75 @@ do ‘grep -i TR HISTORY’ in the directory.</p>
 <details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3 sd-fade-in">
 <summary class="sd-summary-title sd-card-header records">
 <span class="sd-summary-icon"><svg version="1.1" width="1.0em" height="1.0em" class="sd-octicon sd-octicon-file" viewBox="0 0 16 16" aria-hidden="true"><path d="M2 1.75C2 .784 2.784 0 3.75 0h6.586c.464 0 .909.184 1.237.513l2.914 2.914c.329.328.513.773.513 1.237v9.586A1.75 1.75 0 0 1 13.25 16h-9.5A1.75 1.75 0 0 1 2 14.25Zm1.75-.25a.25.25 0 0 0-.25.25v12.5c0 .138.112.25.25.25h9.5a.25.25 0 0 0 .25-.25V6h-2.75A1.75 1.75 0 0 1 9 4.25V1.5Zm6.75.062V4.25c0 .138.112.25.25.25h2.688l-.011-.013-2.914-2.914-.013-.011Z"></path></svg></span><span class="sd-summary-text">records</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
-<p class="sd-card-text">copy of the FRMORB file used during each iteration, followed by the FOD forces on those FODs.</p>
+<p class="sd-card-text">This file saves the FRMORB file at each iteration of FOD optimization,
+followed by the FOD forces on those FODs.</p>
+<div class="literal-block-wrapper docutils container" id="id1">
+<div class="code-block-caption"><span class="caption-text">The following example shows (1) the SIC energy of the system, (2) a copy of the FRMORB file, and (3) the forces for each FOD.</span><a class="headerlink" href="#id1" title="Link to this code">#</a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="o">-</span><span class="mf">665.55432577631734</span>
+<span class="mi">30</span> <span class="mi">0</span>
+<span class="o">-</span><span class="mf">1.0223922528303129</span> <span class="o">-</span><span class="mf">1.5701827028074304</span> <span class="mf">0.12755169550457657</span>
+<span class="o">-</span><span class="mf">3.224938916607663</span> <span class="o">-</span><span class="mf">2.528339075518182</span> <span class="o">-</span><span class="mf">0.6577778514721768</span>
+<span class="o">-</span><span class="mf">2.4615973689819994</span> <span class="o">-</span><span class="mf">2.6326784288078793</span> <span class="mf">1.8994620783331835</span>
+<span class="o">-</span><span class="mf">1.2103966253365117</span> <span class="o">-</span><span class="mf">4.097033494371805</span> <span class="mf">0.05998672595529149</span>
+<span class="o">-</span><span class="mf">1.9257245177443256</span> <span class="o">-</span><span class="mf">2.6429339445336337</span> <span class="mf">0.3447506209750009</span>
+<span class="mf">1.0670608869306804</span> <span class="o">-</span><span class="mf">0.686591633849823</span> <span class="o">-</span><span class="mf">0.10525352481878916</span>
+<span class="o">-</span><span class="mf">0.5875750882383486</span> <span class="mf">0.6069513399937223</span> <span class="o">-</span><span class="mf">0.1392707620113387</span>
+<span class="o">-</span><span class="mf">0.1860690851998568</span> <span class="o">-</span><span class="mf">0.5770080411613486</span> <span class="o">-</span><span class="mf">0.07353543534494261</span>
+<span class="o">-</span><span class="mf">0.10376499276178418</span> <span class="o">-</span><span class="mf">0.4384759261074402</span> <span class="mf">1.190939148070598</span>
+<span class="mf">3.1017705230861177</span> <span class="mf">0.4202843639474042</span> <span class="mf">1.168214691650782</span>
+<span class="mf">3.005639101831964</span> <span class="mf">0.1498511056113336</span> <span class="o">-</span><span class="mf">1.695454549242929</span>
+<span class="mf">3.08372618991433</span> <span class="o">-</span><span class="mf">2.284279783458925</span> <span class="o">-</span><span class="mf">0.02207244128708167</span>
+<span class="mf">2.4205959553941936</span> <span class="o">-</span><span class="mf">0.8049554420188141</span> <span class="o">-</span><span class="mf">0.13951297704027238</span>
+<span class="mf">2.8984898116051943</span> <span class="mf">2.3522172970009816</span> <span class="o">-</span><span class="mf">0.4429210976859765</span>
+<span class="mf">5.29984447798245</span> <span class="mf">1.5390855261874772</span> <span class="o">-</span><span class="mf">0.45919760711652235</span>
+<span class="mf">3.686813669523889</span> <span class="mf">1.3750909115775518</span> <span class="o">-</span><span class="mf">0.3877268805518746</span>
+<span class="o">-</span><span class="mf">0.02147129826186244</span> <span class="mf">2.6689448149299904</span> <span class="o">-</span><span class="mf">0.3328634913888203</span>
+<span class="mf">1.6111623422964572</span> <span class="mf">3.947858002665977</span> <span class="o">-</span><span class="mf">0.5330528768399299</span>
+<span class="mf">1.6111623422964572</span> <span class="mf">3.947858002665977</span> <span class="o">-</span><span class="mf">0.07693795008604422</span>
+<span class="mf">2.041191619240561</span> <span class="mf">3.947858002665977</span> <span class="o">-</span><span class="mf">0.6850911857578919</span>
+<span class="mf">1.3961477038244052</span> <span class="mf">4.320274280870625</span> <span class="o">-</span><span class="mf">0.6850911857578919</span>
+<span class="mf">1.3961477038244052</span> <span class="mf">3.5754417244613292</span> <span class="o">-</span><span class="mf">0.6850911857578919</span>
+<span class="mf">1.6268289819962993</span> <span class="mf">4.648739660974712</span> <span class="o">-</span><span class="mf">2.4951198465282585</span>
+<span class="mf">1.806740459014061</span> <span class="mf">5.005515541102187</span> <span class="mf">1.251407004397326</span>
+<span class="o">-</span><span class="mf">2.2530089351170837</span> <span class="mf">2.275541751058198</span> <span class="o">-</span><span class="mf">1.1971192058097577</span>
+<span class="o">-</span><span class="mf">2.1242921536118535</span> <span class="mf">2.4335056918240383</span> <span class="mf">0.8617787407183476</span>
+<span class="o">-</span><span class="mf">1.0212511373294526</span> <span class="mf">1.8857736311126312</span> <span class="o">-</span><span class="mf">0.21027302981968016</span>
+<span class="o">-</span><span class="mf">3.1337365288639365</span> <span class="mf">4.342313498413571</span> <span class="o">-</span><span class="mf">0.25628616531050386</span>
+<span class="o">-</span><span class="mf">3.269452379860045</span> <span class="mf">2.78850197683743</span> <span class="o">-</span><span class="mf">0.12822770652292362</span>
+<span class="o">-</span><span class="mf">4.823484369314228</span> <span class="mf">2.748594132182534</span> <span class="o">-</span><span class="mf">0.02069757597890796</span>
+      <span class="o">-</span><span class="mf">0.000546487255</span>     <span class="o">-</span><span class="mf">0.000647911883</span>      <span class="mf">0.001514465215</span>
+      <span class="o">-</span><span class="mf">0.000417917596</span>     <span class="o">-</span><span class="mf">0.000180708163</span>     <span class="o">-</span><span class="mf">0.000003901452</span>
+      <span class="o">-</span><span class="mf">0.000365482298</span>     <span class="o">-</span><span class="mf">0.000348017305</span>      <span class="mf">0.000128932961</span>
+      <span class="o">-</span><span class="mf">0.000289601999</span>     <span class="o">-</span><span class="mf">0.000333512603</span>      <span class="mf">0.000096008164</span>
+      <span class="o">-</span><span class="mf">0.000212362626</span>     <span class="o">-</span><span class="mf">0.000282789707</span>      <span class="mf">0.000166100643</span>
+       <span class="mf">0.000299406769</span>     <span class="o">-</span><span class="mf">0.000043567019</span>      <span class="mf">0.003024325831</span>
+       <span class="mf">0.000177134057</span>      <span class="mf">0.000080048122</span>      <span class="mf">0.003353493514</span>
+       <span class="mf">0.000575954186</span>      <span class="mf">0.001056817122</span>      <span class="mf">0.008086669593</span>
+      <span class="o">-</span><span class="mf">0.000601323476</span>     <span class="o">-</span><span class="mf">0.001214822066</span>      <span class="mf">0.000502705723</span>
+      <span class="o">-</span><span class="mf">0.000206210655</span>     <span class="o">-</span><span class="mf">0.001137958875</span>      <span class="mf">0.000605494093</span>
+      <span class="o">-</span><span class="mf">0.000469656114</span>     <span class="o">-</span><span class="mf">0.001097062322</span>     <span class="o">-</span><span class="mf">0.000323253759</span>
+      <span class="o">-</span><span class="mf">0.000203313056</span>     <span class="o">-</span><span class="mf">0.000651639052</span>      <span class="mf">0.000119433170</span>
+       <span class="mf">0.000551963386</span>      <span class="mf">0.000108977157</span>      <span class="mf">0.000280814583</span>
+       <span class="mf">0.002217885728</span>     <span class="o">-</span><span class="mf">0.004177396073</span>      <span class="mf">0.000267296077</span>
+       <span class="mf">0.000404320452</span>     <span class="o">-</span><span class="mf">0.000243885287</span>      <span class="mf">0.000121462410</span>
+       <span class="mf">0.000797321507</span>     <span class="o">-</span><span class="mf">0.002333995540</span>      <span class="mf">0.000256653684</span>
+      <span class="o">-</span><span class="mf">0.003475494048</span>     <span class="o">-</span><span class="mf">0.002451692415</span>      <span class="mf">0.000436187717</span>
+      <span class="o">-</span><span class="mf">0.000172127238</span>      <span class="mf">0.002423569650</span>      <span class="mf">0.000554670567</span>
+      <span class="o">-</span><span class="mf">0.000138437251</span>      <span class="mf">0.000026971676</span>      <span class="mf">0.009596806701</span>
+       <span class="mf">0.004210389592</span>     <span class="o">-</span><span class="mf">0.001027501103</span>     <span class="o">-</span><span class="mf">0.000960128912</span>
+      <span class="o">-</span><span class="mf">0.003762104361</span>      <span class="mf">0.006604399978</span>     <span class="o">-</span><span class="mf">0.002632153712</span>
+      <span class="o">-</span><span class="mf">0.002597372196</span>     <span class="o">-</span><span class="mf">0.003327727940</span>     <span class="o">-</span><span class="mf">0.000351309880</span>
+       <span class="mf">0.000248010432</span>     <span class="o">-</span><span class="mf">0.000263522568</span>     <span class="o">-</span><span class="mf">0.000531876725</span>
+       <span class="mf">0.000248327617</span>     <span class="o">-</span><span class="mf">0.000183241681</span>      <span class="mf">0.000685513505</span>
+       <span class="mf">0.000708647272</span>      <span class="mf">0.000342653483</span>     <span class="o">-</span><span class="mf">0.000849475154</span>
+       <span class="mf">0.000915426675</span>      <span class="mf">0.001059985363</span>      <span class="mf">0.000481210832</span>
+      <span class="o">-</span><span class="mf">0.002470034176</span>     <span class="o">-</span><span class="mf">0.000288724927</span>      <span class="mf">0.000565830300</span>
+       <span class="mf">0.002001224247</span>      <span class="mf">0.003029756763</span>     <span class="o">-</span><span class="mf">0.000222335734</span>
+       <span class="mf">0.001157026198</span>      <span class="mf">0.001890207014</span>     <span class="o">-</span><span class="mf">0.000153613551</span>
+       <span class="mf">0.000409904292</span>      <span class="mf">0.004894635402</span>     <span class="o">-</span><span class="mf">0.000495899211</span>
+</pre></div>
+</div>
+</div>
 </div>
 </details><hr class="docutils" />
 <details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3 sd-fade-in">

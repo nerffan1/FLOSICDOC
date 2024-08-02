@@ -146,7 +146,12 @@ Output Files
     :icon: file
     :class-title: records
 
-    copy of the FRMORB file used during each iteration, followed by the FOD forces on those FODs.
+    This file saves the FRMORB file at each iteration of FOD optimization,
+    followed by the FOD forces on those FODs.
+
+
+    .. literalinclude:: /Reference/files/records
+        :caption: The following example shows (1) the SIC energy of the system, (2) a copy of the FRMORB file, and (3) the forces for each FOD.
 
 
 -----

@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Reference &#8212; NRLMOL  2020 documentation</title>
+    <title>Generating FODs: FODLego &#8212; NRLMOL  2020 documentation</title>
   
   
   
@@ -42,11 +42,11 @@
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/design-tabs.js?v=f930bc37"></script>
     <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'Reference/toc';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Reference/Generation';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Theoretical Background" href="Theory.html" />
-    <link rel="prev" title="Installation Guide" href="../installation.html" />
+    <link rel="next" title="Input and Output Files" href="io_files.html" />
+    <link rel="prev" title="Theoretical Background" href="Theory.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
     <meta name="docbuild:last-update" content="Aug 28, 2024"/>
@@ -151,7 +151,7 @@
 
 
 <li class="nav-item current active">
-  <a class="nav-link nav-internal" href="#">
+  <a class="nav-link nav-internal" href="toc.html">
     Reference
   </a>
 </li>
@@ -284,7 +284,7 @@ document.write(`
 
 
 <li class="nav-item current active">
-  <a class="nav-link nav-internal" href="#">
+  <a class="nav-link nav-internal" href="toc.html">
     Reference
   </a>
 </li>
@@ -348,9 +348,9 @@ document.write(`
 <nav class="bd-docs-nav bd-links"
      aria-label="Section Navigation">
   <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
-  <div class="bd-toc-item navbar-nav"><ul class="nav bd-sidenav">
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="Theory.html">Theoretical Background</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Generation.html">Generating FODs: FODLego</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Generating FODs: FODLego</a></li>
 <li class="toctree-l1"><a class="reference internal" href="io_files.html">Input and Output Files</a></li>
 <li class="toctree-l1"><a class="reference internal" href="inputdat.html">NRLMOL_INPUT.DAT: Controlling a calculation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="functionals.html">Exchange-Correlation functionals</a></li>
@@ -394,7 +394,10 @@ document.write(`
         <i class="fa-solid fa-home"></i>
       </a>
     </li>
-    <li class="breadcrumb-item active" aria-current="page">Reference</li>
+    
+    <li class="breadcrumb-item"><a href="toc.html" class="nav-link">Reference</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page">Generating...</li>
   </ul>
 </nav>
 </div>
@@ -411,20 +414,32 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="reference">
-<h1>Reference<a class="headerlink" href="#reference" title="Link to this heading">#</a></h1>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="Theory.html">Theoretical Background</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Generation.html">Generating FODs: FODLego</a></li>
-<li class="toctree-l1"><a class="reference internal" href="io_files.html">Input and Output Files</a></li>
-<li class="toctree-l1"><a class="reference internal" href="inputdat.html">NRLMOL_INPUT.DAT: Controlling a calculation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="functionals.html">Exchange-Correlation functionals</a></li>
-<li class="toctree-l1"><a class="reference internal" href="isymgen.html">Basis sets: the ISYMGEN file</a></li>
-<li class="toctree-l1"><a class="reference internal" href="mesh.html">FLOSIC Mesh</a></li>
-<li class="toctree-l1"><a class="reference internal" href="useful_scripts.html">Useful Scripts and Tools</a></li>
-</ul>
+  <section id="generating-fods-fodlego">
+<h1>Generating FODs: FODLego<a class="headerlink" href="#generating-fods-fodlego" title="Link to this heading">#</a></h1>
+<p><a class="reference external" href="https://github.com/nerffan1/FODLego">FODLego</a> is a deterministic method to generate FODs for a given molecular structure.
+It uses monoatomic radii and a series of heuristics to predict FODs and it employs a class-based paradigm that allows the user to modify the construction parameters used to define FOD points around a molecule.
+It only generates FODs up to <span class="math notranslate nohighlight">\(\text{3sp}^3\)</span> orbitals.</p>
+<section id="quick-start">
+<h2>Quick Start<a class="headerlink" href="#quick-start" title="Link to this heading">#</a></h2>
+<p>For an .xyz file, you simply need to input the filename:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./fodlego<span class="w"> </span>input.xyz
+</pre></div>
 </div>
+<p>SMILES structures also work. You just need to add quotation marks around it.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./fodlego<span class="w">  </span><span class="s2">&quot;NC(=S)NC&quot;</span>
+</pre></div>
+</div>
+<p>For SMILES structures, you can check RDKit’s <a class="reference external" href="https://www.rdkit.org/docs/GettingStartedInPython.html#working-with-3d-molecules">documentation</a> to read more about the rationale of 3D structure approximation.</p>
+</section>
+<section id="sample-performance-on-small-organic-molecules">
+<h2>Sample Performance on Small Organic Molecules<a class="headerlink" href="#sample-performance-on-small-organic-molecules" title="Link to this heading">#</a></h2>
+<figure class="align-default" id="id1">
+<img alt="../_images/Iter_RMSD.svg" src="../_images/Iter_RMSD.svg" />
+<figcaption>
+<p><span class="caption-text">The following image is taken from Angel Villegas’ thesis <em>A Cheminformatics-Based Approach to the Prediction of Fermi-Orbital Descriptors (FODs) in Fermi-Lowdin Orbital Self Interaction Correction (FLOSIC) Theory</em></span><a class="headerlink" href="#id1" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
 </section>
 
 
@@ -438,20 +453,20 @@ document.write(`
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../installation.html"
+       href="Theory.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Installation Guide</p>
+        <p class="prev-next-title">Theoretical Background</p>
       </div>
     </a>
     <a class="right-next"
-       href="Theory.html"
+       href="io_files.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Theoretical Background</p>
+        <p class="prev-next-title">Input and Output Files</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -466,10 +481,23 @@ document.write(`
 
 
   <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quick-start">Quick Start</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sample-performance-on-small-organic-molecules">Sample Performance on Small Organic Molecules</a></li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
 
   
   <div class="tocsection editthispage">
-    <a href="https://github.com/nerffan1/FLOSICDOC/edit/main/Reference/toc.rst">
+    <a href="https://github.com/nerffan1/FLOSICDOC/edit/main/Reference/Generation.rst">
       <i class="fa-solid fa-pencil"></i>
       
       
@@ -484,7 +512,7 @@ document.write(`
   <div class="sidebar-secondary-item">
 
   <div class="tocsection sourcelink">
-    <a href="../_sources/Reference/toc.rst.txt">
+    <a href="../_sources/Reference/Generation.rst.txt">
       <i class="fa-solid fa-file-lines"></i> Show Source
     </a>
   </div>

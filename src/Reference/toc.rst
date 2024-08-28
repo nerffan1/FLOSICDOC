@@ -6,6 +6,7 @@ Reference
     :maxdepth: 1
     
     Theory
+    Generation
     io_files
     inputdat
     functionals

@@ -1,4 +1,4 @@
-FLOSIC Documentation
+[FLOSIC Documentation](https://nerffan1.github.io/FLOSICDOC/)
 ====================
 
 This is the source code for FLOSIC's updated documentation. Some updates include:

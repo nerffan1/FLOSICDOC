@@ -48,7 +48,7 @@
     <link rel="prev" title="Welcome to the NEW FLOSIC Documentation!" href="index.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-    <meta name="docbuild:last-update" content="Aug 02, 2024"/>
+    <meta name="docbuild:last-update" content="Sep 24, 2024"/>
   </head>
   
   
@@ -443,21 +443,24 @@ an even divisor of the number of orbitals. For example, for 100 orbitals, igroup
 <span class="nv">FC</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>mpif90
 <span class="nv">FFF</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>mpif90
 <span class="c1"># COMPILER FLAGS</span>
-<span class="nv">CFLAGS</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>-O3<span class="w"> </span>-mcmodel<span class="o">=</span>medium
-<span class="nv">FFLAGS</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>-O3<span class="w"> </span>-mcmodel<span class="o">=</span>medium
-<span class="nv">LFLAGS</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>-O3<span class="w"> </span>-mcmodel<span class="o">=</span>medium
+<span class="nv">CFLAGS</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>-O3
+<span class="nv">FFLAGS</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>-fbounds-check<span class="w"> </span>-std<span class="o">=</span>legacy
+<span class="nv">LFLAGS</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>-fbounds-check<span class="w"> </span>-std<span class="o">=</span>legacy
 </pre></div>
 </div>
-<p>The second block is to specify the compilers and their flags used during the compilation. A number of routines require
-static allocation of arrays. The code needs to be compiled for appropriate array sizes for the system under study and
-these static parameters are listed in the file called PARAMA2 (<em>vide infra</em>)</p>
+<p>The second block is to specify the compilers and their flags used during the compilation. A number of routines require static allocation of arrays.
+The code needs to be compiled for appropriate array sizes for the system under study and these static parameters are listed in the file called <strong>PARAMA2</strong>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Newer versions of Ubuntu require the use of the <cite>std=legacy</cite> flag in order to run.</p>
+</div>
 <p>An example of the compilers used for NERSC is below.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">CC</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>cc
 <span class="nv">FC</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>ftn
 <span class="nv">FFF</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>ftn
 </pre></div>
 </div>
-<p><strong>Third block: linking options</strong></p>
+<p><strong>*Third block: linking options</strong></p>
 <p># Linking options</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="k">$(</span>FFF<span class="k">)</span><span class="w"> </span><span class="k">$(</span>LFLAGS<span class="k">)</span><span class="w"> </span><span class="k">$(</span>OBJ<span class="k">)</span><span class="w"> </span>-o<span class="w"> </span><span class="k">$(</span>BIN<span class="k">)</span><span class="w"> </span>-llapack<span class="w"> </span>-lblas<span class="w"> </span><span class="k">$(</span>LIBS<span class="k">)</span>
 </pre></div>

@@ -54,13 +54,15 @@ an even divisor of the number of orbitals. For example, for 100 orbitals, igroup
         FC = mpif90 
         FFF = mpif90 
         # COMPILER FLAGS
-        CFLAGS = -O3 -mcmodel=medium 
-        FFLAGS = -O3 -mcmodel=medium 
-        LFLAGS = -O3 -mcmodel=medium
+        CFLAGS = -O3
+        FFLAGS = -fbounds-check -std=legacy
+        LFLAGS = -fbounds-check -std=legacy
 
-The second block is to specify the compilers and their flags used during the compilation. A number of routines require
-static allocation of arrays. The code needs to be compiled for appropriate array sizes for the system under study and 
-these static parameters are listed in the file called PARAMA2 (*vide infra*)   
+The second block is to specify the compilers and their flags used during the compilation. A number of routines require static allocation of arrays.
+The code needs to be compiled for appropriate array sizes for the system under study and these static parameters are listed in the file called **PARAMA2**.
+
+.. note::
+   Newer versions of Ubuntu require the use of the `std=legacy` flag in order to run.
 
 An example of the compilers used for NERSC is below.
 
@@ -70,7 +72,7 @@ An example of the compilers used for NERSC is below.
         FC = ftn
         FFF = ftn
 
-**Third block: linking options**
+***Third block: linking options**
 
 # Linking options
 

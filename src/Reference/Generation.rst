@@ -27,3 +27,13 @@ Sample Performance on Small Organic Molecules
 .. figure:: ./static/Iter_RMSD.svg
 
    The following image is taken from Angel Villegas' thesis *A Cheminformatics-Based Approach to the Prediction of Fermi-Orbital Descriptors (FODs) in Fermi-Lowdin Orbital Self Interaction Correction (FLOSIC) Theory*
+
+
+
+Development Reference
+***********************************************
+
+Class Design
+===============================================
+
+.. figure:: ./static/classes_bfod.svg

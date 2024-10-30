@@ -49,7 +49,7 @@
     <link rel="prev" title="Theoretical Background" href="Theory.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-    <meta name="docbuild:last-update" content="Sep 25, 2024"/>
+    <meta name="docbuild:last-update" content="Oct 30, 2024"/>
   </head>
   
   
@@ -421,27 +421,43 @@ It uses monoatomic radii and a series of heuristics to predict FODs and it emplo
 It only generates FODs up to <span class="math notranslate nohighlight">\(\text{3sp}^3\)</span> orbitals.</p>
 <section id="quick-start">
 <h2>Quick Start<a class="headerlink" href="#quick-start" title="Link to this heading">#</a></h2>
+<p>FODLego is available to download via <a class="reference external" href="https://pypi.org/project/FODLego/">pip</a> :</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>FODLego
+</pre></div>
+</div>
+<p>FODLego should now be available as command on your shell. If you execute <cite>fodlego</cite> with no input, you should get the following error:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>WARNING:__main__.py:main<span class="o">()</span>:<span class="w"> </span>No<span class="w"> </span>arguments<span class="w"> </span>were<span class="w"> </span>given,<span class="w"> </span>please<span class="w"> </span>provide<span class="w"> </span>XYZ<span class="w"> </span>file<span class="w"> </span>name
+</pre></div>
+</div>
+<p>For CLUSTER files, you simply call:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>fodlego<span class="w"> </span>CLUSTER
+</pre></div>
+</div>
 <p>For an .xyz file, you simply need to input the filename:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./fodlego<span class="w"> </span>input.xyz
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>fodlego<span class="w"> </span>input.xyz
 </pre></div>
 </div>
 <p>SMILES structures also work. You just need to add quotation marks around it.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./fodlego<span class="w">  </span><span class="s2">&quot;NC(=S)NC&quot;</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>fodlego<span class="w">  </span><span class="s2">&quot;NC(=S)NC&quot;</span>
 </pre></div>
 </div>
 <p>For SMILES structures, you can check RDKit’s <a class="reference external" href="https://www.rdkit.org/docs/GettingStartedInPython.html#working-with-3d-molecules">documentation</a> to read more about the rationale of 3D structure approximation.</p>
 </section>
 <section id="sample-performance-on-small-organic-molecules">
 <h2>Sample Performance on Small Organic Molecules<a class="headerlink" href="#sample-performance-on-small-organic-molecules" title="Link to this heading">#</a></h2>
-<figure class="align-default" id="id1">
+<figure class="align-default" id="id2">
 <img alt="../_images/Iter_RMSD.svg" src="../_images/Iter_RMSD.svg" />
 <figcaption>
-<p><span class="caption-text">The following image is taken from Angel Villegas’ thesis <em>A Cheminformatics-Based Approach to the Prediction of Fermi-Orbital Descriptors (FODs) in Fermi-Lowdin Orbital Self Interaction Correction (FLOSIC) Theory</em></span><a class="headerlink" href="#id1" title="Link to this image">#</a></p>
+<p><span class="caption-text">The following image is taken from Angel Villegas’ thesis <em>A Cheminformatics-Based Approach to the Prediction of Fermi-Orbital Descriptors (FODs) in Fermi-Lowdin Orbital Self Interaction Correction (FLOSIC) Theory</em></span><a class="headerlink" href="#id2" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
 <section id="development-reference">
 <h2>Development Reference<a class="headerlink" href="#development-reference" title="Link to this heading">#</a></h2>
+<section id="github">
+<h3>Github<a class="headerlink" href="#github" title="Link to this heading">#</a></h3>
+<p>Please visit the <a class="reference external" href="https://github.com/nerffan1/FODLego">Github</a> page in order to suggest features, improvements, or ask questions!</p>
+</section>
 <section id="class-design">
 <h3>Class Design<a class="headerlink" href="#class-design" title="Link to this heading">#</a></h3>
 <figure class="align-default">
@@ -500,6 +516,7 @@ It only generates FODs up to <span class="math notranslate nohighlight">\(\text{
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quick-start">Quick Start</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sample-performance-on-small-organic-molecules">Sample Performance on Small Organic Molecules</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#development-reference">Development Reference</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#github">Github</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#class-design">Class Design</a></li>
 </ul>
 </li>

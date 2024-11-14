@@ -1,5 +1,6 @@
+============
 Introduction 
-============== 
+============
 
 The FLOSIC code is based on the UTEP version of NRLMOL, the Naval Research 
 Laboratory Molecular Orbital Library.[1-4]

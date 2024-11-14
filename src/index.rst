@@ -1,3 +1,4 @@
+:html_theme.sidebar_secondary.remove: true
 ===========================================
 Welcome to the *NEW* FLOSIC Documentation!  
 ===========================================

@@ -16,39 +16,44 @@
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
+  <!-- 
+    this give us a css class that will be invisible only if js is disabled 
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-
-  
-  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+  <link href="../_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=f0c89327" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=87e54e7c" />
     <link rel="stylesheet" type="text/css" href="../_static/css/custom.css?v=61eb95e5" />
   
+  <!-- So that users can add custom icons -->
+  <script src="../_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
-  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
 
     <script src="../_static/documentation_options.js?v=939ec2ff"></script>
     <script src="../_static/doctools.js?v=9a2dae69"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/design-tabs.js?v=f930bc37"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'Reference/useful_scripts';</script>
+    <script src="../_static/js/fetch_readme.js?v=526c2c50"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="User Guide and Tutorials" href="../tutorials/tuttoc.html" />
     <link rel="prev" title="FLOSIC Mesh" href="mesh.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-    <meta name="docbuild:last-update" content="Aug 02, 2024"/>
+  <meta name="docsearch:version" content="1.1" />
+    <meta name="docbuild:last-update" content="Nov 14, 2024"/>
   </head>
   
   
@@ -64,19 +69,8 @@
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
-  <input type="checkbox"
-          class="sidebar-toggle"
-          id="pst-primary-sidebar-checkbox"/>
-  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
-  
-  <input type="checkbox"
-          class="sidebar-toggle"
-          id="pst-secondary-sidebar-checkbox"/>
-  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
-  
-  <div class="search-button__wrapper">
-    <div class="search-button__overlay"></div>
-    <div class="search-button__search-container">
+  <dialog id="pst-search-dialog">
+    
 <form class="bd-search d-flex align-items-center"
       action="../search.html"
       method="get">
@@ -84,7 +78,6 @@
   <input type="search"
          class="form-control"
          name="q"
-         id="search-input"
          placeholder="Search the docs ..."
          aria-label="Search the docs ..."
          autocomplete="off"
@@ -92,8 +85,8 @@
          autocapitalize="off"
          spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form></div>
-  </div>
+</form>
+  </dialog>
 
   <div class="pst-async-banner-revealer d-none">
   <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
@@ -127,7 +120,7 @@
     
     
     <img src="../_static/log.jpeg" class="logo__image only-light" alt="NRLMOL  2020 documentation - Home"/>
-    <script>document.write(`<img src="../_static/log.jpeg" class="logo__image only-dark" alt="NRLMOL  2020 documentation - Home"/>`);</script>
+    <img src="../_static/log.jpeg" class="logo__image only-dark pst-js-only" alt="NRLMOL  2020 documentation - Home"/>
   
   
 </a></div>
@@ -202,29 +195,21 @@
         <div class="navbar-item navbar-persistent--container">
           
 
- <script>
- document.write(`
-   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-    <span class="search-button__default-text">Search</span>
-    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-   </button>
- `);
- </script>
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
         </div>
       
       
         <div class="navbar-item">
 
-<script>
-document.write(`
-  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
-    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
-    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
-  </button>
-`);
-</script></div>
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
       
     </div>
     
@@ -233,15 +218,11 @@ document.write(`
   
     <div class="navbar-persistent--mobile">
 
- <script>
- document.write(`
-   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-    <span class="search-button__default-text">Search</span>
-    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-   </button>
- `);
- </script>
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
     </div>
   
 
@@ -260,7 +241,8 @@ document.write(`
       
       
       
-      <div class="bd-sidebar-primary bd-sidebar">
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
         
 
   
@@ -328,15 +310,11 @@ document.write(`
         
           <div class="navbar-item">
 
-<script>
-document.write(`
-  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
-    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
-    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
-  </button>
-`);
-</script></div>
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
         
       </div>
     
@@ -349,6 +327,7 @@ document.write(`
   <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
   <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="Theory.html">Theoretical Background</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Generation.html">Generating FODs: FODLego</a></li>
 <li class="toctree-l1"><a class="reference internal" href="io_files.html">Input and Output Files</a></li>
 <li class="toctree-l1"><a class="reference internal" href="inputdat.html">NRLMOL_INPUT.DAT: Controlling a calculation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="functionals.html">Exchange-Correlation functionals</a></li>
@@ -382,8 +361,6 @@ document.write(`
       
         <div class="header-article-item">
 
-
-
 <nav aria-label="Breadcrumb" class="d-print-none">
   <ul class="bd-breadcrumbs">
     
@@ -395,7 +372,7 @@ document.write(`
     
     <li class="breadcrumb-item"><a href="toc.html" class="nav-link">Reference</a></li>
     
-    <li class="breadcrumb-item active" aria-current="page">Useful...</li>
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Useful Scripts and Tools</span></li>
   </ul>
 </nav>
 </div>
@@ -414,7 +391,76 @@ document.write(`
                   
   <section id="useful-scripts-and-tools">
 <h1>Useful Scripts and Tools<a class="headerlink" href="#useful-scripts-and-tools" title="Link to this heading">#</a></h1>
-<img alt="../_images/underconst.png" src="../_images/underconst.png" />
+<section id="utility-codes-repo">
+<h2>Utility Codes Repo<a class="headerlink" href="#utility-codes-repo" title="Link to this heading">#</a></h2>
+<p>The <a class="reference external" href="https://github.com/yohyamamoto/NRLMOL_utility_codes">NRLMOL_utility_codes</a> GitHub repository has several useful tools:</p>
+<dl class="field-list simple">
+<dt class="field-odd">wfout_reader.f90<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Convert a binary WFOUT into a human readable format WFOUT2</p>
+</dd>
+<dt class="field-even">wfout_unp2pol_converter.f90<span class="colon">:</span></dt>
+<dd class="field-even"><p>Convert a spin unpolarized WFOUT into a spin polarized WFOUT.</p>
+</dd>
+<dt class="field-odd">evalueSmearing.f90<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Apply Gaussain smearing on eigenvalues for plotting with gnuplot.</p>
+</dd>
+<dt class="field-even">xmol2cluster.pl<span class="colon">:</span></dt>
+<dd class="field-even"><p>Converts an xmol geometry file to NRLMOL CLUSTER file.</p>
+</dd>
+<dt class="field-odd">qchem2cluster.pl<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Converts an qchem geometry file to NRLMOL CLUSTER file.</p>
+</dd>
+<dt class="field-even">cluster2xyz.pl<span class="colon">:</span></dt>
+<dd class="field-even"><p>Converts NRLMOL CLUSTER file to xyz file.</p>
+</dd>
+<dt class="field-odd">benchmark_libxc.sh<span class="colon">:</span></dt>
+<dd class="field-odd"><p>shell script testing suite code for the UTEP-NRLMOL code (written for old versions around 2015-2017).</p>
+</dd>
+<dt class="field-even">nrlmol2molden.f90<span class="colon">:</span></dt>
+<dd class="field-even"><p>Converts NRLMOL output to molden file</p>
+</dd>
+</dl>
+</section>
+<section id="visualization-tools">
+<h2>Visualization Tools<a class="headerlink" href="#visualization-tools" title="Link to this heading">#</a></h2>
+<p><a class="reference external" href="https://wiki.fysik.dtu.dk/ase/index.html">Atomic Simulation Environment (ASE)</a></p>
+<p>This easy to use visualization helps with quick editing and visualization that can be executed from the command line.</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>ase<span class="w"> </span>gui<span class="w"> </span>file.xyz
+</pre></div>
+</div>
+<figure class="align-default" id="id1">
+<img alt="../_images/ase.png" src="../_images/ase.png" />
+<figcaption>
+<p><span class="caption-text">Sample output of visualizing an .xyz file with ASE.</span><a class="headerlink" href="#id1" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p><a class="reference external" href="https://www.ks.uiuc.edu/Research/vmd/">Visual Molecular Dynamics (VMD)</a></p>
+<p>This software contains logical visualization, where you can create an image of only atoms of a certain category or type. You can also easily superimpose alternative views of a system (e.g. display ribbons and balls/sticks at once), and easily colorize the</p>
+<p><a class="reference external" href="https://extensions.blender.org/add-ons/atomic-blender-pdb-xyz/">Atomic Blender Extension</a></p>
+<p>With the atomic blender extension for the <a class="reference external" href="https://www.blender.org/">Blender</a> software, you can create very high quality visuals. The only downside is that Blender has a high learning curve, but you can see a few examples of visuals done in Blender.</p>
+<figure class="align-default" id="id2">
+<a class="reference internal image-reference" href="../_images/angle_add.png"><img alt="../_images/angle_add.png" src="../_images/angle_add.png" style="width: 360.0px; height: 360.0px;" />
+</a>
+<figcaption>
+<p><span class="caption-text">This figure shows how FODs create tetrahedra, or pyramids, in their SP3 form.</span><a class="headerlink" href="#id2" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="id3">
+<img alt="../_images/isomers_similar.png" src="../_images/isomers_similar.png" />
+<figcaption>
+<p><span class="caption-text">Sample isomers with FODs, rendered with Blender.</span><a class="headerlink" href="#id3" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header sd-bg-secondary sd-bg-text-secondary">
+<span class="sd-summary-icon"><svg version="1.1" width="1.0em" height="1.0em" class="sd-octicon sd-octicon-unlock" viewBox="0 0 16 16" aria-hidden="true"><path d="M5.5 4v2h7A1.5 1.5 0 0 1 14 7.5v6a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5v-6A1.5 1.5 0 0 1 3.499 6H4V4a4 4 0 0 1 7.371-2.154.75.75 0 0 1-1.264.808A2.5 2.5 0 0 0 5.5 4Zm-2 3.5v6h9v-6h-9Z"></path></svg></span><span class="sd-summary-text">Blender Learning</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text">You need to learn how to manipulate cameras in Blender and how to do basic object manipulation, lighting, mesh editing, and texture editing.
+The first 11 videos in this <a class="reference external" href="https://www.youtube.com/playlist?list=PL3GeP3YLZn5hhfaGRSmRia0OwPPMfJu0V">tutorial series</a> offers guidance in these basic things.
+Then you can use the extension!</p>
+</div>
+</details><p><a class="reference external" href="https://pymol.org/">PyMol</a></p>
+<p><a class="reference external" href="https://pymol.org/">VESTA</a></p>
+</section>
 </section>
 
 
@@ -452,8 +498,22 @@ document.write(`
             
             
               
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#utility-codes-repo">Utility Codes Repo</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualization-tools">Visualization Tools</a></li>
+</ul>
+  </nav></div>
 
   <div class="sidebar-secondary-item">
 
@@ -493,8 +553,8 @@ document.write(`
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <script defer src="../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
 
   <footer class="bd-footer">
 <div class="bd-footer__inner bd-page-width">
@@ -514,7 +574,7 @@ document.write(`
         <div class="footer-item">
 
   <p class="sphinx-version">
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.7.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.1.3.
     <br/>
   </p>
 </div>
@@ -527,7 +587,7 @@ document.write(`
       
         <div class="footer-item">
 <p class="theme-version">
-  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.15.4.
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.16.0.
 </p></div>
       
     </div>

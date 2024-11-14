@@ -11,8 +11,8 @@ The NRLMOL_INPUT.DAT with default values of parameters as of today (August 15, 2
 
 .. literalinclude:: /_static/input_files/nrlmolinput.file
 
-A large number of entries related to calculation of certain properties are given as yes or no. Here **N** means *NO*. If **Y** then the calculation 
-of a given property is requested. Note that certain calculations such as, for example, the calculation of joint density of states is often useful only at the final converged geometry.
+A large number of entries related to calculation of certain properties are given as yes (``Y``) or no (``N``).
+Note that certain calculations such as, for example, the calculation of joint density of states (``JNTDOSV``) is often useful only at the final converged geometry.
 
 Most of the variables are already explained briefly in the NRLMOL_INPUT.DAT file. Below we add some comments on a few of them.
 

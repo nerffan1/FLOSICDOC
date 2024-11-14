@@ -1,12 +1,12 @@
 Generating FODs: FODLego
-###########################
+########################
 
 `FODLego <https://github.com/nerffan1/FODLego>`_ is a deterministic method to generate FODs for a given molecular structure.
 It uses monoatomic radii and a series of heuristics to predict FODs and it employs a class-based paradigm that allows the user to modify the construction parameters used to define FOD points around a molecule.
 It only generates FODs up to :math:`\text{3sp}^3` orbitals.
 
-Quick Start
-************
+Installation and Running
+************************
 FODLego is available to download via `pip <https://pypi.org/project/FODLego/>`_ :
 
 .. code-block:: bash

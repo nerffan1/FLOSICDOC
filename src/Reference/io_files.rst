@@ -20,14 +20,16 @@ Input Files
     :animate: fade-in
     :class-title: CLUSTER
     :icon: file
+    :name: CLUSTER
 
-    Main input file.
+    This is a simplified input file that can be used in place of the :ref:`SYMBOL` file. You can find a detailed example in our :ref:`first tutorial<Setting Up Input Structure>`.
 
 -----
 
 .. dropdown:: SYMBOL
     :animate: fade-in
     :icon: file
+    :name: SYMBOL
 
     The exchange-correlation functional is specified on the first line. Atomic coordinates and bias potentials for each atom are stored for each
     iteration of an atomic geometry optimization. The last line allows the use of a more extensive default basis set (to use, set EXTRABASIS=1).
@@ -46,8 +48,15 @@ Input Files
 .. dropdown:: RUNS
     :animate: fade-in
     :icon: file
+    :name: RUNS
 
     Control restart of calculation. Calculations can be restarted from Hamiltonian (**HAMOLD**), wavefunctions (**WFOUT**), or potential (**COUPOT**).
+
+    Here is an example of a calculation that has finished:
+
+    .. literalinclude:: static/RUNS_ex
+        :caption: Sample RUNS file
+
 
 
 -----

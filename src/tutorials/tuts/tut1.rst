@@ -49,7 +49,7 @@ created:
 - GEOCNVRG
 - NRLMOL_INPUT.DAT
 - PARASAV
-- RUNS
+- :ref:`RUNS`
 - SPNORB
 
 Copy the input from this example into the **CLUSTER**, replacing the default input. Run the calculation for CH4 and redirect output into some log file: 

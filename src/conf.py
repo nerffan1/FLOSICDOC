@@ -105,7 +105,7 @@ html_theme = "pydata_sphinx_theme"
 # documentation.
 html_theme_options = {
   "use_edit_page_button": True,
-  #"announcement": "This is a documentation in ongoing development! Please contact us if you have questions!", #py_datatheme
+  "announcement": "", #py_datatheme
   "external_links": [
       {"name": "FLOSIC Website", "url": "https://www.flosic.org/"}]
 }
@@ -116,6 +116,7 @@ html_context = {
     "github_repo": "FLOSICDOC",
     "github_version": "main",
     "doc_path": "",
+    "navbar_align": "content"
 }
 
 # Add any paths that contain custom themes here, relative to this directory.
@@ -146,6 +147,10 @@ html_css_files = [
     'css/custom.css',
 ]
 
+html_js_files = [
+    'js/fetch_readme.js',
+]
+
 # If not '', a 'Last updated on:' timestamp is inserted at every page bottom,
 # using the given strftime format.
 html_last_updated_fmt = '%b %d, %Y'
@@ -155,7 +160,9 @@ html_last_updated_fmt = '%b %d, %Y'
 #html_use_smartypants = True
 
 # Custom sidebar templates, maps document names to template names.
-#html_sidebars = {} 
+html_sidebars = {
+    "installation": []
+}
 
 # Additional templates that should be rendered to pages, maps page names to
 # template names.

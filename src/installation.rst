@@ -1,3 +1,4 @@
+:html_theme.sidebar_secondary.remove: true
 ================================
 Installation Guide
 ================================
@@ -27,7 +28,9 @@ need to edit three blocks of lines in the makefile to suit your needs.
         If you have not modified a Makefile before - no worries!
         You only have to switch a few variables.
 
-**First block: parallel or serial**
+First block: parallel or serial
+********************************
+
 
 .. code-block:: bash
 
@@ -45,8 +48,9 @@ This option can deliver a greater speed up than the single-level parallel scheme
 When :code:`GROUP=Y`, the user should edit the "igroup" file in the run directory.  This file should contain an integer that is
 an even divisor of the number of orbitals. For example, for 100 orbitals, igroup might be 10 or 20, but not 15.  
 
-**Second block: compiler choices**        
 
+Second block: compiler choices
+********************************
 .. code-block:: bash
 
         # COMPILERS
@@ -72,9 +76,8 @@ An example of the compilers used for NERSC is below.
         FC = ftn
         FFF = ftn
 
-***Third block: linking options**
-
-# Linking options
+Third block: linking options
+*******************************
 
 .. code-block:: bash
 
@@ -105,7 +108,9 @@ Edit **PARAMA2** for static parameters :
 
 An example for serial compilation on a laptop (in this case a mac) is shown below. 
 
-**First block:** Compile the serial version
+First block: Compile the serial version
+*******************************************
+
 
 .. code-block:: bash
         

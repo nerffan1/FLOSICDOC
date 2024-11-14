@@ -7,7 +7,7 @@ These tutorials stem from the original *FLOSIC Documentation and Tutorials* docu
 .. toctree::
 
    setupcal
-   dtutorials/tutorial1
-   dtutorials/tutorial2
-   dtutorials/T3-FOD_opt
+   tuts/tut1
+   tuts/tut2
+   tuts/tut3
    ddos/density_of_states

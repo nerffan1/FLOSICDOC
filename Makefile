@@ -50,15 +50,6 @@ html:
 	$(SPHINXBUILD) -b html $(SRCDIR) $(BUILDDIR) -q
 	@echo
 	@echo "Build finished. The HTML pages are in $(BUILDDIR)/html."
-#Open in browser
-	@case  $(OS) in \
-		Darwin) \
-			open $(BUILDDIR)/html/index.html ;; \
-		Linux) \
-			if [ $(WSL_DISTRO_NAME) = "Ubuntu-22.04" ]; then \
-				$(HTML_VIEW) "\\$(shell wslpath -w  $(PWD)/$(BUILDDIR)/html/index.html)"; \
-			fi;; \
-	esac
 
 dirhtml:
 	$(SPHINXBUILD) -b dirhtml $(ALLSPHINXOPTS) $(BUILDDIR)/dirhtml

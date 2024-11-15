@@ -30,8 +30,8 @@
   <link href="../_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
 <link href="../_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=f0c89327" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=87e54e7c" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../_static/css/custom.css?v=61eb95e5" />
   
   <!-- So that users can add custom icons -->
@@ -45,7 +45,7 @@
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/design-tabs.js?v=f930bc37"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'Reference/io_files';</script>
-    <script src="../_static/js/fetch_readme.js?v=526c2c50"></script>
+    <script src="../_static/js/fetch_readme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="NRLMOL_INPUT.DAT: Controlling a calculation" href="inputdat.html" />
@@ -53,7 +53,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="1.1" />
-    <meta name="docbuild:last-update" content="Nov 14, 2024"/>
+    <meta name="docbuild:last-update" content="Nov 15, 2024"/>
   </head>
   
   
@@ -402,7 +402,7 @@ Once the code is run, a number of additional files are generated. Some of these,
 <details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3 sd-fade-in" id="cluster">
 <summary class="sd-summary-title sd-card-header cluster">
 <span class="sd-summary-icon"><svg version="1.1" width="1.0em" height="1.0em" class="sd-octicon sd-octicon-file" viewBox="0 0 16 16" aria-hidden="true"><path d="M2 1.75C2 .784 2.784 0 3.75 0h6.586c.464 0 .909.184 1.237.513l2.914 2.914c.329.328.513.773.513 1.237v9.586A1.75 1.75 0 0 1 13.25 16h-9.5A1.75 1.75 0 0 1 2 14.25Zm1.75-.25a.25.25 0 0 0-.25.25v12.5c0 .138.112.25.25.25h9.5a.25.25 0 0 0 .25-.25V6h-2.75A1.75 1.75 0 0 1 9 4.25V1.5Zm6.75.062V4.25c0 .138.112.25.25.25h2.688l-.011-.013-2.914-2.914-.013-.011Z"></path></svg></span><span class="sd-summary-text">CLUSTER</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
-<p class="sd-card-text">This is a simplified input file that can be used in place of the <a class="reference internal" href="#symbol"><span class="std std-ref">SYMBOL</span></a> file. You can find a detailed example in our <a class="reference internal" href="../tutorials/tuts/tut1.html#setting-up-input-structure"><span class="std std-ref">first tutorial</span></a>.</p>
+<p class="sd-card-text">This is a simplified input file that can be used in place of the <a class="reference internal" href="#symbol"><span class="std std-ref">SYMBOL</span></a> file. You can find a detailed example in our <a class="reference internal" href="../tutorials/tuts/tut2.html#setting-up-input-structure"><span class="std std-ref">first tutorial</span></a>.</p>
 </div>
 </details><hr class="docutils" />
 <details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3 sd-fade-in" id="symbol">
@@ -424,14 +424,6 @@ SYMBOL includes essentially the same information as the CLUSTER file. If the SYM
 <span class="sd-summary-icon"><svg version="1.1" width="1.0em" height="1.0em" class="sd-octicon sd-octicon-file" viewBox="0 0 16 16" aria-hidden="true"><path d="M2 1.75C2 .784 2.784 0 3.75 0h6.586c.464 0 .909.184 1.237.513l2.914 2.914c.329.328.513.773.513 1.237v9.586A1.75 1.75 0 0 1 13.25 16h-9.5A1.75 1.75 0 0 1 2 14.25Zm1.75-.25a.25.25 0 0 0-.25.25v12.5c0 .138.112.25.25.25h9.5a.25.25 0 0 0 .25-.25V6h-2.75A1.75 1.75 0 0 1 9 4.25V1.5Zm6.75.062V4.25c0 .138.112.25.25.25h2.688l-.011-.013-2.914-2.914-.013-.011Z"></path></svg></span><span class="sd-summary-text">RUNS</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
 <p class="sd-card-text">Control restart of calculation. Calculations can be restarted from Hamiltonian (<strong>HAMOLD</strong>), wavefunctions (<strong>WFOUT</strong>), or potential (<strong>COUPOT</strong>).</p>
 <p class="sd-card-text">Here is an example of a calculation that has finished:</p>
-<div class="literal-block-wrapper docutils container" id="id1">
-<div class="code-block-caption"><span class="caption-text">Sample RUNS file</span><a class="headerlink" href="#id1" title="Link to this code">#</a></div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>     <span class="mi">0</span>     <span class="mi">1</span>            <span class="n">ITBEG</span><span class="p">,</span> <span class="n">NCALC</span>
-     <span class="mi">4</span>     <span class="mi">4</span>            <span class="n">START</span><span class="p">:</span> <span class="mi">0</span><span class="o">=</span><span class="n">SCR</span><span class="o">.</span><span class="n">NUC</span><span class="p">,</span> <span class="mi">1</span><span class="o">=</span><span class="n">HAM</span><span class="p">,</span> <span class="mi">2</span><span class="o">=</span><span class="n">POT</span><span class="p">,</span> <span class="mi">3</span><span class="o">=</span><span class="n">LSF</span><span class="p">,</span> <span class="mi">4</span><span class="o">=</span><span class="n">WFUNC</span><span class="p">,</span> <span class="mi">5</span><span class="o">=</span><span class="n">WFUNC_FRAG</span>
-     <span class="mi">0</span>                  <span class="n">START</span> <span class="n">HAMILTONIAN</span> <span class="n">IS</span> <span class="n">INTERPOLATED</span><span class="p">:</span> <span class="mi">0</span><span class="o">=</span><span class="n">NO</span><span class="p">,</span> <span class="mi">1</span><span class="o">=</span><span class="n">YES</span>
-</pre></div>
-</div>
-</div>
 </div>
 </details><hr class="docutils" />
 <details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3 sd-fade-in" id="isymgen">
@@ -501,8 +493,8 @@ do ‘grep -i TR HISTORY’ in the directory.</p>
 <span class="sd-summary-icon"><svg version="1.1" width="1.0em" height="1.0em" class="sd-octicon sd-octicon-file" viewBox="0 0 16 16" aria-hidden="true"><path d="M2 1.75C2 .784 2.784 0 3.75 0h6.586c.464 0 .909.184 1.237.513l2.914 2.914c.329.328.513.773.513 1.237v9.586A1.75 1.75 0 0 1 13.25 16h-9.5A1.75 1.75 0 0 1 2 14.25Zm1.75-.25a.25.25 0 0 0-.25.25v12.5c0 .138.112.25.25.25h9.5a.25.25 0 0 0 .25-.25V6h-2.75A1.75 1.75 0 0 1 9 4.25V1.5Zm6.75.062V4.25c0 .138.112.25.25.25h2.688l-.011-.013-2.914-2.914-.013-.011Z"></path></svg></span><span class="sd-summary-text">records</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
 <p class="sd-card-text">This file saves the FRMORB file at each iteration of FOD optimization,
 followed by the FOD forces on those FODs.</p>
-<div class="literal-block-wrapper docutils container" id="id2">
-<div class="code-block-caption"><span class="caption-text">The following example shows (1) the SIC energy of the system, (2) a copy of the FRMORB file, and (3) the forces for each FOD.</span><a class="headerlink" href="#id2" title="Link to this code">#</a></div>
+<div class="literal-block-wrapper docutils container" id="id1">
+<div class="code-block-caption"><span class="caption-text">The following example shows (1) the SIC energy of the system, (2) a copy of the FRMORB file, and (3) the forces for each FOD.</span><a class="headerlink" href="#id1" title="Link to this code">#</a></div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="o">-</span><span class="mf">665.55432577631734</span>
 <span class="mi">30</span> <span class="mi">0</span>
 <span class="o">-</span><span class="mf">1.0223922528303129</span> <span class="o">-</span><span class="mf">1.5701827028074304</span> <span class="mf">0.12755169550457657</span>

@@ -105,9 +105,9 @@ html_theme = "pydata_sphinx_theme"
 # documentation.
 html_theme_options = {
   "use_edit_page_button": True,
-  "announcement": "", #py_datatheme
   "external_links": [
-      {"name": "FLOSIC Website", "url": "https://www.flosic.org/"}]
+      {"name": "FLOSIC Website", "url": "https://www.flosic.org/"}],
+  "show_version_warning_banner" : False
 }
 
 html_context = {
@@ -137,6 +137,10 @@ html_logo = '_static/log.jpeg'
 # docs.  This file should be a Windows icon file (.ico) being 16x16 or 32x32
 # pixels large.
 #html_favicon = None
+#
+
+# Warning Banner
+
 
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
@@ -317,3 +321,4 @@ epub_copyright = u'2013,   NRLMOL users '
 
 # Allow duplicate toc entries.
 #epub_tocdup = True
+
